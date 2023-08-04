@@ -14,7 +14,11 @@ const Conversations = () => {
         item
         lg={3}
         height={"100%"}
-        sx={{ border: "1px solid blue", overflow: "auto" }}
+        sx={{
+          border: "1px solid blue",
+          overflow: "auto",
+          "&::-webkit-scrollbar": { display: "none" },
+        }}
       >
         {chats.map((item) => {
           return <ChatCard key={item.chat_id} {...item} />;

@@ -5,6 +5,7 @@ export const messages = [
     timestamp: "2023-07-26 12:01:00",
     sender: "user1",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message2",
@@ -12,6 +13,7 @@ export const messages = [
     timestamp: "2023-07-26 12:02:00",
     sender: "user2",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message3",
@@ -19,6 +21,7 @@ export const messages = [
     timestamp: "2023-07-26 12:03:00",
     sender: "user1",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message4",
@@ -26,6 +29,7 @@ export const messages = [
     timestamp: "2023-07-26 12:05:00",
     sender: "user1",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message5",
@@ -33,6 +37,7 @@ export const messages = [
     timestamp: "2023-07-26 12:06:00",
     sender: "user3",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message6",
@@ -40,6 +45,7 @@ export const messages = [
     timestamp: "2023-07-26 12:07:00",
     sender: "user2",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message7",
@@ -47,6 +53,7 @@ export const messages = [
     timestamp: "2023-07-26 12:09:00",
     sender: "user1",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message8",
@@ -54,6 +61,7 @@ export const messages = [
     timestamp: "2023-07-26 12:10:00",
     sender: "user4",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message9",
@@ -61,13 +69,15 @@ export const messages = [
     timestamp: "2023-07-26 12:12:00",
     sender: "user1",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message10",
     content: "Hey, Alice!",
     timestamp: "2023-07-26 12:15:00",
-    sender: "user6",
+    sender: "user1",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message11",
@@ -75,13 +85,15 @@ export const messages = [
     timestamp: "2023-07-26 12:18:00",
     sender: "user7",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message12",
     content: "Hi, everyone!",
     timestamp: "2023-07-26 12:20:00",
-    sender: "user3",
+    sender: "user1",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message13",
@@ -89,20 +101,23 @@ export const messages = [
     timestamp: "2023-07-26 12:21:00",
     sender: "user10",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message14",
     content: "How are you all?",
     timestamp: "2023-07-26 12:23:00",
-    sender: "user7",
+    sender: "user1",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message15",
     content: "Hi, Grace!",
     timestamp: "2023-07-26 12:25:00",
-    sender: "user5",
+    sender: "user8",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message16",
@@ -110,13 +125,15 @@ export const messages = [
     timestamp: "2023-07-26 12:27:00",
     sender: "user8",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message17",
     content: "Hi, Frank!",
     timestamp: "2023-07-26 12:29:00",
-    sender: "user6",
+    sender: "user1",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message18",
@@ -124,6 +141,7 @@ export const messages = [
     timestamp: "2023-07-26 12:31:00",
     sender: "user7",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message19",
@@ -131,6 +149,7 @@ export const messages = [
     timestamp: "2023-07-26 12:33:00",
     sender: "user9",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message20",
@@ -138,13 +157,15 @@ export const messages = [
     timestamp: "2023-07-26 12:35:00",
     sender: "user10",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message21",
     content: "Hey, David!",
     timestamp: "2023-07-26 12:37:00",
-    sender: "user8",
+    sender: "user1",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message22",
@@ -152,13 +173,15 @@ export const messages = [
     timestamp: "2023-07-26 12:39:00",
     sender: "user10",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message23",
     content: "Hi, Charlie!",
     timestamp: "2023-07-26 12:41:00",
-    sender: "user7",
+    sender: "user1",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message24",
@@ -166,6 +189,7 @@ export const messages = [
     timestamp: "2023-07-26 12:43:00",
     sender: "user9",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message25",
@@ -173,20 +197,23 @@ export const messages = [
     timestamp: "2023-07-26 12:45:00",
     sender: "user8",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message26",
     content: "Hey, Grace!",
     timestamp: "2023-07-26 12:47:00",
-    sender: "user10",
+    sender: "user7",
     group_sender_display_name: null,
+    seen: false,
   },
   {
     message_id: "message27",
     content: "Hello, Helen!",
     timestamp: "2023-07-26 12:49:00",
-    sender: "user7",
+    sender: "user1",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message28",
@@ -194,6 +221,7 @@ export const messages = [
     timestamp: "2023-07-26 12:51:00",
     sender: "user10",
     group_sender_display_name: null,
+    seen: true,
   },
   {
     message_id: "message29",
@@ -201,5 +229,6 @@ export const messages = [
     timestamp: "2023-07-26 12:53:00",
     sender: "user8",
     group_sender_display_name: null,
+    seen: true,
   },
 ];
