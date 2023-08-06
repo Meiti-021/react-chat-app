@@ -1,3 +1,11 @@
+export type ChatType = {
+  peer_private: boolean;
+  participants: Array<string>;
+  messages: Array<string>;
+  group_name: string | null;
+  group_profile: string | null;
+  chat_id: string;
+};
 export const chats = [
   {
     chat_id: "peer_private_chat1",

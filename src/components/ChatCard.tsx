@@ -6,6 +6,7 @@ import { Avatar, Box, Typography, Badge, Stack } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import moment from "moment";
 import { messageFind, userFind, userNameFind } from "../utils/utils";
+import { ChatType } from "../utils/chats";
 
 const ChatCard = ({
   participants,
@@ -14,14 +15,7 @@ const ChatCard = ({
   group_name,
   group_profile,
   chat_id,
-}: {
-  peer_private: boolean;
-  participants: Array<string>;
-  messages: Array<string>;
-  group_name: string | null;
-  group_profile: string | null;
-  chat_id: string;
-}) => {
+}: ChatType) => {
   return (
     <Card
       component={NavLink}
