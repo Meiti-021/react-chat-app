@@ -13,17 +13,19 @@ const ChatCard = ({
   peer_private,
   group_name,
   group_profile,
+  chat_id,
 }: {
   peer_private: boolean;
   participants: Array<string>;
   messages: Array<string>;
   group_name: string | null;
   group_profile: string | null;
+  chat_id: string;
 }) => {
   return (
     <Card
       component={NavLink}
-      to={"/"}
+      to={`/${chat_id}`}
       sx={{
         width: "100%",
         display: "flex",

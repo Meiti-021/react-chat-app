@@ -1,9 +1,10 @@
 import Grid from "@mui/material/Grid";
 import { chats } from "../utils/chats";
-import { messages } from "../utils/messages";
-import { users } from "../utils/users";
 import ChatCard from "./ChatCard";
 import { Box, Typography } from "@mui/material";
+import { Outlet, Route, Routes } from "react-router-dom";
+import Chat from "./Chat";
+import SelectChat from "./SelectChat";
 
 const Conversations = () => {
   return (
@@ -51,12 +52,9 @@ const Conversations = () => {
           return <ChatCard key={item.chat_id} {...item} />;
         })}
       </Grid>
-      <Grid
-        item
-        lg={9}
-        height={"100%"}
-        sx={{ border: "1px solid black" }}
-      ></Grid>
+      <Grid item lg={9} height={"100%"} sx={{ border: "1px solid black" }}>
+        <Outlet />
+      </Grid>
     </Grid>
   );
 };

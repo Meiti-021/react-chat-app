@@ -24,6 +24,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { Avatar, Stack } from "@mui/material";
 import Conversations from "./Conversations";
+import Chat from "./Chat";
+import SelectChat from "./SelectChat";
 
 const drawerWidth = 270;
 
@@ -256,7 +258,10 @@ export default function AppContainer(props: Props) {
         }}
       >
         <Routes>
-          <Route element={<Conversations />} path="/" />
+          <Route path="/" element={<Conversations />}>
+            <Route element={<Chat />} path="/:chatID" />
+            <Route element={<SelectChat />} path="/" />
+          </Route>
         </Routes>
       </Box>
     </Box>
