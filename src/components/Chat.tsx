@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { chatFind } from "../utils/utils";
 import { useEffect, useState } from "react";
 import { ChatType } from "../utils/chats";
+import GroupChat from "./GroupChat";
 
 const Chat = () => {
   const { chatID } = useParams();
@@ -17,7 +18,7 @@ const Chat = () => {
     return <>private</>;
   }
   if (!chatInfo?.peer_private) {
-    return <>group</>;
+    return <GroupChat {...chatInfo} />;
   }
   return (
     <Box
