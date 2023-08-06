@@ -17,8 +17,8 @@ const ChatCard = ({
   peer_private: boolean;
   participants: Array<string>;
   messages: Array<string>;
-  group_name: string;
-  group_profile: string;
+  group_name: string | null;
+  group_profile: string | null;
 }) => {
   return (
     <Card
@@ -28,11 +28,11 @@ const ChatCard = ({
         width: "100%",
         display: "flex",
         paddingX: "2rem",
-        paddingY: "1.5rem",
+        paddingY: "2rem",
         alignItems: "center",
         textDecoration: "none",
         gap: "1rem",
-        borderBottom: "1px solid #89939C",
+        borderBottom: "1px solid #EAEDF3",
         borderRadius: "0",
       }}
     >
