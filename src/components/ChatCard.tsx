@@ -1,49 +1,34 @@
 import Card from "@mui/material/Card";
 import { users } from "../utils/users";
 import { messages as messages_list } from "../utils/messages";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { Avatar, Box, Typography, Badge, Stack } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-import Alert from "@mui/material/Alert";
 import moment from "moment";
-type User = {
-  user_id: string;
-  username: string;
-  email: string;
-  profile_picture: string;
-  private_chats: string[];
-  group_chats: string[];
-};
-type Message = {
-  message_id: string;
-  content: string;
-  timestamp: string;
-  sender: string;
-  group_sender_display_name: boolean;
-  seen: boolean;
-};
+import { messageFind, userFind, userNameFind } from "../utils/utils";
 
 const ChatCard = ({
   participants,
   messages,
   peer_private,
+  group_name,
+  group_profile,
 }: {
   peer_private: boolean;
   participants: Array<string>;
   messages: Array<string>;
+  group_name: string;
+  group_profile: string;
 }) => {
-  const [user, setUser] = useState(undefined);
-
   return (
     <Card
-      component={Link}
+      component={NavLink}
       to={"/"}
       sx={{
         width: "100%",
         display: "flex",
         paddingX: "2rem",
-        paddingY: "1.9rem",
+        paddingY: "1.5rem",
         alignItems: "center",
         textDecoration: "none",
         gap: "1rem",
@@ -58,7 +43,7 @@ const ChatCard = ({
                 users.find((item) => item.user_id === participants[1])
                   ?.profile_picture
               }`
-            : undefined
+            : `/assets/users/${group_profile}`
         }
         sx={{ width: 40, height: 40 }}
       />
@@ -73,7 +58,11 @@ const ChatCard = ({
           }}
         >
           <Typography sx={{ fontSize: "1.1rem" }}>
-            {users.find((item) => item.user_id === participants[1])?.username}
+            {peer_private ? (
+              <> {userFind(participants[1])?.username}</>
+            ) : (
+              <>{group_name}</>
+            )}
           </Typography>
           <Typography
             sx={{
@@ -112,33 +101,23 @@ const ChatCard = ({
             }}
           >
             {peer_private ? (
-              <>
-                {" "}
-                {
-                  messages_list.find(
-                    (item) => item.message_id === messages[messages.length - 1]
-                  )?.content
-                }{" "}
-              </>
+              <> {messageFind(messages[messages.length - 1])?.content} </>
             ) : (
               <>
-                {messages_list.find(
-                  (item) => item.message_id === messages[messages.length - 1]
-                )?.sender +
-                  ":" +
+                {userNameFind(
+                  userFind(messageFind(messages[messages.length - 1])?.sender)
+                    ?.user_id
+                ) +
+                  " : " +
                   messages_list.find(
                     (item) => item.message_id === messages[messages.length - 1]
                   )?.content}
               </>
             )}
           </Typography>
-          {messages_list.find(
-            (item) => item.message_id === messages[messages.length - 1]
-          )?.sender === "user1" ? (
+          {messageFind(messages[messages.length - 1])?.sender === "user1" ? (
             <>
-              {messages_list.find(
-                (item) => item.message_id === messages[messages.length - 1]
-              )?.seen ? (
+              {messageFind(messages[messages.length - 1])?.seen ? (
                 <Stack direction={"row"}>
                   <CheckIcon sx={{ color: "#5965DB", marginRight: "-17px" }} />
                   <CheckIcon sx={{ color: "#5965DB" }} />
