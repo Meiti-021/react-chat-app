@@ -49,11 +49,11 @@ const ChatCard = ({
           sx={{
             display: "flex",
             justifyContent: "space-between",
-
+            alignItems: "center",
             width: "100%",
           }}
         >
-          <Typography sx={{ fontSize: "1.1rem" }}>
+          <Typography sx={{ fontSize: "1.1rem", flexShrink: 0 }}>
             {peer_private ? (
               <> {userFind(participants[1])?.username}</>
             ) : (
@@ -66,6 +66,9 @@ const ChatCard = ({
               color: "#8D97A5",
               fontWeight: "500",
               textTransform: "uppercase",
+              overflow: "hidden",
+              textOverflow: " ellipsis",
+              whiteSpace: "nowrap",
             }}
           >
             {moment(
@@ -89,11 +92,9 @@ const ChatCard = ({
             sx={{
               fontSize: "0.9rem",
               color: "#89939C",
-              display: "-webkit-box",
-              webkitBoxOrient: "vertical",
-              webkitLineClamp: "1",
               overflow: "hidden",
               textOverflow: " ellipsis",
+              whiteSpace: "nowrap",
             }}
           >
             {peer_private ? (

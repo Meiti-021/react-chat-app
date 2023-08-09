@@ -23,6 +23,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { Avatar, Stack } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import Conversations from "./Conversations";
 import Chat from "./Chat";
 import SelectChat from "./SelectChat";
@@ -119,7 +120,7 @@ export default function AppContainer(props: Props) {
         return (
           <List
             sx={{
-              marginTop: index === menuItems.length - 2 ? "100%" : "1rem",
+              // marginTop: index === menuItems.length - 2 ? "100%" : "1rem",
               padding: "1rem 0.5rem",
             }}
           >
@@ -183,30 +184,55 @@ export default function AppContainer(props: Props) {
         position="fixed"
         elevation={0}
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          width: { xl: `calc(100% - ${drawerWidth}px)` },
+          ml: { xl: `${drawerWidth}px` },
           height: "64px",
           bgcolor: "white",
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ display: "flex", alignItems: "center" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { xl: "none" }, color: "#9BA4B0" }}
           >
             <MenuIcon />
           </IconButton>
-          salam
+          <Typography
+            sx={{
+              color: "#1e2933",
+              fontWeight: "bold",
+              letterSpacing: 3,
+              mt: 0.2,
+            }}
+          >
+            MEITIGRAM
+          </Typography>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{
+              display: { xl: "none" },
+              color: "#9BA4B0",
+              marginLeft: "auto",
+            }}
+          >
+            <SearchIcon />
+          </IconButton>
         </Toolbar>
         <Divider sx={{ bgcolor: "#EAEDF3" }} />
       </AppBar>
 
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{
+          width: { xl: drawerWidth },
+          flexShrink: { xl: 0 },
+        }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -219,7 +245,7 @@ export default function AppContainer(props: Props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", xl: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
@@ -233,7 +259,7 @@ export default function AppContainer(props: Props) {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: "none", sm: "block" },
+            display: { xs: "none", xl: "block" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
@@ -250,10 +276,8 @@ export default function AppContainer(props: Props) {
         component="main"
         sx={{
           flexGrow: 1,
-
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { xl: `calc(100% - ${drawerWidth}px)` },
           paddingTop: "64px",
-          border: "1px solid red",
           height: "100vh",
         }}
       >

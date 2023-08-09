@@ -8,18 +8,18 @@ import SelectChat from "./SelectChat";
 
 const Conversations = () => {
   return (
-    <Grid
-      container
-      sx={{ width: "100%", height: "100%", border: "3px solid green" }}
-    >
+    <Grid container sx={{ width: "100%", height: "100%" }}>
       <Grid
         item
+        xs={12}
+        sm={6}
+        md={4}
         lg={3}
         height={"100%"}
         sx={{
-          border: "1px solid blue",
           overflow: "auto",
           "&::-webkit-scrollbar": { display: "none" },
+          borderRight: "1px solid #EAEDF3",
         }}
       >
         <Box
@@ -33,7 +33,9 @@ const Conversations = () => {
             height: "3.5rem",
           }}
         >
-          <Typography sx={{ fontSize: "0.9rem" }}>All Conversations</Typography>
+          <Typography sx={{ fontSize: "0.8rem", fontWeight: "bold" }}>
+            ALL CONVERSATIONS
+          </Typography>
           <Box
             sx={{
               fontSize: "0.7rem",
@@ -52,7 +54,15 @@ const Conversations = () => {
           return <ChatCard key={item.chat_id} {...item} />;
         })}
       </Grid>
-      <Grid item lg={9} height={"100%"} sx={{ border: "1px solid black" }}>
+      <Grid
+        item
+        xs={0}
+        sm={6}
+        md={8}
+        lg={9}
+        height={"100%"}
+        sx={{ display: { xs: "none", sm: "block" } }}
+      >
         <Outlet />
       </Grid>
     </Grid>
