@@ -1,4 +1,12 @@
-export const messages = [
+export type MessageType = {
+  message_id: string;
+  content: string;
+  timestamp: string;
+  sender: string;
+  group_sender_display_name: null;
+  seen: boolean;
+};
+export const messages: MessageType[] = [
   {
     message_id: "message1",
     content: "Hey, Bob!",
