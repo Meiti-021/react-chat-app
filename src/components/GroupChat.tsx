@@ -1,4 +1,11 @@
-import { Avatar, AvatarGroup, Box, Typography } from "@mui/material";
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  Drawer,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import { ChatType } from "../utils/chats";
 import SettingsIcon from "@mui/icons-material/Settings";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -8,6 +15,8 @@ import { useEffect, useState } from "react";
 import { MessageType } from "../utils/messages";
 import moment from "moment";
 import Message from "./Message";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useNavigate, useNavigation } from "react-router-dom";
 const GroupChat = ({
   chat_id,
   peer_private,
@@ -19,6 +28,7 @@ const GroupChat = ({
   const [organizedMessages, setOrganizedMessages] = useState<
     [string, MessageType[]][]
   >([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const original: (MessageType | undefined)[] = messages.map((item) => {
       return messageFind(item);
@@ -90,7 +100,7 @@ const GroupChat = ({
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          paddingX: "2rem",
+          paddingX: { xs: "0.5rem", sm: "2rem" },
           borderBottom: "1px solid #EAEDF3",
           height: "3.5rem",
         }}
@@ -99,6 +109,21 @@ const GroupChat = ({
           component={"div"}
           sx={{ display: "flex", alignItems: "center", gap: 1 }}
         >
+          <Box
+            sx={{
+              fontSize: "0.7rem",
+              fontWeight: "bold",
+              display: { xs: "flex", sm: "none" },
+            }}
+          >
+            <IconButton
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              <ArrowBackIcon />
+            </IconButton>
+          </Box>
           <Avatar
             src={`/assets/users/${group_profile}`}
             sx={{ width: 30, height: 30 }}
@@ -113,6 +138,7 @@ const GroupChat = ({
             {group_name}
           </Typography>
         </Box>
+
         <Box
           sx={{
             fontSize: "0.7rem",
@@ -120,7 +146,7 @@ const GroupChat = ({
             paddingY: "5px",
             paddingX: "15px",
             borderRadius: "5px",
-            display: "flex",
+            display: { xs: "none", sm: "flex" },
             gap: "0.5rem",
           }}
         >

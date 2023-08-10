@@ -123,6 +123,7 @@ export default function AppContainer(props: Props) {
               // marginTop: index === menuItems.length - 2 ? "100%" : "1rem",
               padding: "1rem 0.5rem",
             }}
+            key={"menu" + index}
           >
             <Typography
               sx={{
@@ -152,7 +153,8 @@ export default function AppContainer(props: Props) {
                       alignItems: "center",
                       textDecoration: "none",
                       color: "white",
-                      backgroundColor: isActive ? "#00b718" : undefined,
+                      backgroundColor:
+                        isActive || isPending ? "#00b718" : undefined,
                       width: "100%",
                       borderRadius: "5px",
                     };

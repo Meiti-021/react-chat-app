@@ -1,14 +1,19 @@
 import Grid from "@mui/material/Grid";
 import { chats } from "../utils/chats";
 import ChatCard from "./ChatCard";
-import { Box, Typography } from "@mui/material";
-import { Outlet, Route, Routes } from "react-router-dom";
-import Chat from "./Chat";
-import SelectChat from "./SelectChat";
-
+import { Box, Drawer, Typography } from "@mui/material";
+import { Outlet, useLocation } from "react-router-dom";
 const Conversations = () => {
+  const { pathname } = useLocation();
   return (
-    <Grid container sx={{ width: "100%", height: "100%" }}>
+    <Grid
+      container
+      sx={{
+        width: "100%",
+        height: "100%",
+        position: "relative",
+      }}
+    >
       <Grid
         item
         xs={12}
@@ -65,6 +70,13 @@ const Conversations = () => {
       >
         <Outlet />
       </Grid>
+      <Drawer
+        open={pathname !== "/" ? true : false}
+        sx={{ display: { xs: "block", sm: "none" }, width: "100vw" }}
+        PaperProps={{ sx: { width: "100vw" } }}
+      >
+        <Outlet />
+      </Drawer>
     </Grid>
   );
 };
