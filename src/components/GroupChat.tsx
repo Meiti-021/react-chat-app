@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Avatar,
   AvatarGroup,
@@ -6,6 +7,8 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
+import bg from "../assets/bg.jpg";
+import HistoryIcon from "@mui/icons-material/History";
 import { ChatType } from "../utils/chats";
 import SettingsIcon from "@mui/icons-material/Settings";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -14,12 +17,15 @@ import { messageFind, userFind } from "../utils/utils";
 import { useEffect, useState } from "react";
 import { MessageType } from "../utils/messages";
 import moment from "moment";
+import LogoutIcon from "@mui/icons-material/Logout";
 import Message from "./Message";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useNavigate, useNavigation } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useNavigate } from "react-router-dom";
 const GroupChat = ({
-  chat_id,
-  peer_private,
   participants,
   messages,
   group_name,
@@ -28,6 +34,14 @@ const GroupChat = ({
   const [organizedMessages, setOrganizedMessages] = useState<
     [string, MessageType[]][]
   >([]);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const navigate = useNavigate();
   useEffect(() => {
     const original: (MessageType | undefined)[] = messages.map((item) => {
@@ -89,20 +103,25 @@ const GroupChat = ({
     <Box
       component={"div"}
       sx={{
-        width: "100%",
         height: "100%",
         overflow: "scroll",
+        position: "relative",
+        width: "100%",
       }}
     >
       <Box
         component={"div"}
         sx={{
-          display: "flex",
+          display: { xs: "flex", sm: "none" },
           justifyContent: "space-between",
           alignItems: "center",
           paddingX: { xs: "0.5rem", sm: "2rem" },
           borderBottom: "1px solid #EAEDF3",
           height: "3.5rem",
+          position: "sticky",
+          width: "100%",
+          top: "0",
+          background: "white",
         }}
       >
         <Box
@@ -138,6 +157,88 @@ const GroupChat = ({
             {group_name}
           </Typography>
         </Box>
+        <Box
+          sx={{
+            fontSize: "0.7rem",
+            fontWeight: "bold",
+            display: { xs: "flex", sm: "none" },
+          }}
+        >
+          <div>
+            <Button
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              <MoreVertIcon />
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem
+                onClick={handleClose}
+                sx={{ display: "flex", alignItems: "center", gap: "15px" }}
+              >
+                {" "}
+                <CallIcon sx={{ fontSize: "1.2rem" }} /> Call
+              </MenuItem>
+              <MenuItem
+                onClick={handleClose}
+                sx={{ display: "flex", alignItems: "center", gap: "15px" }}
+              >
+                <HistoryIcon sx={{ fontSize: "1.2rem" }} /> Clear History
+              </MenuItem>
+              <MenuItem
+                onClick={handleClose}
+                sx={{ display: "flex", alignItems: "center", gap: "15px" }}
+              >
+                <LogoutIcon sx={{ fontSize: "1.2rem" }} /> Leave Group
+              </MenuItem>
+            </Menu>
+          </div>
+        </Box>
+      </Box>
+      <Box
+        component={"div"}
+        sx={{
+          display: { xs: "none", sm: "flex" },
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingX: "0.5rem",
+          borderBottom: "1px solid #EAEDF3",
+          height: "3.5rem",
+          position: "sticky",
+          top: "0",
+          width: "inherite",
+          background: "white",
+        }}
+      >
+        <Box
+          component={"div"}
+          sx={{ display: "flex", alignItems: "center", gap: 1 }}
+        >
+          <Avatar
+            src={`/assets/users/${group_profile}`}
+            sx={{ width: 30, height: 30 }}
+          />
+          <Typography
+            sx={{
+              fontSize: "1rem",
+              fontWeight: 500,
+              textTransform: "uppercase",
+            }}
+          >
+            {group_name}
+          </Typography>
+        </Box>
 
         <Box
           sx={{
@@ -146,11 +247,12 @@ const GroupChat = ({
             paddingY: "5px",
             paddingX: "15px",
             borderRadius: "5px",
-            display: { xs: "none", sm: "flex" },
+            display: { sm: "none", md: "flex" },
             gap: "0.5rem",
           }}
+          component={"div"}
         >
-          <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex" }} component={"div"}>
             <AvatarGroup
               max={4}
               sx={{
@@ -183,8 +285,50 @@ const GroupChat = ({
             <SettingsIcon sx={{ color: "#d0d2d6" }} />
           </Box>
         </Box>
+        <Box component={"div"} sx={{ display: { sm: "flex", md: "none" } }}>
+          <div>
+            <Button
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              <MoreVertIcon />
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem
+                onClick={handleClose}
+                sx={{ display: "flex", alignItems: "center", gap: "15px" }}
+              >
+                {" "}
+                <CallIcon sx={{ fontSize: "1.2rem" }} /> Call
+              </MenuItem>
+              <MenuItem
+                onClick={handleClose}
+                sx={{ display: "flex", alignItems: "center", gap: "15px" }}
+              >
+                <HistoryIcon sx={{ fontSize: "1.2rem" }} /> Clear History
+              </MenuItem>
+              <MenuItem
+                onClick={handleClose}
+                sx={{ display: "flex", alignItems: "center", gap: "15px" }}
+              >
+                <LogoutIcon sx={{ fontSize: "1.2rem" }} /> Leave Group
+              </MenuItem>
+            </Menu>
+          </div>
+        </Box>
       </Box>
-      <Box component={"div"}>
+      <Box component={"div"} sx={{ height: "100%" }}>
         {organizedMessages.map((item, index) => {
           if (item !== undefined) {
             return (
@@ -211,6 +355,28 @@ const GroupChat = ({
             );
           }
         })}
+      </Box>
+      <Box
+        component={"form"}
+        sx={{
+          height: "3.5rem",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          borderTop: "1px solid #EAEDF3",
+          position: "sticky",
+          bottom: "0",
+          padding: "1rem",
+          marginTop: "auto",
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Type Message Here ..."
+          style={{ border: "none", width: "100%", height: "100%" }}
+        />
+        <Box></Box>
       </Box>
     </Box>
   );

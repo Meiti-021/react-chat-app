@@ -3,14 +3,9 @@ import { MessageType } from "../utils/messages";
 import { userFind } from "../utils/utils";
 import moment from "moment";
 import CheckIcon from "@mui/icons-material/Check";
+import DoneAllIcon from "@mui/icons-material/DoneAll";
 
-const Message = ({
-  message_id,
-  content,
-  timestamp,
-  sender,
-  seen,
-}: MessageType) => {
+const Message = ({ content, timestamp, sender, seen }: MessageType) => {
   return (
     <Box
       component={"div"}
@@ -24,7 +19,8 @@ const Message = ({
         component={"div"}
         sx={{
           width: "70%",
-          padding: "1rem",
+          paddingX: "1rem",
+          paddingY: "0.5rem",
           display: "flex",
           flexDirection: "column",
         }}
@@ -60,16 +56,7 @@ const Message = ({
             <>
               {" "}
               {seen ? (
-                <Stack direction={"row"} alignItems={"center"}>
-                  <CheckIcon
-                    sx={{
-                      color: "#5965DB",
-                      marginRight: "-17px",
-                      fontSize: "0.8rem",
-                    }}
-                  />
-                  <CheckIcon sx={{ color: "#5965DB", fontSize: "0.8rem" }} />
-                </Stack>
+                <DoneAllIcon sx={{ color: "#5965DB", fontSize: "0.8rem" }} />
               ) : (
                 <CheckIcon sx={{ color: "#5965DB", fontSize: "0.8rem" }} />
               )}{" "}
@@ -87,7 +74,10 @@ const Message = ({
             backgroundColor: sender === "user1" ? "#EAEFF4" : "#00B719",
             color: sender === "user1" ? "#51606D" : "#FFF",
             padding: "0.5rem",
-            borderRadius: "0.2rem",
+            borderRadius:
+              sender === "user1"
+                ? "0.5rem 0rem 0.5rem 0.5rem"
+                : "0rem 0.5rem 0.5rem 0.5rem",
           }}
         >
           {content}

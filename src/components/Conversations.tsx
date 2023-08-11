@@ -12,6 +12,7 @@ const Conversations = () => {
         width: "100%",
         height: "100%",
         position: "relative",
+        "&::-webkit-scrollbar": { display: "none" },
       }}
     >
       <Grid
@@ -72,8 +73,14 @@ const Conversations = () => {
       </Grid>
       <Drawer
         open={pathname !== "/" ? true : false}
-        sx={{ display: { xs: "block", sm: "none" }, width: "100vw" }}
-        PaperProps={{ sx: { width: "100vw" } }}
+        sx={{
+          display: { xs: "block", sm: "none" },
+          width: "100vw",
+          "&::-webkit-scrollbar": { display: "none" },
+        }}
+        PaperProps={{
+          sx: { width: "100vw", "&::-webkit-scrollbar": { display: "none" } },
+        }}
       >
         <Outlet />
       </Drawer>
