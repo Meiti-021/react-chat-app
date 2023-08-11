@@ -17,19 +17,22 @@ const ChatCard = ({
   chat_id,
 }: ChatType) => {
   return (
-    <Card
-      component={NavLink}
+    <NavLink
       to={`/${chat_id}`}
-      sx={{
-        width: "100%",
-        display: "flex",
-        paddingX: "2rem",
-        paddingY: "2rem",
-        alignItems: "center",
-        textDecoration: "none",
-        gap: "1rem",
-        borderBottom: "1px solid #EAEDF3",
-        borderRadius: "0",
+      style={({ isActive }) => {
+        return {
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          textDecoration: "none",
+          gap: "1rem",
+          borderBottom: "1px solid #EAEDF3",
+          borderRadius: "0",
+          borderLeft: isActive ? "5px solid #00B719" : undefined,
+          backgroundColor: isActive ? "#EEFDF0" : "#fff",
+          height: "6.5rem",
+          padding: "2rem",
+        };
       }}
     >
       <Avatar
@@ -137,7 +140,7 @@ const ChatCard = ({
           )}
         </Box>
       </Box>
-    </Card>
+    </NavLink>
   );
 };
 
