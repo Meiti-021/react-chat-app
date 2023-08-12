@@ -9,8 +9,6 @@ import {
 } from "@mui/material";
 import HistoryIcon from "@mui/icons-material/History";
 import { ChatType } from "../utils/chats";
-import SettingsIcon from "@mui/icons-material/Settings";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import CallIcon from "@mui/icons-material/Call";
 import { messageFind, userFind } from "../utils/utils";
 import { useEffect, useState } from "react";
@@ -25,6 +23,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
 import ChatInput from "./ChatInput";
+import ChatOptions from "./ChatOptions";
 const GroupChat = ({
   participants,
   messages,
@@ -159,7 +158,7 @@ const GroupChat = ({
             </Typography>
             <Typography
               sx={{
-                fontSize: "0.5rem",
+                fontSize: "0.7rem",
                 fontWeight: 500,
                 textTransform: "uppercase",
               }}
@@ -237,7 +236,7 @@ const GroupChat = ({
           sx={{
             display: "flex",
             alignItems: "center",
-            gap: 1,
+            gap: 2,
             background: "white",
           }}
         >
@@ -245,15 +244,25 @@ const GroupChat = ({
             src={`/assets/users/${group_profile}`}
             sx={{ width: 30, height: 30 }}
           />
-          <Typography
-            sx={{
-              fontSize: "1rem",
-              fontWeight: 500,
-              textTransform: "uppercase",
-            }}
-          >
-            {group_name}
-          </Typography>
+          <Stack direction={"column"}>
+            <Typography
+              sx={{
+                fontSize: "1rem",
+                fontWeight: 500,
+                textTransform: "uppercase",
+              }}
+            >
+              {group_name}
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: "0.7rem",
+                fontWeight: 500,
+              }}
+            >
+              {participants.length} memebers
+            </Typography>
+          </Stack>
         </Box>
 
         <Box
@@ -286,20 +295,7 @@ const GroupChat = ({
               })}
             </AvatarGroup>
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              gap: "0.7rem",
-              borderLeft: "1px solid #d0d2d6",
-              paddingLeft: "1rem",
-              marginLeft: "0.5rem",
-              alignItems: "center",
-            }}
-          >
-            <CallIcon sx={{ color: "#d0d2d6" }} />
-            <NotificationsIcon sx={{ color: "#d0d2d6" }} />
-            <SettingsIcon sx={{ color: "#d0d2d6" }} />
-          </Box>
+          <ChatOptions participants={participants} group_name={group_name} />
         </Box>
         <Box component={"div"} sx={{ display: { sm: "flex", md: "none" } }}>
           <div>
