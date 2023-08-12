@@ -30,8 +30,10 @@ const ChatCard = ({
           borderRadius: "0",
           borderLeft: isActive ? "5px solid #00B719" : undefined,
           backgroundColor: isActive ? "#EEFDF0" : "#fff",
-          height: "6.5rem",
-          padding: "2rem",
+          padding: "15px 20px",
+          ":hover": {
+            backgroundColor: "#EEFDF0",
+          },
         };
       }}
     >
@@ -44,7 +46,7 @@ const ChatCard = ({
               }`
             : `/assets/users/${group_profile}`
         }
-        sx={{ width: 40, height: 40 }}
+        sx={{ width: "2.5rem", height: "2.5rem" }}
       />
       <Box component={"div"} sx={{ width: "100%" }}>
         <Box
@@ -56,7 +58,19 @@ const ChatCard = ({
             width: "100%",
           }}
         >
-          <Typography sx={{ fontSize: "1.1rem", flexShrink: 0 }}>
+          <Typography
+            sx={{
+              fontSize: "1rem",
+              flexShrink: 0,
+              fontFamily: "Public Sans",
+              textTransform: "capitalize",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              fontWeight: "600",
+              color: "#343a40",
+            }}
+          >
             {peer_private ? (
               <> {userFind(participants[1])?.username}</>
             ) : (
@@ -65,13 +79,14 @@ const ChatCard = ({
           </Typography>
           <Typography
             sx={{
-              fontSize: "0.8rem",
-              color: "#8D97A5",
-              fontWeight: "500",
+              fontSize: "0.6875rem",
+              color: "#7a7f9a",
+              fontWeight: "400",
               textTransform: "uppercase",
               overflow: "hidden",
               textOverflow: " ellipsis",
               whiteSpace: "nowrap",
+              fontFamily: "Public Sans",
             }}
           >
             {moment(
@@ -118,9 +133,9 @@ const ChatCard = ({
           {messageFind(messages[messages.length - 1])?.sender === "user1" ? (
             <>
               {messageFind(messages[messages.length - 1])?.seen ? (
-                <DoneAllIcon sx={{ color: "#5965DB" }} />
+                <DoneAllIcon sx={{ color: "#5965DB", fontSize: "1rem" }} />
               ) : (
-                <CheckIcon sx={{ color: "#5965DB" }} />
+                <CheckIcon sx={{ color: "#5965DB", fontSize: "1rem" }} />
               )}
             </>
           ) : (

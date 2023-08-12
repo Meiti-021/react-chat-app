@@ -16,7 +16,7 @@ const SelectChat = () => {
         gap: "1rem",
       }}
     >
-      <Box component={"div"} sx={{ width: 600, height: 600, mt: -10 }}>
+      <Box component={"div"} sx={{ width: 600, height: 500, mt: -10 }}>
         <Lottie animationData={ChatAnimation} loop={true} />
       </Box>
       <Typography
@@ -26,19 +26,19 @@ const SelectChat = () => {
           fontSize: "1.5rem",
           fontFamily: "Public Sans",
           textAlign: "center",
-          textTransform: "capitalize",
+          textTransform: "uppercase",
         }}
       >
-        Wellcome to my chat app react project
+        Welcome to my chat app react project
       </Typography>
       <Typography
         sx={{
           fontWeight: "bold",
-          color: "#1e2933",
-          fontSize: "1rem",
+          fontSize: "1.2rem",
           fontFamily: "Public Sans",
           textAlign: "center",
           textTransform: "capitalize",
+          color: "#7a7f9a",
         }}
       >
         please select a chat or start a new conversations.

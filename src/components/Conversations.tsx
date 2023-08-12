@@ -34,7 +34,7 @@ const Conversations = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            paddingX: "2rem",
+            padding: "15px 20px",
             borderBottom: "1px solid #EAEDF3",
             height: "3.5rem",
           }}
