@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import MessageIcon from "@mui/icons-material/Message";
+import Lottie from "lottie-react";
+import ChatAnimation from "../assets/chat-animation.json";
 const SelectChat = () => {
   return (
     <Box
@@ -15,11 +16,32 @@ const SelectChat = () => {
         gap: "1rem",
       }}
     >
-      <MessageIcon sx={{ color: "#00b718", fontSize: "9rem" }} />
+      <Box component={"div"} sx={{ width: 600, height: 600, mt: -10 }}>
+        <Lottie animationData={ChatAnimation} loop={true} />
+      </Box>
       <Typography
-        sx={{ fontWeight: "bold", color: "#1e2933", fontSize: "1.5rem" }}
+        sx={{
+          fontWeight: "bold",
+          color: "#1e2933",
+          fontSize: "1.5rem",
+          fontFamily: "Public Sans",
+          textAlign: "center",
+          textTransform: "capitalize",
+        }}
       >
-        PLEASE SELECT A CHAT TO PREVIEW CONVERSATIONS
+        Wellcome to my chat app react project
+      </Typography>
+      <Typography
+        sx={{
+          fontWeight: "bold",
+          color: "#1e2933",
+          fontSize: "1rem",
+          fontFamily: "Public Sans",
+          textAlign: "center",
+          textTransform: "capitalize",
+        }}
+      >
+        please select a chat or start a new conversations.
       </Typography>
     </Box>
   );
