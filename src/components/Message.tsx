@@ -1,4 +1,4 @@
-import { Avatar, Box, Typography, Stack } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 import { MessageType } from "../utils/messages";
 import { userFind } from "../utils/utils";
 import moment from "moment";
@@ -18,11 +18,12 @@ const Message = ({ content, timestamp, sender, seen }: MessageType) => {
       <Box
         component={"div"}
         sx={{
-          width: "70%",
+          maxWidth: "70%",
           paddingX: "1rem",
           paddingY: "0.5rem",
           display: "flex",
           flexDirection: "column",
+          minWidth: "17rem",
         }}
       >
         <Box
@@ -46,7 +47,12 @@ const Message = ({ content, timestamp, sender, seen }: MessageType) => {
             >
               <Avatar
                 src={`/assets/users/${userFind(sender)?.profile_picture}`}
-                sx={{ width: 30, height: 30 }}
+                sx={{
+                  width: 30,
+                  height: 30,
+                  position: "relative",
+                  zIndex: "-5",
+                }}
               />
               <Typography sx={{ fontWeight: "bold" }}>
                 {userFind(sender)?.username}
@@ -69,7 +75,7 @@ const Message = ({ content, timestamp, sender, seen }: MessageType) => {
         <Box
           component={"div"}
           sx={{
-            width: "100%",
+            width: "auto",
             marginTop: "0.1rem",
             backgroundColor: sender === "user1" ? "#EAEFF4" : "#00B719",
             color: sender === "user1" ? "#51606D" : "#FFF",

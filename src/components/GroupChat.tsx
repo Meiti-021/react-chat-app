@@ -3,11 +3,10 @@ import {
   Avatar,
   AvatarGroup,
   Box,
-  Drawer,
   IconButton,
+  Stack,
   Typography,
 } from "@mui/material";
-import bg from "../assets/bg.jpg";
 import HistoryIcon from "@mui/icons-material/History";
 import { ChatType } from "../utils/chats";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -25,6 +24,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
+import ChatInput from "./ChatInput";
 const GroupChat = ({
   participants,
   messages,
@@ -147,15 +147,26 @@ const GroupChat = ({
             src={`/assets/users/${group_profile}`}
             sx={{ width: 30, height: 30 }}
           />
-          <Typography
-            sx={{
-              fontSize: "1rem",
-              fontWeight: 500,
-              textTransform: "uppercase",
-            }}
-          >
-            {group_name}
-          </Typography>
+          <Stack direction={"column"}>
+            <Typography
+              sx={{
+                fontSize: "1rem",
+                fontWeight: 500,
+                textTransform: "uppercase",
+              }}
+            >
+              {group_name}
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: "0.5rem",
+                fontWeight: 500,
+                textTransform: "uppercase",
+              }}
+            >
+              {participants.length} memebers
+            </Typography>
+          </Stack>
         </Box>
         <Box
           sx={{
@@ -223,7 +234,12 @@ const GroupChat = ({
       >
         <Box
           component={"div"}
-          sx={{ display: "flex", alignItems: "center", gap: 1 }}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            background: "white",
+          }}
         >
           <Avatar
             src={`/assets/users/${group_profile}`}
@@ -356,28 +372,7 @@ const GroupChat = ({
           }
         })}
       </Box>
-      <Box
-        component={"form"}
-        sx={{
-          height: "3.5rem",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          borderTop: "1px solid #EAEDF3",
-          position: "sticky",
-          bottom: "0",
-          padding: "1rem",
-          marginTop: "auto",
-        }}
-      >
-        <input
-          type="text"
-          placeholder="Type Message Here ..."
-          style={{ border: "none", width: "100%", height: "100%" }}
-        />
-        <Box></Box>
-      </Box>
+      <ChatInput />
     </Box>
   );
 };

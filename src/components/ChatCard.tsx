@@ -1,8 +1,8 @@
-import Card from "@mui/material/Card";
 import { users } from "../utils/users";
 import { messages as messages_list } from "../utils/messages";
 import { NavLink } from "react-router-dom";
-import { Avatar, Box, Typography, Badge, Stack } from "@mui/material";
+import DoneAllIcon from "@mui/icons-material/DoneAll";
+import { Avatar, Box, Typography, Badge } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import moment from "moment";
 import { messageFind, userFind, userNameFind } from "../utils/utils";
@@ -118,10 +118,7 @@ const ChatCard = ({
           {messageFind(messages[messages.length - 1])?.sender === "user1" ? (
             <>
               {messageFind(messages[messages.length - 1])?.seen ? (
-                <Stack direction={"row"}>
-                  <CheckIcon sx={{ color: "#5965DB", marginRight: "-17px" }} />
-                  <CheckIcon sx={{ color: "#5965DB" }} />
-                </Stack>
+                <DoneAllIcon sx={{ color: "#5965DB" }} />
               ) : (
                 <CheckIcon sx={{ color: "#5965DB" }} />
               )}
@@ -135,7 +132,7 @@ const ChatCard = ({
                     item.seen === false
                 ).length
               }
-              color="error"
+              color="primary"
             />
           )}
         </Box>
