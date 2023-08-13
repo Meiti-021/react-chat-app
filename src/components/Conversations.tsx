@@ -3,6 +3,7 @@ import { chats } from "../utils/chats";
 import ChatCard from "./ChatCard";
 import { Box, Drawer, Typography } from "@mui/material";
 import { Outlet, useLocation } from "react-router-dom";
+import ChatCardAction from "./ChatCardAction";
 const Conversations = () => {
   const { pathname } = useLocation();
   return (
@@ -26,6 +27,7 @@ const Conversations = () => {
           overflow: "auto",
           "&::-webkit-scrollbar": { display: "none" },
           borderRight: "1px solid #EAEDF3",
+          position: "relative",
         }}
       >
         <Box
@@ -59,7 +61,11 @@ const Conversations = () => {
         {chats.map((item) => {
           return <ChatCard key={item.chat_id} {...item} />;
         })}
+        <div style={{ position: "sticky", bottom: "0" }}>
+          <ChatCardAction />
+        </div>
       </Grid>
+
       <Grid
         item
         xs={0}
