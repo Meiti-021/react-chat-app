@@ -4,6 +4,7 @@ import { chatFind } from "../utils/utils";
 import { useEffect, useState } from "react";
 import { ChatType } from "../utils/chats";
 import GroupChat from "./GroupChat";
+import PrivateChat from "./PrivateChat";
 
 const Chat = () => {
   const { chatID } = useParams();
@@ -15,7 +16,7 @@ const Chat = () => {
     return <>loading</>;
   }
   if (chatInfo?.peer_private) {
-    return <>private</>;
+    return <PrivateChat {...chatInfo} />;
   }
   if (!chatInfo?.peer_private) {
     return <GroupChat {...chatInfo} />;
