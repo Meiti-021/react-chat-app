@@ -62,7 +62,7 @@ const AttachedFiles = () => {
                     <ImageIcon sx={{ color: "white" }} />
                   )}
                 </Button>
-                <Stack>
+                <Stack sx={{ overflow: "hidden" }}>
                   <Typography
                     sx={{
                       fontFamily: "Public Sans",
