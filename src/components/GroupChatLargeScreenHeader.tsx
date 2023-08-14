@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Avatar, AvatarGroup, Box, Stack, Typography } from "@mui/material";
+import { Avatar, AvatarGroup, Box } from "@mui/material";
 import HistoryIcon from "@mui/icons-material/History";
 import CallIcon from "@mui/icons-material/Call";
 import { userFind } from "../utils/utils";
@@ -9,6 +9,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ChatOptions from "./ChatOptions";
+import GroupChatInfo from "./GroupChatInfo";
 const GroupChatLargeScreenHeader = ({
   participants,
   group_name,
@@ -52,29 +53,11 @@ const GroupChatLargeScreenHeader = ({
           background: "white",
         }}
       >
-        <Avatar
-          src={`/assets/users/${group_profile}`}
-          sx={{ width: 30, height: 30 }}
+        <GroupChatInfo
+          participants={participants}
+          group_name={group_name}
+          group_profile={group_profile}
         />
-        <Stack direction={"column"}>
-          <Typography
-            sx={{
-              fontSize: "1rem",
-              fontWeight: 500,
-              textTransform: "uppercase",
-            }}
-          >
-            {group_name}
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "0.7rem",
-              fontWeight: 500,
-            }}
-          >
-            {participants.length} memebers
-          </Typography>
-        </Stack>
       </Box>
 
       <Box

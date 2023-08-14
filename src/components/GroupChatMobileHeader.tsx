@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Box, Stack, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import HistoryIcon from "@mui/icons-material/History";
 import CallIcon from "@mui/icons-material/Call";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -9,7 +9,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
-
+import GroupChatInfo from "./GroupChatInfo";
 const GroupChatMobileHeader = ({
   participants,
   group_name,
@@ -58,30 +58,11 @@ const GroupChatMobileHeader = ({
             <ArrowBackIcon />
           </Link>
         </Box>
-        <Avatar
-          src={`/assets/users/${group_profile}`}
-          sx={{ width: 30, height: 30 }}
+        <GroupChatInfo
+          participants={participants}
+          group_name={group_name}
+          group_profile={group_profile}
         />
-        <Stack direction={"column"}>
-          <Typography
-            sx={{
-              fontSize: "1rem",
-              fontWeight: 500,
-              textTransform: "uppercase",
-            }}
-          >
-            {group_name}
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "0.7rem",
-              fontWeight: 500,
-              textTransform: "uppercase",
-            }}
-          >
-            {participants.length} memebers
-          </Typography>
-        </Stack>
       </Box>
       <Box
         sx={{
