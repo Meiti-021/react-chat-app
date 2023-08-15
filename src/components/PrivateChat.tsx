@@ -5,6 +5,7 @@ import PrivateChatHeader from "./PrivateChatHeader";
 import { useState, useEffect } from "react";
 import { userFind } from "../utils/utils";
 import { UserType } from "../utils/users";
+import ChatBody from "./ChatBody";
 const PrivateChat = ({ participants, messages }: ChatType) => {
   const [user, setUser] = useState<UserType | undefined>(undefined);
   useEffect(() => {
@@ -22,7 +23,8 @@ const PrivateChat = ({ participants, messages }: ChatType) => {
           width: "100%",
         }}
       >
-        <PrivateChatHeader participants={participants} user={user} />
+        <PrivateChatHeader user={user} />
+        <ChatBody messages={messages} />
         <ChatInput />
       </Box>
     );

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MessageType } from "../utils/messages";
 import moment from "moment";
 import Message from "./Message";
-const GroupChatBody = ({ messages }: { messages: string[] }) => {
+const ChatBody = ({ messages }: { messages: string[] }) => {
   const [organizedMessages, setOrganizedMessages] = useState<
     [string, MessageType[]][]
   >([]);
@@ -100,4 +100,4 @@ const GroupChatBody = ({ messages }: { messages: string[] }) => {
   );
 };
 
-export default GroupChatBody;
+export default ChatBody;
