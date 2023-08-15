@@ -58,7 +58,7 @@ const MemberList = ({
                         color: "#7a7f9a",
                       }}
                     >
-                      Last seen 8 min ago
+                      Last seen recently
                     </Typography>
                   </Stack>
 

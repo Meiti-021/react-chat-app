@@ -8,7 +8,7 @@ import AttachedFiles from "./AttachedFiles";
 const GroupInfoDetail = ({ participants }: { participants: string[] }) => {
   return (
     <div>
-      <Accordion disableGutters>
+      <Accordion disableGutters elevation={0}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -20,7 +20,7 @@ const GroupInfoDetail = ({ participants }: { participants: string[] }) => {
           <MemberList participants={participants} admins={true} />
         </AccordionDetails>
       </Accordion>
-      <Accordion disableGutters>
+      <Accordion disableGutters elevation={0}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
@@ -32,7 +32,7 @@ const GroupInfoDetail = ({ participants }: { participants: string[] }) => {
           <MemberList participants={participants} admins={false} />
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion elevation={0}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel3a-content"

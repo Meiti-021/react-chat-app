@@ -5,15 +5,22 @@ import { useEffect, useState } from "react";
 import { ChatType } from "../utils/chats";
 import GroupChat from "./GroupChat";
 import PrivateChat from "./PrivateChat";
+import ChatLoading from "./ChatLoading";
 
 const Chat = () => {
   const { chatID } = useParams();
   const [chatInfo, setChatInfo] = useState<ChatType | undefined>(undefined);
+  const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
-    setChatInfo(chatFind(chatID));
+    setChatInfo(undefined);
+    setLoading(true);
   }, [chatID]);
+  useEffect(() => {
+    setLoading(false);
+    setChatInfo(chatFind(chatID));
+  }, [loading]);
   if (chatInfo === undefined) {
-    return <>loading</>;
+    return <ChatLoading />;
   }
   if (chatInfo?.peer_private) {
     return <PrivateChat {...chatInfo} />;

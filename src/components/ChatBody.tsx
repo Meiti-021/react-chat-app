@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import { MessageType } from "../utils/messages";
 import moment from "moment";
 import Message from "./Message";
+import ChatBodySkeleton from "./ChatBodySkeleton";
 const ChatBody = ({ messages }: { messages: string[] }) => {
   const [organizedMessages, setOrganizedMessages] = useState<
     [string, MessageType[]][]
   >([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const original: (MessageType | undefined)[] = messages.map((item) => {
@@ -18,14 +20,12 @@ const ChatBody = ({ messages }: { messages: string[] }) => {
         return item !== undefined;
       }
     );
-
     const orginizedSet: Set<string> = new Set();
     pureOrginal.forEach((item) => {
       if (item) {
         orginizedSet.add(item.timestamp.split(" ")[0]);
       }
     });
-    console.log("orginizedSet :", orginizedSet);
     const orginizedArray: ([string, MessageType[]] | undefined)[] = Array.from(
       orginizedSet
     ).map((item) => {
@@ -41,30 +41,28 @@ const ChatBody = ({ messages }: { messages: string[] }) => {
             return elem !== undefined;
           }
         );
-
         return [moment(item).format("YYYY,MM,DD"), pureFilteredArray];
       }
     });
-    console.log("orginizedArray :", orginizedArray);
-
     const pureOrganizedArr: ([string, MessageType[]] | undefined)[] =
       orginizedArray.filter((item) => {
         return item !== undefined;
       });
-    console.log("pureOrganizedArr: ", pureOrganizedArr);
     const finalArray: [string, MessageType[]][] = pureOrganizedArr.filter(
       (item): item is [string, MessageType[]] => {
         return item !== undefined;
       }
     );
-    console.log("final before sort", finalArray);
-
     finalArray.sort((a, b) => {
       return a && b ? Number(a[0]) - Number(b[0]) : 0;
     });
-    console.log("final", finalArray);
     setOrganizedMessages(finalArray);
+    setLoading(false);
   }, [messages]);
+
+  if (loading) {
+    return <ChatBodySkeleton />;
+  }
   return (
     <Box component={"div"} sx={{ height: "100%" }}>
       {organizedMessages.map((item, index) => {
