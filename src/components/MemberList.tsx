@@ -18,7 +18,11 @@ const MemberList = ({
           {participants.map((item) => {
             const user = userFind(item);
             return (
-              <Link to={`/${user?.user_id}`} style={{ textDecoration: "none" }}>
+              <Link
+                to={`/${user?.user_id}`}
+                style={{ textDecoration: "none" }}
+                key={user?.user_id + "member"}
+              >
                 <ListItem
                   disablePadding
                   sx={{ display: "flex", gap: 2, mb: 2 }}

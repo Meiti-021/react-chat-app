@@ -1,9 +1,19 @@
+export type UserType = {
+  user_id: string;
+  username: string;
+  email: string;
+  profile_picture: string;
+  private_chats: string[];
+  group_chats: string[];
+};
+
 export const users = [
   {
     user_id: "user1",
     username: "Alice",
     email: "alice@example.com",
     profile_picture: "alice_profile.jpg",
+    private_chats: ["private_chat2"],
     group_chats: ["group_chat1", "group_chat2"],
   },
   {
@@ -11,6 +21,7 @@ export const users = [
     username: "Bob",
     email: "bob@example.com",
     profile_picture: "bob_profile.jpg",
+    private_chats: ["private_chat2"],
     group_chats: ["group_chat1"],
   },
   {
