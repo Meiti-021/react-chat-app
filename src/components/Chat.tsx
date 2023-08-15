@@ -18,6 +18,7 @@ const Chat = () => {
   useEffect(() => {
     setLoading(false);
     setChatInfo(chatFind(chatID));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
   if (chatInfo === undefined) {
     return <ChatLoading />;
