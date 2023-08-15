@@ -7,6 +7,7 @@ import FolderZipIcon from "@mui/icons-material/FolderZip";
 import ImageIcon from "@mui/icons-material/Image";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import IosShareIcon from "@mui/icons-material/IosShare";
+import Tooltip from "@mui/material/Tooltip";
 const files: { id: string; name: string; type: string; size: string }[] = [
   {
     id: "attach-1",
@@ -36,9 +37,7 @@ const files: { id: string; name: string; type: string; size: string }[] = [
 
 const AttachedFiles = () => {
   return (
-    <Box
-      sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper", p: 1 }}
-    >
+    <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
       <nav aria-label="main mailbox folders">
         <List>
           {files.map((item) => {
@@ -89,20 +88,24 @@ const AttachedFiles = () => {
                   direction={"row"}
                   sx={{ ml: "auto", gap: 2, flexShrink: 0 }}
                 >
-                  <CloudDownloadIcon
-                    sx={{
-                      color: "white",
-                      fontSize: "1.2rem",
-                      cursor: "pointer",
-                    }}
-                  />
-                  <IosShareIcon
-                    sx={{
-                      color: "white",
-                      fontSize: "1.2rem",
-                      cursor: "pointer",
-                    }}
-                  />
+                  <Tooltip title="download">
+                    <CloudDownloadIcon
+                      sx={{
+                        color: "white",
+                        fontSize: "1.2rem",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </Tooltip>
+                  <Tooltip title="share">
+                    <IosShareIcon
+                      sx={{
+                        color: "white",
+                        fontSize: "1.2rem",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </Tooltip>
                 </Stack>
               </ListItem>
             );
