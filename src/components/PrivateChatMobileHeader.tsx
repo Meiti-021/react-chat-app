@@ -2,7 +2,6 @@ import React from "react";
 import { Box } from "@mui/material";
 import HistoryIcon from "@mui/icons-material/History";
 import CallIcon from "@mui/icons-material/Call";
-import LogoutIcon from "@mui/icons-material/Logout";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -11,13 +10,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
 import PrivateChatInfo from "./PrivateChatInfo";
 import { UserType } from "../utils/users";
-const PrivateChatMobileHeader = ({
-  participants,
-  user,
-}: {
-  participants: string[];
-  user: UserType;
-}) => {
+import BlockIcon from "@mui/icons-material/Block";
+const PrivateChatMobileHeader = ({ user }: { user: UserType }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -57,7 +51,7 @@ const PrivateChatMobileHeader = ({
             <ArrowBackIcon />
           </Link>
         </Box>
-        <PrivateChatInfo participants={participants} user={user} />
+        <PrivateChatInfo user={user} />
       </Box>
       <Box
         sx={{
@@ -102,7 +96,7 @@ const PrivateChatMobileHeader = ({
               onClick={handleClose}
               sx={{ display: "flex", alignItems: "center", gap: "15px" }}
             >
-              <LogoutIcon sx={{ fontSize: "1.2rem" }} /> Leave Group
+              <BlockIcon sx={{ fontSize: "1.2rem" }} /> Block user
             </MenuItem>
           </Menu>
         </div>

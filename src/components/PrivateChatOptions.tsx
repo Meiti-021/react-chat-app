@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import ChatNotification from "./ChatNotification";
-import ChatSetting from "./ChatSetting";
 import { UserType } from "../utils/users";
 import PrivateChatCall from "./PrivateChatCall";
+import PrivateChatSetting from "./PrivateChatSetting";
 const PrivateChatOptions = ({ user }: { user: UserType }) => {
   return (
     <Box
@@ -16,7 +16,7 @@ const PrivateChatOptions = ({ user }: { user: UserType }) => {
     >
       <PrivateChatCall user={user} />
       <ChatNotification />
-      <ChatSetting />
+      <PrivateChatSetting />
     </Box>
   );
 };

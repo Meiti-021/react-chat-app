@@ -11,13 +11,7 @@ import {
 
 import PrivateInfoDetail from "./PrivateInfoDetail";
 import { UserType } from "../utils/users";
-const PrivateChatInfo = ({
-  participants,
-  user,
-}: {
-  participants: string[];
-  user: UserType;
-}) => {
+const PrivateChatInfo = ({ user }: { user: UserType }) => {
   const info = (
     <Box
       component={"div"}
@@ -97,7 +91,7 @@ const PrivateChatInfo = ({
           If several languages coalesce, the grammar of the resulting language
           is more simple and regular than that of the individual.
         </Typography>
-        <PrivateInfoDetail participants={participants} />
+        <PrivateInfoDetail user={user} />
       </Box>
     </Box>
   );

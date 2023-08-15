@@ -2,7 +2,7 @@ import * as React from "react";
 import { Box } from "@mui/material";
 import HistoryIcon from "@mui/icons-material/History";
 import CallIcon from "@mui/icons-material/Call";
-import LogoutIcon from "@mui/icons-material/Logout";
+import BlockIcon from "@mui/icons-material/Block";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -11,13 +11,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import PrivateChatInfo from "./PrivateChatInfo";
 import PrivateChatOptions from "./PrivateChatOptions";
 import { UserType } from "../utils/users";
-const PrivateChatLargeScreenHeader = ({
-  participants,
-  user,
-}: {
-  participants: string[];
-  user: UserType;
-}) => {
+const PrivateChatLargeScreenHeader = ({ user }: { user: UserType }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -52,7 +46,7 @@ const PrivateChatLargeScreenHeader = ({
           background: "white",
         }}
       >
-        <PrivateChatInfo participants={participants} user={user} />
+        <PrivateChatInfo user={user} />
       </Box>
 
       <Box
@@ -106,7 +100,7 @@ const PrivateChatLargeScreenHeader = ({
               onClick={handleClose}
               sx={{ display: "flex", alignItems: "center", gap: "15px" }}
             >
-              <LogoutIcon sx={{ fontSize: "1.2rem" }} /> Leave Group
+              <BlockIcon sx={{ fontSize: "1.2rem" }} /> Block user
             </MenuItem>
           </Menu>
         </div>

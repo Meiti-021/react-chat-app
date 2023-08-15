@@ -3,36 +3,61 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MemberList from "./MemberList";
 import AttachedFiles from "./AttachedFiles";
-const PrivateInfoDetail = ({ participants }: { participants: string[] }) => {
+import {
+  List,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemText,
+} from "@mui/material";
+import { UserType } from "../utils/users";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import WorkIcon from "@mui/icons-material/Work";
+import PersonPinCircleIcon from "@mui/icons-material/PersonPinCircle";
+const PrivateInfoDetail = ({ user }: { user: UserType }) => {
   return (
     <div>
-      <Accordion disableGutters>
+      <Accordion disableGutters elevation={0}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Admins</Typography>
+          <Typography>About</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <MemberList participants={participants} admins={true} />
+          <List
+            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          >
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar sx={{ bgcolor: "black" }}>
+                  <AlternateEmailIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Email" secondary={user.email} />
+            </ListItem>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar sx={{ bgcolor: "black" }}>
+                  <WorkIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Career" secondary={user.career} />
+            </ListItem>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar sx={{ bgcolor: "black" }}>
+                  <PersonPinCircleIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Location" secondary={user.location} />
+            </ListItem>
+          </List>
         </AccordionDetails>
       </Accordion>
-      <Accordion disableGutters>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography>Members</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <MemberList participants={participants} admins={false} />
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
+      <Accordion elevation={0}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel3a-content"

@@ -56,7 +56,9 @@ const PrivateChatCall = ({ user }: { user: UserType }) => {
             alt={user?.username}
             src={`/assets/users/${user?.profile_picture}`}
             sx={{
-              "& .MuiAvatar-root": { width: 70, height: 70, fontSize: 12 },
+              width: 100,
+              height: 100,
+              fontSize: 12,
             }}
           />
 

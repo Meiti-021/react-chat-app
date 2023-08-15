@@ -2,17 +2,11 @@ import { UserType } from "../utils/users";
 import PrivateChatLargeScreenHeader from "./PrivateChatLargeScreenHeader";
 import PrivateChatMobileHeader from "./PrivateChatMobileHeader";
 
-const PrivateChatHeader = ({
-  participants,
-  user,
-}: {
-  participants: string[];
-  user: UserType;
-}) => {
+const PrivateChatHeader = ({ user }: { user: UserType }) => {
   return (
     <>
-      <PrivateChatMobileHeader participants={participants} user={user} />
-      <PrivateChatLargeScreenHeader participants={participants} user={user} />
+      <PrivateChatMobileHeader user={user} />
+      <PrivateChatLargeScreenHeader user={user} />
     </>
   );
 };
