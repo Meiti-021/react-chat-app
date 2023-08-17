@@ -8,6 +8,7 @@ export type UserType = {
   location: string;
   career: string;
   biography: string;
+  last_activity: string;
 };
 
 export const users = [
@@ -22,6 +23,7 @@ export const users = [
     profile_picture: "fav.png",
     private_chats: ["private_chat2"],
     group_chats: ["group_chat1"],
+    last_activity: "online",
   },
   {
     user_id: "user2",
@@ -33,6 +35,7 @@ export const users = [
     profile_picture: "A-train.webp",
     private_chats: ["private_chat2"],
     group_chats: ["group_chat1", "group_chat2"],
+    last_activity: "online",
   },
   {
     user_id: "user3",
@@ -44,6 +47,7 @@ export const users = [
     profile_picture: "soldierboy.webp",
     private_chats: ["private_chat2"],
     group_chats: ["group_chat1", "group_chat3"],
+    last_activity: "recently",
   },
   {
     user_id: "user4",
@@ -55,6 +59,7 @@ export const users = [
     profile_picture: "Deep.webp",
     private_chats: ["private_chat3"],
     group_chats: ["group_chat3"],
+    last_activity: "recently",
   },
   {
     user_id: "user5",
@@ -66,6 +71,7 @@ export const users = [
     profile_picture: "starlight.webp",
     private_chats: ["private_chat4", "private_chat5"],
     group_chats: ["group_chat2", "group_chat3"],
+    last_activity: "2 days ago",
   },
   {
     user_id: "user6",
@@ -77,6 +83,7 @@ export const users = [
     profile_picture: "homelander.webp",
     private_chats: ["private_chat5"],
     group_chats: ["group_chat1", "group_chat3"],
+    last_activity: "5 days ago",
   },
   {
     user_id: "user7",
@@ -88,6 +95,7 @@ export const users = [
     profile_picture: "Lamplighter.webp",
     private_chats: ["private_chat6"],
     group_chats: ["group_chat2", "group_chat3"],
+    last_activity: "online",
   },
   {
     user_id: "user8",
@@ -99,6 +107,7 @@ export const users = [
     profile_picture: "black-noir.webp",
     private_chats: ["private_chat7"],
     group_chats: ["group_chat2"],
+    last_activity: "recently",
   },
   {
     user_id: "user9",
@@ -111,6 +120,7 @@ export const users = [
     profile_picture: "ivy_profile.webp",
     private_chats: ["private_chat8"],
     group_chats: ["group_chat2"],
+    last_activity: "2 month ago",
   },
   {
     user_id: "user10",
@@ -123,5 +133,6 @@ export const users = [
     profile_picture: "captain.webp",
     private_chats: ["private_chat9", "private_chat10"],
     group_chats: ["group_chat1", "group_chat2"],
+    last_activity: "long time ago",
   },
 ];
