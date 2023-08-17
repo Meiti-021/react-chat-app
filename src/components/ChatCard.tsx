@@ -48,7 +48,7 @@ const ChatCard = ({
         }
         sx={{ width: "2.5rem", height: "2.5rem" }}
       />
-      <Box component={"div"} sx={{ width: "100%" }}>
+      <Box component={"div"} sx={{ width: "100%", overflow: "hidden" }}>
         <Box
           component={"div"}
           sx={{
@@ -104,6 +104,7 @@ const ChatCard = ({
             alignItems: "center",
             width: "100%",
             paddingRight: "10px",
+            overflow: "hidden",
           }}
         >
           <Typography
@@ -113,6 +114,7 @@ const ChatCard = ({
               overflow: "hidden",
               textOverflow: " ellipsis",
               whiteSpace: "nowrap",
+              mr: 2,
             }}
           >
             {peer_private ? (

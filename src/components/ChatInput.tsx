@@ -24,6 +24,7 @@ const ChatInput = () => {
         bottom: "0",
         padding: "1rem",
         marginTop: "auto",
+        background: "white",
       }}
     >
       <input
