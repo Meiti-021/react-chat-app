@@ -117,7 +117,7 @@ export const users = [
     career: "Private Detective",
     biography:
       "anti hero, human version of a superhero, hates superheros, kills superheros",
-    profile_picture: "ivy_profile.webp",
+    profile_picture: "Billy-Butcher.webp",
     private_chats: ["private_chat8"],
     group_chats: ["group_chat2"],
     last_activity: "2 month ago",
