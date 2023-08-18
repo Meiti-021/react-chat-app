@@ -16,7 +16,7 @@ const SelectChat = () => {
         gap: "1rem",
       }}
     >
-      <Box component={"div"} sx={{ width: 600, height: 500, mt: -10 }}>
+      <Box component={"div"} sx={{ maxWidthidth: 600, height: 500, mt: -10 }}>
         <Lottie animationData={ChatAnimation} loop={true} />
       </Box>
       <Typography

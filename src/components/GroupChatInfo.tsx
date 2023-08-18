@@ -22,10 +22,9 @@ const GroupChatInfo = ({
     <Box
       component={"div"}
       sx={{
-        width: "100vw",
+        width: { xs: "100vw", sm: "25rem" },
         height: "100vh",
         background: "white",
-        maxWidth: "25rem",
       }}
     >
       <Box

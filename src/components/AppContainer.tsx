@@ -190,6 +190,7 @@ export default function AppContainer(props: Props) {
           ml: { xl: `${drawerWidth}px` },
           height: "64px",
           bgcolor: "white",
+          display: { xs: "block", sm: "none" },
         }}
       >
         <Toolbar sx={{ display: "flex", alignItems: "center" }}>
@@ -210,7 +211,54 @@ export default function AppContainer(props: Props) {
               mt: 0.2,
             }}
           >
-            MEITIGRAM
+            MEITIGRAM MOBILE
+          </Typography>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{
+              display: { xl: "none" },
+              color: "#9BA4B0",
+              marginLeft: "auto",
+            }}
+          >
+            <SearchIcon />
+          </IconButton>
+        </Toolbar>
+        <Divider sx={{ bgcolor: "#EAEDF3" }} />
+      </AppBar>
+      <AppBar
+        position="fixed"
+        elevation={0}
+        sx={{
+          width: { xl: `calc(100% - ${drawerWidth}px)` },
+          ml: { xl: `${drawerWidth}px` },
+          height: "64px",
+          bgcolor: "white",
+          display: { xs: "none", sm: "block" },
+        }}
+      >
+        <Toolbar sx={{ display: "flex", alignItems: "center" }}>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { xl: "none" }, color: "#9BA4B0" }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            sx={{
+              color: "#1e2933",
+              fontWeight: "bold",
+              letterSpacing: 3,
+              mt: 0.2,
+            }}
+          >
+            MEITIGRAM WINDOWs
           </Typography>
           <IconButton
             color="inherit"
@@ -278,7 +326,7 @@ export default function AppContainer(props: Props) {
         component="main"
         sx={{
           flexGrow: 1,
-          width: { xl: `calc(100% - ${drawerWidth}px)` },
+          width: { xl: `calc(100% - ${drawerWidth}px)`, xs: "100vw" },
           paddingTop: "64px",
           height: "100vh",
         }}
