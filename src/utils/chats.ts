@@ -5,8 +5,10 @@ export type ChatType = {
   group_name: string | null;
   group_profile: string | null;
   chat_id: string;
+  description: string | null;
 };
-export const chats = [
+
+export const chats: ChatType[] = [
   {
     chat_id: "peer_private_chat1",
     peer_private: true,
@@ -14,6 +16,7 @@ export const chats = [
     messages: ["message1", "message2", "message3"],
     group_name: null,
     group_profile: null,
+    description: null,
   },
   {
     chat_id: "peer_private_chat2",
@@ -22,11 +25,11 @@ export const chats = [
     messages: ["message4", "message5"],
     group_name: null,
     group_profile: null,
+    description: null,
   },
   {
     chat_id: "group_chat1",
     peer_private: false,
-    admin: "user1",
     participants: [
       "user1",
       "user2",
@@ -42,11 +45,11 @@ export const chats = [
     messages: ["message6", "message7", "message8", "message9", "message10"],
     group_name: "The boys",
     group_profile: "group_chat1.webp",
+    description: "Let justice be done though the heavens fall",
   },
   {
     chat_id: "group_chat2",
     peer_private: false,
-    admin: "user3",
     participants: [
       "user1",
       "user2",
@@ -59,15 +62,16 @@ export const chats = [
     messages: ["message11"],
     group_name: "THE SEVEN",
     group_profile: "group_chat2.jpg",
+    description: "We Are Vought. We Make Heroes Super",
   },
   {
     chat_id: "group_chat3",
     peer_private: false,
-    admin: "user5",
     participants: ["user1", "user9", "user5", "user10"],
     messages: ["message12", "message13", "message14", "message15", "message16"],
     group_name: "freedom!",
     group_profile: "group_chat3.png",
+    description: "We'll Cross That Bridge When We Burn It.",
   },
   {
     chat_id: "peer_private_chat5",
@@ -76,6 +80,7 @@ export const chats = [
     messages: ["message17"],
     group_name: null,
     group_profile: null,
+    description: null,
   },
   {
     chat_id: "peer_private_chat7",
@@ -91,6 +96,7 @@ export const chats = [
     ],
     group_name: null,
     group_profile: null,
+    description: null,
   },
   {
     chat_id: "peer_private_chat9",
@@ -99,6 +105,7 @@ export const chats = [
     messages: ["message24", "message25"],
     group_name: null,
     group_profile: null,
+    description: null,
   },
   {
     chat_id: "peer_private_chat10",
@@ -107,6 +114,7 @@ export const chats = [
     messages: ["message26", "message27"],
     group_name: null,
     group_profile: null,
+    description: null,
   },
   {
     chat_id: "peer_private_chat11",
@@ -115,6 +123,7 @@ export const chats = [
     messages: ["message28", "message29"],
     group_name: null,
     group_profile: null,
+    description: null,
   },
   {
     chat_id: "peer_private_chat12",
@@ -123,5 +132,6 @@ export const chats = [
     messages: ["message30", "message31"],
     group_name: null,
     group_profile: null,
+    description: null,
   },
 ];
