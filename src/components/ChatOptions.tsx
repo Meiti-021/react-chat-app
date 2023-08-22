@@ -2,11 +2,12 @@ import { Box } from "@mui/material";
 import ChatCall from "./ChatCall";
 import ChatNotification from "./ChatNotification";
 import ChatSetting from "./ChatSetting";
+import { UserType } from "../utils/users";
 const ChatOptions = ({
   participants,
   group_name,
 }: {
-  participants: string[];
+  participants: UserType[];
   group_name: string | null;
 }) => {
   return (

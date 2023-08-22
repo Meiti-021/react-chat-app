@@ -1,14 +1,14 @@
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import { userFind } from "../utils/utils";
 import { Avatar, Typography, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
+import { UserType } from "../utils/users";
 const MemberList = ({
   participants,
   admins,
 }: {
-  participants: string[];
+  participants: UserType[];
   admins: boolean;
 }) => {
   return (
@@ -16,19 +16,18 @@ const MemberList = ({
       <nav aria-label="main mailbox folders">
         <List>
           {participants.map((item) => {
-            const user = userFind(item);
             return (
               <Link
-                to={`/${user?.user_id}`}
+                to={`/${item.user_id}`}
                 style={{ textDecoration: "none" }}
-                key={user?.user_id + "member"}
+                key={item.user_id + "member"}
               >
                 <ListItem
                   disablePadding
                   sx={{ display: "flex", gap: 2, mb: 2 }}
                 >
                   <Avatar
-                    src={`/assets/users/${user?.profile_picture}`}
+                    src={`/assets/users/${item.profile_picture}`}
                     sx={{ width: 40, height: 40 }}
                   />
                   <Stack direction={"column"}>
@@ -44,7 +43,7 @@ const MemberList = ({
                         color: "#000",
                       }}
                     >
-                      {user?.username}
+                      {item.username}
                     </Typography>
                     <Typography
                       sx={{
