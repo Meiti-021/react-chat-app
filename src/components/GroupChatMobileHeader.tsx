@@ -10,12 +10,13 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
 import GroupChatInfo from "./GroupChatInfo";
+import { UserType } from "../utils/users";
 const GroupChatMobileHeader = ({
   participants,
   group_name,
   group_profile,
 }: {
-  participants: string[];
+  participants: UserType[];
   group_name: string | null;
   group_profile: string | null;
 }) => {

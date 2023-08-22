@@ -5,8 +5,8 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MemberList from "./MemberList";
 import AttachedFiles from "./AttachedFiles";
-import { ChatInfo } from "./Chat";
-const GroupInfoDetail = ({ participants }: ChatInfo) => {
+import { UserType } from "../utils/users";
+const GroupInfoDetail = ({ participants }: { participants: UserType[] }) => {
   return (
     <div>
       <Accordion disableGutters elevation={0}>

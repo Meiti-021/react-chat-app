@@ -1,15 +1,21 @@
 import { Box } from "@mui/material";
-import { ChatType } from "../utils/chats";
 import ChatInput from "./ChatInput";
 import GroupChatHeader from "./GroupChatHeader";
 import ChatBody from "./ChatBody";
+import { MessageType } from "../utils/messages";
+import { UserType } from "../utils/users";
 
 const GroupChat = ({
   participants,
   messages,
   group_name,
   group_profile,
-}: ChatType) => {
+}: {
+  participants: UserType[];
+  messages: MessageType[];
+  group_name: string | null;
+  group_profile: string | null;
+}) => {
   return (
     <Box
       component={"div"}

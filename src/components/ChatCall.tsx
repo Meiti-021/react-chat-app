@@ -11,9 +11,9 @@ import {
 import CallIcon from "@mui/icons-material/Call";
 import Dialog from "@mui/material/Dialog";
 import CloseIcon from "@mui/icons-material/Close";
-import { userFind } from "../utils/utils";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
+import { UserType } from "../utils/users";
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement;
@@ -26,7 +26,7 @@ const ChatCall = ({
   participants,
   group_name,
 }: {
-  participants: string[];
+  participants: UserType[];
   group_name: string | null;
 }) => {
   const [call, setCall] = React.useState<boolean>(false);
@@ -68,8 +68,8 @@ const ChatCall = ({
             {participants.map((item, index) => {
               return (
                 <Avatar
-                  alt={userFind(item)?.username}
-                  src={`/assets/users/${userFind(item)?.profile_picture}`}
+                  alt={item.username}
+                  src={`/assets/users/${item.profile_picture}`}
                   key={"gruop-memeber" + index}
                 />
               );

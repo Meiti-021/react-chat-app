@@ -2,7 +2,6 @@ import * as React from "react";
 import { Avatar, AvatarGroup, Box } from "@mui/material";
 import HistoryIcon from "@mui/icons-material/History";
 import CallIcon from "@mui/icons-material/Call";
-import { userFind } from "../utils/utils";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -10,12 +9,13 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ChatOptions from "./ChatOptions";
 import GroupChatInfo from "./GroupChatInfo";
+import { UserType } from "../utils/users";
 const GroupChatLargeScreenHeader = ({
   participants,
   group_name,
   group_profile,
 }: {
-  participants: string[];
+  participants: UserType[];
   group_name: string | null;
   group_profile: string | null;
 }) => {
@@ -82,8 +82,8 @@ const GroupChatLargeScreenHeader = ({
             {participants.map((item, index) => {
               return (
                 <Avatar
-                  alt={userFind(item)?.username}
-                  src={`/assets/users/${userFind(item)?.profile_picture}`}
+                  alt={item.username}
+                  src={`/assets/users/${item.profile_picture}`}
                   key={"gruop-memeber" + index}
                 />
               );

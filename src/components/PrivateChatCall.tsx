@@ -50,6 +50,7 @@ const PrivateChatCall = ({ user }: { user: UserType }) => {
             paddingX: 15,
             alignItems: "center",
             gap: 3,
+            width: "100px",
           }}
         >
           <Avatar

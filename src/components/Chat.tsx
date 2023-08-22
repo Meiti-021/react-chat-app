@@ -64,7 +64,7 @@ const Chat = () => {
     return <ChatLoading />;
   }
   if (chatInfo?.peer_private) {
-    return <PrivateChat participants={} />;
+    return <PrivateChat {...chatInfo} />;
   }
   if (!chatInfo?.peer_private) {
     return <GroupChat {...chatInfo} />;

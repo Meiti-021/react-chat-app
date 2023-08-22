@@ -9,12 +9,13 @@ import {
   Typography,
 } from "@mui/material";
 import GroupInfoDetail from "./GroupInfoDetail";
+import { UserType } from "../utils/users";
 const GroupChatInfo = ({
   participants,
   group_name,
   group_profile,
 }: {
-  participants: string[];
+  participants: UserType[];
   group_name: string | null;
   group_profile: string | null;
 }) => {

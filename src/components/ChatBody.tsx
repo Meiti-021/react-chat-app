@@ -1,27 +1,18 @@
 import { Box, Typography } from "@mui/material";
-import { messageFind } from "../utils/utils";
 import { useEffect, useState } from "react";
 import { MessageType } from "../utils/messages";
 import moment from "moment";
 import Message from "./Message";
 import ChatBodySkeleton from "./ChatBodySkeleton";
-const ChatBody = ({ messages }: { messages: string[] }) => {
+const ChatBody = ({ messages }: { messages: MessageType[] }) => {
   const [organizedMessages, setOrganizedMessages] = useState<
     [string, MessageType[]][]
   >([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const original: (MessageType | undefined)[] = messages.map((item) => {
-      return messageFind(item);
-    });
-    const pureOrginal: MessageType[] = original.filter(
-      (item): item is MessageType => {
-        return item !== undefined;
-      }
-    );
     const orginizedSet: Set<string> = new Set();
-    pureOrginal.forEach((item) => {
+    messages.forEach((item) => {
       if (item) {
         orginizedSet.add(item.timestamp.split(" ")[0]);
       }
@@ -30,7 +21,7 @@ const ChatBody = ({ messages }: { messages: string[] }) => {
       orginizedSet
     ).map((item) => {
       if (item) {
-        const filteredArray = original.filter((elem) => {
+        const filteredArray = messages.filter((elem) => {
           return (
             moment(elem?.timestamp).format("YYYY,MM,DD") ===
             moment(item).format("YYYY,MM,DD")

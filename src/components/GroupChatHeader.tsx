@@ -1,3 +1,4 @@
+import { UserType } from "../utils/users";
 import GroupChatLargeScreenHeader from "./GroupChatLargeScreenHeader";
 import GroupChatMobileHeader from "./GroupChatMobileHeader";
 
@@ -6,7 +7,7 @@ const GroupChatHeader = ({
   group_name,
   group_profile,
 }: {
-  participants: string[];
+  participants: UserType[];
   group_name: string | null;
   group_profile: string | null;
 }) => {
