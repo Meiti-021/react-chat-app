@@ -14,16 +14,24 @@ const SelectChat = () => {
         justifyContent: "center",
         alignItems: "center",
         gap: "1rem",
+        p: 1,
       }}
     >
-      <Box component={"div"} sx={{ width: 600, height: 500, mt: -10 }}>
+      <Box
+        component={"div"}
+        sx={{
+          width: { xs: 400, md: 600 },
+          height: { xs: 300, md: 500 },
+          mt: -10,
+        }}
+      >
         <Lottie animationData={ChatAnimation} loop={true} />
       </Box>
       <Typography
         sx={{
           fontWeight: "bold",
           color: "#1e2933",
-          fontSize: "1.5rem",
+          fontSize: { xs: "1rem", md: " 1.5rem" },
           fontFamily: "Public Sans",
           textAlign: "center",
           textTransform: "uppercase",
@@ -34,7 +42,7 @@ const SelectChat = () => {
       <Typography
         sx={{
           fontWeight: "bold",
-          fontSize: "1.2rem",
+          fontSize: { xs: "0.8rem", md: " 1.2rem" },
           fontFamily: "Public Sans",
           textAlign: "center",
           textTransform: "capitalize",
