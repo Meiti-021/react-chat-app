@@ -6,6 +6,10 @@ type LanguageDataType = {
   code: string;
   label: string;
 };
+interface ComboBoxProps {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+}
 
 const languages: LanguageDataType[] = [
   { code: "GB", label: "English" },
@@ -16,8 +20,7 @@ const languages: LanguageDataType[] = [
   { code: "TR", label: "Turkey" },
 ];
 
-const ComboBox = () => {
-  const [value, setValue] = React.useState<string>(languages[0].label);
+const ComboBox: React.FC<ComboBoxProps> = ({ value, setValue }) => {
   return (
     <FormControl sx={{ width: 180 }}>
       <InputLabel id="demo-simple-select-label">Language</InputLabel>
@@ -59,24 +62,27 @@ const ComboBox = () => {
 };
 
 const AppLargeScreenHeader = () => {
+  const [value, setValue] = React.useState<string>(languages[0].label);
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: "100%",
-        gap: 2,
-        display: { xs: "none", xl: "flex" },
-      }}
-    >
-      <TextField
-        id="outlined-basic"
-        label="Type to Search..."
-        variant="outlined"
-        size="small"
-        sx={{ width: "100%" }}
-      />
-      <ComboBox />
-    </Box>
+    <>
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          gap: 2,
+          display: { xs: "none", xl: "flex" },
+        }}
+      >
+        <TextField
+          id="outlined-basic"
+          label="Type to Search..."
+          variant="outlined"
+          size="small"
+          sx={{ width: "100%" }}
+        />
+        <ComboBox value={value} setValue={setValue} />
+      </Box>
+    </>
   );
 };
 
