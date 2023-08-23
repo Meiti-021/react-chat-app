@@ -55,7 +55,12 @@ const ChatBody = ({ messages }: { messages: MessageType[] }) => {
     return <ChatBodySkeleton />;
   }
   return (
-    <Box component={"div"} sx={{ height: "100%" }}>
+    <Box
+      component={"div"}
+      sx={{
+        height: "calc(100% - 7.5rem)",
+      }}
+    >
       {organizedMessages.map((item, index) => {
         if (item !== undefined) {
           return (

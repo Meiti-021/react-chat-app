@@ -44,7 +44,12 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
         </IconButton>
         <Avatar
           src={`/assets/users/${user?.profile_picture}`}
-          sx={{ width: "6rem", height: "6rem" }}
+          sx={{
+            width: "6rem",
+            height: "6rem",
+            background:
+              "linear-gradient(90deg, rgba(97,255,251,1) 6%, rgba(12,103,121,1) 100%)",
+          }}
         />
         <Typography
           sx={{
@@ -114,7 +119,12 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
       >
         <Avatar
           src={`/assets/users/${user.profile_picture}`}
-          sx={{ width: "2.2rem", height: "2.2rem" }}
+          sx={{
+            width: "2.2rem",
+            height: "2.2rem",
+            background:
+              "linear-gradient(90deg, rgba(97,255,251,1) 6%, rgba(12,103,121,1) 100%)",
+          }}
         />
         <Stack direction={"column"}>
           <Typography

@@ -52,6 +52,8 @@ const Message = ({ content, timestamp, sender, seen }: MessageType) => {
                   height: 30,
                   position: "relative",
                   zIndex: "-5",
+                  background:
+                    "linear-gradient(90deg, rgba(97,255,251,1) 6%, rgba(12,103,121,1) 100%)",
                 }}
               />
               <Typography sx={{ fontWeight: "bold" }}>

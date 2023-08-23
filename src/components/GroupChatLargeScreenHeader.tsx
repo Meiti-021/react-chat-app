@@ -85,6 +85,11 @@ const GroupChatLargeScreenHeader = ({
                   alt={item.username}
                   src={`/assets/users/${item.profile_picture}`}
                   key={"gruop-memeber" + index}
+                  sx={{
+                    background:
+                      "linear-gradient(90deg, rgba(97,255,251,1) 6%, rgba(12,103,121,1) 100%)",
+                    bgcolor: "white",
+                  }}
                 />
               );
             })}

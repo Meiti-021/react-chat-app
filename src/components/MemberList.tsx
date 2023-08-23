@@ -28,7 +28,12 @@ const MemberList = ({
                 >
                   <Avatar
                     src={`/assets/users/${item.profile_picture}`}
-                    sx={{ width: 40, height: 40 }}
+                    sx={{
+                      width: 40,
+                      height: 40,
+                      background:
+                        "linear-gradient(90deg, rgba(97,255,251,1) 6%, rgba(12,103,121,1) 100%)",
+                    }}
                   />
                   <Stack direction={"column"}>
                     <Typography

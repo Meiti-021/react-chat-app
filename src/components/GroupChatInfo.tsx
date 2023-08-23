@@ -51,7 +51,12 @@ const GroupChatInfo = ({
         </IconButton>
         <Avatar
           src={`/assets/users/${group_profile}`}
-          sx={{ width: "6rem", height: "6rem" }}
+          sx={{
+            width: "6rem",
+            height: "6rem",
+            background:
+              "linear-gradient(90deg, rgba(2,0,36,1) 6%, rgba(9,121,22,1) 39%, rgba(0,212,255,1) 100%)",
+          }}
         />
         <Typography
           sx={{
@@ -121,7 +126,12 @@ const GroupChatInfo = ({
       >
         <Avatar
           src={`/assets/users/${group_profile}`}
-          sx={{ width: 30, height: 30 }}
+          sx={{
+            width: 30,
+            height: 30,
+            background:
+              "linear-gradient(90deg, rgba(2,0,36,1) 6%, rgba(9,121,22,1) 39%, rgba(0,212,255,1) 100%)",
+          }}
         />
         <Stack direction={"column"}>
           <Typography

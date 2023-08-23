@@ -46,7 +46,12 @@ const ChatCard = ({
               }`
             : `/assets/users/${group_profile}`
         }
-        sx={{ width: "2.5rem", height: "2.5rem" }}
+        sx={{
+          width: "2.5rem",
+          height: "2.5rem",
+          background:
+            "linear-gradient(90deg, rgba(97,255,251,1) 6%, rgba(12,103,121,1) 100%)",
+        }}
       />
       <Box component={"div"} sx={{ width: "100%", overflow: "hidden" }}>
         <Box

@@ -60,6 +60,8 @@ const PrivateChatCall = ({ user }: { user: UserType }) => {
               width: 100,
               height: 100,
               fontSize: 12,
+              background:
+                "linear-gradient(90deg, rgba(97,255,251,1) 6%, rgba(12,103,121,1) 100%)",
             }}
           />
 
