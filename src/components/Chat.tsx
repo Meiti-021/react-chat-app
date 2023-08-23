@@ -15,6 +15,7 @@ export type ChatInfo = {
   group_name: string | null;
   group_profile: string | null;
   chat_id: string;
+  description: string | null;
 };
 
 const Chat = () => {
@@ -89,6 +90,7 @@ const Chat = () => {
         group_name: chat.group_name,
         group_profile: chat.group_profile,
         chat_id: chat.chat_id,
+        description: chat.description,
       };
       setChatInfo(chatData);
     }

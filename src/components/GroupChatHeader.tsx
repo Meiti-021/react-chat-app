@@ -6,10 +6,12 @@ const GroupChatHeader = ({
   participants,
   group_name,
   group_profile,
+  description,
 }: {
   participants: UserType[];
   group_name: string | null;
   group_profile: string | null;
+  description: string | null;
 }) => {
   return (
     <>
@@ -17,11 +19,13 @@ const GroupChatHeader = ({
         participants={participants}
         group_name={group_name}
         group_profile={group_profile}
+        description={description}
       />
       <GroupChatLargeScreenHeader
         participants={participants}
         group_name={group_name}
         group_profile={group_profile}
+        description={description}
       />
     </>
   );

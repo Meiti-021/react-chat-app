@@ -14,10 +14,12 @@ const GroupChatInfo = ({
   participants,
   group_name,
   group_profile,
+  description,
 }: {
   participants: UserType[];
   group_name: string | null;
   group_profile: string | null;
+  description: string | null;
 }) => {
   const info = (
     <Box
@@ -88,20 +90,19 @@ const GroupChatInfo = ({
         >
           {participants.length} Members
         </Typography>
-      </Box>
-      <Box sx={{ padding: "2rem 1.5rem" }}>
         <Typography
           sx={{
             fontSize: "1rem",
             fontFamily: "Public Sans",
             fontWeight: 400,
             color: "#7a7f9a",
-            mt: -2,
+            mt: 1,
           }}
         >
-          If several languages coalesce, the grammar of the resulting language
-          is more simple and regular than that of the individual.
+          {description}
         </Typography>
+      </Box>
+      <Box sx={{ padding: "2rem 1.5rem" }}>
         <GroupInfoDetail participants={participants} />
       </Box>
     </Box>

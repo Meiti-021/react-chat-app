@@ -10,11 +10,13 @@ const GroupChat = ({
   messages,
   group_name,
   group_profile,
+  description,
 }: {
   participants: UserType[];
   messages: [string, MessageType[]][];
   group_name: string | null;
   group_profile: string | null;
+  description: string | null;
 }) => {
   return (
     <Box
@@ -30,6 +32,7 @@ const GroupChat = ({
         participants={participants}
         group_name={group_name}
         group_profile={group_profile}
+        description={description}
       />
       <ChatBody messages={messages} />
       <ChatInput />

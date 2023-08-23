@@ -14,10 +14,12 @@ const GroupChatLargeScreenHeader = ({
   participants,
   group_name,
   group_profile,
+  description,
 }: {
   participants: UserType[];
   group_name: string | null;
   group_profile: string | null;
+  description: string | null;
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -57,6 +59,7 @@ const GroupChatLargeScreenHeader = ({
           participants={participants}
           group_name={group_name}
           group_profile={group_profile}
+          description={description}
         />
       </Box>
 

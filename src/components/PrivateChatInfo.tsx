@@ -81,20 +81,19 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
         >
           Active
         </Typography>
-      </Box>
-      <Box sx={{ padding: "2rem 1.5rem" }}>
         <Typography
           sx={{
             fontSize: "1rem",
             fontFamily: "Public Sans",
             fontWeight: 400,
             color: "#7a7f9a",
-            mt: -2,
+            mt: 1,
           }}
         >
-          If several languages coalesce, the grammar of the resulting language
-          is more simple and regular than that of the individual.
+          {user.biography}
         </Typography>
+      </Box>
+      <Box sx={{ padding: "2rem 1.5rem" }}>
         <PrivateInfoDetail user={user} />
       </Box>
     </Box>
