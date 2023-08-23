@@ -27,6 +27,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Conversations from "./Conversations";
 import Chat from "./Chat";
 import SelectChat from "./SelectChat";
+import AppLargeScreenHeader from "./AppLargeScreenHeader";
 
 const drawerWidth = 270;
 
@@ -250,16 +251,7 @@ export default function AppContainer(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            sx={{
-              color: "#1e2933",
-              fontWeight: "bold",
-              letterSpacing: 3,
-              mt: 0.2,
-            }}
-          >
-            MEITIGRAM WINDOWs
-          </Typography>
+          <AppLargeScreenHeader />
           <IconButton
             color="inherit"
             aria-label="open drawer"
