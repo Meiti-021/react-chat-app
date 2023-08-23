@@ -1,4 +1,4 @@
-import { Box, Skeleton, Stack } from "@mui/material";
+import { Box, Skeleton, Stack, Typography } from "@mui/material";
 const ChatLoading = () => {
   return (
     <>
@@ -59,6 +59,23 @@ const ChatLoading = () => {
             height={30}
           />
         </Box>
+      </Box>
+      <Box
+        component={"div"}
+        sx={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          mt: -10,
+        }}
+      >
+        <Typography
+          sx={{ fontSize: "5rem", fontWeight: "bold", color: "#EAEDF3" }}
+        >
+          LOADING
+        </Typography>
       </Box>
     </>
   );

@@ -12,7 +12,7 @@ const GroupChat = ({
   group_profile,
 }: {
   participants: UserType[];
-  messages: MessageType[];
+  messages: [string, MessageType[]][];
   group_name: string | null;
   group_profile: string | null;
 }) => {

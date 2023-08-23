@@ -7,11 +7,11 @@ import PrivateChat from "./PrivateChat";
 import ChatLoading from "./ChatLoading";
 import { UserType } from "../utils/users";
 import { MessageType } from "../utils/messages";
-
+import moment from "moment";
 export type ChatInfo = {
   peer_private: boolean;
   participants: UserType[];
-  messages: MessageType[];
+  messages: [string, MessageType[]][];
   group_name: string | null;
   group_profile: string | null;
   chat_id: string;
@@ -47,10 +47,45 @@ const Chat = () => {
           return item !== undefined;
         }
       );
+      const orginizedSet: Set<string> = new Set();
+      pureMessages.forEach((item) => {
+        if (item) {
+          orginizedSet.add(item.timestamp.split(" ")[0]);
+        }
+      });
+      const orginizedArray: ([string, MessageType[]] | undefined)[] =
+        Array.from(orginizedSet).map((item) => {
+          if (item) {
+            const filteredArray = pureMessages.filter((elem) => {
+              return (
+                moment(elem?.timestamp).format("YYYY,MM,DD") ===
+                moment(item).format("YYYY,MM,DD")
+              );
+            });
+            const pureFilteredArray = filteredArray.filter(
+              (elem): elem is MessageType => {
+                return elem !== undefined;
+              }
+            );
+            return [moment(item).format("YYYY,MM,DD"), pureFilteredArray];
+          }
+        });
+      const pureOrganizedArr: ([string, MessageType[]] | undefined)[] =
+        orginizedArray.filter((item) => {
+          return item !== undefined;
+        });
+      const finalArray: [string, MessageType[]][] = pureOrganizedArr.filter(
+        (item): item is [string, MessageType[]] => {
+          return item !== undefined;
+        }
+      );
+      finalArray.sort((a, b) => {
+        return a && b ? Number(a[0]) - Number(b[0]) : 0;
+      });
       const chatData = {
         peer_private: chat.peer_private,
         participants: pureParticipants,
-        messages: pureMessages,
+        messages: finalArray,
         group_name: chat.group_name,
         group_profile: chat.group_profile,
         chat_id: chat.chat_id,

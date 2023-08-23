@@ -1,59 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
 import { MessageType } from "../utils/messages";
 import moment from "moment";
 import Message from "./Message";
-import ChatBodySkeleton from "./ChatBodySkeleton";
-const ChatBody = ({ messages }: { messages: MessageType[] }) => {
-  const [organizedMessages, setOrganizedMessages] = useState<
-    [string, MessageType[]][]
-  >([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const orginizedSet: Set<string> = new Set();
-    messages.forEach((item) => {
-      if (item) {
-        orginizedSet.add(item.timestamp.split(" ")[0]);
-      }
-    });
-    const orginizedArray: ([string, MessageType[]] | undefined)[] = Array.from(
-      orginizedSet
-    ).map((item) => {
-      if (item) {
-        const filteredArray = messages.filter((elem) => {
-          return (
-            moment(elem?.timestamp).format("YYYY,MM,DD") ===
-            moment(item).format("YYYY,MM,DD")
-          );
-        });
-        const pureFilteredArray = filteredArray.filter(
-          (elem): elem is MessageType => {
-            return elem !== undefined;
-          }
-        );
-        return [moment(item).format("YYYY,MM,DD"), pureFilteredArray];
-      }
-    });
-    const pureOrganizedArr: ([string, MessageType[]] | undefined)[] =
-      orginizedArray.filter((item) => {
-        return item !== undefined;
-      });
-    const finalArray: [string, MessageType[]][] = pureOrganizedArr.filter(
-      (item): item is [string, MessageType[]] => {
-        return item !== undefined;
-      }
-    );
-    finalArray.sort((a, b) => {
-      return a && b ? Number(a[0]) - Number(b[0]) : 0;
-    });
-    setOrganizedMessages(finalArray);
-    setLoading(false);
-  }, [messages]);
-
-  if (loading) {
-    return <ChatBodySkeleton />;
-  }
+const ChatBody = ({ messages }: { messages: [string, MessageType[]][] }) => {
   return (
     <Box
       component={"div"}
@@ -61,7 +10,7 @@ const ChatBody = ({ messages }: { messages: MessageType[] }) => {
         height: "calc(100% - 7.5rem)",
       }}
     >
-      {organizedMessages.map((item, index) => {
+      {messages.map((item, index) => {
         if (item !== undefined) {
           return (
             <Box key={item[0] + index} sx={{ paddingTop: "10px" }}>

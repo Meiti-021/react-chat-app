@@ -39,6 +39,10 @@ const PrivateChatCall = ({ user }: { user: UserType }) => {
         keepMounted
         onClose={handleCall}
         aria-describedby="alert-dialog-slide-description"
+        sx={{ width: "100vw", height: "100vh", p: 1 }}
+        PaperProps={{
+          sx: { width: "100%" },
+        }}
       >
         <Box
           component={"div"}
@@ -50,7 +54,6 @@ const PrivateChatCall = ({ user }: { user: UserType }) => {
             paddingX: 15,
             alignItems: "center",
             gap: 3,
-            width: "100px",
           }}
         >
           <Avatar
