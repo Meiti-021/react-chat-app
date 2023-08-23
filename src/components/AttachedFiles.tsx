@@ -37,7 +37,7 @@ const files: { id: string; name: string; type: string; size: string }[] = [
 
 const AttachedFiles = () => {
   return (
-    <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+    <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
       <nav aria-label="main mailbox folders">
         <List>
           {files.map((item) => {
