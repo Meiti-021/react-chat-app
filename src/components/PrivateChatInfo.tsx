@@ -96,7 +96,7 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
           {user.biography}
         </Typography>
       </Box>
-      <Box sx={{ padding: "2rem 1.5rem" }}>
+      <Box>
         <PrivateInfoDetail user={user} />
       </Box>
     </Box>

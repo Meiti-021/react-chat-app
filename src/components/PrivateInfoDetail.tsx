@@ -1,64 +1,115 @@
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AttachedFiles from "./AttachedFiles";
+import { UserType } from "../utils/users";
 import {
+  Tabs,
+  Tab,
+  Typography,
+  Box,
   List,
   ListItem,
   ListItemAvatar,
   Avatar,
   ListItemText,
 } from "@mui/material";
-import { UserType } from "../utils/users";
+import AttachedFiles from "./AttachedFiles";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import WorkIcon from "@mui/icons-material/Work";
 import PersonPinCircleIcon from "@mui/icons-material/PersonPinCircle";
-const PrivateInfoDetail = ({ user }: { user: UserType }) => {
-  return (
-    <div>
-      <Typography>About</Typography>
+import * as React from "react";
+import ChatMedia from "./ChatMedia";
 
-      <List sx={{ width: "100%", bgcolor: "background.paper" }}>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <AlternateEmailIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Email" secondary={user.email} />
-        </ListItem>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <WorkIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Career" secondary={user.career} />
-        </ListItem>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <PersonPinCircleIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Location" secondary={user.location} />
-        </ListItem>
-      </List>
-      <Accordion elevation={0}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3a-content"
-          id="panel3a-header"
-        >
-          <Typography>Attached Files</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <AttachedFiles />
-        </AccordionDetails>
-      </Accordion>
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+  padding: boolean;
+}
+
+function CustomTabPanel(props: TabPanelProps) {
+  const { children, value, index, padding, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: padding ? 3 : 0 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
     </div>
+  );
+}
+
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
+
+const PrivateInfoDetail = ({ user }: { user: UserType }) => {
+  const [value, setValue] = React.useState(0);
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+  return (
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
+          <Tab label="About" {...a11yProps(0)} />
+          <Tab label="Media" {...a11yProps(2)} />
+          <Tab label="Files" {...a11yProps(3)} />
+        </Tabs>
+      </Box>
+      <CustomTabPanel value={value} index={0} padding={false}>
+        <List
+          sx={{
+            width: "100%",
+            bgcolor: "background.paper",
+          }}
+        >
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <AlternateEmailIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Email" secondary={user.email} />
+          </ListItem>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <WorkIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Career" secondary={user.career} />
+          </ListItem>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <PersonPinCircleIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Location" secondary={user.location} />
+          </ListItem>
+        </List>
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={1} padding={false}>
+        <ChatMedia />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2} padding={true}>
+        <AttachedFiles />
+      </CustomTabPanel>
+    </Box>
   );
 };
 
