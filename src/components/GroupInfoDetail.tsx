@@ -1,51 +1,77 @@
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MemberList from "./MemberList";
 import AttachedFiles from "./AttachedFiles";
 import { UserType } from "../utils/users";
-const GroupInfoDetail = ({ participants }: { participants: UserType[] }) => {
+import { Tabs, Tab, Typography, Box } from "@mui/material";
+
+import * as React from "react";
+import ChatMedia from "./ChatMedia";
+
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+  padding: boolean;
+}
+
+function CustomTabPanel(props: TabPanelProps) {
+  const { children, value, index, padding, ...other } = props;
+
   return (
-    <div>
-      <Accordion disableGutters elevation={0}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>Admins</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <MemberList participants={participants} admins={true} />
-        </AccordionDetails>
-      </Accordion>
-      <Accordion disableGutters elevation={0}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography>Members</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <MemberList participants={participants} admins={false} />
-        </AccordionDetails>
-      </Accordion>
-      <Accordion elevation={0}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3a-content"
-          id="panel3a-header"
-        >
-          <Typography>Attached Files</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <AttachedFiles />
-        </AccordionDetails>
-      </Accordion>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: padding ? 3 : 0 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
     </div>
+  );
+}
+
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
+
+const GroupInfoDetail = ({ participants }: { participants: UserType[] }) => {
+  const [value, setValue] = React.useState(0);
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+  return (
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
+          <Tab label="Members" {...a11yProps(0)} />
+          <Tab label="Admins" {...a11yProps(1)} />
+          <Tab label="Media" {...a11yProps(2)} />
+          <Tab label="Files" {...a11yProps(3)} />
+        </Tabs>
+      </Box>
+      <CustomTabPanel value={value} index={0} padding={true}>
+        <MemberList admins={false} participants={participants} />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1} padding={true}>
+        <MemberList admins={true} participants={participants} />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2} padding={false}>
+        <ChatMedia />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={3} padding={true}>
+        <AttachedFiles />
+      </CustomTabPanel>
+    </Box>
   );
 };
 

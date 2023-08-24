@@ -102,7 +102,7 @@ const GroupChatInfo = ({
           {description}
         </Typography>
       </Box>
-      <Box sx={{ padding: "2rem 1.5rem" }}>
+      <Box>
         <GroupInfoDetail participants={participants} />
       </Box>
     </Box>

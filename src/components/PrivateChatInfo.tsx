@@ -11,6 +11,7 @@ import {
 
 import PrivateInfoDetail from "./PrivateInfoDetail";
 import { UserType } from "../utils/users";
+import PrivateChatInfoAction from "./PrivateChatInfoAction";
 const PrivateChatInfo = ({ user }: { user: UserType }) => {
   const info = (
     <Box
@@ -38,10 +39,11 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
           onClick={() => {
             setOpen(false);
           }}
-          sx={{ position: "absolute", top: 10, right: 10 }}
+          sx={{ position: "absolute", top: 10, left: 10 }}
         >
           <CloseIcon />
         </IconButton>
+        <PrivateChatInfoAction />
         <Avatar
           src={`/assets/users/${user?.profile_picture}`}
           sx={{
@@ -79,7 +81,7 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
             mt: -2,
           }}
         >
-          Active
+          {user.last_activity}
         </Typography>
         <Typography
           sx={{
@@ -88,6 +90,7 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
             fontWeight: 400,
             color: "#7a7f9a",
             mt: 1,
+            textAlign: "center",
           }}
         >
           {user.biography}
