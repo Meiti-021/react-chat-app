@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-
 import PrivateChatInfo from "./PrivateChatInfo";
 import PrivateChatOptions from "./PrivateChatOptions";
 import { UserType } from "../utils/users";
@@ -31,8 +30,6 @@ const PrivateChatLargeScreenHeader = ({ user }: { user: UserType }) => {
         paddingX: "0.5rem",
         borderBottom: "1px solid #EAEDF3",
         height: "3.5rem",
-        position: "sticky",
-        top: "0",
         width: "inherite",
         background: "white",
       }}

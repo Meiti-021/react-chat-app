@@ -40,10 +40,9 @@ const GroupChatLargeScreenHeader = ({
         paddingX: "0.5rem",
         borderBottom: "1px solid #EAEDF3",
         height: "3.5rem",
-        position: "sticky",
-        top: "0",
         width: "inherite",
         background: "white",
+        zIndex: "5",
       }}
     >
       <Box

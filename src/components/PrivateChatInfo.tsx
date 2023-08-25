@@ -148,7 +148,7 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
               fontFamily: "Public Sans",
             }}
           >
-            Active
+            {user.last_activity}
           </Typography>
         </Stack>
       </Box>

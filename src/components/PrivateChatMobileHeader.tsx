@@ -30,9 +30,7 @@ const PrivateChatMobileHeader = ({ user }: { user: UserType }) => {
         paddingX: { xs: "0.5rem", sm: "2rem" },
         borderBottom: "1px solid #EAEDF3",
         height: "3.5rem",
-        position: "sticky",
         width: "100%",
-        top: "0",
         background: "white",
       }}
     >

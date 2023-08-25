@@ -8,8 +8,7 @@ const PrivateChat = ({ participants, messages }: ChatInfo) => {
     <Box
       component={"div"}
       sx={{
-        height: "100%",
-        overflow: "scroll",
+        height: "calc(100vh - 4.5rem)",
         position: "relative",
         width: "100%",
       }}
