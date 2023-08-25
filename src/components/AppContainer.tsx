@@ -28,6 +28,7 @@ import Conversations from "./Conversations";
 import Chat from "./Chat";
 import SelectChat from "./SelectChat";
 import AppLargeScreenHeader from "./AppLargeScreenHeader";
+import Contacts from "./Contacts";
 
 const drawerWidth = 270;
 
@@ -328,6 +329,7 @@ export default function AppContainer(props: Props) {
             <Route element={<Chat />} path="/:chatID" />
             <Route element={<SelectChat />} path="/" />
           </Route>
+          <Route path="/contacts" element={<Contacts />} />
         </Routes>
       </Box>
     </Box>
