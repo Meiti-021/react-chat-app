@@ -15,21 +15,24 @@ import Typography from "@mui/material/Typography";
 import ChatIcon from "@mui/icons-material/Chat";
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
 import CampaignIcon from "@mui/icons-material/Campaign";
-import CallIcon from "@mui/icons-material/Call";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import SettingsIcon from "@mui/icons-material/Settings";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { NavLink, Route, Routes } from "react-router-dom";
-import { Avatar, Stack } from "@mui/material";
+import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
+import { Avatar, Button, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import GroupsIcon from "@mui/icons-material/Groups";
+import GroupIcon from "@mui/icons-material/Group";
 import Conversations from "./Conversations";
 import Chat from "./Chat";
 import SelectChat from "./SelectChat";
 import AppLargeScreenHeader from "./AppLargeScreenHeader";
 import Contacts from "./Contacts";
 import Channels from "./Channels";
+import Bots from "./Bots";
 
 const drawerWidth = 270;
 
@@ -40,18 +43,34 @@ const menuItems = [
       {
         title: "Conversations",
         icon: <ChatIcon sx={{ color: "white" }} />,
+        type: Button,
+      },
+
+      {
+        title: "Groups",
+        icon: <GroupsIcon sx={{ color: "white" }} />,
+        type: Button,
+      },
+      {
+        title: "Privates",
+        icon: <GroupIcon sx={{ color: "white" }} />,
+        type: Button,
       },
       {
         title: "Contacts",
         icon: <PermContactCalendarIcon sx={{ color: "white" }} />,
+        type: NavLink,
       },
+
       {
         title: "Channels",
         icon: <CampaignIcon sx={{ color: "white" }} />,
+        type: NavLink,
       },
       {
-        title: "Calls",
-        icon: <CallIcon sx={{ color: "white" }} />,
+        title: "Bots",
+        icon: <SmartToyIcon sx={{ color: "white" }} />,
+        type: NavLink,
       },
     ],
   },
@@ -61,10 +80,12 @@ const menuItems = [
       {
         title: "Need help?",
         icon: <HelpOutlineIcon sx={{ color: "white" }} />,
+        type: NavLink,
       },
       {
         title: "Contact us",
         icon: <HeadsetMicIcon sx={{ color: "white" }} />,
+        type: NavLink,
       },
     ],
   },
@@ -74,14 +95,17 @@ const menuItems = [
       {
         title: "Account",
         icon: <SettingsIcon sx={{ color: "white" }} />,
+        type: Button,
       },
       {
         title: "Dark mode",
         icon: <Brightness4Icon sx={{ color: "white" }} />,
+        type: Button,
       },
       {
         title: "Log out",
         icon: <LogoutIcon sx={{ color: "white" }} />,
+        type: Button,
       },
     ],
   },
@@ -102,7 +126,8 @@ export default function AppContainer(props: Props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const [filterType, setFilterType] = React.useState<string>("conversations");
+  const navigate = useNavigate();
   const drawer = (
     <div style={{ height: "100%" }}>
       <Toolbar>
@@ -148,29 +173,57 @@ export default function AppContainer(props: Props) {
                   color: "white",
                 }}
               >
-                <NavLink
-                  style={({ isActive, isPending }) => {
-                    return {
-                      padding: "0.2rem 1rem ",
-                      display: "flex",
-                      alignItems: "center",
-                      textDecoration: "none",
-                      color: "white",
-                      backgroundColor:
-                        isActive || isPending ? "#00b718" : undefined,
-                      width: "100%",
-                      borderRadius: "5px",
-                    };
-                  }}
+                <Box
+                  component={element.type}
+                  style={
+                    element.type === NavLink
+                      ? ({ isActive, isPending }) => {
+                          return {
+                            padding: "0.2rem 1rem ",
+                            display: "flex",
+                            alignItems: "center",
+                            textDecoration: "none",
+                            color: "white",
+                            backgroundColor:
+                              isActive || isPending ? "#00b718" : undefined,
+                            width: "100%",
+                            borderRadius: "5px",
+                          };
+                        }
+                      : {
+                          padding: "0.2rem 1rem ",
+                          display: "flex",
+                          alignItems: "center",
+                          textDecoration: "none",
+                          color: "white",
+                          backgroundColor:
+                            filterType === element.title.toLowerCase()
+                              ? "#00b718"
+                              : undefined,
+                          width: "100%",
+                          borderRadius: "5px",
+                          textTransform: "capitalize",
+                        }
+                  }
                   to={
                     element.title === "Conversations"
                       ? "/"
                       : `/${element.title.toLocaleLowerCase()}`
                   }
+                  onClick={
+                    element.type === Button
+                      ? () => {
+                          navigate("/");
+                          setFilterType(element.title.toLowerCase());
+                        }
+                      : () => {
+                          setFilterType("");
+                        }
+                  }
                 >
                   <ListItemIcon>{element.icon}</ListItemIcon>
                   <ListItemText primary={element.title} />
-                </NavLink>
+                </Box>
               </ListItem>
             ))}
           </List>
@@ -326,12 +379,13 @@ export default function AppContainer(props: Props) {
         }}
       >
         <Routes>
-          <Route path="/" element={<Conversations />}>
+          <Route path="/" element={<Conversations type={filterType} />}>
             <Route element={<Chat />} path="/:chatID" />
             <Route element={<SelectChat />} path="/" />
           </Route>
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/channels" element={<Channels />} />
+          <Route path="/bots" element={<Bots />} />
         </Routes>
       </Box>
     </Box>

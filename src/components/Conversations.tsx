@@ -4,7 +4,7 @@ import ChatCard from "./ChatCard";
 import { Box, Drawer, Typography } from "@mui/material";
 import { Outlet, useLocation } from "react-router-dom";
 import ChatCardAction from "./ChatCardAction";
-const Conversations = () => {
+const Conversations = ({ type }: { type: string }) => {
   const { pathname } = useLocation();
   return (
     <Grid
@@ -42,7 +42,13 @@ const Conversations = () => {
           }}
         >
           <Typography sx={{ fontSize: "0.8rem", fontWeight: "bold" }}>
-            ALL CONVERSATIONS
+            {type === "conversations"
+              ? "ALL CONVERSATIONS"
+              : type === "groups"
+              ? "ALL GROUPS"
+              : type === "privates"
+              ? "ALL PRIVATE MESSAGES"
+              : undefined}
           </Typography>
           <Box
             sx={{
@@ -55,17 +61,34 @@ const Conversations = () => {
               borderRadius: "5px",
             }}
           >
-            NEW MESSAGES
+            {type === "conversations"
+              ? " NEW MESSAGES"
+              : type === "groups"
+              ? "NEW GROUP"
+              : type === "privates"
+              ? "NEW PRIVATE MESSAGES"
+              : undefined}
           </Box>
         </Box>
-        {chats.map((item) => {
-          return <ChatCard key={item.chat_id} {...item} />;
-        })}
-        <div style={{ position: "sticky", bottom: "0" }}>
-          <ChatCardAction />
-        </div>
+        {chats
+          .filter((chat) => {
+            if (type === "conversations") {
+              return chat;
+            } else if (type === "groups") {
+              return chat.peer_private === false;
+            } else if (type === "privates") {
+              return chat.peer_private === true;
+            }
+          })
+          .map((item) => {
+            return <ChatCard key={item.chat_id} {...item} />;
+          })}
+        {type === "all" ? (
+          <div style={{ position: "sticky", bottom: "0" }}>
+            <ChatCardAction />
+          </div>
+        ) : null}
       </Grid>
-
       <Grid
         item
         xs={0}
@@ -78,7 +101,7 @@ const Conversations = () => {
         <Outlet />
       </Grid>
       <Drawer
-        open={pathname !== "/" ? true : false}
+        open={pathname !== "/groups" ? true : false}
         sx={{
           display: { xs: "block", sm: "none" },
           width: "100vw",
