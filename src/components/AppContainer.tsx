@@ -33,6 +33,7 @@ import AppLargeScreenHeader from "./AppLargeScreenHeader";
 import Contacts from "./Contacts";
 import Channels from "./Channels";
 import Bots from "./Bots";
+import HelpCenter from "./HelpCenter";
 
 const drawerWidth = 270;
 
@@ -44,33 +45,39 @@ const menuItems = [
         title: "Conversations",
         icon: <ChatIcon sx={{ color: "white" }} />,
         type: Button,
+        address: "",
       },
 
       {
         title: "Groups",
         icon: <GroupsIcon sx={{ color: "white" }} />,
         type: Button,
+        address: "",
       },
       {
         title: "Privates",
         icon: <GroupIcon sx={{ color: "white" }} />,
         type: Button,
+        address: "",
       },
       {
         title: "Contacts",
         icon: <PermContactCalendarIcon sx={{ color: "white" }} />,
         type: NavLink,
+        address: "contacts",
       },
 
       {
         title: "Channels",
         icon: <CampaignIcon sx={{ color: "white" }} />,
         type: NavLink,
+        address: "channels",
       },
       {
         title: "Bots",
         icon: <SmartToyIcon sx={{ color: "white" }} />,
         type: NavLink,
+        address: "bots",
       },
     ],
   },
@@ -81,11 +88,13 @@ const menuItems = [
         title: "Need help?",
         icon: <HelpOutlineIcon sx={{ color: "white" }} />,
         type: NavLink,
+        address: "help",
       },
       {
         title: "Contact us",
         icon: <HeadsetMicIcon sx={{ color: "white" }} />,
         type: NavLink,
+        address: "contact",
       },
     ],
   },
@@ -96,16 +105,19 @@ const menuItems = [
         title: "Account",
         icon: <SettingsIcon sx={{ color: "white" }} />,
         type: Button,
+        address: "",
       },
       {
         title: "Dark mode",
         icon: <Brightness4Icon sx={{ color: "white" }} />,
         type: Button,
+        address: "",
       },
       {
         title: "Log out",
         icon: <LogoutIcon sx={{ color: "white" }} />,
         type: Button,
+        address: "",
       },
     ],
   },
@@ -208,7 +220,7 @@ export default function AppContainer(props: Props) {
                   to={
                     element.title === "Conversations"
                       ? "/"
-                      : `/${element.title.toLocaleLowerCase()}`
+                      : `/${element.address}`
                   }
                   onClick={
                     element.type === Button
@@ -382,6 +394,10 @@ export default function AppContainer(props: Props) {
           <Route path="/" element={<Conversations type={filterType} />}>
             <Route element={<Chat />} path="/:chatID" />
             <Route element={<SelectChat />} path="/" />
+          </Route>
+          <Route path="/help" element={<HelpCenter />}>
+            <Route element={<Chat />} path="/help/:chatID" />
+            <Route element={<SelectChat />} path="/help" />
           </Route>
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/channels" element={<Channels />} />
