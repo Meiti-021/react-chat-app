@@ -36,6 +36,7 @@ import Bots from "./Bots";
 import HelpCenter from "./HelpCenter";
 import Help from "./Help";
 import HelpAnimation from "./HelpAnimation";
+import ContactCenter from "./ContactCenter";
 
 const drawerWidth = 270;
 
@@ -96,7 +97,7 @@ const menuItems = [
         title: "Contact us",
         icon: <HeadsetMicIcon sx={{ color: "white" }} />,
         type: NavLink,
-        address: "contact",
+        address: "contact-us",
       },
     ],
   },
@@ -402,6 +403,7 @@ export default function AppContainer(props: Props) {
             <Route element={<HelpAnimation />} path="/help" />
           </Route>
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/contact-us" element={<ContactCenter />} />
           <Route path="/channels" element={<Channels />} />
           <Route path="/bots" element={<Bots />} />
         </Routes>
