@@ -34,6 +34,8 @@ import Contacts from "./Contacts";
 import Channels from "./Channels";
 import Bots from "./Bots";
 import HelpCenter from "./HelpCenter";
+import Help from "./Help";
+import HelpAnimation from "./HelpAnimation";
 
 const drawerWidth = 270;
 
@@ -396,8 +398,8 @@ export default function AppContainer(props: Props) {
             <Route element={<SelectChat />} path="/" />
           </Route>
           <Route path="/help" element={<HelpCenter />}>
-            <Route element={<Chat />} path="/help/:chatID" />
-            <Route element={<SelectChat />} path="/help" />
+            <Route element={<Help />} path="/help/:section" />
+            <Route element={<HelpAnimation />} path="/help" />
           </Route>
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/channels" element={<Channels />} />

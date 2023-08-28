@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
-import { Box, Drawer, Typography, Button, Stack } from "@mui/material";
-import { Outlet, useLocation } from "react-router-dom";
+import { Box, Drawer, Typography, Button } from "@mui/material";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { helpDatacenter } from "../utils/helps";
 const HelpCenter = () => {
@@ -87,7 +87,6 @@ const HelpCenter = () => {
                 key={item.id}
                 xs={5.8}
                 sx={{
-                  p: 2,
                   bgcolor: "#1e2933",
                   height: "150px",
                   borderRadius: 4,
@@ -95,6 +94,8 @@ const HelpCenter = () => {
                 }}
               >
                 <Box
+                  component={Link}
+                  to={`/help/${item.id}`}
                   sx={{
                     flexDirection: "column",
                     width: "100%",
@@ -102,6 +103,8 @@ const HelpCenter = () => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    p: 2,
+                    textDecoration: "none",
                   }}
                 >
                   <div style={{ fontSize: "3rem", color: "white" }}>
@@ -124,26 +127,16 @@ const HelpCenter = () => {
           sx={{
             fontSize: "1rem",
             fontWeight: 500,
-            textAlign: "justify",
+            textAlign: "center",
             mt: 1,
             p: 1,
+            color: "#7a7f9a",
           }}
         >
           Introducing MEITIGRAM – a demo that highlights the magic of front-end
           development using React and Material UI. Dive into a smooth messaging
           experience, where things look great and work seamlessly thanks to the
           skills of our developer (Mahdi Dehgani).
-          <br /> - MEITIGRAM isn't just any chat app. It's a way for us to show
-          off how we make websites look amazing and function flawlessly. Whether
-          you're on a big screen or a small one, our design adapts beautifully,
-          making chats easy to read and navigate. Animations are slick,
-          transitions are smooth, and buttons are easy to use – all the things
-          that make a website feel awesome.
-          <br /> - And guess what? It's all created with the power of React and
-          the style of Material UI. So, why just have a regular chat app when
-          you can have a MEITIGRAM – a living example of how web design and
-          development can come together to create something truly impressive?
-          Come, explore, and see the web's future in action!
         </Typography>
       </Grid>
       <Grid
