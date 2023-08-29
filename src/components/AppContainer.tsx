@@ -37,6 +37,8 @@ import HelpCenter from "./HelpCenter";
 import Help from "./Help";
 import HelpAnimation from "./HelpAnimation";
 import ContactCenter from "./ContactCenter";
+import Setting from "./Setting";
+import SettingCenter from "./SettingCenter";
 
 const drawerWidth = 270;
 
@@ -107,8 +109,8 @@ const menuItems = [
       {
         title: "Account",
         icon: <SettingsIcon sx={{ color: "white" }} />,
-        type: Button,
-        address: "",
+        type: NavLink,
+        address: "account",
       },
       {
         title: "Dark mode",
@@ -401,6 +403,10 @@ export default function AppContainer(props: Props) {
           <Route path="/help" element={<HelpCenter />}>
             <Route element={<Help />} path="/help/:section" />
             <Route element={<HelpAnimation />} path="/help" />
+          </Route>
+          <Route path="/account" element={<SettingCenter />}>
+            <Route element={<Setting />} path="/account/:section" />
+            <Route element={<HelpAnimation />} path="/account" />
           </Route>
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/contact-us" element={<ContactCenter />} />
