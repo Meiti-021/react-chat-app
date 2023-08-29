@@ -22,6 +22,7 @@ import { userFind } from "../utils/utils";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import SettingTopMenu from "./SettingTopMenu";
 import { users } from "../utils/users";
+import { Link } from "react-router-dom";
 
 const SettingMainMenu = () => {
   return (
@@ -48,6 +49,7 @@ const SettingMainMenu = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          color: "black",
         }}
       >
         <SettingTopMenu />
@@ -58,6 +60,7 @@ const SettingMainMenu = () => {
             p: 4,
             display: "flex",
             alignItems: "center",
+            color: "black",
             gap: 1,
           }}
         >
@@ -83,6 +86,10 @@ const SettingMainMenu = () => {
             width: 50,
             height: 50,
             border: "1px solid #ebe8e8",
+            ":hover": {
+              bgcolor: "#ccc",
+              color: "white",
+            },
           }}
         >
           <CameraAltIcon />
@@ -96,16 +103,80 @@ const SettingMainMenu = () => {
           </Typography>
           <List sx={{ p: 0 }}>
             <ListItem sx={{ p: 0 }}>
-              <ListItemText
-                primary={users[0].email}
-                secondary="Tap to change email."
-              />
+              <Link
+                to={""}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
+              >
+                <Link
+                  to={""}
+                  style={{
+                    textDecoration: "none",
+                    width: "100%",
+                    display: "flex",
+                  }}
+                >
+                  <ListItemText
+                    primary={users[0].email}
+                    secondary="Tap to change email."
+                  />
+                </Link>
+              </Link>{" "}
             </ListItem>
             <ListItem sx={{ p: 0 }}>
-              <ListItemText primary={users[0].location} secondary="Location" />
+              <Link
+                to={""}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
+              >
+                <Link
+                  to={""}
+                  style={{
+                    textDecoration: "none",
+                    width: "100%",
+                    display: "flex",
+                  }}
+                >
+                  <ListItemText
+                    primary={users[0].location}
+                    secondary="Location"
+                  />
+                </Link>
+              </Link>{" "}
             </ListItem>
             <ListItem sx={{ p: 0 }}>
-              <ListItemText primary={users[0].career} secondary="Caree" />
+              <Link
+                to={""}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
+              >
+                <Link
+                  to={""}
+                  style={{
+                    textDecoration: "none",
+                    width: "100%",
+                    display: "flex",
+                  }}
+                >
+                  {" "}
+                  <ListItemText primary={users[0].career} secondary="Career" />
+                </Link>
+              </Link>{" "}
             </ListItem>
           </List>
         </Box>
@@ -123,50 +194,105 @@ const SettingMainMenu = () => {
             }}
           >
             <ListItem sx={{ p: 0 }}>
-              <ListItemIcon>
-                <ChatBubbleOutlineIcon />
-              </ListItemIcon>
-              <ListItemText
-                sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+              <Link
+                to={""}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
               >
-                Chat Setting
-              </ListItemText>
+                <ListItemIcon>
+                  <ChatBubbleOutlineIcon />
+                </ListItemIcon>
+                <ListItemText
+                  sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+                >
+                  Chat Setting
+                </ListItemText>
+              </Link>{" "}
             </ListItem>
             <ListItem sx={{ p: 0 }}>
-              <ListItemIcon>
-                <LockPersonOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText
-                sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+              <Link
+                to={""}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
               >
-                Privacy and Security
-              </ListItemText>
+                <ListItemIcon>
+                  <LockPersonOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText
+                  sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+                >
+                  Privacy and Security
+                </ListItemText>
+              </Link>{" "}
             </ListItem>
             <ListItem sx={{ p: 0 }}>
-              <ListItemIcon>
-                <NotificationsNoneOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText
-                sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+              <Link
+                to={""}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
               >
-                Notification and Sounds
-              </ListItemText>
+                <ListItemIcon>
+                  <NotificationsNoneOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText
+                  sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+                >
+                  Notification and Sounds
+                </ListItemText>
+              </Link>{" "}
             </ListItem>
             <ListItem sx={{ p: 0 }}>
-              <ListItemIcon>
-                <DataSaverOffOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText
-                sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+              <Link
+                to={""}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
               >
-                Data and Storage
-              </ListItemText>
+                <ListItemIcon>
+                  <DataSaverOffOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText
+                  sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+                >
+                  Data and Storage
+                </ListItemText>
+              </Link>{" "}
             </ListItem>
             <ListItem sx={{ p: 0 }}>
-              <ListItemIcon>
-                <PublicOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText sx={{ py: 1, my: 0 }}>Language</ListItemText>
+              <Link
+                to={""}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
+              >
+                <ListItemIcon>
+                  <PublicOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText sx={{ py: 1, my: 0 }}>Language</ListItemText>
+              </Link>{" "}
             </ListItem>
           </List>
         </Box>
@@ -184,22 +310,44 @@ const SettingMainMenu = () => {
             }}
           >
             <ListItem sx={{ p: 0 }}>
-              <ListItemIcon>
-                <PersonAddOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText
-                sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+              <Link
+                to={""}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
               >
-                Invite Friends
-              </ListItemText>
+                <ListItemIcon>
+                  <PersonAddOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText
+                  sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+                >
+                  Invite Friends
+                </ListItemText>
+              </Link>{" "}
             </ListItem>
             <ListItem sx={{ p: 0 }}>
-              <ListItemIcon>
-                <HelpOutlineOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText sx={{ py: 1, my: 0 }}>
-                Meitigram Features
-              </ListItemText>
+              <Link
+                to={""}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
+              >
+                <ListItemIcon>
+                  <HelpOutlineOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText sx={{ py: 1, my: 0 }}>
+                  Meitigram Features
+                </ListItemText>
+              </Link>{" "}
             </ListItem>
           </List>
         </Box>
