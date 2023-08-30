@@ -107,10 +107,10 @@ const menuItems = [
     title: "SETTING",
     items: [
       {
-        title: "Account",
+        title: "Setting",
         icon: <SettingsIcon sx={{ color: "white" }} />,
         type: NavLink,
-        address: "account",
+        address: "setting",
       },
       {
         title: "Dark mode",
@@ -404,9 +404,9 @@ export default function AppContainer(props: Props) {
             <Route element={<Help />} path="/help/:section" />
             <Route element={<HelpAnimation />} path="/help" />
           </Route>
-          <Route path="/account" element={<SettingCenter />}>
-            <Route element={<Setting />} path="/account/:section" />
-            <Route element={<HelpAnimation />} path="/account" />
+          <Route path="/setting" element={<SettingCenter />}>
+            <Route element={<Setting />} path="/setting/:section" />
+            <Route element={<HelpAnimation />} path="/setting" />
           </Route>
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/contact-us" element={<ContactCenter />} />

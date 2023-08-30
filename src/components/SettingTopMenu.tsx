@@ -42,7 +42,10 @@ const SettingTopMenu = () => {
         }}
       >
         <MenuItem>
-          <Link to={"/"} style={{ textDecoration: "none", display: "flex" }}>
+          <Link
+            to={"/setting/edit-name"}
+            style={{ textDecoration: "none", display: "flex" }}
+          >
             <ListItemIcon>
               <EditIcon sx={{ fontSize: "1.2rem" }} />
             </ListItemIcon>
