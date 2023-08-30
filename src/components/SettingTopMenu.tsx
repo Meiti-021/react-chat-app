@@ -61,8 +61,10 @@ const SettingTopMenu = () => {
           </Link>
         </MenuItem>
         <MenuItem>
-          {" "}
-          <Link to={"/"} style={{ textDecoration: "none", display: "flex" }}>
+          <Link
+            to={"/setting/logout"}
+            style={{ textDecoration: "none", display: "flex" }}
+          >
             <ListItemIcon>
               <LogoutIcon sx={{ fontSize: "1.2rem" }} />
             </ListItemIcon>
