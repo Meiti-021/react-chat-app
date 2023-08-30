@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
-import HelpBuqReport from "./HelpBuqReport";
 import HelpPrivacy from "./HelpPrivacy";
 import { useEffect } from "react";
 import SettingEditName from "./SettingEditName";
 import SettingLogOut from "./SettingLogOut";
+import SettingEmial from "./SettingEmial";
+import SettingLocation from "./SettingLocation";
+import SettingCareer from "./SettingCareer";
+import SettingBio from "./SettingBio";
 
 const Setting = () => {
   const { section } = useParams();
@@ -16,8 +19,17 @@ const Setting = () => {
   if (section === "logout") {
     return <SettingLogOut />;
   }
-  if (section === "buq-report") {
-    return <HelpBuqReport />;
+  if (section === "email") {
+    return <SettingEmial />;
+  }
+  if (section === "location") {
+    return <SettingLocation />;
+  }
+  if (section === "career") {
+    return <SettingCareer />;
+  }
+  if (section === "bio") {
+    return <SettingBio />;
   }
   if (section === "privacy-and-security") {
     return <HelpPrivacy />;

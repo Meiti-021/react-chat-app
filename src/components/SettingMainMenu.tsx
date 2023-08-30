@@ -53,7 +53,6 @@ const SettingMainMenu = () => {
         }}
       >
         <SettingTopMenu />
-
         <Box
           sx={{
             width: "100%",
@@ -114,7 +113,7 @@ const SettingMainMenu = () => {
                 }}
               >
                 <Link
-                  to={""}
+                  to={"/setting/email"}
                   style={{
                     textDecoration: "none",
                     width: "100%",
@@ -140,11 +139,12 @@ const SettingMainMenu = () => {
                 }}
               >
                 <Link
-                  to={""}
+                  to={"/setting/location"}
                   style={{
                     textDecoration: "none",
                     width: "100%",
                     display: "flex",
+                    color: "black",
                   }}
                 >
                   <ListItemText
@@ -156,7 +156,7 @@ const SettingMainMenu = () => {
             </ListItem>
             <ListItem sx={{ p: 0 }}>
               <Link
-                to={""}
+                to={"/setting/career"}
                 style={{
                   textDecoration: "none",
                   width: "100%",
@@ -165,17 +165,23 @@ const SettingMainMenu = () => {
                   color: "black",
                 }}
               >
-                <Link
-                  to={""}
-                  style={{
-                    textDecoration: "none",
-                    width: "100%",
-                    display: "flex",
-                  }}
-                >
-                  {" "}
-                  <ListItemText primary={users[0].career} secondary="Career" />
-                </Link>
+                {" "}
+                <ListItemText primary={users[0].career} secondary="Career" />
+              </Link>{" "}
+            </ListItem>
+            <ListItem sx={{ p: 0 }}>
+              <Link
+                to={"/setting/bio"}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "black",
+                }}
+              >
+                {" "}
+                <ListItemText primary={users[0].biography} secondary="Bio" />
               </Link>{" "}
             </ListItem>
           </List>
