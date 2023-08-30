@@ -201,7 +201,7 @@ const SettingMainMenu = () => {
           >
             <ListItem sx={{ p: 0 }}>
               <Link
-                to={""}
+                to={"/setting/chat-setting"}
                 style={{
                   textDecoration: "none",
                   width: "100%",

@@ -7,6 +7,7 @@ import SettingEmial from "./SettingEmial";
 import SettingLocation from "./SettingLocation";
 import SettingCareer from "./SettingCareer";
 import SettingBio from "./SettingBio";
+import SettingChat from "./SettingChat";
 
 const Setting = () => {
   const { section } = useParams();
@@ -30,6 +31,9 @@ const Setting = () => {
   }
   if (section === "bio") {
     return <SettingBio />;
+  }
+  if (section === "chat-setting") {
+    return <SettingChat />;
   }
   if (section === "privacy-and-security") {
     return <HelpPrivacy />;
