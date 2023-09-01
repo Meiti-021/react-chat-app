@@ -222,7 +222,7 @@ const SettingMainMenu = () => {
             </ListItem>
             <ListItem sx={{ p: 0 }}>
               <Link
-                to={""}
+                to={"/setting/privacy"}
                 style={{
                   textDecoration: "none",
                   width: "100%",

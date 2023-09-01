@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import HelpPrivacy from "./HelpPrivacy";
 import { useEffect } from "react";
 import SettingEditName from "./SettingEditName";
 import SettingLogOut from "./SettingLogOut";
@@ -8,6 +7,7 @@ import SettingLocation from "./SettingLocation";
 import SettingCareer from "./SettingCareer";
 import SettingBio from "./SettingBio";
 import SettingChat from "./SettingChat";
+import SettingPrivacy from "./SettingPrivacy";
 
 const Setting = () => {
   const { section } = useParams();
@@ -35,8 +35,8 @@ const Setting = () => {
   if (section === "chat-setting") {
     return <SettingChat />;
   }
-  if (section === "privacy-and-security") {
-    return <HelpPrivacy />;
+  if (section === "privacy") {
+    return <SettingPrivacy />;
   }
   return <div></div>;
 };
