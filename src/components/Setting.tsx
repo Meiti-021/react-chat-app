@@ -8,6 +8,7 @@ import SettingCareer from "./SettingCareer";
 import SettingBio from "./SettingBio";
 import SettingChat from "./SettingChat";
 import SettingPrivacy from "./SettingPrivacy";
+import SettingNotification from "./SettingNotification";
 
 const Setting = () => {
   const { section } = useParams();
@@ -37,6 +38,9 @@ const Setting = () => {
   }
   if (section === "privacy") {
     return <SettingPrivacy />;
+  }
+  if (section === "notification") {
+    return <SettingNotification />;
   }
   return <div></div>;
 };

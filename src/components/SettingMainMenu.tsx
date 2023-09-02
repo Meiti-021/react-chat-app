@@ -243,7 +243,7 @@ const SettingMainMenu = () => {
             </ListItem>
             <ListItem sx={{ p: 0 }}>
               <Link
-                to={""}
+                to={"/setting/notification"}
                 style={{
                   textDecoration: "none",
                   width: "100%",
