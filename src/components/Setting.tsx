@@ -10,6 +10,7 @@ import SettingChat from "./SettingChat";
 import SettingPrivacy from "./SettingPrivacy";
 import SettingNotification from "./SettingNotification";
 import SettingData from "./SettingData";
+import SettingLanguage from "./SettingLanguage";
 
 const Setting = () => {
   const { section } = useParams();
@@ -45,6 +46,9 @@ const Setting = () => {
   }
   if (section === "data") {
     return <SettingData />;
+  }
+  if (section === "language") {
+    return <SettingLanguage />;
   }
   return <div></div>;
 };
