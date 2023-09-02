@@ -9,6 +9,7 @@ import SettingBio from "./SettingBio";
 import SettingChat from "./SettingChat";
 import SettingPrivacy from "./SettingPrivacy";
 import SettingNotification from "./SettingNotification";
+import SettingData from "./SettingData";
 
 const Setting = () => {
   const { section } = useParams();
@@ -41,6 +42,9 @@ const Setting = () => {
   }
   if (section === "notification") {
     return <SettingNotification />;
+  }
+  if (section === "data") {
+    return <SettingData />;
   }
   return <div></div>;
 };
