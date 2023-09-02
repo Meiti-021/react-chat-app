@@ -1,6 +1,7 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SettingSecurity from "./SettingSecurity";
+import SettingPrivacyList from "./SettingPrivacyList";
 
 const SettingPrivacy = () => {
   return (
@@ -38,6 +39,7 @@ const SettingPrivacy = () => {
           Privacy
         </Typography>
       </Box>
+      <SettingPrivacyList />
     </div>
   );
 };
