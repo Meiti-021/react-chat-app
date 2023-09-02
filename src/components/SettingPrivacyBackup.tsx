@@ -13,8 +13,7 @@ import {
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import { useState } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import Lottie from "lottie-react";
-import ChatAnimation from "../assets/email.json";
+import mail from "../assets/email.png";
 const SettingPrivacyBackup = () => {
   const [backup, setBackup] = useState<string>("");
   const [form, setForm] = useState<string>("");
@@ -99,7 +98,16 @@ const SettingPrivacyBackup = () => {
                 mt: -10,
               }}
             >
-              <Lottie animationData={ChatAnimation} loop={true} />
+              <img
+                src={mail}
+                alt=""
+                style={{
+                  display: "block",
+                  objectFit: "contain",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
             </Box>
             <Typography
               sx={{
