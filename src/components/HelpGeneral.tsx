@@ -4,7 +4,9 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  IconButton,
 } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 const faqs = [
   {
@@ -62,47 +64,75 @@ const faqs = [
 
 const HelpGeneral = () => {
   return (
-    <Box component={"div"} sx={{ p: 5 }}>
-      <Typography sx={{ fontSize: "2rem", fontWeight: 600, mb: 2 }}>
-        General
-      </Typography>
-      <Typography sx={{ color: "#7a7f9a" }}>
-        Welcome to the Chat App FAQ page! Here, you'll find answers to common
-        questions about our chat application. Discover how to get started,
-        navigate the interface, manage your conversations, and much more.
-        Whether you're a new user or a seasoned chatter, this resource will
-        guide you through the ins and outs of our platform. If you can't find
-        what you're looking for, feel free to reach out to our support team for
-        personalized assistance. Let's make your chatting experience smooth and
-        enjoyable!
-      </Typography>
-      <Box component={"div"} sx={{ mt: 5 }}>
-        {faqs.map((faq, index) => {
-          return (
-            <Accordion key={"faq" + index}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography
-                  sx={{ fontSize: "1rem", color: "black", fontWeight: 500 }}
-                >
-                  {faq.question}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography
-                  sx={{ fontSize: "0.9rem", color: "#7a7f9a", fontWeight: 400 }}
-                >
-                  {faq.answer}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          );
-        })}
+    <>
+      <Box
+        sx={{
+          height: "3.5rem",
+          display: "flex",
+          gap: 5,
+          alignItems: "center",
+          bgcolor: "#008EE4",
+          color: "white",
+          px: 2,
+        }}
+      >
+        <IconButton sx={{ color: "white" }}>
+          <ArrowBackIcon />
+        </IconButton>
+        <Typography fontSize={"1.1rem"}>General</Typography>
       </Box>
-    </Box>
+      <Box component={"div"} sx={{ p: 2 }}>
+        <Typography
+          fontSize={"1rem"}
+          color="primary"
+          mb={2}
+          fontWeight={"bold"}
+        >
+          FAQs
+        </Typography>
+        <Typography sx={{ color: "#7a7f9a" }} fontSize={"0.9rem"}>
+          Welcome to the Chat App FAQ page! Here, you'll find answers to common
+          questions about our chat application. Discover how to get started,
+          navigate the interface, manage your conversations, and much more.
+          Whether you're a new user or a seasoned chatter, this resource will
+          guide you through the ins and outs of our platform. If you can't find
+          what you're looking for, feel free to reach out to our support team
+          for personalized assistance. Let's make your chatting experience
+          smooth and enjoyable!
+        </Typography>
+        <Box component={"div"} sx={{ mt: 2 }}>
+          {faqs.map((faq, index) => {
+            return (
+              <Accordion key={"faq" + index} elevation={0}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                  sx={{ px: 0 }}
+                >
+                  <Typography
+                    sx={{ fontSize: "1rem", color: "black", fontWeight: 500 }}
+                  >
+                    {faq.question}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails sx={{ px: 0 }}>
+                  <Typography
+                    sx={{
+                      fontSize: "0.9rem",
+                      color: "#7a7f9a",
+                      fontWeight: 400,
+                    }}
+                  >
+                    {faq.answer}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            );
+          })}
+        </Box>
+      </Box>
+    </>
   );
 };
 

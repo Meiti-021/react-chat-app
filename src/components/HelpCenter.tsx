@@ -1,8 +1,9 @@
 import Grid from "@mui/material/Grid";
-import { Box, Drawer, Typography, Button } from "@mui/material";
+import { Box, Drawer, Typography, Button, IconButton } from "@mui/material";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { helpDatacenter } from "../utils/helps";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 const HelpCenter = () => {
   const { pathname } = useLocation();
   const [value, setValue] = useState<string>("");
@@ -28,58 +29,71 @@ const HelpCenter = () => {
           "&::-webkit-scrollbar": { display: "none" },
           borderRight: "1px solid #EAEDF3",
           position: "relative",
-          p: 3,
         }}
       >
-        <Typography
-          sx={{ fontSize: "2rem", fontWeight: 600, textAlign: "center" }}
-        >
-          Hi, We are here to help you?
-        </Typography>
         <Box
-          component={"div"}
-          sx={{ bgcolor: "#1e2933", p: 1, borderRadius: 2, my: 2 }}
-        >
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-            style={{
-              width: "100%",
-              border: "none",
-              outline: "none",
-              height: "45px",
-              borderRadius: "4px",
-              padding: "5px",
-              color: "white",
-              backgroundColor: "inherit",
-            }}
-            placeholder="search ..."
-          />
-          <Button
-            variant="contained"
-            fullWidth
-            sx={{ height: "45px", bgcolor: "#00b718" }}
-          >
-            SEARCH
-          </Button>
-        </Box>
-        <Typography
           sx={{
-            fontSize: "1rem",
-            fontWeight: 500,
-            textAlign: "center",
-            px: 5,
-            mt: 1,
-            mb: 2,
+            height: "3.5rem",
+            display: "flex",
+            gap: 5,
+            alignItems: "center",
+            bgcolor: "#008EE4",
+            color: "white",
+            px: 2,
           }}
         >
-          Find answers to frequently asked questions.
-        </Typography>
-
-        <Grid container gap={0.5} justifyContent={"center"}>
+          <IconButton sx={{ color: "white" }}>
+            <ArrowBackIcon />
+          </IconButton>
+          <Typography fontSize={"1.1rem"}>Need Help?</Typography>
+        </Box>
+        <Box p={2}>
+          <Typography
+            sx={{ fontSize: "2rem", fontWeight: 600, textAlign: "center" }}
+          >
+            Help Center
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "1rem",
+              textAlign: "center",
+              color: "#7a7f9a",
+            }}
+          >
+            Find answers to frequently asked questions.
+          </Typography>
+          <Box
+            component={"div"}
+            sx={{ bgcolor: "#1e2933", p: 1, borderRadius: 2, my: 2 }}
+          >
+            <input
+              type="text"
+              value={value}
+              onChange={(e) => {
+                setValue(e.target.value);
+              }}
+              style={{
+                width: "100%",
+                border: "none",
+                outline: "none",
+                height: "45px",
+                borderRadius: "4px",
+                padding: "5px",
+                color: "white",
+                backgroundColor: "inherit",
+              }}
+              placeholder="search ..."
+            />
+            <Button
+              variant="contained"
+              fullWidth
+              sx={{ height: "45px", bgcolor: "#008EE4" }}
+            >
+              SEARCH
+            </Button>
+          </Box>
+        </Box>
+        <Grid container gap={0.5} justifyContent={"center"} px={2}>
           {helpDatacenter.map((item) => {
             return (
               <Grid
