@@ -2,21 +2,20 @@ import { Box } from "@mui/material";
 import ChatInput from "./ChatInput";
 import GroupChatHeader from "./GroupChatHeader";
 import ChatBody from "./ChatBody";
-import { MessageType } from "../utils/messages";
 import { UserType } from "../utils/users";
 
 const GroupChat = ({
   participants,
-  messages,
   group_name,
   group_profile,
   description,
+  chat_id,
 }: {
   participants: UserType[];
-  messages: [string, MessageType[]][];
   group_name: string | null;
   group_profile: string | null;
   description: string | null;
+  chat_id: string;
 }) => {
   return (
     <Box
@@ -33,8 +32,8 @@ const GroupChat = ({
         group_profile={group_profile}
         description={description}
       />
-      <ChatBody messages={messages} />
-      <ChatInput />
+      <ChatBody chat_id={chat_id} />
+      <ChatInput chat_id={chat_id} />
     </Box>
   );
 };

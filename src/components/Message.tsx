@@ -4,8 +4,11 @@ import { userFind } from "../utils/utils";
 import moment from "moment";
 import CheckIcon from "@mui/icons-material/Check";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const Message = ({ content, timestamp, sender, seen }: MessageType) => {
+  const { users } = useSelector((store: RootState) => store.chat);
   return (
     <Box
       component={"div"}
@@ -46,7 +49,9 @@ const Message = ({ content, timestamp, sender, seen }: MessageType) => {
               }}
             >
               <Avatar
-                src={`/assets/users/${userFind(sender)?.profile_picture}`}
+                src={`/assets/users/${
+                  userFind(users, sender)?.profile_picture
+                }`}
                 sx={{
                   width: 30,
                   height: 30,
@@ -57,7 +62,7 @@ const Message = ({ content, timestamp, sender, seen }: MessageType) => {
                 }}
               />
               <Typography sx={{ fontWeight: "bold" }}>
-                {userFind(sender)?.username}
+                {userFind(users, sender)?.username}
               </Typography>
             </Box>
           ) : (

@@ -21,10 +21,12 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import { userFind } from "../utils/utils";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import SettingTopMenu from "./SettingTopMenu";
-import { users } from "../utils/users";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const SettingMainMenu = () => {
+  const { users } = useSelector((store: RootState) => store.chat);
   return (
     <Grid
       item
@@ -64,7 +66,7 @@ const SettingMainMenu = () => {
           }}
         >
           <Avatar
-            src={`/assets/users/${userFind("user1")?.profile_picture}`}
+            src={`/assets/users/${userFind(users, "user1")?.profile_picture}`}
             sx={{ bgcolor: "white", width: 60, height: 60 }}
           />
           <Box>

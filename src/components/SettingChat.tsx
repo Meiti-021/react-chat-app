@@ -22,6 +22,8 @@ import moment from "moment";
 import { useState } from "react";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const messages: MessageType[] = [
   {
     message_id: "message3",
@@ -41,6 +43,7 @@ const messages: MessageType[] = [
   },
 ];
 const SettingChat = () => {
+  const { users } = useSelector((store: RootState) => store.chat);
   const [size, setSize] = useState<number | number[]>(16);
   const [corner, setCorner] = useState<number | number[]>(5);
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -140,7 +143,7 @@ const SettingChat = () => {
                     >
                       <Avatar
                         src={`/assets/users/${
-                          userFind(item.sender)?.profile_picture
+                          userFind(users, item.sender)?.profile_picture
                         }`}
                         sx={{
                           width: 30,
@@ -152,7 +155,7 @@ const SettingChat = () => {
                         }}
                       />
                       <Typography sx={{ fontWeight: "bold" }}>
-                        {userFind(item.sender)?.username}
+                        {userFind(users, item.sender)?.username}
                       </Typography>
                     </Box>
                   ) : (

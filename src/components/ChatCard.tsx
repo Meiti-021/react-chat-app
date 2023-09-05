@@ -1,4 +1,3 @@
-import { users } from "../utils/users";
 import { messages as messages_list } from "../utils/messages";
 import { NavLink } from "react-router-dom";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
@@ -7,15 +6,18 @@ import CheckIcon from "@mui/icons-material/Check";
 import moment from "moment";
 import { messageFind, userFind, userNameFind } from "../utils/utils";
 import { ChatType } from "../utils/chats";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const ChatCard = ({
   participants,
-  messages,
+  messages: chat_messages,
   peer_private,
   group_name,
   group_profile,
   chat_id,
 }: ChatType) => {
+  const { users, messages } = useSelector((store: RootState) => store.chat);
   return (
     <NavLink
       to={`/${chat_id}`}
@@ -77,7 +79,7 @@ const ChatCard = ({
             }}
           >
             {peer_private ? (
-              <> {userFind(participants[1])?.username}</>
+              <> {userFind(users, participants[1])?.username}</>
             ) : (
               <>{group_name}</>
             )}
@@ -96,7 +98,8 @@ const ChatCard = ({
           >
             {moment(
               messages_list.find(
-                (item) => item.message_id === messages[messages.length - 1]
+                (item) =>
+                  item.message_id === chat_messages[chat_messages.length - 1]
               )?.timestamp
             )?.fromNow()}
           </Typography>
@@ -123,23 +126,39 @@ const ChatCard = ({
             }}
           >
             {peer_private ? (
-              <> {messageFind(messages[messages.length - 1])?.content} </>
+              <>
+                {" "}
+                {
+                  messageFind(messages, chat_messages[chat_messages.length - 1])
+                    ?.content
+                }{" "}
+              </>
             ) : (
               <>
                 {userNameFind(
-                  userFind(messageFind(messages[messages.length - 1])?.sender)
-                    ?.user_id
+                  users,
+                  userFind(
+                    users,
+                    messageFind(
+                      messages,
+                      chat_messages[chat_messages.length - 1]
+                    )?.sender
+                  )?.user_id
                 ) +
                   " : " +
                   messages_list.find(
-                    (item) => item.message_id === messages[messages.length - 1]
+                    (item) =>
+                      item.message_id ===
+                      chat_messages[chat_messages.length - 1]
                   )?.content}
               </>
             )}
           </Typography>
-          {messageFind(messages[messages.length - 1])?.sender === "user1" ? (
+          {messageFind(messages, chat_messages[chat_messages.length - 1])
+            ?.sender === "user1" ? (
             <>
-              {messageFind(messages[messages.length - 1])?.seen ? (
+              {messageFind(messages, chat_messages[chat_messages.length - 1])
+                ?.seen ? (
                 <DoneAllIcon sx={{ color: "#5965DB", fontSize: "1rem" }} />
               ) : (
                 <CheckIcon sx={{ color: "#5965DB", fontSize: "1rem" }} />
@@ -150,7 +169,8 @@ const ChatCard = ({
               badgeContent={
                 messages_list.filter(
                   (item) =>
-                    item.message_id === messages[messages.length - 1] &&
+                    item.message_id ===
+                      chat_messages[chat_messages.length - 1] &&
                     item.seen === false
                 ).length
               }
