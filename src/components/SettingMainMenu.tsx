@@ -96,7 +96,6 @@ const SettingMainMenu = () => {
           <CameraAltIcon />
         </IconButton>
       </Box>
-      //
       <Box>
         <Box sx={{ p: 3 }}>
           <Typography color={"#008EE4"} fontWeight={500} mb={1}>

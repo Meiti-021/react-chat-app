@@ -1,11 +1,13 @@
 import Grid from "@mui/material/Grid";
-import { chats } from "../utils/chats";
 import ChatCard from "./ChatCard";
 import { Box, Drawer, Typography } from "@mui/material";
 import { Outlet, useLocation } from "react-router-dom";
 import ChatCardAction from "./ChatCardAction";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const Conversations = ({ type }: { type: string }) => {
   const { pathname } = useLocation();
+  const { chats } = useSelector((store: RootState) => store.chat);
   return (
     <Grid
       container
