@@ -211,8 +211,8 @@ const Message = ({
             autoFocus
             margin="dense"
             id="name"
-            label="Email Address"
-            type="email"
+            label="New Content"
+            type="text"
             fullWidth
             variant="standard"
             value={editedMessage}
