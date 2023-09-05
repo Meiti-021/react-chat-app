@@ -6,15 +6,13 @@ import EmojiPicker from "emoji-picker-react";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { sendMessage } from "../services/chatSlice";
-import { RootState } from "../store";
 import moment from "moment";
 const ChatInput = ({ chat_id }: { chat_id: string }) => {
   const [input, setInput] = useState("");
   const [emojiOpen, setEmojiOpen] = useState(false);
   const dispatch = useDispatch();
-  const { messages } = useSelector((store: RootState) => store.chat);
   return (
     <Box
       component={"form"}
@@ -130,7 +128,8 @@ const ChatInput = ({ chat_id }: { chat_id: string }) => {
                 sendMessage({
                   chatId: chat_id,
                   message: {
-                    message_id: `message${messages.length + 1}`,
+                    message_id:
+                      Date.now().toString(36) + Math.random().toString(36),
                     content: input,
                     timestamp: moment().format("YYYY-MM-DD HH:mm:ss"),
                     sender: "user1",

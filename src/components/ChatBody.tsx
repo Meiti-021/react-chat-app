@@ -8,7 +8,9 @@ import { RootState } from "../store";
 import { chatFind, messageFind } from "../utils/utils";
 const ChatBody = ({ chat_id }: { chat_id: string }) => {
   const { chats, messages } = useSelector((store: RootState) => store.chat);
-  const [messagesArray, setMessagesArray] = useState<MessageType[] | []>([]);
+  const [messagesArray, setMessagesArray] = useState<
+    MessageType[] | [] | undefined
+  >(undefined);
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -30,6 +32,53 @@ const ChatBody = ({ chat_id }: { chat_id: string }) => {
       setMessagesArray(pureMessagesArray);
     }
   }, [messages, chats, chat_id]);
+  if (messagesArray === undefined) {
+    return (
+      <Box
+        sx={{
+          height: { xs: "calc(100vh - 7.5rem)", sm: "calc(100vh - 11.5rem)" },
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "5rem",
+            fontWeight: "bold",
+            color: "#EAEDF3",
+            mt: -5,
+          }}
+        >
+          LOADING
+        </Typography>
+      </Box>
+    );
+  }
+  if (!messagesArray.length) {
+    return (
+      <Box
+        sx={{
+          height: { xs: "calc(100vh - 7.5rem)", sm: "calc(100vh - 11.5rem)" },
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          sx={{
+            bgcolor: "#1e2933",
+            color: "white",
+            px: 2,
+            py: 1,
+            fontSize: "0.8rem",
+          }}
+        >
+          There's no messages yet!
+        </Typography>
+      </Box>
+    );
+  }
   return (
     <Box
       sx={{
