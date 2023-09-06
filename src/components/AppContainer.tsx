@@ -21,7 +21,13 @@ import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import SettingsIcon from "@mui/icons-material/Settings";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
+import {
+  NavLink,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { Avatar, Button, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import GroupsIcon from "@mui/icons-material/Groups";
@@ -39,6 +45,9 @@ import HelpAnimation from "./HelpAnimation";
 import ContactCenter from "./ContactCenter";
 import Setting from "./Setting";
 import SettingCenter from "./SettingCenter";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
+import { switchDarkmode } from "../services/settingSlice";
 
 const drawerWidth = 270;
 
@@ -48,39 +57,39 @@ const menuItems = [
     items: [
       {
         title: "Conversations",
-        icon: <ChatIcon sx={{ color: "white" }} />,
+        icon: <ChatIcon sx={{ color: "inherit" }} />,
         type: Button,
         address: "",
       },
 
       {
         title: "Groups",
-        icon: <GroupsIcon sx={{ color: "white" }} />,
+        icon: <GroupsIcon sx={{ color: "inherit" }} />,
         type: Button,
         address: "",
       },
       {
         title: "Privates",
-        icon: <GroupIcon sx={{ color: "white" }} />,
+        icon: <GroupIcon sx={{ color: "inherit" }} />,
         type: Button,
         address: "",
       },
       {
         title: "Contacts",
-        icon: <PermContactCalendarIcon sx={{ color: "white" }} />,
+        icon: <PermContactCalendarIcon sx={{ color: "inherit" }} />,
         type: NavLink,
         address: "contacts",
       },
 
       {
         title: "Channels",
-        icon: <CampaignIcon sx={{ color: "white" }} />,
+        icon: <CampaignIcon sx={{ color: "inherit" }} />,
         type: NavLink,
         address: "channels",
       },
       {
         title: "Bots",
-        icon: <SmartToyIcon sx={{ color: "white" }} />,
+        icon: <SmartToyIcon sx={{ color: "inherit" }} />,
         type: NavLink,
         address: "bots",
       },
@@ -91,13 +100,13 @@ const menuItems = [
     items: [
       {
         title: "Need help?",
-        icon: <HelpOutlineIcon sx={{ color: "white" }} />,
+        icon: <HelpOutlineIcon sx={{ color: "inherit" }} />,
         type: NavLink,
         address: "help",
       },
       {
         title: "Contact us",
-        icon: <HeadsetMicIcon sx={{ color: "white" }} />,
+        icon: <HeadsetMicIcon sx={{ color: "inherit" }} />,
         type: NavLink,
         address: "contact-us",
       },
@@ -108,19 +117,19 @@ const menuItems = [
     items: [
       {
         title: "Setting",
-        icon: <SettingsIcon sx={{ color: "white" }} />,
+        icon: <SettingsIcon sx={{ color: "inherit" }} />,
         type: NavLink,
         address: "setting",
       },
       {
         title: "Dark mode",
-        icon: <Brightness4Icon sx={{ color: "white" }} />,
+        icon: <Brightness4Icon sx={{ color: "inherit" }} />,
         type: Button,
-        address: "",
+        address: "darkmode",
       },
       {
         title: "Log out",
-        icon: <LogoutIcon sx={{ color: "white" }} />,
+        icon: <LogoutIcon sx={{ color: "inherit" }} />,
         type: Button,
         address: "",
       },
@@ -137,24 +146,47 @@ interface Props {
 }
 
 export default function AppContainer(props: Props) {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const location = useLocation();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const [filterType, setFilterType] = React.useState<string>("conversations");
+  const [filterType, setFilterType] = React.useState<string>("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  React.useEffect(() => {
+    if (location.pathname === "/" && filterType === "") {
+      setFilterType("conversations");
+    }
+  }, [location.pathname, filterType]);
   const drawer = (
     <div style={{ height: "100%" }}>
-      <Toolbar>
-        <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+      <Toolbar sx={{ bgcolor: darkmode ? "#212D3B" : "#008EE4" }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "1rem",
+          }}
+        >
           <Avatar src="/assets/users/bob_profile.jpg" />
           <Stack spacing={-0.5}>
-            <Typography sx={{ color: "white", fontWeight: "bold" }}>
+            <Typography
+              sx={{
+                color: "white",
+                fontWeight: "bold",
+              }}
+            >
               YOUR NAME
             </Typography>
-            <Typography sx={{ color: "#7A848F", fontSize: "0.8rem" }}>
+            <Typography
+              sx={{
+                color: darkmode ? "#7A848F" : "lightgray",
+                fontSize: "0.8rem",
+              }}
+            >
               web developer
             </Typography>
           </Stack>
@@ -187,7 +219,6 @@ export default function AppContainer(props: Props) {
                   padding: "0 0",
                   display: "flex",
                   justifyContent: "flex-start",
-                  color: "white",
                 }}
               >
                 <Box
@@ -200,9 +231,16 @@ export default function AppContainer(props: Props) {
                             display: "flex",
                             alignItems: "center",
                             textDecoration: "none",
-                            color: "white",
+                            color:
+                              isActive && darkmode
+                                ? "white"
+                                : isActive && !darkmode
+                                ? "white"
+                                : !isActive && darkmode
+                                ? "white"
+                                : "black",
                             backgroundColor:
-                              isActive || isPending ? "#00b718" : undefined,
+                              isActive || isPending ? "#008EE4" : undefined,
                             width: "100%",
                             borderRadius: "5px",
                           };
@@ -212,10 +250,20 @@ export default function AppContainer(props: Props) {
                           display: "flex",
                           alignItems: "center",
                           textDecoration: "none",
-                          color: "white",
+                          color:
+                            filterType === element.title.toLocaleLowerCase() &&
+                            darkmode
+                              ? "white"
+                              : filterType ===
+                                  element.title.toLocaleLowerCase() && !darkmode
+                              ? "white"
+                              : filterType !==
+                                  element.title.toLocaleLowerCase() && darkmode
+                              ? "white"
+                              : "black",
                           backgroundColor:
                             filterType === element.title.toLowerCase()
-                              ? "#00b718"
+                              ? "#008EE4"
                               : undefined,
                           width: "100%",
                           borderRadius: "5px",
@@ -230,15 +278,23 @@ export default function AppContainer(props: Props) {
                   onClick={
                     element.type === Button
                       ? () => {
-                          navigate("/");
-                          setFilterType(element.title.toLowerCase());
+                          if (element.title === "Dark mode") {
+                            dispatch(switchDarkmode());
+                            setFilterType("");
+                            navigate("/");
+                          } else {
+                            navigate("/");
+                            setFilterType(element.title.toLowerCase());
+                          }
                         }
                       : () => {
                           setFilterType("");
                         }
                   }
                 >
-                  <ListItemIcon>{element.icon}</ListItemIcon>
+                  <ListItemIcon sx={{ color: "inherit" }}>
+                    {element.icon}
+                  </ListItemIcon>
                   <ListItemText primary={element.title} />
                 </Box>
               </ListItem>
@@ -366,7 +422,7 @@ export default function AppContainer(props: Props) {
               height: "100%",
             },
           }}
-          PaperProps={{ sx: { bgcolor: "#1e2933" } }}
+          PaperProps={{ sx: { bgcolor: darkmode ? "#1D2733" : "white" } }}
         >
           {drawer}
         </Drawer>
@@ -380,7 +436,7 @@ export default function AppContainer(props: Props) {
               height: "100%",
             },
           }}
-          PaperProps={{ sx: { bgcolor: "#1e2933" } }}
+          PaperProps={{ sx: { bgcolor: darkmode ? "#1D2733" : "white" } }}
           open
         >
           {drawer}

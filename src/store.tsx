@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import chatSlice from "./services/chatSlice";
+import settingSlice from "./services/settingSlice";
 
 export const store = configureStore({
   reducer: {
     chat: chatSlice,
+    setting: settingSlice,
   },
 });
 

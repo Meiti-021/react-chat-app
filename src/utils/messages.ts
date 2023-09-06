@@ -172,7 +172,7 @@ export const messages: MessageType[] = [
   },
   {
     message_id: "message21",
-    content: "i'm not in  mood right now. get lost",
+    content: "i'm not in  mode right now. get lost",
     timestamp: "2023-07-26 12:37:00",
     sender: "user7",
     group_sender_display_name: null,
