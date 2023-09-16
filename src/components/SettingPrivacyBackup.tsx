@@ -14,7 +14,7 @@ import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlin
 import { useState } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import mail from "../assets/email.png";
-const SettingPrivacyBackup = () => {
+const SettingPrivacyBackup = ({ darkmode }: { darkmode: boolean }) => {
   const [backup, setBackup] = useState<string>("");
   const [form, setForm] = useState<string>("");
   const [Open, setOpen] = useState(false);
@@ -49,6 +49,7 @@ const SettingPrivacyBackup = () => {
         ModalProps={{
           keepMounted: true, // Better open performance on .
         }}
+        PaperProps={{ sx: { bgcolor: darkmode ? "black" : "white" } }}
       >
         <Box sx={{ width: { xs: "100vw", sm: "400px" }, height: "100vh" }}>
           <Box sx={{ width: "100%" }}>
@@ -59,7 +60,7 @@ const SettingPrivacyBackup = () => {
                 display: "flex",
                 gap: 5,
                 alignItems: "center",
-                bgcolor: "#008EE4",
+                bgcolor: darkmode ? "#1D2733" : "#008EE4",
                 color: "white",
                 px: 2,
                 width: "100%",
@@ -112,7 +113,7 @@ const SettingPrivacyBackup = () => {
             <Typography
               sx={{
                 fontWeight: "bold",
-                color: "#1e2933",
+                color: darkmode ? "white" : "#1e2933",
                 fontSize: { xs: "1rem", md: " 1.5rem" },
                 fontFamily: "Public Sans",
                 textAlign: "center",
@@ -128,7 +129,7 @@ const SettingPrivacyBackup = () => {
                 fontFamily: "Public Sans",
                 textAlign: "center",
                 textTransform: "capitalize",
-                color: "#7a7f9a",
+                color: darkmode ? "lightgrey" : "#7a7f9a",
               }}
             >
               Your safty net for account recovery and security notifications.

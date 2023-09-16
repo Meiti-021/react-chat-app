@@ -8,6 +8,7 @@ import { RootState } from "../store";
 const Conversations = ({ type }: { type: string }) => {
   const { pathname } = useLocation();
   const { chats } = useSelector((store: RootState) => store.chat);
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   return (
     <Grid
       container
@@ -28,7 +29,7 @@ const Conversations = ({ type }: { type: string }) => {
         sx={{
           overflow: "auto",
           "&::-webkit-scrollbar": { display: "none" },
-          borderRight: "1px solid #EAEDF3",
+          borderRight: darkmode ? "1px solid #7A848F" : "1px solid #EAEDF3",
           position: "relative",
         }}
       >
@@ -39,11 +40,18 @@ const Conversations = ({ type }: { type: string }) => {
             justifyContent: "space-between",
             alignItems: "center",
             padding: "15px 20px",
-            borderBottom: "1px solid #EAEDF3",
+            borderBottom: darkmode ? "1px solid #7A848F" : "1px solid #EAEDF3",
             height: "3.5rem",
+            bgcolor: darkmode ? "#1D2733" : undefined,
           }}
         >
-          <Typography sx={{ fontSize: "0.8rem", fontWeight: "bold" }}>
+          <Typography
+            sx={{
+              fontSize: "0.8rem",
+              fontWeight: "bold",
+              color: darkmode ? "lightgrey" : undefined,
+            }}
+          >
             {type === "conversations"
               ? "ALL CONVERSATIONS"
               : type === "groups"

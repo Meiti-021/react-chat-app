@@ -8,6 +8,8 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const faqs = [
   {
     question: "How do I send a message?",
@@ -63,6 +65,8 @@ const faqs = [
 ];
 
 const HelpGeneral = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
+
   return (
     <>
       <Box
@@ -71,7 +75,7 @@ const HelpGeneral = () => {
           display: "flex",
           gap: 5,
           alignItems: "center",
-          bgcolor: "#008EE4",
+          bgcolor: darkmode ? "#1D2733" : "#008EE4",
           color: "white",
           px: 2,
         }}
@@ -111,7 +115,11 @@ const HelpGeneral = () => {
                   sx={{ px: 0 }}
                 >
                   <Typography
-                    sx={{ fontSize: "1rem", color: "black", fontWeight: 500 }}
+                    sx={{
+                      fontSize: "1rem",
+                      color: darkmode ? "white" : "black",
+                      fontWeight: 500,
+                    }}
                   >
                     {faq.question}
                   </Typography>

@@ -15,11 +15,10 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Lottie from "lottie-react";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import ChatAnimation from "../assets/lock.json";
-const SettingPrivacyPassword = () => {
+const SettingPrivacyPassword = ({ darkmode }: { darkmode: boolean }) => {
   const [pass, setPass] = useState<string>("");
   const [form, setForm] = useState<string>("");
   const [Open, setOpen] = useState(false);
-
   const handleDrawerToggle = () => {
     setOpen(!Open);
   };
@@ -48,6 +47,7 @@ const SettingPrivacyPassword = () => {
         ModalProps={{
           keepMounted: true, // Better open performance on .
         }}
+        PaperProps={{ sx: { bgcolor: darkmode ? "black" : "white" } }}
       >
         <Box sx={{ width: { xs: "100vw", sm: "400px" }, height: "100vh" }}>
           <Box sx={{ width: "100%" }}>
@@ -58,7 +58,7 @@ const SettingPrivacyPassword = () => {
                 display: "flex",
                 gap: 5,
                 alignItems: "center",
-                bgcolor: "#008EE4",
+                bgcolor: darkmode ? "#1D2733" : "#008EE4",
                 color: "white",
                 px: 2,
                 width: "100%",
@@ -102,7 +102,7 @@ const SettingPrivacyPassword = () => {
             <Typography
               sx={{
                 fontWeight: "bold",
-                color: "#1e2933",
+                color: darkmode ? "#fff" : "#1e2933",
                 fontSize: { xs: "1rem", md: " 1.5rem" },
                 fontFamily: "Public Sans",
                 textAlign: "center",
@@ -118,7 +118,7 @@ const SettingPrivacyPassword = () => {
                 fontFamily: "Public Sans",
                 textAlign: "center",
                 textTransform: "capitalize",
-                color: "#7a7f9a",
+                color: darkmode ? "lightgrey" : "#7a7f9a",
               }}
             >
               when a passcode is set, a lock icon appears above your chatlist,

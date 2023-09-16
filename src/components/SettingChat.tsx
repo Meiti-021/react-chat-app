@@ -44,6 +44,8 @@ const messages: MessageType[] = [
 ];
 const SettingChat = () => {
   const { users } = useSelector((store: RootState) => store.chat);
+  const { darkmode } = useSelector((store: RootState) => store.setting);
+
   const [size, setSize] = useState<number | number[]>(16);
   const [corner, setCorner] = useState<number | number[]>(5);
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -55,7 +57,7 @@ const SettingChat = () => {
           display: "flex",
           gap: 5,
           alignItems: "center",
-          bgcolor: "#008EE4",
+          bgcolor: darkmode ? "#1D2733" : "#008EE4",
           color: "white",
           px: 2,
         }}

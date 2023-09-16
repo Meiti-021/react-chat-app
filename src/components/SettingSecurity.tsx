@@ -13,6 +13,8 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import SettingPrivacyPassword from "./SettingPrivacyPassword";
 import SettingPrivacyBackup from "./SettingPrivacyBackup";
 import AvTimerIcon from "@mui/icons-material/AvTimer";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const settingData: {
   id: "pass" | "delete" | "login";
   icon: React.ReactNode;
@@ -36,6 +38,7 @@ const settingData: {
 ];
 
 const SettingSecurity = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   const [setting, setSetting] = useState<{
     pass: boolean;
     delete: boolean;
@@ -64,8 +67,8 @@ const SettingSecurity = () => {
           </ListItem>
         );
       })}
-      <SettingPrivacyPassword />
-      <SettingPrivacyBackup />
+      <SettingPrivacyPassword darkmode={darkmode} />
+      <SettingPrivacyBackup darkmode={darkmode} />
     </List>
   );
 };

@@ -20,8 +20,11 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { users } from "../utils/users";
 import { Link } from "react-router-dom";
 import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const ContactList = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
+  const { darkmode } = useSelector((store: RootState) => store.setting);
 
   const handleChange =
     (panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -69,7 +72,7 @@ const ContactList = () => {
                           textTransform: "capitalize",
                           fontFamily: "Public Sans",
                           fontWeight: 400,
-                          color: "#000",
+                          color: darkmode ? "white" : "black",
                         }}
                       >
                         {item.username}

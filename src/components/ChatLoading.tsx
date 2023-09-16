@@ -1,5 +1,9 @@
 import { Box, Skeleton, Stack, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const ChatLoading = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
+
   return (
     <>
       <Box
@@ -14,7 +18,7 @@ const ChatLoading = () => {
           position: "sticky",
           top: "0",
           width: "inherite",
-          background: "white",
+          background: darkmode ? "#1D2733" : "white",
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>

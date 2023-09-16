@@ -4,6 +4,8 @@ import ListItem from "@mui/material/ListItem";
 import { Avatar, Typography, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import { UserType } from "../utils/users";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const MemberList = ({
   participants,
   admins,
@@ -11,8 +13,15 @@ const MemberList = ({
   participants: UserType[];
   admins: boolean;
 }) => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   return (
-    <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+    <Box
+      sx={{
+        width: "100%",
+        maxWidth: 360,
+        bgcolor: darkmode ? "#1D2733" : "white",
+      }}
+    >
       <nav aria-label="main mailbox folders">
         <List>
           {participants
@@ -47,7 +56,7 @@ const MemberList = ({
                           textTransform: "capitalize",
                           fontFamily: "Public Sans",
                           fontWeight: 400,
-                          color: "#000",
+                          color: darkmode ? "#fff" : "#000",
                         }}
                       >
                         {item.username}

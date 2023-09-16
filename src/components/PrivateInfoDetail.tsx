@@ -16,6 +16,8 @@ import WorkIcon from "@mui/icons-material/Work";
 import PersonPinCircleIcon from "@mui/icons-material/PersonPinCircle";
 import * as React from "react";
 import ChatMedia from "./ChatMedia";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -53,6 +55,7 @@ function a11yProps(index: number) {
 
 const PrivateInfoDetail = ({ user }: { user: UserType }) => {
   const [value, setValue] = React.useState(0);
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -73,7 +76,7 @@ const PrivateInfoDetail = ({ user }: { user: UserType }) => {
         <List
           sx={{
             width: "100%",
-            bgcolor: "background.paper",
+            background: darkmode ? "#1D2733" : "white",
           }}
         >
           <ListItem>

@@ -10,8 +10,11 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import PrivateChatInfo from "./PrivateChatInfo";
 import PrivateChatOptions from "./PrivateChatOptions";
 import { UserType } from "../utils/users";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const PrivateChatLargeScreenHeader = ({ user }: { user: UserType }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -28,10 +31,10 @@ const PrivateChatLargeScreenHeader = ({ user }: { user: UserType }) => {
         justifyContent: "space-between",
         alignItems: "center",
         paddingX: "0.5rem",
-        borderBottom: "1px solid #EAEDF3",
+        borderBottom: darkmode ? "1px solid  #7A848F" : "1px solid #EAEDF3",
         height: "3.5rem",
         width: "inherite",
-        background: "white",
+        background: darkmode ? "#1D2733" : "white",
       }}
     >
       <Box
@@ -40,7 +43,7 @@ const PrivateChatLargeScreenHeader = ({ user }: { user: UserType }) => {
           display: "flex",
           alignItems: "center",
           gap: 2,
-          background: "white",
+          background: darkmode ? "#1D2733" : "white",
         }}
       >
         <PrivateChatInfo user={user} />

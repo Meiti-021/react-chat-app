@@ -4,8 +4,11 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const HelpBuqReport = () => {
   const [age, setAge] = React.useState("");
+  const { darkmode } = useSelector((store: RootState) => store.setting);
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
@@ -16,7 +19,7 @@ const HelpBuqReport = () => {
       component={"div"}
       sx={{
         height: "100%",
-        bgcolor: "#008EE4",
+        bgcolor: darkmode ? "#1D2733" : "#008EE4",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -27,7 +30,7 @@ const HelpBuqReport = () => {
         sx={{
           width: "100%",
           maxWidth: "500px",
-          bgcolor: "#fff",
+          bgcolor: darkmode ? "black" : "#fff",
           p: 5,
         }}
       >
@@ -91,7 +94,7 @@ const HelpBuqReport = () => {
           fullWidth
           sx={{
             mt: 7,
-            bgcolor: "#008EE4",
+            bgcolor: darkmode ? "#1D2733" : "#008EE4",
             color: "white",
             "&:hover": { color: "#008EE4" },
             height: "50px",

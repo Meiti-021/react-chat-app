@@ -27,6 +27,7 @@ import { RootState } from "../store";
 
 const SettingMainMenu = () => {
   const { users } = useSelector((store: RootState) => store.chat);
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   return (
     <Grid
       item
@@ -46,12 +47,12 @@ const SettingMainMenu = () => {
         component={"div"}
         sx={{
           height: "10rem",
-          bgcolor: "#008EE4",
+          bgcolor: darkmode ? "#1D2733" : "#008EE4",
           position: "relative",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          color: "black",
+          color: darkmode ? "white" : "black",
         }}
       >
         <SettingTopMenu />
@@ -61,13 +62,17 @@ const SettingMainMenu = () => {
             p: 4,
             display: "flex",
             alignItems: "center",
-            color: "black",
+            color: darkmode ? "white" : "black",
             gap: 1,
           }}
         >
           <Avatar
             src={`/assets/users/${userFind(users, "user1")?.profile_picture}`}
-            sx={{ bgcolor: "white", width: 60, height: 60 }}
+            sx={{
+              bgcolor: darkmode ? "black" : "white",
+              width: 60,
+              height: 60,
+            }}
           />
           <Box>
             <Typography color={"white"} fontWeight={"bold"}>
@@ -80,7 +85,7 @@ const SettingMainMenu = () => {
         </Box>
         <IconButton
           sx={{
-            bgcolor: "white",
+            bgcolor: darkmode ? "black" : "white",
             position: "absolute",
             bottom: -25,
             right: 30,
@@ -104,29 +109,19 @@ const SettingMainMenu = () => {
           <List sx={{ p: 0 }}>
             <ListItem sx={{ p: 0 }}>
               <Link
-                to={""}
+                to={"/setting/email"}
                 style={{
                   textDecoration: "none",
                   width: "100%",
                   display: "flex",
-                  alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
-                <Link
-                  to={"/setting/email"}
-                  style={{
-                    textDecoration: "none",
-                    width: "100%",
-                    display: "flex",
-                  }}
-                >
-                  <ListItemText
-                    primary={users[0].email}
-                    secondary="Tap to change email."
-                  />
-                </Link>
-              </Link>{" "}
+                <ListItemText
+                  primary={users[0].email}
+                  secondary="Tap to change email."
+                />
+              </Link>
             </ListItem>
             <ListItem sx={{ p: 0 }}>
               <Link
@@ -136,7 +131,7 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
                 <Link
@@ -145,7 +140,7 @@ const SettingMainMenu = () => {
                     textDecoration: "none",
                     width: "100%",
                     display: "flex",
-                    color: "black",
+                    color: darkmode ? "white" : "black",
                   }}
                 >
                   <ListItemText
@@ -163,7 +158,7 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
                 {" "}
@@ -178,7 +173,7 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
                 {" "}
@@ -208,14 +203,20 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
                 <ListItemIcon>
                   <ChatBubbleOutlineIcon />
                 </ListItemIcon>
                 <ListItemText
-                  sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+                  sx={{
+                    borderBottom: darkmode
+                      ? "1px solid #1D2733"
+                      : "1px solid black",
+                    py: 1,
+                    my: 0,
+                  }}
                 >
                   Chat Setting
                 </ListItemText>
@@ -229,14 +230,20 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
                 <ListItemIcon>
                   <LockPersonOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText
-                  sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+                  sx={{
+                    borderBottom: darkmode
+                      ? "1px solid #1D2733"
+                      : "1px solid black",
+                    py: 1,
+                    my: 0,
+                  }}
                 >
                   Privacy and Security
                 </ListItemText>
@@ -250,14 +257,20 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
                 <ListItemIcon>
                   <NotificationsNoneOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText
-                  sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+                  sx={{
+                    borderBottom: darkmode
+                      ? "1px solid #1D2733"
+                      : "1px solid black",
+                    py: 1,
+                    my: 0,
+                  }}
                 >
                   Notification and Sounds
                 </ListItemText>
@@ -271,14 +284,20 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
                 <ListItemIcon>
                   <DataSaverOffOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText
-                  sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+                  sx={{
+                    borderBottom: darkmode
+                      ? "1px solid #1D2733"
+                      : "1px solid black",
+                    py: 1,
+                    my: 0,
+                  }}
                 >
                   Data and Storage
                 </ListItemText>
@@ -292,7 +311,7 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
                 <ListItemIcon>
@@ -324,14 +343,20 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
                 <ListItemIcon>
                   <PersonAddOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText
-                  sx={{ borderBottom: "1px solid black", py: 1, my: 0 }}
+                  sx={{
+                    borderBottom: darkmode
+                      ? "1px solid #1D2733"
+                      : "1px solid black",
+                    py: 1,
+                    my: 0,
+                  }}
                 >
                   Invite Friends
                 </ListItemText>
@@ -345,7 +370,7 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: darkmode ? "white" : "black",
                 }}
               >
                 <ListItemIcon>

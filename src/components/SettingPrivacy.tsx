@@ -2,8 +2,11 @@ import { Box, IconButton, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SettingSecurity from "./SettingSecurity";
 import SettingPrivacyList from "./SettingPrivacyList";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const SettingPrivacy = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   return (
     <div>
       <Box
@@ -12,7 +15,7 @@ const SettingPrivacy = () => {
           display: "flex",
           gap: 5,
           alignItems: "center",
-          bgcolor: "#008EE4",
+          bgcolor: darkmode ? "#1D2733" : "#008EE4",
           color: "white",
           px: 2,
         }}
@@ -28,7 +31,7 @@ const SettingPrivacy = () => {
         </Typography>
       </Box>
       <SettingSecurity />
-      <Box p={2} sx={{ bgcolor: "#008EE4" }}>
+      <Box p={2} sx={{ bgcolor: darkmode ? "#1D2733" : "#008EE4" }}>
         <Typography color={"white"} fontSize={"0.8rem"}>
           Review the list of devices where you are logged into your meitigram
           app.

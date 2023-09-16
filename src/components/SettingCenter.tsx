@@ -3,10 +3,13 @@ import { Drawer } from "@mui/material";
 
 import { Outlet, useLocation } from "react-router-dom";
 import SettingMainMenu from "./SettingMainMenu";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 // import { useState } from "react";
 
 const SettingCenter = () => {
   const { pathname } = useLocation();
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   // const [value, setValue] = useState<string>("");
   return (
     <Grid
@@ -26,7 +29,10 @@ const SettingCenter = () => {
         md={8}
         lg={9}
         height={"100%"}
-        sx={{ display: { xs: "none", sm: "block" } }}
+        sx={{
+          display: { xs: "none", sm: "block" },
+          borderRight: darkmode ? "1px solid #7A848F" : "1px solid #EAEDF3",
+        }}
       >
         <Outlet />
       </Grid>

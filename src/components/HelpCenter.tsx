@@ -4,9 +4,13 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { helpDatacenter } from "../utils/helps";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const HelpCenter = () => {
   const { pathname } = useLocation();
   const [value, setValue] = useState<string>("");
+  const { darkmode } = useSelector((store: RootState) => store.setting);
+
   return (
     <Grid
       container
@@ -27,7 +31,7 @@ const HelpCenter = () => {
         sx={{
           overflow: "auto",
           "&::-webkit-scrollbar": { display: "none" },
-          borderRight: "1px solid #EAEDF3",
+          borderRight: darkmode ? "1px solid #7A848F" : "1px solid #EAEDF3",
           position: "relative",
         }}
       >
@@ -37,7 +41,7 @@ const HelpCenter = () => {
             display: "flex",
             gap: 5,
             alignItems: "center",
-            bgcolor: "#008EE4",
+            bgcolor: darkmode ? "#1D2733" : "#008EE4",
             color: "white",
             px: 2,
           }}
@@ -133,7 +137,12 @@ const HelpCenter = () => {
           })}
         </Grid>
         <Typography
-          sx={{ fontSize: "2rem", fontWeight: 600, textAlign: "center", mt: 3 }}
+          sx={{
+            fontSize: "2rem",
+            fontWeight: 600,
+            textAlign: "center",
+            mt: 3,
+          }}
         >
           About
         </Typography>

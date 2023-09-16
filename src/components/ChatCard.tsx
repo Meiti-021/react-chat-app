@@ -18,6 +18,7 @@ const ChatCard = ({
   chat_id,
 }: ChatType) => {
   const { users, messages } = useSelector((store: RootState) => store.chat);
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   return (
     <NavLink
       to={`/${chat_id}`}
@@ -28,10 +29,17 @@ const ChatCard = ({
           alignItems: "center",
           textDecoration: "none",
           gap: "1rem",
-          borderBottom: "1px solid #EAEDF3",
+          borderBottom: darkmode ? "1px solid black" : "1px solid #EAEDF3",
           borderRadius: "0",
-          borderLeft: isActive ? "5px solid #00B719" : undefined,
-          backgroundColor: isActive ? "#EEFDF0" : "#fff",
+          borderLeft: isActive ? "5px solid #1976D2" : undefined,
+          backgroundColor:
+            isActive && darkmode
+              ? "#212D3B"
+              : !isActive && darkmode
+              ? "#1D2733"
+              : isActive && !darkmode
+              ? "#84d7fa"
+              : "#fff",
           padding: "15px 20px",
           ":hover": {
             backgroundColor: "#EEFDF0",
@@ -75,7 +83,7 @@ const ChatCard = ({
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
               fontWeight: "600",
-              color: "#343a40",
+              color: darkmode ? "lightgrey" : "#343a40",
             }}
           >
             {peer_private ? (

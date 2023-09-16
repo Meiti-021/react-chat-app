@@ -12,8 +12,12 @@ import {
 
 import CheckIcon from "@mui/icons-material/Check";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const SettingNotification = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
+
   return (
     <div style={{ height: "100%", overflowY: "scroll" }}>
       <Box
@@ -22,7 +26,7 @@ const SettingNotification = () => {
           display: "flex",
           gap: 5,
           alignItems: "center",
-          bgcolor: "#008EE4",
+          bgcolor: darkmode ? "#1D2733" : "#008EE4",
           color: "white",
           px: 2,
         }}
@@ -50,7 +54,7 @@ const SettingNotification = () => {
           </ListItem>
         </List>
       </Box>
-      <Box p={2} sx={{ bgcolor: "#008EE4" }}>
+      <Box p={2} sx={{ bgcolor: darkmode ? "#1D2733" : "#008EE4" }}>
         <Typography color={"white"} fontSize={"0.8rem"}>
           Turn This off if you want to recieve notifications only from the
           account you are currently using.

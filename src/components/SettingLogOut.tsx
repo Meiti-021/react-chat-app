@@ -13,7 +13,10 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import KeyOutlinedIcon from "@mui/icons-material/KeyOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const SettingLogOut = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   return (
     <div>
       <Box
@@ -22,7 +25,7 @@ const SettingLogOut = () => {
           display: "flex",
           gap: 5,
           alignItems: "center",
-          bgcolor: "#008EE4",
+          bgcolor: darkmode ? "#1D2733" : "#008EE4",
           color: "white",
           px: 2,
         }}

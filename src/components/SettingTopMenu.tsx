@@ -11,7 +11,10 @@ import EditIcon from "@mui/icons-material/Edit";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const SettingTopMenu = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -44,7 +47,11 @@ const SettingTopMenu = () => {
         <MenuItem>
           <Link
             to={"/setting/edit-name"}
-            style={{ textDecoration: "none", display: "flex" }}
+            style={{
+              textDecoration: "none",
+              display: "flex",
+              color: darkmode ? "white" : "black",
+            }}
           >
             <ListItemIcon>
               <EditIcon sx={{ fontSize: "1.2rem" }} />
@@ -53,7 +60,14 @@ const SettingTopMenu = () => {
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to={"/"} style={{ textDecoration: "none", display: "flex" }}>
+          <Link
+            to={"/"}
+            style={{
+              textDecoration: "none",
+              display: "flex",
+              color: darkmode ? "white" : "black",
+            }}
+          >
             <ListItemIcon>
               <AddAPhotoIcon sx={{ fontSize: "1.2rem" }} />
             </ListItemIcon>
@@ -63,7 +77,11 @@ const SettingTopMenu = () => {
         <MenuItem>
           <Link
             to={"/setting/logout"}
-            style={{ textDecoration: "none", display: "flex" }}
+            style={{
+              textDecoration: "none",
+              display: "flex",
+              color: darkmode ? "white" : "black",
+            }}
           >
             <ListItemIcon>
               <LogoutIcon sx={{ fontSize: "1.2rem" }} />

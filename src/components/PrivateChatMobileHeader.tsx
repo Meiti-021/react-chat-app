@@ -11,8 +11,11 @@ import { Link } from "react-router-dom";
 import PrivateChatInfo from "./PrivateChatInfo";
 import { UserType } from "../utils/users";
 import BlockIcon from "@mui/icons-material/Block";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const PrivateChatMobileHeader = ({ user }: { user: UserType }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -31,7 +34,7 @@ const PrivateChatMobileHeader = ({ user }: { user: UserType }) => {
         borderBottom: "1px solid #EAEDF3",
         height: "3.5rem",
         width: "100%",
-        background: "white",
+        background: darkmode ? "#1D2733" : "white",
       }}
     >
       <Box

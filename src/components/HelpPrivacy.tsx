@@ -13,7 +13,11 @@ import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import PhonelinkLockIcon from "@mui/icons-material/PhonelinkLock";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const HelpPrivacy = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
+
   return (
     <>
       <Box
@@ -22,7 +26,7 @@ const HelpPrivacy = () => {
           display: "flex",
           gap: 5,
           alignItems: "center",
-          bgcolor: "#008EE4",
+          bgcolor: darkmode ? "#1D2733" : "#008EE4",
           color: "white",
           px: 2,
         }}
@@ -97,7 +101,10 @@ const HelpPrivacy = () => {
           </ListItem>
         </List>
       </Box>
-      <Box p={2} sx={{ bgcolor: "#008EE4", color: "white" }}>
+      <Box
+        p={2}
+        sx={{ bgcolor: darkmode ? "#1D2733" : "#008EE4", color: "white" }}
+      >
         By using our chat app, you agree to the terms outlined in this Privacy
         Policy.
       </Box>

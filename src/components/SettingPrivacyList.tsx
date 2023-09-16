@@ -13,6 +13,8 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 type PrivacyDataType =
   | "Phone Number"
   | "Last Seen & Online"
@@ -62,6 +64,7 @@ const SettingPrivacyList = () => {
   const handleDrawerToggle = () => {
     setOpen(!Open);
   };
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   return (
     <>
       <List sx={{ px: 0, mt: -2 }}>
@@ -91,6 +94,7 @@ const SettingPrivacyList = () => {
         ModalProps={{
           keepMounted: true, // Better open performance on .
         }}
+        PaperProps={{ sx: { bgcolor: darkmode ? "black" : "white" } }}
       >
         <Box sx={{ width: { xs: "100vw", sm: "400px" }, height: "100vh" }}>
           <Box sx={{ width: "100%" }}>
@@ -101,7 +105,7 @@ const SettingPrivacyList = () => {
                 display: "flex",
                 gap: 5,
                 alignItems: "center",
-                bgcolor: "#008EE4",
+                bgcolor: darkmode ? "#1D2733" : "#008EE4",
                 color: "white",
                 px: 2,
                 width: "100%",

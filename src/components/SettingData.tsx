@@ -17,7 +17,10 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DataUsageIcon from "@mui/icons-material/DataUsage";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const SettingData = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   const [Open, setOpen] = useState(false);
   const [drawerContent, setDrawerContent] = useState(false);
   const [dataUsage, setDataUsage] = useState({
@@ -44,7 +47,7 @@ const SettingData = () => {
           display: "flex",
           gap: 5,
           alignItems: "center",
-          bgcolor: "#008EE4",
+          bgcolor: darkmode ? "#1D2733" : "#008EE4",
           color: "white",
           px: 2,
         }}
@@ -164,6 +167,7 @@ const SettingData = () => {
         ModalProps={{
           keepMounted: true, // Better open performance on .
         }}
+        PaperProps={{ sx: { bgcolor: darkmode ? "black" : "white" } }}
       >
         <Box sx={{ width: { xs: "100vw", sm: "400px" }, height: "100vh" }}>
           <Box
@@ -172,7 +176,7 @@ const SettingData = () => {
               display: "flex",
               gap: 5,
               alignItems: "center",
-              bgcolor: "#008EE4",
+              bgcolor: darkmode ? "#1D2733" : "#008EE4",
               color: "white",
               px: 2,
             }}

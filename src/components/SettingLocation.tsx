@@ -1,7 +1,10 @@
 import { Box, IconButton, Stack, TextField, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const SettingLocation = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   return (
     <div>
       <Box
@@ -10,7 +13,7 @@ const SettingLocation = () => {
           display: "flex",
           gap: 5,
           alignItems: "center",
-          bgcolor: "#008EE4",
+          bgcolor: darkmode ? "#1D2733" : "#008EE4",
           color: "white",
           px: 2,
         }}

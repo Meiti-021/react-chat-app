@@ -12,6 +12,8 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const StyledRating = styled(Rating)(({ theme }) => ({
   "& .MuiRating-iconEmpty .MuiSvgIcon-root": {
     color: theme.palette.action.disabled,
@@ -77,13 +79,15 @@ function IconContainer(props: IconContainerProps) {
 }
 
 const HelpSuggestion = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
+
   return (
     <Box component={"div"} sx={{ height: "100%" }}>
       <Box
         component={"div"}
         sx={{
           height: "30%",
-          bgcolor: "white",
+          bgcolor: darkmode ? "black" : "white",
           position: "relative",
           display: "flex",
           flexDirection: "column",
@@ -105,7 +109,7 @@ const HelpSuggestion = () => {
           sx={{
             width: "100%",
             maxWidth: "500px",
-            bgcolor: "#008EE4",
+            bgcolor: darkmode ? "#1D2733" : "#008EE4",
             p: 4,
             position: "absolute",
             bottom: 0,
@@ -138,7 +142,7 @@ const HelpSuggestion = () => {
         component={"div"}
         sx={{
           height: "70%",
-          bgcolor: "#008EE4",
+          bgcolor: darkmode ? "#1D2733" : "#008EE4",
           position: "relative",
           display: "flex",
           flexDirection: "column",
@@ -150,7 +154,7 @@ const HelpSuggestion = () => {
           sx={{
             width: "100%",
             maxWidth: "500px",
-            bgcolor: "#FFF",
+            bgcolor: darkmode ? "#000" : "#FFF",
             position: "absolute",
             top: 0,
           }}
@@ -160,7 +164,7 @@ const HelpSuggestion = () => {
               sx={{
                 fontSize: "1.1rem",
                 fontWeight: 600,
-                color: "black",
+                color: darkmode ? "white" : "black",
                 mb: 2,
               }}
             >
@@ -180,7 +184,7 @@ const HelpSuggestion = () => {
             cols={30}
             rows={12}
             style={{
-              background: "#EFF3F5",
+              background: darkmode ? "darkgray" : "#EFF3F5",
               border: "none",
               resize: "none",
               width: "100%",
@@ -214,7 +218,8 @@ const HelpSuggestion = () => {
             <Button
               fullWidth
               sx={{
-                bgcolor: "#008EE4",
+                bgcolor: darkmode ? "#1D2733" : "#008EE4",
+
                 color: "white",
                 mt: 2,
                 "&:hover": { color: "#008EE4" },

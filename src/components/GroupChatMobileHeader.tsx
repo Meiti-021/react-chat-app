@@ -11,6 +11,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
 import GroupChatInfo from "./GroupChatInfo";
 import { UserType } from "../utils/users";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const GroupChatMobileHeader = ({
   participants,
   group_name,
@@ -23,6 +25,7 @@ const GroupChatMobileHeader = ({
   description: string | null;
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -41,7 +44,7 @@ const GroupChatMobileHeader = ({
         borderBottom: "1px solid #EAEDF3",
         height: "3.5rem",
         width: "100%",
-        background: "white",
+        background: darkmode ? "#1D2733" : "white",
       }}
     >
       <Box

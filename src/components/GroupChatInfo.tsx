@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import GroupInfoDetail from "./GroupInfoDetail";
 import { UserType } from "../utils/users";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const GroupChatInfo = ({
   participants,
   group_name,
@@ -21,13 +23,14 @@ const GroupChatInfo = ({
   group_profile: string | null;
   description: string | null;
 }) => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   const info = (
     <Box
       component={"div"}
       sx={{
         width: { xs: "100vw", sm: "25rem" },
         height: "100vh",
-        background: "white",
+        background: darkmode ? "#1D2733" : "white",
       }}
     >
       <Box
@@ -84,7 +87,7 @@ const GroupChatInfo = ({
             textAlign: "center",
             fontFamily: "Public Sans",
             fontWeight: 400,
-            color: "#7a7f9a",
+            color: darkmode ? "lightgrey" : "#7a7f9a",
             mt: -2,
           }}
         >
@@ -95,7 +98,7 @@ const GroupChatInfo = ({
             fontSize: "1rem",
             fontFamily: "Public Sans",
             fontWeight: 400,
-            color: "#7a7f9a",
+            color: darkmode ? "white" : "#7a7f9a",
             mt: 1,
           }}
         >

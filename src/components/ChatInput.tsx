@@ -6,13 +6,15 @@ import EmojiPicker from "emoji-picker-react";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sendMessage } from "../services/chatSlice";
 import moment from "moment";
+import { RootState } from "../store";
 const ChatInput = ({ chat_id }: { chat_id: string }) => {
   const [input, setInput] = useState("");
   const [emojiOpen, setEmojiOpen] = useState(false);
   const dispatch = useDispatch();
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   return (
     <Box
       component={"form"}
@@ -25,7 +27,7 @@ const ChatInput = ({ chat_id }: { chat_id: string }) => {
         borderTop: "1px solid #EAEDF3",
         padding: "1rem",
         marginTop: "auto",
-        background: "white",
+        background: darkmode ? "black" : "white",
       }}
     >
       <input
@@ -40,6 +42,8 @@ const ChatInput = ({ chat_id }: { chat_id: string }) => {
           width: "100%",
           height: "100%",
           outline: "none",
+          background: darkmode ? "black" : "white",
+          color: darkmode ? "white" : "black",
         }}
       />
       <Box

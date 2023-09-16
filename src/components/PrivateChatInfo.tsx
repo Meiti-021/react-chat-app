@@ -12,14 +12,17 @@ import {
 import PrivateInfoDetail from "./PrivateInfoDetail";
 import { UserType } from "../utils/users";
 import PrivateChatInfoAction from "./PrivateChatInfoAction";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const PrivateChatInfo = ({ user }: { user: UserType }) => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   const info = (
     <Box
       component={"div"}
       sx={{
         width: { xs: "100vw", sm: "25rem" },
         height: "100vh",
-        background: "white",
+        background: darkmode ? "#1D2733" : "white",
       }}
     >
       <Box
@@ -77,7 +80,7 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
             textAlign: "center",
             fontFamily: "Public Sans",
             fontWeight: 400,
-            color: "#7a7f9a",
+            color: darkmode ? "lightgrey" : "#7a7f9a",
             mt: -2,
           }}
         >
@@ -88,7 +91,7 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
             fontSize: "1rem",
             fontFamily: "Public Sans",
             fontWeight: 400,
-            color: "#7a7f9a",
+            color: darkmode ? "white" : "#7a7f9a",
             mt: 1,
             textAlign: "center",
           }}

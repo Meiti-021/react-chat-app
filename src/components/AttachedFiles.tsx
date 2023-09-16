@@ -8,6 +8,8 @@ import ImageIcon from "@mui/icons-material/Image";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import Tooltip from "@mui/material/Tooltip";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const files: { id: string; name: string; type: string; size: string }[] = [
   {
     id: "attach-1",
@@ -36,8 +38,9 @@ const files: { id: string; name: string; type: string; size: string }[] = [
 ];
 
 const AttachedFiles = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
   return (
-    <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
+    <Box sx={{ width: "100%", background: darkmode ? "#1D2733" : "white" }}>
       <nav aria-label="main mailbox folders">
         <List>
           {files.map((item) => {

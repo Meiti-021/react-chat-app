@@ -27,6 +27,7 @@ import {
   Routes,
   useLocation,
   useNavigate,
+  useParams,
 } from "react-router-dom";
 import { Avatar, Button, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -148,6 +149,7 @@ interface Props {
 export default function AppContainer(props: Props) {
   const { darkmode } = useSelector((store: RootState) => store.setting);
   const location = useLocation();
+  const { id } = useParams();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
@@ -157,10 +159,17 @@ export default function AppContainer(props: Props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   React.useEffect(() => {
-    if (location.pathname === "/" && filterType === "") {
+    if (
+      location.pathname !== "/setting" &&
+      location.pathname !== "/contact" &&
+      location.pathname !== "/contact-us" &&
+      location.pathname !== "/help" &&
+      filterType === ""
+    ) {
       setFilterType("conversations");
     }
-  }, [location.pathname, filterType]);
+    console.log(location.pathname);
+  }, [location.pathname, filterType, id]);
   const drawer = (
     <div style={{ height: "100%" }}>
       <Toolbar sx={{ bgcolor: darkmode ? "#212D3B" : "#008EE4" }}>
@@ -322,7 +331,13 @@ export default function AppContainer(props: Props) {
           display: { xs: "block", sm: "none" },
         }}
       >
-        <Toolbar sx={{ display: "flex", alignItems: "center" }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            bgcolor: darkmode ? "#212D3B" : "#008EE4",
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -369,7 +384,13 @@ export default function AppContainer(props: Props) {
           display: { xs: "none", sm: "block" },
         }}
       >
-        <Toolbar sx={{ display: "flex", alignItems: "center" }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            bgcolor: darkmode ? "#1D2733" : undefined,
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -394,7 +415,7 @@ export default function AppContainer(props: Props) {
             <SearchIcon />
           </IconButton>
         </Toolbar>
-        <Divider sx={{ bgcolor: "#EAEDF3" }} />
+        <Divider sx={{ bgcolor: darkmode ? "#7A848F" : "#EAEDF3" }} />
       </AppBar>
 
       <Box
@@ -422,7 +443,12 @@ export default function AppContainer(props: Props) {
               height: "100%",
             },
           }}
-          PaperProps={{ sx: { bgcolor: darkmode ? "#1D2733" : "white" } }}
+          PaperProps={{
+            sx: {
+              bgcolor: darkmode ? "#1D2733" : "white",
+              borderRight: darkmode ? "1px solid #7A848F" : undefined,
+            },
+          }}
         >
           {drawer}
         </Drawer>
@@ -436,7 +462,12 @@ export default function AppContainer(props: Props) {
               height: "100%",
             },
           }}
-          PaperProps={{ sx: { bgcolor: darkmode ? "#1D2733" : "white" } }}
+          PaperProps={{
+            sx: {
+              bgcolor: darkmode ? "#1D2733" : "white",
+              borderRight: darkmode ? "1px solid #7A848F" : undefined,
+            },
+          }}
           open
         >
           {drawer}

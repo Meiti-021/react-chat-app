@@ -14,7 +14,11 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import EmailIcon from "@mui/icons-material/Email";
 import CallIcon from "@mui/icons-material/Call";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const ContactCenter = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
+
   return (
     <Grid
       container
@@ -35,7 +39,7 @@ const ContactCenter = () => {
         sx={{
           overflow: "auto",
           "&::-webkit-scrollbar": { display: "none" },
-          borderRight: "1px solid #EAEDF3",
+          borderRight: darkmode ? "1px solid #7A848F" : "1px solid #EAEDF3",
           position: "relative",
         }}
       >
@@ -45,7 +49,7 @@ const ContactCenter = () => {
             display: "flex",
             gap: 5,
             alignItems: "center",
-            bgcolor: "#008EE4",
+            bgcolor: darkmode ? "#1D2733" : "#008EE4",
             color: "white",
             px: 2,
           }}
