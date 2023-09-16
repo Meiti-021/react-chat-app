@@ -24,7 +24,11 @@ import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
-import { changeFontSize, changeMessageCorner } from "../services/settingSlice";
+import {
+  changeFontSize,
+  changeMessageCorner,
+  switchDarkmode,
+} from "../services/settingSlice";
 const messages: MessageType[] = [
   {
     message_id: "message3",
@@ -51,7 +55,6 @@ const SettingChat = () => {
   );
   const [size, setSize] = useState<number | number[]>(fontSize);
   const [corner, setCorner] = useState<number | number[]>(messageCorner);
-  const [darkMode, setDarkMode] = useState<boolean>(false);
   return (
     <div style={{ height: "100%", overflowY: "scroll" }}>
       <Box
@@ -222,14 +225,14 @@ const SettingChat = () => {
             </ListItemIcon>
             <ListItemText
               primary="Dark Mode"
-              secondary={darkMode ? "On" : "Off"}
+              secondary={darkmode ? "On" : "Off"}
             />
             <ListItemSecondaryAction>
               <Switch
                 defaultChecked
-                checked={darkMode}
-                onChange={(e) => {
-                  setDarkMode(e.target.checked);
+                checked={darkmode}
+                onChange={() => {
+                  dispatch(switchDarkmode());
                 }}
               />
             </ListItemSecondaryAction>
@@ -252,13 +255,7 @@ const SettingChat = () => {
               secondary="Manage stickers, emoji and reactions"
             />
             <ListItemSecondaryAction>
-              <Switch
-                defaultChecked
-                checked={darkMode}
-                onChange={(e) => {
-                  setDarkMode(e.target.checked);
-                }}
-              />
+              <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
         </List>
