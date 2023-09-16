@@ -13,7 +13,7 @@ const ChatLoading = () => {
           justifyContent: "space-between",
           alignItems: "center",
           paddingX: "0.5rem",
-          borderBottom: "1px solid #EAEDF3",
+          borderBottom: darkmode ? "1px solid #7A848F" : "1px solid #EAEDF3",
           height: "3.5rem",
           position: "sticky",
           top: "0",
