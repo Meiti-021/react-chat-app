@@ -1,6 +1,7 @@
 export type UserType = {
   user_id: string;
   username: string;
+  userLastName: string;
   email: string;
   profile_picture: string;
   location: string;
@@ -12,7 +13,8 @@ export type UserType = {
 export const users: UserType[] = [
   {
     user_id: "user1",
-    username: "Meiti(MAhdi) Dehgani",
+    username: "Meiti(Mahdi)",
+    userLastName: "Dehgani",
     email: "meiti.edu@gmail.com",
     location: "Los Angeles",
     career: "Front-end Developer",
@@ -24,6 +26,7 @@ export const users: UserType[] = [
   {
     user_id: "user2",
     username: "A-train",
+    userLastName: "",
     email: "A-train@example.com",
     location: "New York",
     career: "Speed runner",
@@ -34,6 +37,7 @@ export const users: UserType[] = [
   {
     user_id: "user3",
     username: "SoldierBoy",
+    userLastName: "",
     email: "soldierboy@example.com",
     location: "Chicago",
     career: "military expert",
@@ -44,6 +48,7 @@ export const users: UserType[] = [
   {
     user_id: "user4",
     username: "Deep",
+    userLastName: "",
     email: "deep@example.com",
     location: "San Francisco",
     career: "Swimmer",
@@ -54,6 +59,7 @@ export const users: UserType[] = [
   {
     user_id: "user5",
     username: "starlight",
+    userLastName: "",
     email: "starlight@example.com",
     location: "Seattle",
     career: "Superhero at the seven",
@@ -64,6 +70,7 @@ export const users: UserType[] = [
   {
     user_id: "user6",
     username: "Homlander",
+    userLastName: "",
     email: "frank@example.com",
     location: "Miami",
     career: "American facist evil military expert",
@@ -73,7 +80,8 @@ export const users: UserType[] = [
   },
   {
     user_id: "user7",
-    username: "Lamblighter",
+    username: "Lamplighter",
+    userLastName: "",
     email: "lamblighter@example.com",
     location: "Austin",
     career: "The cooke",
@@ -84,6 +92,7 @@ export const users: UserType[] = [
   {
     user_id: "user8",
     username: "black-noir",
+    userLastName: "",
     email: "helen@example.com",
     location: "Denver",
     career: "martial art coach",
@@ -94,6 +103,7 @@ export const users: UserType[] = [
   {
     user_id: "user9",
     username: "billy butcher",
+    userLastName: "",
     email: "butcher@example.com",
     location: "Boston",
     career: "Private Detective",
@@ -105,6 +115,7 @@ export const users: UserType[] = [
   {
     user_id: "user10",
     username: "captain",
+    userLastName: "",
     email: "captain@example.com",
     location: "Philadelphia",
     career: "A soldier boys placeholder",

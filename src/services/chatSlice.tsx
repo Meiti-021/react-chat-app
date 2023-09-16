@@ -56,9 +56,20 @@ const chatSlice = createSlice({
       );
       state.messages[indexOfmessage].content = action.payload.newContent;
     },
+    editName: (
+      state,
+      action: PayloadAction<{
+        newName: string;
+        newLastName: string;
+      }>
+    ) => {
+      state.users[0].username = action.payload.newName;
+      state.users[0].userLastName = action.payload.newLastName;
+    },
   },
 });
 
-export const { sendMessage, deleteMessage, editMessage } = chatSlice.actions;
+export const { sendMessage, deleteMessage, editMessage, editName } =
+  chatSlice.actions;
 
 export default chatSlice.reducer;

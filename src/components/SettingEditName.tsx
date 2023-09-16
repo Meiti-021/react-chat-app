@@ -1,10 +1,18 @@
 import { Box, IconButton, Stack, TextField, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useState } from "react";
+import { editName } from "../services/chatSlice";
 const SettingEditName = () => {
+  const dispatch = useDispatch();
   const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { users } = useSelector((store: RootState) => store.chat);
+  const [nameValue, setNameValue] = useState<string>(users[0].username);
+  const [lastNameValue, setLastNameValue] = useState<string>(
+    users[0].userLastName
+  );
   return (
     <div>
       <Box
@@ -22,13 +30,36 @@ const SettingEditName = () => {
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>Edit Name</Typography>
-        <IconButton sx={{ ml: "auto", color: "white" }}>
+        <IconButton
+          sx={{ ml: "auto", color: "white" }}
+          onClick={() => {
+            dispatch(
+              editName({ newName: nameValue, newLastName: lastNameValue })
+            );
+          }}
+        >
           <CheckIcon />
         </IconButton>
       </Box>
       <Stack direction={"column"} p={2} gap={1}>
-        <TextField fullWidth placeholder="Name" variant="standard" />
-        <TextField fullWidth placeholder="Last Name" variant="standard" />
+        <TextField
+          fullWidth
+          placeholder="Name"
+          variant="standard"
+          value={nameValue}
+          onChange={(e) => {
+            setNameValue(e.target.value);
+          }}
+        />
+        <TextField
+          fullWidth
+          placeholder="Last Name"
+          variant="standard"
+          value={lastNameValue}
+          onChange={(e) => {
+            setLastNameValue(e.target.value);
+          }}
+        />
       </Stack>
     </div>
   );

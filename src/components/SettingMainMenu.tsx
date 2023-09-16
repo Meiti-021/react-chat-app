@@ -76,7 +76,7 @@ const SettingMainMenu = () => {
           />
           <Box>
             <Typography color={"white"} fontWeight={"bold"}>
-              {users[0].username}
+              {users[0].username + " " + users[0].userLastName}
             </Typography>
             <Typography color={"white"} fontSize={"0.8rem"}>
               Online
