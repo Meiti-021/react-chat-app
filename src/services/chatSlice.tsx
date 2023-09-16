@@ -82,6 +82,14 @@ const chatSlice = createSlice({
     ) => {
       state.users[0].location = action.payload.newLocation;
     },
+    editCareer: (
+      state,
+      action: PayloadAction<{
+        newCareer: string;
+      }>
+    ) => {
+      state.users[0].career = action.payload.newCareer;
+    },
   },
 });
 
@@ -92,6 +100,7 @@ export const {
   editName,
   editEmail,
   editLocation,
+  editCareer,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;
