@@ -22,8 +22,9 @@ import moment from "moment";
 import { useState } from "react";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
+import { changeFontSize, changeMessageCorner } from "../services/settingSlice";
 const messages: MessageType[] = [
   {
     message_id: "message3",
@@ -43,11 +44,13 @@ const messages: MessageType[] = [
   },
 ];
 const SettingChat = () => {
+  const dispatch = useDispatch();
   const { users } = useSelector((store: RootState) => store.chat);
-  const { darkmode } = useSelector((store: RootState) => store.setting);
-
-  const [size, setSize] = useState<number | number[]>(16);
-  const [corner, setCorner] = useState<number | number[]>(5);
+  const { darkmode, fontSize, messageCorner } = useSelector(
+    (store: RootState) => store.setting
+  );
+  const [size, setSize] = useState<number | number[]>(fontSize);
+  const [corner, setCorner] = useState<number | number[]>(messageCorner);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   return (
     <div style={{ height: "100%", overflowY: "scroll" }}>
@@ -66,7 +69,13 @@ const SettingChat = () => {
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>Chat Settings</Typography>
-        <IconButton sx={{ ml: "auto", color: "white" }}>
+        <IconButton
+          sx={{ ml: "auto", color: "white" }}
+          onClick={() => {
+            dispatch(changeFontSize({ newValue: size }));
+            dispatch(changeMessageCorner({ newValue: corner }));
+          }}
+        >
           <CheckIcon />
         </IconButton>
       </Box>

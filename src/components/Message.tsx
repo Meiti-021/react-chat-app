@@ -36,6 +36,9 @@ const Message = ({
   message_id,
 }: MessageType) => {
   const { users } = useSelector((store: RootState) => store.chat);
+  const { fontSize, messageCorner } = useSelector(
+    (store: RootState) => store.setting
+  );
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -141,14 +144,16 @@ const Message = ({
               padding: "0.5rem",
               borderRadius:
                 sender === "user1"
-                  ? "0.5rem 0rem 0.5rem 0.5rem"
-                  : "0rem 0.5rem 0.5rem 0.5rem",
+                  ? `0.${messageCorner}rem 0rem 0.${messageCorner}rem 0.${messageCorner}rem`
+                  : `0rem 0.${messageCorner}rem 0.${messageCorner}rem 0.${messageCorner}rem`,
               cursor: "pointer",
               border: "none",
               textAlign: "left",
             }}
           >
-            <Typography>{content}</Typography>
+            <Typography sx={{ fontSize: `${fontSize}px ` }}>
+              {content}
+            </Typography>
           </Box>
         </Box>
       </Box>
