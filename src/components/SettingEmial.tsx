@@ -1,11 +1,15 @@
 import { Box, IconButton, Stack, TextField, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useState } from "react";
+import { editEmail } from "../services/chatSlice";
 const SettingEmail = () => {
   const { darkmode } = useSelector((store: RootState) => store.setting);
-
+  const dispatch = useDispatch();
+  const { users } = useSelector((store: RootState) => store.chat);
+  const [value, setValue] = useState<string>(users[0].email);
   return (
     <div>
       <Box
@@ -22,13 +26,27 @@ const SettingEmail = () => {
         <IconButton sx={{ color: "white" }}>
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>Edit Name</Typography>
-        <IconButton sx={{ ml: "auto", color: "white" }}>
+        <Typography fontSize={"1.1rem"}>Edit Email</Typography>
+        <IconButton
+          sx={{ ml: "auto", color: "white" }}
+          onClick={() => {
+            dispatch(editEmail({ newEmail: value }));
+          }}
+        >
           <CheckIcon />
         </IconButton>
       </Box>
       <Stack direction={"column"} p={2} gap={1}>
-        <TextField fullWidth placeholder="Emial" variant="standard" />
+        <TextField
+          fullWidth
+          placeholder="Emial"
+          variant="standard"
+          type="email"
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+        />
       </Stack>
     </div>
   );

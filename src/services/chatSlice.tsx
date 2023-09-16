@@ -66,10 +66,18 @@ const chatSlice = createSlice({
       state.users[0].username = action.payload.newName;
       state.users[0].userLastName = action.payload.newLastName;
     },
+    editEmail: (
+      state,
+      action: PayloadAction<{
+        newEmail: string;
+      }>
+    ) => {
+      state.users[0].email = action.payload.newEmail;
+    },
   },
 });
 
-export const { sendMessage, deleteMessage, editMessage, editName } =
+export const { sendMessage, deleteMessage, editMessage, editName, editEmail } =
   chatSlice.actions;
 
 export default chatSlice.reducer;
