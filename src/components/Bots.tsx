@@ -1,7 +1,11 @@
 import Lottie from "lottie-react";
 import ChatAnimation from "../assets/channels.json";
 import { Box, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const Bots = () => {
+  const { darkmode } = useSelector((store: RootState) => store.setting);
+
   return (
     <Box
       component={"div"}
@@ -31,7 +35,7 @@ const Bots = () => {
       <Typography
         sx={{
           fontWeight: "bold",
-          color: "#1e2933",
+          color: darkmode ? "white" : "#1e2933",
           fontSize: { xs: "1rem", md: " 1.5rem" },
           fontFamily: "Public Sans",
           textAlign: "center",

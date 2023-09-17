@@ -125,8 +125,8 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
         <Avatar
           src={`/assets/users/${user.profile_picture}`}
           sx={{
-            width: "2.2rem",
-            height: "2.2rem",
+            width: 40,
+            height: 40,
             background:
               "linear-gradient(90deg, rgba(97,255,251,1) 6%, rgba(12,103,121,1) 100%)",
           }}
@@ -163,6 +163,7 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
         ModalProps={{
           keepMounted: true, // Better open performance on .
         }}
+        PaperProps={{ sx: { background: darkmode ? "#1D2733" : "white" } }}
       >
         {info}
       </Drawer>

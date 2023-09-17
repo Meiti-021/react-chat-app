@@ -24,7 +24,7 @@ const ChatInput = ({ chat_id }: { chat_id: string }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        borderTop: darkmode ? "1px solid #7A848F" : "1px solid #EAEDF3",
+        borderTop: darkmode ? "none" : "1px solid #EAEDF3",
         padding: "1rem",
         marginTop: "auto",
         background: darkmode ? "black" : "white",

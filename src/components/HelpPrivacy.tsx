@@ -15,9 +15,10 @@ import PhonelinkLockIcon from "@mui/icons-material/PhonelinkLock";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useNavigate } from "react-router-dom";
 const HelpPrivacy = () => {
   const { darkmode } = useSelector((store: RootState) => store.setting);
-
+  const navigate = useNavigate();
   return (
     <>
       <Box
@@ -31,7 +32,12 @@ const HelpPrivacy = () => {
           px: 2,
         }}
       >
-        <IconButton sx={{ color: "white" }}>
+        <IconButton
+          sx={{ color: "white" }}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>Privacy and Policy</Typography>

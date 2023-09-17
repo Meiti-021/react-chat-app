@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useState } from "react";
 import { editName } from "../services/chatSlice";
+import { useNavigate } from "react-router-dom";
 const SettingEditName = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { darkmode } = useSelector((store: RootState) => store.setting);
   const { users } = useSelector((store: RootState) => store.chat);
   const [nameValue, setNameValue] = useState<string>(users[0].username);
@@ -26,7 +28,12 @@ const SettingEditName = () => {
           px: 2,
         }}
       >
-        <IconButton sx={{ color: "white" }}>
+        <IconButton
+          sx={{ color: "white" }}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>Edit Name</Typography>

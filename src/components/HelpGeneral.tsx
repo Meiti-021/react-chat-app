@@ -10,6 +10,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useNavigate } from "react-router-dom";
 const faqs = [
   {
     question: "How do I send a message?",
@@ -66,21 +67,27 @@ const faqs = [
 
 const HelpGeneral = () => {
   const { darkmode } = useSelector((store: RootState) => store.setting);
-
+  const navigate = useNavigate();
   return (
     <>
       <Box
         sx={{
-          height: "3.5rem",
+          height: "4.5rem",
           display: "flex",
-          gap: 5,
+          gap: 2,
           alignItems: "center",
           bgcolor: darkmode ? "#1D2733" : "#008EE4",
           color: "white",
           px: 2,
+          py: 1,
         }}
       >
-        <IconButton sx={{ color: "white" }}>
+        <IconButton
+          sx={{ color: "white" }}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>General</Typography>
@@ -94,7 +101,10 @@ const HelpGeneral = () => {
         >
           FAQs
         </Typography>
-        <Typography sx={{ color: "#7a7f9a" }} fontSize={"0.9rem"}>
+        <Typography
+          sx={{ color: darkmode ? "white" : "#7a7f9a" }}
+          fontSize={"0.9rem"}
+        >
           Welcome to the Chat App FAQ page! Here, you'll find answers to common
           questions about our chat application. Discover how to get started,
           navigate the interface, manage your conversations, and much more.
@@ -112,7 +122,7 @@ const HelpGeneral = () => {
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
-                  sx={{ px: 0 }}
+                  sx={{ px: 1 }}
                 >
                   <Typography
                     sx={{
@@ -124,7 +134,7 @@ const HelpGeneral = () => {
                     {faq.question}
                   </Typography>
                 </AccordionSummary>
-                <AccordionDetails sx={{ px: 0 }}>
+                <AccordionDetails sx={{ px: 1 }}>
                   <Typography
                     sx={{
                       fontSize: "0.9rem",

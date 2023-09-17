@@ -3,14 +3,12 @@ import Lottie from "lottie-react";
 import ChatAnimation from "../assets/help.json";
 import {
   Box,
-  IconButton,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Typography,
 } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import EmailIcon from "@mui/icons-material/Email";
 import CallIcon from "@mui/icons-material/Call";
@@ -41,24 +39,9 @@ const ContactCenter = () => {
           "&::-webkit-scrollbar": { display: "none" },
           borderRight: darkmode ? "1px solid #7A848F" : "1px solid #EAEDF3",
           position: "relative",
+          pb: 5,
         }}
       >
-        <Box
-          sx={{
-            height: "3.5rem",
-            display: "flex",
-            gap: 5,
-            alignItems: "center",
-            bgcolor: darkmode ? "#1D2733" : "#008EE4",
-            color: "white",
-            px: 2,
-          }}
-        >
-          <IconButton sx={{ color: "white" }}>
-            <ArrowBackIcon />
-          </IconButton>
-          <Typography fontSize={"1.1rem"}>Contact Us</Typography>
-        </Box>
         <Box component={"div"} sx={{ p: 0 }}>
           <Box p={2}>
             <Typography fontSize={"1.1rem"} color="primary">

@@ -31,7 +31,7 @@ const PrivateChatMobileHeader = ({ user }: { user: UserType }) => {
         justifyContent: "space-between",
         alignItems: "center",
         paddingX: { xs: "0.5rem", sm: "2rem" },
-        borderBottom: "1px solid #EAEDF3",
+        borderBottom: darkmode ? "none" : "1px solid #EAEDF3",
         height: "3.5rem",
         width: "100%",
         background: darkmode ? "#1D2733" : "white",
@@ -39,16 +39,20 @@ const PrivateChatMobileHeader = ({ user }: { user: UserType }) => {
     >
       <Box
         component={"div"}
-        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+        sx={{ display: "flex", alignItems: "center", gap: 2 }}
       >
         <Box
           sx={{
             fontSize: "0.7rem",
             fontWeight: "bold",
             display: { xs: "flex", sm: "none" },
+            alignItems: "center",
           }}
         >
-          <Link to="/">
+          <Link
+            to="/"
+            style={{ color: darkmode ? "white" : "black", marginTop: "5px" }}
+          >
             <ArrowBackIcon />
           </Link>
         </Box>

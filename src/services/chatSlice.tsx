@@ -98,6 +98,12 @@ const chatSlice = createSlice({
     ) => {
       state.users[0].biography = action.payload.newBio;
     },
+    seenMessage: (state, action: PayloadAction<{ messageId: string }>) => {
+      const index = state.messages.findIndex(
+        (item) => item.message_id === action.payload.messageId
+      );
+      state.messages[index].seen = true;
+    },
   },
 });
 
@@ -110,6 +116,7 @@ export const {
   editLocation,
   editCareer,
   editBio,
+  seenMessage,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;

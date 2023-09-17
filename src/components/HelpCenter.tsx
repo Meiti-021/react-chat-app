@@ -1,9 +1,8 @@
 import Grid from "@mui/material/Grid";
-import { Box, Drawer, Typography, Button, IconButton } from "@mui/material";
+import { Box, Drawer, Typography, Button } from "@mui/material";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { helpDatacenter } from "../utils/helps";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const HelpCenter = () => {
@@ -19,6 +18,7 @@ const HelpCenter = () => {
         height: "100%",
         position: "relative",
         "&::-webkit-scrollbar": { display: "none" },
+        pb: 5,
       }}
     >
       <Grid
@@ -35,22 +35,6 @@ const HelpCenter = () => {
           position: "relative",
         }}
       >
-        <Box
-          sx={{
-            height: "3.5rem",
-            display: "flex",
-            gap: 5,
-            alignItems: "center",
-            bgcolor: darkmode ? "#1D2733" : "#008EE4",
-            color: "white",
-            px: 2,
-          }}
-        >
-          <IconButton sx={{ color: "white" }}>
-            <ArrowBackIcon />
-          </IconButton>
-          <Typography fontSize={"1.1rem"}>Need Help?</Typography>
-        </Box>
         <Box p={2}>
           <Typography
             sx={{ fontSize: "2rem", fontWeight: 600, textAlign: "center" }}

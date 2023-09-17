@@ -19,10 +19,12 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useNavigate } from "react-router-dom";
 const SettingData = () => {
   const { darkmode } = useSelector((store: RootState) => store.setting);
   const [Open, setOpen] = useState(false);
   const [drawerContent, setDrawerContent] = useState(false);
+  const navigate = useNavigate();
   const [dataUsage, setDataUsage] = useState({
     Music: 102,
     Profile: 37.6,
@@ -52,7 +54,12 @@ const SettingData = () => {
           px: 2,
         }}
       >
-        <IconButton sx={{ color: "white" }}>
+        <IconButton
+          sx={{ color: "white" }}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>Data and Storage</Typography>

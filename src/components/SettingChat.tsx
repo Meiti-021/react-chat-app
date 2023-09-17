@@ -29,6 +29,7 @@ import {
   changeMessageCorner,
   switchDarkmode,
 } from "../services/settingSlice";
+import { useNavigate } from "react-router-dom";
 const messages: MessageType[] = [
   {
     message_id: "message3",
@@ -53,6 +54,7 @@ const SettingChat = () => {
   const { darkmode, fontSize, messageCorner } = useSelector(
     (store: RootState) => store.setting
   );
+  const navigate = useNavigate();
   const [size, setSize] = useState<number | number[]>(fontSize);
   const [corner, setCorner] = useState<number | number[]>(messageCorner);
   return (
@@ -68,7 +70,12 @@ const SettingChat = () => {
           px: 2,
         }}
       >
-        <IconButton sx={{ color: "white" }}>
+        <IconButton
+          sx={{ color: "white" }}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>Chat Settings</Typography>
@@ -227,7 +234,7 @@ const SettingChat = () => {
               primary="Dark Mode"
               secondary={darkmode ? "On" : "Off"}
             />
-            <ListItemSecondaryAction>
+            <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
               <Switch
                 defaultChecked
                 checked={darkmode}
@@ -254,7 +261,7 @@ const SettingChat = () => {
               primary="Stickers and Emoji"
               secondary="Manage stickers, emoji and reactions"
             />
-            <ListItemSecondaryAction>
+            <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
@@ -270,8 +277,9 @@ const SettingChat = () => {
             <ListItemText
               primary="Tap to show next media"
               secondary="Tap near the edge of the screen while viewing media to navigate"
+              secondaryTypographyProps={{ sx: { width: "90%" } }}
             />
-            <ListItemSecondaryAction>
+            <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
@@ -279,8 +287,9 @@ const SettingChat = () => {
             <ListItemText
               primary="Raise to listen"
               secondary="Switch sound to earpiece by rising the phone to your ear"
+              secondaryTypographyProps={{ sx: { width: "90%" } }}
             />
-            <ListItemSecondaryAction>
+            <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
@@ -288,8 +297,9 @@ const SettingChat = () => {
             <ListItemText
               primary="Raise to speak"
               secondary="reacord voice messages by rising the phone to your ear"
+              secondaryTypographyProps={{ sx: { width: "90%" } }}
             />
-            <ListItemSecondaryAction>
+            <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
@@ -297,14 +307,15 @@ const SettingChat = () => {
             <ListItemText
               primary="Pause music while recording"
               secondary="Pause music while reacording a video message"
+              secondaryTypographyProps={{ sx: { width: "90%" } }}
             />
-            <ListItemSecondaryAction>
+            <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem sx={{ p: 0 }}>
             <ListItemText primary="Microphoen for voice messages" />
-            <ListItemSecondaryAction>
+            <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>

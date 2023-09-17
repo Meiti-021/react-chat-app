@@ -14,27 +14,33 @@ import CheckIcon from "@mui/icons-material/Check";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useNavigate } from "react-router-dom";
 
 const SettingNotification = () => {
   const { darkmode } = useSelector((store: RootState) => store.setting);
-
+  const navigate = useNavigate();
   return (
     <div style={{ height: "100%", overflowY: "scroll" }}>
       <Box
         sx={{
           height: "3.5rem",
           display: "flex",
-          gap: 5,
+          gap: 2,
           alignItems: "center",
           bgcolor: darkmode ? "#1D2733" : "#008EE4",
           color: "white",
           px: 2,
         }}
       >
-        <IconButton sx={{ color: "white" }}>
+        <IconButton
+          sx={{ color: "white" }}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>
+        <Typography fontSize={"1rem"}>
           Notification and Sounds Settings
         </Typography>
         <IconButton sx={{ ml: "auto", color: "white" }}>
@@ -147,6 +153,7 @@ const SettingNotification = () => {
             <ListItemText
               primary="Keep-Alive Service"
               secondary="Relunch web when shut down.Enable for reliable notofication"
+              secondaryTypographyProps={{ sx: { width: "80%" } }}
             />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
@@ -156,6 +163,7 @@ const SettingNotification = () => {
             <ListItemText
               primary="Background Connection"
               secondary="Keep a low inpact background connection to telegram for reliable notification."
+              secondaryTypographyProps={{ sx: { width: "80%" } }}
             />
             <ListItemSecondaryAction>
               <Switch defaultChecked />

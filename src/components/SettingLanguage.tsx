@@ -12,9 +12,10 @@ import CheckIcon from "@mui/icons-material/Check";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useNavigate } from "react-router-dom";
 const SettingLanguage = () => {
   const { darkmode } = useSelector((store: RootState) => store.setting);
-
+  const navigate = useNavigate();
   return (
     <div>
       <Box
@@ -28,7 +29,12 @@ const SettingLanguage = () => {
           px: 2,
         }}
       >
-        <IconButton sx={{ color: "white" }}>
+        <IconButton
+          sx={{ color: "white" }}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>Language</Typography>

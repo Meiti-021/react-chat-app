@@ -28,46 +28,27 @@ const customIcons: {
 } = {
   1: {
     icon: (
-      <SentimentVeryDissatisfiedIcon
-        color="error"
-        sx={{ fontSize: "2rem", width: "80px" }}
-      />
+      <SentimentVeryDissatisfiedIcon color="error" sx={{ fontSize: "2rem" }} />
     ),
     label: "Very Dissatisfied",
   },
   2: {
-    icon: (
-      <SentimentDissatisfiedIcon
-        color="error"
-        sx={{ fontSize: "2rem", width: "80px" }}
-      />
-    ),
+    icon: <SentimentDissatisfiedIcon color="error" sx={{ fontSize: "2rem" }} />,
     label: "Dissatisfied",
   },
   3: {
-    icon: (
-      <SentimentSatisfiedIcon
-        color="warning"
-        sx={{ fontSize: "2rem", width: "80px" }}
-      />
-    ),
+    icon: <SentimentSatisfiedIcon color="warning" sx={{ fontSize: "2rem" }} />,
     label: "Neutral",
   },
   4: {
     icon: (
-      <SentimentSatisfiedAltIcon
-        color="success"
-        sx={{ fontSize: "2rem", width: "80px" }}
-      />
+      <SentimentSatisfiedAltIcon color="success" sx={{ fontSize: "2rem" }} />
     ),
     label: "Satisfied",
   },
   5: {
     icon: (
-      <SentimentVerySatisfiedIcon
-        color="success"
-        sx={{ fontSize: "2rem", width: "80px" }}
-      />
+      <SentimentVerySatisfiedIcon color="success" sx={{ fontSize: "2rem" }} />
     ),
     label: "Very Satisfied",
   },
@@ -75,12 +56,15 @@ const customIcons: {
 
 function IconContainer(props: IconContainerProps) {
   const { value, ...other } = props;
-  return <span {...other}>{customIcons[value].icon}</span>;
+  return (
+    <span {...other} style={{ marginRight: "15px" }}>
+      {customIcons[value].icon}
+    </span>
+  );
 }
 
 const HelpSuggestion = () => {
   const { darkmode } = useSelector((store: RootState) => store.setting);
-
   return (
     <Box component={"div"} sx={{ height: "100%" }}>
       <Box
@@ -205,13 +189,11 @@ const HelpSuggestion = () => {
                   value="Suggestion"
                   control={<Radio />}
                   label="Suggestion"
-                  sx={{ ml: 3 }}
                 />
                 <FormControlLabel
                   value="others"
                   control={<Radio />}
                   label="Others"
-                  sx={{ ml: 3 }}
                 />
               </RadioGroup>
             </FormControl>

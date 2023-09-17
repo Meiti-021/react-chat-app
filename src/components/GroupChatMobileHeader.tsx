@@ -41,7 +41,7 @@ const GroupChatMobileHeader = ({
         justifyContent: "space-between",
         alignItems: "center",
         paddingX: { xs: "0.5rem", sm: "2rem" },
-        borderBottom: "1px solid #EAEDF3",
+        borderBottom: darkmode ? "none" : "1px solid #EAEDF3",
         height: "3.5rem",
         width: "100%",
         background: darkmode ? "#1D2733" : "white",
@@ -49,7 +49,7 @@ const GroupChatMobileHeader = ({
     >
       <Box
         component={"div"}
-        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+        sx={{ display: "flex", alignItems: "center", gap: 2 }}
       >
         <Box
           sx={{
@@ -58,7 +58,10 @@ const GroupChatMobileHeader = ({
             display: { xs: "flex", sm: "none" },
           }}
         >
-          <Link to="/">
+          <Link
+            to="/"
+            style={{ color: darkmode ? "white" : "black", marginTop: "5px" }}
+          >
             <ArrowBackIcon />
           </Link>
         </Box>

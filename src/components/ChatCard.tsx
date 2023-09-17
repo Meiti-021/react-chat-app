@@ -1,4 +1,3 @@
-import { messages as messages_list } from "../utils/messages";
 import { NavLink } from "react-router-dom";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import { Avatar, Box, Typography, Badge } from "@mui/material";
@@ -8,7 +7,6 @@ import { messageFind, userFind, userNameFind } from "../utils/utils";
 import { ChatType } from "../utils/chats";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-
 const ChatCard = ({
   participants,
   messages: chat_messages,
@@ -105,7 +103,7 @@ const ChatCard = ({
             }}
           >
             {moment(
-              messages_list.find(
+              messages.find(
                 (item) =>
                   item.message_id === chat_messages[chat_messages.length - 1]
               )?.timestamp
@@ -154,7 +152,7 @@ const ChatCard = ({
                   )?.user_id
                 ) +
                   " : " +
-                  messages_list.find(
+                  messages.find(
                     (item) =>
                       item.message_id ===
                       chat_messages[chat_messages.length - 1]
@@ -175,7 +173,7 @@ const ChatCard = ({
           ) : (
             <Badge
               badgeContent={
-                messages_list.filter(
+                messages.filter(
                   (item) =>
                     item.message_id ===
                       chat_messages[chat_messages.length - 1] &&

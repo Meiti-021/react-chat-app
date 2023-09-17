@@ -131,8 +131,8 @@ const GroupChatInfo = ({
         <Avatar
           src={`/assets/users/${group_profile}`}
           sx={{
-            width: 30,
-            height: 30,
+            width: 40,
+            height: 40,
             background:
               "linear-gradient(90deg, rgba(2,0,36,1) 6%, rgba(9,121,22,1) 39%, rgba(0,212,255,1) 100%)",
           }}
@@ -166,6 +166,7 @@ const GroupChatInfo = ({
         ModalProps={{
           keepMounted: true, // Better open performance on .
         }}
+        PaperProps={{ sx: { background: darkmode ? "#1D2733" : "white" } }}
       >
         {info}
       </Drawer>

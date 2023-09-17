@@ -15,8 +15,10 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useNavigate } from "react-router-dom";
 const SettingLogOut = () => {
   const { darkmode } = useSelector((store: RootState) => store.setting);
+  const navigate = useNavigate();
   return (
     <div>
       <Box
@@ -30,7 +32,12 @@ const SettingLogOut = () => {
           px: 2,
         }}
       >
-        <IconButton sx={{ color: "white" }}>
+        <IconButton
+          sx={{ color: "white" }}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>Log Out</Typography>

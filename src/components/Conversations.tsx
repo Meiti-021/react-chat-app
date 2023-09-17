@@ -93,7 +93,7 @@ const Conversations = ({ type }: { type: string }) => {
           .map((item) => {
             return <ChatCard key={item.chat_id} {...item} />;
           })}
-        {type === "all" ? (
+        {type === "conversations" ? (
           <div style={{ position: "sticky", bottom: "0" }}>
             <ChatCardAction />
           </div>
@@ -111,7 +111,7 @@ const Conversations = ({ type }: { type: string }) => {
         <Outlet />
       </Grid>
       <Drawer
-        open={pathname !== "/groups" ? true : false}
+        open={pathname !== "/" ? true : false}
         sx={{
           display: { xs: "block", sm: "none" },
           width: "100vw",

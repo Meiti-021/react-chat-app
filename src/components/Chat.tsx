@@ -6,7 +6,7 @@ import GroupChat from "./GroupChat";
 import PrivateChat from "./PrivateChat";
 import ChatLoading from "./ChatLoading";
 import { UserType } from "../utils/users";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 export type ChatInfo = {
   peer_private: boolean;
   participants: UserType[];
@@ -16,11 +16,13 @@ export type ChatInfo = {
   description: string | null;
 };
 import { RootState } from "../store";
+import { seenMessage } from "../services/chatSlice";
 const Chat = () => {
   const { chatID } = useParams();
   const { chats, users } = useSelector((store: RootState) => store.chat);
   const [chatInfo, setChatInfo] = useState<ChatInfo | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
+  const dispatch = useDispatch();
   useEffect(() => {
     setChatInfo(undefined);
     setLoading(true);
@@ -28,7 +30,11 @@ const Chat = () => {
   useEffect(() => {
     setLoading(false);
     const chat = chatFind(chats, chatID);
+
     if (chat !== undefined) {
+      chat.messages.forEach((item) => {
+        dispatch(seenMessage({ messageId: item }));
+      });
       const participantArr = chat.participants.map((item) => {
         return userFind(users, item);
       });

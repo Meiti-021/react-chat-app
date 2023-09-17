@@ -7,11 +7,11 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const HelpBuqReport = () => {
-  const [age, setAge] = React.useState("");
+  const [option, setOption] = React.useState("");
   const { darkmode } = useSelector((store: RootState) => store.setting);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    setOption(event.target.value as string);
   };
 
   return (
@@ -49,17 +49,15 @@ const HelpBuqReport = () => {
           <Typography
             sx={{ fontWeight: 400, fontSize: "1.1rem", whiteSpace: "nowrap" }}
           >
-            I would like to report
+            I would like to
           </Typography>
           <Box sx={{ width: "100%" }}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">
-                Select an option
-              </InputLabel>
+              <InputLabel id="demo-simple-select-label">Select</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={age}
+                value={option}
                 label="Select an Option"
                 onChange={handleChange}
               >

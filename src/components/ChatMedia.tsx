@@ -4,51 +4,51 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { Dialog, DialogTitle } from "@mui/material";
 const itemData = [
   {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+    img: "./assets/media/breakfast.webp",
     title: "Breakfast",
   },
   {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
+    img: "./assets/media/burger.webp",
     title: "Burger",
   },
   {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
+    img: "./assets/media/camera.webp",
     title: "Camera",
   },
   {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
+    img: "./assets/media/coffe.webp",
     title: "Coffee",
   },
   {
-    img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
+    img: "./assets/media/hats.webp",
     title: "Hats",
   },
   {
-    img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
+    img: "./assets/media/honey.webp",
     title: "Honey",
   },
   {
-    img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
+    img: "./assets/media/Basketball.webp",
     title: "Basketball",
   },
   {
-    img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
+    img: "./assets/media/Fern.webp",
     title: "Fern",
   },
   {
-    img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
+    img: "./assets/media/mashrooms.webp",
     title: "Mushrooms",
   },
   {
-    img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
+    img: "./assets/media/tomato.webp",
     title: "Tomato basil",
   },
   {
-    img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
+    img: "./assets/media/seastar.webp",
     title: "Sea star",
   },
   {
-    img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
+    img: "./assets/media/bike.webp",
     title: "Bike",
   },
 ];

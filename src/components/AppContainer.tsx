@@ -148,6 +148,7 @@ interface Props {
 
 export default function AppContainer(props: Props) {
   const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { users } = useSelector((store: RootState) => store.chat);
   const location = useLocation();
   const { id } = useParams();
   const { window } = props;
@@ -168,7 +169,7 @@ export default function AppContainer(props: Props) {
     ) {
       setFilterType("conversations");
     }
-    console.log(location.pathname);
+    setMobileOpen(false);
   }, [location.pathname, filterType, id]);
   const drawer = (
     <div style={{ height: "100%" }}>
@@ -180,7 +181,7 @@ export default function AppContainer(props: Props) {
             gap: "1rem",
           }}
         >
-          <Avatar src="/assets/users/bob_profile.jpg" />
+          <Avatar src={`/assets/users/${users[0].profile_picture}`} />
           <Stack spacing={-0.5}>
             <Typography
               sx={{
@@ -188,7 +189,7 @@ export default function AppContainer(props: Props) {
                 fontWeight: "bold",
               }}
             >
-              YOUR NAME
+              {users[0].username + "" + users[0].userLastName}
             </Typography>
             <Typography
               sx={{
@@ -196,7 +197,7 @@ export default function AppContainer(props: Props) {
                 fontSize: "0.8rem",
               }}
             >
-              web developer
+              {users[0].career}
             </Typography>
           </Stack>
         </Box>
@@ -326,7 +327,6 @@ export default function AppContainer(props: Props) {
         sx={{
           width: { xl: `calc(100% - ${drawerWidth}px)` },
           ml: { xl: `${drawerWidth}px` },
-          height: "64px",
           bgcolor: "white",
           display: { xs: "block", sm: "none" },
         }}
@@ -343,19 +343,22 @@ export default function AppContainer(props: Props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { xl: "none" }, color: "#9BA4B0" }}
+            sx={{
+              mr: 2,
+              display: { xl: "none" },
+            }}
           >
             <MenuIcon />
           </IconButton>
           <Typography
             sx={{
-              color: "#1e2933",
+              color: darkmode ? "#9BA4B0" : "white",
               fontWeight: "bold",
               letterSpacing: 3,
               mt: 0.2,
             }}
           >
-            MEITIGRAM MOBILE
+            MEITIGRAM
           </Typography>
           <IconButton
             color="inherit"
@@ -364,14 +367,13 @@ export default function AppContainer(props: Props) {
             onClick={handleDrawerToggle}
             sx={{
               display: { xl: "none" },
-              color: "#9BA4B0",
+              color: darkmode ? "#9BA4B0" : "white",
               marginLeft: "auto",
             }}
           >
-            <SearchIcon />
+            <SearchIcon sx={{ fontSize: "22px" }} />
           </IconButton>
         </Toolbar>
-        <Divider sx={{ bgcolor: "#EAEDF3" }} />
       </AppBar>
       <AppBar
         position="fixed"
@@ -478,7 +480,7 @@ export default function AppContainer(props: Props) {
         sx={{
           flexGrow: 1,
           width: { xl: `calc(100% - ${drawerWidth}px)`, xs: "100vw" },
-          paddingTop: "64px",
+          paddingTop: { xs: "56px", sm: "64px" },
           height: "100vh",
         }}
       >

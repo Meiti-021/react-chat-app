@@ -76,7 +76,7 @@ const ChatLoading = () => {
         }}
       >
         <Typography
-          sx={{ fontSize: "5rem", fontWeight: "bold", color: "#EAEDF3" }}
+          sx={{ fontSize: "4rem", fontWeight: "bold", color: "#EAEDF3" }}
         >
           LOADING
         </Typography>

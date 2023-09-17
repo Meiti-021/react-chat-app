@@ -37,7 +37,7 @@ const SettingCenter = () => {
         <Outlet />
       </Grid>
       <Drawer
-        open={pathname !== "/help" ? true : false}
+        open={pathname !== "/setting" ? true : false}
         sx={{
           display: { xs: "block", sm: "none" },
           width: "100vw",

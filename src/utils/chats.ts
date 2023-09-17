@@ -10,7 +10,7 @@ export type ChatType = {
 
 export const chats: ChatType[] = [
   {
-    chat_id: "peer_private_chat1",
+    chat_id: "user2",
     peer_private: true,
     participants: ["user1", "user2"],
     messages: ["message1", "message2", "message3"],
@@ -19,7 +19,7 @@ export const chats: ChatType[] = [
     description: null,
   },
   {
-    chat_id: "peer_private_chat2",
+    chat_id: "user3",
     peer_private: true,
     participants: ["user1", "user3"],
     messages: ["message4", "message5"],
@@ -84,7 +84,7 @@ export const chats: ChatType[] = [
     description: "We'll Cross That Bridge When We Burn It.",
   },
   {
-    chat_id: "peer_private_chat5",
+    chat_id: "user6",
     peer_private: true,
     participants: ["user1", "user6"],
     messages: ["message17"],
@@ -93,7 +93,7 @@ export const chats: ChatType[] = [
     description: null,
   },
   {
-    chat_id: "peer_private_chat7",
+    chat_id: "user7",
     peer_private: true,
     participants: ["user1", "user7"],
     messages: [
@@ -109,7 +109,7 @@ export const chats: ChatType[] = [
     description: null,
   },
   {
-    chat_id: "peer_private_chat9",
+    chat_id: "user9",
     peer_private: true,
     participants: ["user1", "user9"],
     messages: ["message24", "message25"],
@@ -118,7 +118,7 @@ export const chats: ChatType[] = [
     description: null,
   },
   {
-    chat_id: "peer_private_chat10",
+    chat_id: "user8",
     peer_private: true,
     participants: ["user1", "user8"],
     messages: ["message26", "message27"],
@@ -127,7 +127,7 @@ export const chats: ChatType[] = [
     description: null,
   },
   {
-    chat_id: "peer_private_chat11",
+    chat_id: "user4",
     peer_private: true,
     participants: ["user1", "user4"],
     messages: ["message28", "message29"],
@@ -136,7 +136,7 @@ export const chats: ChatType[] = [
     description: null,
   },
   {
-    chat_id: "peer_private_chat12",
+    chat_id: "user5",
     peer_private: true,
     participants: ["user1", "user5"],
     messages: ["message30", "message31"],

@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useState } from "react";
 import { editCareer } from "../services/chatSlice";
+import { useNavigate } from "react-router-dom";
 const SettingCareer = () => {
   const dispatch = useDispatch();
   const { darkmode } = useSelector((store: RootState) => store.setting);
   const { users } = useSelector((store: RootState) => store.chat);
   const [value, setValue] = useState<string>(users[0].career);
+  const navigate = useNavigate();
   return (
     <div>
       <Box
@@ -23,7 +25,12 @@ const SettingCareer = () => {
           px: 2,
         }}
       >
-        <IconButton sx={{ color: "white" }}>
+        <IconButton
+          sx={{ color: "white" }}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>Career</Typography>

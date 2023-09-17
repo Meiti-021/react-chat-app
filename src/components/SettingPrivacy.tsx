@@ -4,9 +4,11 @@ import SettingSecurity from "./SettingSecurity";
 import SettingPrivacyList from "./SettingPrivacyList";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useNavigate } from "react-router-dom";
 
 const SettingPrivacy = () => {
   const { darkmode } = useSelector((store: RootState) => store.setting);
+  const navigate = useNavigate();
   return (
     <div>
       <Box
@@ -20,7 +22,12 @@ const SettingPrivacy = () => {
           px: 2,
         }}
       >
-        <IconButton sx={{ color: "white" }}>
+        <IconButton
+          sx={{ color: "white" }}
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1.1rem"}>Privacy and Security</Typography>

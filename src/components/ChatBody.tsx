@@ -36,7 +36,7 @@ const ChatBody = ({ chat_id }: { chat_id: string }) => {
     return (
       <Box
         sx={{
-          height: { xs: "calc(100vh - 7.6rem)", sm: "calc(100vh - 11rem)" },
+          height: { xs: "calc(100vh - 7rem)", sm: "calc(100vh - 11rem)" },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -44,7 +44,7 @@ const ChatBody = ({ chat_id }: { chat_id: string }) => {
       >
         <Typography
           sx={{
-            fontSize: "5rem",
+            fontSize: "4rem",
             fontWeight: "bold",
             color: "#EAEDF3",
             mt: -5,
@@ -59,7 +59,7 @@ const ChatBody = ({ chat_id }: { chat_id: string }) => {
     return (
       <Box
         sx={{
-          height: { xs: "calc(100vh - 7.5rem)", sm: "calc(100vh - 11rem)" },
+          height: { xs: "calc(100vh - 7rem)", sm: "calc(100vh - 11rem)" },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -82,7 +82,7 @@ const ChatBody = ({ chat_id }: { chat_id: string }) => {
   return (
     <Box
       sx={{
-        height: { xs: "calc(100vh - 7.5rem)", sm: "calc(100vh - 11rem)" },
+        height: { xs: "calc(100vh - 7rem)", sm: "calc(100vh - 11rem)" },
       }}
     >
       <div
