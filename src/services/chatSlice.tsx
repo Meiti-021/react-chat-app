@@ -102,7 +102,9 @@ const chatSlice = createSlice({
       const index = state.messages.findIndex(
         (item) => item.message_id === action.payload.messageId
       );
-      state.messages[index].seen = true;
+      if (state.messages[index].sender !== "user1") {
+        state.messages[index].seen = true;
+      }
     },
   },
 });

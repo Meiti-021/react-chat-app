@@ -117,11 +117,13 @@ const ChatInput = ({ chat_id }: { chat_id: string }) => {
           >
             <CloseIcon />
           </IconButton>
-          <EmojiPicker
-            onEmojiClick={(emojiData) => {
-              setInput(input + emojiData.emoji);
-            }}
-          />
+          {emojiOpen ? (
+            <EmojiPicker
+              onEmojiClick={(emojiData) => {
+                setInput(input + emojiData.emoji);
+              }}
+            />
+          ) : undefined}
         </div>
         <Tooltip title="Send" arrow>
           <IconButton

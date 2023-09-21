@@ -126,7 +126,7 @@ const Message = ({
               </>
             )}
             <Typography sx={{ fontSize: "0.8rem", fontWeight: "bold" }}>
-              {moment(timestamp).format("hh:mm")}
+              {moment(timestamp).local().format("hh:mm")}
             </Typography>
           </Box>
           <Box
