@@ -52,6 +52,7 @@ const SettingBio = () => {
           onChange={(e) => {
             setValue(e.target.value);
           }}
+          inputProps={{ maxLength: 60 }}
         />
         <Typography fontSize={"0.9rem"}>
           You can add a few lines about yourself. Choose who can see your bio in

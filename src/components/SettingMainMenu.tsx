@@ -37,7 +37,7 @@ const SettingMainMenu = () => {
       lg={3}
       height={"100%"}
       sx={{
-        overflow: "auto",
+        overflow: "hidden",
         "&::-webkit-scrollbar": { display: "none" },
         borderRight: "1px solid #EAEDF3",
         position: "relative",
@@ -74,8 +74,17 @@ const SettingMainMenu = () => {
               height: 60,
             }}
           />
-          <Box>
-            <Typography color={"white"} fontWeight={"bold"}>
+          <Box sx={{ overflow: "hidden" }}>
+            <Typography
+              color={"white"}
+              fontWeight={"bold"}
+              sx={{
+                width: "100%",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
               {users[0].username + " " + users[0].userLastName}
             </Typography>
             <Typography color={"white"} fontSize={"0.8rem"}>
@@ -115,40 +124,37 @@ const SettingMainMenu = () => {
                   width: "100%",
                   display: "flex",
                   color: darkmode ? "white" : "black",
+                  overflow: "hidden",
                 }}
               >
                 <ListItemText
                   primary={users[0].email}
                   secondary="Tap to change email."
+                  primaryTypographyProps={{
+                    sx: {
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                    },
+                  }}
                 />
               </Link>
             </ListItem>
             <ListItem sx={{ p: 0 }}>
               <Link
-                to={""}
+                to={"/setting/location"}
                 style={{
                   textDecoration: "none",
                   width: "100%",
                   display: "flex",
-                  alignItems: "center",
                   color: darkmode ? "white" : "black",
                 }}
               >
-                <Link
-                  to={"/setting/location"}
-                  style={{
-                    textDecoration: "none",
-                    width: "100%",
-                    display: "flex",
-                    color: darkmode ? "white" : "black",
-                  }}
-                >
-                  <ListItemText
-                    primary={users[0].location}
-                    secondary="Location"
-                  />
-                </Link>
-              </Link>{" "}
+                <ListItemText
+                  primary={users[0].location}
+                  secondary="Location"
+                />
+              </Link>
             </ListItem>
             <ListItem sx={{ p: 0 }}>
               <Link

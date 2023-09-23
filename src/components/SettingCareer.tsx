@@ -52,6 +52,7 @@ const SettingCareer = () => {
           onChange={(e) => {
             setValue(e.target.value);
           }}
+          inputProps={{ maxLength: 25 }}
         />
         <Typography fontSize={"0.9rem"}>
           You can add a few lines about your carrer and what you are doing now.

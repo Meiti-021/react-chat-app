@@ -3,10 +3,12 @@ const initialState: {
   darkmode: boolean;
   fontSize: number | number[];
   messageCorner: number | number[];
+  isLogin: boolean;
 } = {
-  darkmode: true,
+  darkmode: false,
   fontSize: 16,
   messageCorner: 5,
+  isLogin: false,
 };
 
 const settingSlice = createSlice({
@@ -28,10 +30,21 @@ const settingSlice = createSlice({
     ) => {
       state.messageCorner = action.payload.newValue;
     },
+    logIn: (state) => {
+      state.isLogin = true;
+    },
+    logOut: (state) => {
+      state.isLogin = false;
+    },
   },
 });
 
-export const { switchDarkmode, changeFontSize, changeMessageCorner } =
-  settingSlice.actions;
+export const {
+  switchDarkmode,
+  changeFontSize,
+  changeMessageCorner,
+  logIn,
+  logOut,
+} = settingSlice.actions;
 
 export default settingSlice.reducer;

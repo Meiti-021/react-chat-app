@@ -179,14 +179,19 @@ export default function AppContainer(props: Props) {
             display: "flex",
             alignItems: "center",
             gap: "1rem",
+            overflow: "hidden",
           }}
         >
           <Avatar src={`/assets/users/${users[0].profile_picture}`} />
-          <Stack spacing={-0.5}>
+          <Stack spacing={-0.5} sx={{ overflow: "hidden", width: "100%" }}>
             <Typography
               sx={{
                 color: "white",
                 fontWeight: "bold",
+                width: "100%",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
               }}
             >
               {users[0].username + "" + users[0].userLastName}

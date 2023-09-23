@@ -57,6 +57,7 @@ const SettingEditName = () => {
           onChange={(e) => {
             setNameValue(e.target.value);
           }}
+          inputProps={{ maxLength: 25 }}
         />
         <TextField
           fullWidth
@@ -66,6 +67,7 @@ const SettingEditName = () => {
           onChange={(e) => {
             setLastNameValue(e.target.value);
           }}
+          inputProps={{ maxLength: 25 }}
         />
       </Stack>
     </div>

@@ -4,6 +4,11 @@
 
 body {
   font-family: "Public Sans";
+  margin: 0;
+}
+
+.input:focus {
+  outline: 0;
 }
 
 /* vietnamese */
