@@ -58,7 +58,7 @@ const PrivateChatCall = ({ user }: { user: UserType }) => {
         >
           <Avatar
             alt={user?.username}
-            src={`/assets/users/${user?.profile_picture}`}
+            src={`${user?.profile_picture}`}
             sx={{
               width: 100,
               height: 100,

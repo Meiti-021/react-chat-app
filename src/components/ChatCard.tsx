@@ -48,11 +48,11 @@ const ChatCard = ({
       <Avatar
         src={
           peer_private
-            ? `/assets/users/${
+            ? `${
                 users.find((item) => item.user_id === participants[1])
                   ?.profile_picture
               }`
-            : `/assets/users/${group_profile}`
+            : `${group_profile}`
         }
         sx={{
           width: "2.5rem",

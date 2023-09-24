@@ -13,14 +13,14 @@ export type UserType = {
 export const users: UserType[] = [
   {
     user_id: "user1",
-    username: "Meiti(Mahdi)",
+    username: "Meiti",
     userLastName: "Dehgani",
     email: "meiti.edu@gmail.com",
-    location: "Los Angeles",
+    location: "Tabriz",
     career: "Front-end Developer",
     biography:
       "my powers are beyond any super power, i can develope everything that i can imagine.",
-    profile_picture: "fav.png",
+    profile_picture: "/assets/users/fav.png",
     last_activity: "online",
   },
   {
@@ -31,7 +31,7 @@ export const users: UserType[] = [
     location: "New York",
     career: "Speed runner",
     biography: "Passionate about Running and Killing passangers.",
-    profile_picture: "A-train.webp",
+    profile_picture: "/assets/users/A-train.webp",
     last_activity: "online",
   },
   {
@@ -42,7 +42,7 @@ export const users: UserType[] = [
     location: "Chicago",
     career: "military expert",
     biography: "Fighting against nazis and destroying stuff",
-    profile_picture: "soldierboy.webp",
+    profile_picture: "/assets/users/soldierboy.webp",
     last_activity: "recently",
   },
   {
@@ -53,7 +53,7 @@ export const users: UserType[] = [
     location: "San Francisco",
     career: "Swimmer",
     biography: "nothing special about this looser.",
-    profile_picture: "Deep.webp",
+    profile_picture: "/assets/users/Deep.webp",
     last_activity: "recently",
   },
   {
@@ -64,7 +64,7 @@ export const users: UserType[] = [
     location: "Seattle",
     career: "Superhero at the seven",
     biography: " a cute feminin hero that everybody loves, cring af.",
-    profile_picture: "starlight.webp",
+    profile_picture: "/assets/users/starlight.webp",
     last_activity: "2 days ago",
   },
   {
@@ -75,7 +75,7 @@ export const users: UserType[] = [
     location: "Miami",
     career: "American facist evil military expert",
     biography: "Really good at mass murders and destroying everything",
-    profile_picture: "homelander.webp",
+    profile_picture: "/assets/users/homelander.webp",
     last_activity: "5 days ago",
   },
   {
@@ -86,7 +86,7 @@ export const users: UserType[] = [
     location: "Austin",
     career: "The cooke",
     biography: "He cookes everything spacially humans",
-    profile_picture: "Lamplighter.webp",
+    profile_picture: "/assets/users/Lamplighter.webp",
     last_activity: "online",
   },
   {
@@ -97,7 +97,7 @@ export const users: UserType[] = [
     location: "Denver",
     career: "martial art coach",
     biography: "ninja skills, no face, no voice, crrepy as shit!",
-    profile_picture: "black-noir.webp",
+    profile_picture: "/assets/users/black-noir.webp",
     last_activity: "recently",
   },
   {
@@ -109,7 +109,7 @@ export const users: UserType[] = [
     career: "Private Detective",
     biography:
       "anti hero, human version of a superhero, hates superheros, kills superheros",
-    profile_picture: "Billy-Butcher.webp",
+    profile_picture: "/assets/users/Billy-Butcher.webp",
     last_activity: "2 month ago",
   },
   {
@@ -121,7 +121,7 @@ export const users: UserType[] = [
     career: "A soldier boys placeholder",
     biography:
       "He doesn't exist in the boys, it here beacuse  i ran out of character",
-    profile_picture: "captain.webp",
+    profile_picture: "/assets/users/captain.webp",
     last_activity: "long time ago",
   },
 ];

@@ -184,7 +184,7 @@ export default function AppContainer(props: Props) {
             overflow: "hidden",
           }}
         >
-          <Avatar src={`/assets/users/${users[0].profile_picture}`} />
+          <Avatar src={`${users[0].profile_picture}`} />
           <Stack spacing={-0.5} sx={{ overflow: "hidden", width: "100%" }}>
             <Typography
               sx={{
@@ -196,7 +196,7 @@ export default function AppContainer(props: Props) {
                 overflow: "hidden",
               }}
             >
-              {users[0].username + "" + users[0].userLastName}
+              {users[0].username + " " + users[0].userLastName}
             </Typography>
             <Typography
               sx={{

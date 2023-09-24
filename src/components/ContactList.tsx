@@ -54,7 +54,7 @@ const ContactList = () => {
                 >
                   <ListItem disablePadding sx={{ display: "flex", gap: 2 }}>
                     <Avatar
-                      src={`/assets/users/${item.profile_picture}`}
+                      src={`${item.profile_picture}`}
                       sx={{
                         width: 40,
                         height: 40,

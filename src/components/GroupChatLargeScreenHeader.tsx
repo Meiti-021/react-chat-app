@@ -88,7 +88,7 @@ const GroupChatLargeScreenHeader = ({
               return (
                 <Avatar
                   alt={item.username}
-                  src={`/assets/users/${item.profile_picture}`}
+                  src={`${item.profile_picture}`}
                   key={"gruop-memeber" + index}
                   sx={{
                     background:

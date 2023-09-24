@@ -55,7 +55,7 @@ const GroupChatInfo = ({
           <CloseIcon />
         </IconButton>
         <Avatar
-          src={`/assets/users/${group_profile}`}
+          src={`${group_profile}`}
           sx={{
             width: "6rem",
             height: "6rem",
@@ -129,7 +129,7 @@ const GroupChatInfo = ({
         }}
       >
         <Avatar
-          src={`/assets/users/${group_profile}`}
+          src={`${group_profile}`}
           sx={{
             width: 40,
             height: 40,

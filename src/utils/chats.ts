@@ -44,7 +44,7 @@ export const chats: ChatType[] = [
     ],
     messages: ["message6", "message7", "message8", "message9", "message10"],
     group_name: "The boys",
-    group_profile: "group_chat1.webp",
+    group_profile: "/assets/users/group_chat1.webp",
     description: "Let justice be done though the heavens fall",
   },
   {
@@ -61,7 +61,7 @@ export const chats: ChatType[] = [
     ],
     messages: ["message11"],
     group_name: "THE SEVEN",
-    group_profile: "group_chat2.jpg",
+    group_profile: "/assets/users/group_chat2.jpg",
     description: "We Are Vought. We Make Heroes Super",
   },
   {
@@ -80,7 +80,7 @@ export const chats: ChatType[] = [
       "message20",
     ],
     group_name: "freedom!",
-    group_profile: "group_chat3.png",
+    group_profile: "/assets/users/group_chat3.png",
     description: "We'll Cross That Bridge When We Burn It.",
   },
   {

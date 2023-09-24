@@ -2,7 +2,6 @@ import Grid from "@mui/material/Grid";
 import {
   Box,
   Avatar,
-  IconButton,
   Typography,
   List,
   ListItem,
@@ -17,13 +16,12 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
 import PersonAddOutlinedIcon from "@mui/icons-material/PersonAddOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-// import { useState } from "react";
 import { userFind } from "../utils/utils";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import SettingTopMenu from "./SettingTopMenu";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import SettingProfileChange from "./SettingProfileChange";
 
 const SettingMainMenu = () => {
   const { users } = useSelector((store: RootState) => store.chat);
@@ -67,7 +65,7 @@ const SettingMainMenu = () => {
           }}
         >
           <Avatar
-            src={`/assets/users/${userFind(users, "user1")?.profile_picture}`}
+            src={`${userFind(users, "user1")?.profile_picture}`}
             sx={{
               bgcolor: darkmode ? "black" : "white",
               width: 60,
@@ -92,23 +90,7 @@ const SettingMainMenu = () => {
             </Typography>
           </Box>
         </Box>
-        <IconButton
-          sx={{
-            bgcolor: darkmode ? "black" : "white",
-            position: "absolute",
-            bottom: -25,
-            right: 30,
-            width: 50,
-            height: 50,
-            border: "1px solid #ebe8e8",
-            ":hover": {
-              bgcolor: "#ccc",
-              color: "white",
-            },
-          }}
-        >
-          <CameraAltIcon />
-        </IconButton>
+        <SettingProfileChange />
       </Box>
       <Box>
         <Box sx={{ p: 3 }}>

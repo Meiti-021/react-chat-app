@@ -163,9 +163,7 @@ const SettingChat = () => {
                       }}
                     >
                       <Avatar
-                        src={`/assets/users/${
-                          userFind(users, item.sender)?.profile_picture
-                        }`}
+                        src={`${userFind(users, item.sender)?.profile_picture}`}
                         sx={{
                           width: 30,
                           height: 30,

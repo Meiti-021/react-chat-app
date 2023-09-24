@@ -106,6 +106,9 @@ const chatSlice = createSlice({
         state.messages[index].seen = true;
       }
     },
+    uploadProfile: (state, action: PayloadAction<{ img: string }>) => {
+      state.users[0].profile_picture = action.payload.img;
+    },
   },
 });
 
@@ -119,6 +122,7 @@ export const {
   editCareer,
   editBio,
   seenMessage,
+  uploadProfile,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;

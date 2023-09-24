@@ -87,7 +87,7 @@ const Contacts = () => {
                     to={`/${item.user_id}`}
                   >
                     <Avatar
-                      src={`/assets/users/${item.profile_picture}`}
+                      src={`${item.profile_picture}`}
                       sx={{
                         position: "absolute",
                         top: "-15px",

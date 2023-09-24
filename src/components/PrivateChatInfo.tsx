@@ -48,7 +48,7 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
         </IconButton>
         <PrivateChatInfoAction />
         <Avatar
-          src={`/assets/users/${user?.profile_picture}`}
+          src={`${user?.profile_picture}`}
           sx={{
             width: "6rem",
             height: "6rem",
@@ -123,7 +123,7 @@ const PrivateChatInfo = ({ user }: { user: UserType }) => {
         }}
       >
         <Avatar
-          src={`/assets/users/${user.profile_picture}`}
+          src={`${user.profile_picture}`}
           sx={{
             width: 40,
             height: 40,

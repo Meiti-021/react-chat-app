@@ -99,9 +99,7 @@ const Message = ({
                 }}
               >
                 <Avatar
-                  src={`/assets/users/${
-                    userFind(users, sender)?.profile_picture
-                  }`}
+                  src={`${userFind(users, sender)?.profile_picture}`}
                   sx={{
                     width: 30,
                     height: 30,
