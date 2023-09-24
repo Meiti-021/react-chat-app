@@ -72,7 +72,7 @@ const HelpGeneral = () => {
     <>
       <Box
         sx={{
-          height: "4.5rem",
+          height: "3.5rem",
           display: "flex",
           gap: 2,
           alignItems: "center",

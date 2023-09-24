@@ -64,8 +64,8 @@ const Conversations = ({ type }: { type: string }) => {
             sx={{
               fontSize: "0.7rem",
               fontWeight: "bold",
-              color: "#2CC641",
-              backgroundColor: "#D3FFD9",
+              color: "#fff",
+              backgroundColor: "#008EE4",
               paddingY: "5px",
               paddingX: "15px",
               borderRadius: "5px",

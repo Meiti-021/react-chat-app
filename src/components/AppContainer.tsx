@@ -48,7 +48,7 @@ import Setting from "./Setting";
 import SettingCenter from "./SettingCenter";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
-import { switchDarkmode } from "../services/settingSlice";
+import { logOut, switchDarkmode } from "../services/settingSlice";
 
 const drawerWidth = 270;
 
@@ -132,7 +132,7 @@ const menuItems = [
         title: "Log out",
         icon: <LogoutIcon sx={{ color: "inherit" }} />,
         type: Button,
-        address: "",
+        address: "logout",
       },
     ],
   },
@@ -165,6 +165,8 @@ export default function AppContainer(props: Props) {
       location.pathname !== "/contact" &&
       location.pathname !== "/contact-us" &&
       location.pathname !== "/help" &&
+      location.pathname !== "/channels" &&
+      location.pathname !== "/bots" &&
       filterType === ""
     ) {
       setFilterType("conversations");
@@ -293,7 +295,11 @@ export default function AppContainer(props: Props) {
                   onClick={
                     element.type === Button
                       ? () => {
-                          if (element.title === "Dark mode") {
+                          if (element.title === "Log out") {
+                            setFilterType("");
+                            navigate("/");
+                            dispatch(logOut());
+                          } else if (element.title === "Dark mode") {
                             dispatch(switchDarkmode());
                             setFilterType("");
                             navigate("/");

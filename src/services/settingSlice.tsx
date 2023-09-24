@@ -8,9 +8,8 @@ const initialState: {
   darkmode: false,
   fontSize: 16,
   messageCorner: 5,
-  isLogin: false,
+  isLogin: localStorage.getItem("login") === "true" ? true : false,
 };
-
 const settingSlice = createSlice({
   name: "setting",
   initialState,
@@ -32,9 +31,12 @@ const settingSlice = createSlice({
     },
     logIn: (state) => {
       state.isLogin = true;
+      localStorage.setItem("login", "true");
     },
     logOut: (state) => {
       state.isLogin = false;
+      localStorage.removeItem("login");
+      console.log(state.isLogin);
     },
   },
 });
