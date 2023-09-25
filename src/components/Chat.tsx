@@ -14,6 +14,7 @@ export type ChatInfo = {
   group_profile: string | null;
   chat_id: string;
   description: string | null;
+  replay: undefined | string;
 };
 import { RootState } from "../store";
 import { seenMessage } from "../services/chatSlice";
@@ -50,6 +51,7 @@ const Chat = () => {
         group_profile: chat.group_profile,
         chat_id: chat.chat_id,
         description: chat.description,
+        replay: chat.replay,
       };
       setChatInfo(chatData);
     }

@@ -5,6 +5,7 @@ export type MessageType = {
   sender: string;
   group_sender_display_name: null;
   seen: boolean;
+  replay: string | undefined;
 };
 export const messages: MessageType[] = [
   {
@@ -14,6 +15,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message2",
@@ -22,6 +24,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message3",
@@ -30,6 +33,7 @@ export const messages: MessageType[] = [
     sender: "user2",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message4",
@@ -38,6 +42,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message5",
@@ -47,6 +52,7 @@ export const messages: MessageType[] = [
     sender: "user3",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message6",
@@ -55,6 +61,7 @@ export const messages: MessageType[] = [
     sender: "user2",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message7",
@@ -63,6 +70,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message8",
@@ -71,6 +79,7 @@ export const messages: MessageType[] = [
     sender: "user4",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message9",
@@ -79,6 +88,7 @@ export const messages: MessageType[] = [
     sender: "user9",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message10",
@@ -87,6 +97,7 @@ export const messages: MessageType[] = [
     sender: "user4",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message11",
@@ -95,6 +106,7 @@ export const messages: MessageType[] = [
     sender: "user6",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message12",
@@ -103,6 +115,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message13",
@@ -111,6 +124,7 @@ export const messages: MessageType[] = [
     sender: "user9",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message14",
@@ -119,6 +133,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message15",
@@ -128,6 +143,7 @@ export const messages: MessageType[] = [
     sender: "user5",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message16",
@@ -137,6 +153,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message17",
@@ -145,6 +162,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message18",
@@ -153,6 +171,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message19",
@@ -161,6 +180,7 @@ export const messages: MessageType[] = [
     sender: "user7",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message20",
@@ -169,6 +189,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message21",
@@ -177,6 +198,7 @@ export const messages: MessageType[] = [
     sender: "user7",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message22",
@@ -185,6 +207,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message23",
@@ -193,6 +216,7 @@ export const messages: MessageType[] = [
     sender: "user7",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message24",
@@ -201,6 +225,7 @@ export const messages: MessageType[] = [
     sender: "user9",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message25",
@@ -209,6 +234,7 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message26",
@@ -217,6 +243,7 @@ export const messages: MessageType[] = [
     sender: "user8",
     group_sender_display_name: null,
     seen: false,
+    replay: undefined,
   },
   {
     message_id: "message27",
@@ -225,6 +252,7 @@ export const messages: MessageType[] = [
     sender: "user8",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message28",
@@ -233,6 +261,7 @@ export const messages: MessageType[] = [
     sender: "user4",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message29",
@@ -241,6 +270,7 @@ export const messages: MessageType[] = [
     sender: "user4",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message30",
@@ -249,6 +279,7 @@ export const messages: MessageType[] = [
     sender: "user5",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
   {
     message_id: "message31",
@@ -257,5 +288,6 @@ export const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: true,
+    replay: undefined,
   },
 ];

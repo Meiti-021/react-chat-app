@@ -33,7 +33,6 @@ const SettingMainMenu = () => {
       sm={6}
       md={4}
       lg={3}
-      height={"100%"}
       sx={{
         overflow: "hidden",
         "&::-webkit-scrollbar": { display: "none" },

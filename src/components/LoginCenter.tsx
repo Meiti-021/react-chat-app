@@ -281,8 +281,9 @@ const LoginCenter = () => {
         <DialogContent>
           <Typography
             sx={{
-              fontSize: "1.2rem",
+              fontSize: "1rem",
               color: darkmode ? "lightgrey" : undefined,
+              fontWeight: "bold",
             }}
           >
             Data Persistence:
@@ -291,9 +292,10 @@ const LoginCenter = () => {
           demonstration purposes only and will not be saved or stored anywhere.
           <Typography
             sx={{
-              fontSize: "1.2rem",
+              fontSize: "1rem",
               mt: 2,
               color: darkmode ? "lightgrey" : undefined,
+              fontWeight: "bold",
             }}
           >
             No Real Data:
@@ -312,9 +314,10 @@ const LoginCenter = () => {
           you don't need to enter real world information.
           <Typography
             sx={{
-              fontSize: "1.2rem",
+              fontSize: "1rem",
               mt: 2,
               color: darkmode ? "lightgrey" : undefined,
+              fontWeight: "bold",
             }}
           >
             Data Deletion:
@@ -323,9 +326,10 @@ const LoginCenter = () => {
           will be lost. It won't be recoverable.
           <Typography
             sx={{
-              fontSize: "1.2rem",
+              fontSize: "1rem",
               mt: 2,
               color: darkmode ? "lightgrey" : undefined,
+              fontWeight: "bold",
             }}
           >
             Privacy:
@@ -334,9 +338,10 @@ const LoginCenter = () => {
           here. Your privacy is important to us.
           <Typography
             sx={{
-              fontSize: "1.2rem",
+              fontSize: "1rem",
               mt: 2,
               color: darkmode ? "lightgrey" : undefined,
+              fontWeight: "bold",
             }}
           >
             Reset on Refresh:
@@ -346,9 +351,10 @@ const LoginCenter = () => {
           critical data.
           <Typography
             sx={{
-              fontSize: "1.2rem",
+              fontSize: "1rem",
               mt: 2,
               color: darkmode ? "lightgrey" : undefined,
+              fontWeight: "bold",
             }}
           >
             For Testing Purposes:
@@ -357,9 +363,10 @@ const LoginCenter = () => {
           it's meant for testing and presentation purposes only. Not for Real
           <Typography
             sx={{
-              fontSize: "1.2rem",
+              fontSize: "1rem",
               mt: 2,
               color: darkmode ? "lightgrey" : undefined,
+              fontWeight: "bold",
             }}
           >
             Authentication:

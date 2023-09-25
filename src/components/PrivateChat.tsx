@@ -3,7 +3,7 @@ import ChatInput from "./ChatInput";
 import PrivateChatHeader from "./PrivateChatHeader";
 import ChatBody from "./ChatBody";
 import { ChatInfo } from "./Chat";
-const PrivateChat = ({ participants, chat_id }: ChatInfo) => {
+const PrivateChat = ({ participants, chat_id, replay }: ChatInfo) => {
   return (
     <Box
       component={"div"}
@@ -15,7 +15,7 @@ const PrivateChat = ({ participants, chat_id }: ChatInfo) => {
     >
       <PrivateChatHeader user={participants[1]} />
       <ChatBody chat_id={chat_id} />
-      <ChatInput chat_id={chat_id} />
+      <ChatInput chat_id={chat_id} replay={replay} />
     </Box>
   );
 };

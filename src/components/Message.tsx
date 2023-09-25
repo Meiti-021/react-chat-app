@@ -20,7 +20,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { MessageType } from "../utils/messages";
-import { userFind } from "../utils/utils";
+import { messageFind, userFind } from "../utils/utils";
 import moment from "moment";
 import CheckIcon from "@mui/icons-material/Check";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
@@ -34,8 +34,9 @@ const Message = ({
   sender,
   seen,
   message_id,
+  replay,
 }: MessageType) => {
-  const { users } = useSelector((store: RootState) => store.chat);
+  const { users, messages } = useSelector((store: RootState) => store.chat);
   const { fontSize, messageCorner } = useSelector(
     (store: RootState) => store.setting
   );
@@ -149,6 +150,42 @@ const Message = ({
               textAlign: "left",
             }}
           >
+            <Box
+              sx={{
+                display: replay ? "block" : "none",
+                overflow: "hidden",
+                mb: 0.5,
+                borderLeft: `3px solid ${
+                  sender === "user1" ? "#15100B" : "#fff"
+                }`,
+                pl: 1,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "0.8rem",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {
+                  userFind(users, messageFind(messages, replay)?.sender)
+                    ?.username
+                }
+              </Typography>
+
+              <Typography
+                sx={{
+                  fontSize: "0.8rem",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {messageFind(messages, replay)?.content}
+              </Typography>
+            </Box>
             <Typography sx={{ fontSize: `${fontSize}px ` }}>
               {content}
             </Typography>
