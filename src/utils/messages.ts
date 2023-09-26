@@ -6,6 +6,7 @@ export type MessageType = {
   group_sender_display_name: null;
   seen: boolean;
   reply: string | undefined;
+  media: string | undefined;
 };
 export const messages: MessageType[] = [
   {
@@ -16,6 +17,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message2",
@@ -25,6 +27,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message3",
@@ -34,6 +37,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: "message2",
+    media: "/assets/media/media4.webp",
   },
   {
     message_id: "message4",
@@ -44,6 +48,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message5",
@@ -53,6 +58,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message6",
@@ -62,6 +68,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message7",
@@ -72,6 +79,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message6",
+    media: undefined,
   },
   {
     message_id: "message8",
@@ -82,6 +90,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message9",
@@ -92,6 +101,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: "message8",
+    media: undefined,
   },
   {
     message_id: "message11",
@@ -102,6 +112,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message12",
@@ -111,6 +122,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message13",
@@ -120,6 +132,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: "message12",
+    media: undefined,
   },
   {
     message_id: "message14",
@@ -130,6 +143,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message12",
+    media: undefined,
   },
   {
     message_id: "message15",
@@ -139,6 +153,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message16",
@@ -149,6 +164,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message17",
@@ -158,6 +174,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message18",
@@ -167,6 +184,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message19",
@@ -176,6 +194,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: "message18",
+    media: undefined,
   },
   {
     message_id: "message20",
@@ -186,6 +205,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message21",
@@ -196,6 +216,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message22",
@@ -205,6 +226,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: "message21",
+    media: undefined,
   },
   {
     message_id: "message23",
@@ -215,6 +237,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message22",
+    media: undefined,
   },
   {
     message_id: "message24",
@@ -224,6 +247,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message25",
@@ -233,6 +257,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message26",
@@ -242,6 +267,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message27",
@@ -249,8 +275,9 @@ export const messages: MessageType[] = [
     timestamp: "2023-07-29 12:49:00",
     sender: "user8",
     group_sender_display_name: null,
-    seen: true,
+    seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message28",
@@ -260,6 +287,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message29",
@@ -269,24 +297,27 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message30",
-    content: "can you just stop spying at me?",
+    content: "Hey stranger! Miss me?",
     timestamp: "2023-07-26 12:51:00",
     sender: "user5",
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: "/assets/media/media1.webp",
   },
   {
     message_id: "message31",
-    content: "what are you talking about?",
+    content: "You have no idea! How's life in the spotlight?",
     timestamp: "2023-07-26 12:53:00",
     sender: "user1",
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message32",
@@ -297,6 +328,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message33",
@@ -307,6 +339,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message34",
@@ -316,6 +349,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message33",
+    media: undefined,
   },
   {
     message_id: "message35",
@@ -326,6 +360,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message33",
+    media: undefined,
   },
   {
     message_id: "message36",
@@ -336,6 +371,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message37",
@@ -346,6 +382,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message36",
+    media: undefined,
   },
   {
     message_id: "message38",
@@ -356,6 +393,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message37",
+    media: undefined,
   },
   {
     message_id: "message39",
@@ -366,6 +404,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message38",
+    media: undefined,
   },
   {
     message_id: "message40",
@@ -375,6 +414,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message39",
+    media: undefined,
   },
   {
     message_id: "message41",
@@ -385,6 +425,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message40",
+    media: "/assets/media/media2.webp",
   },
   {
     message_id: "message42",
@@ -395,6 +436,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message41",
+    media: undefined,
   },
   {
     message_id: "message43",
@@ -404,6 +446,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message44",
@@ -413,6 +456,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message9",
+    media: undefined,
   },
   {
     message_id: "message45",
@@ -423,6 +467,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message46",
@@ -432,6 +477,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message45",
+    media: undefined,
   },
   {
     message_id: "message47",
@@ -440,8 +486,9 @@ export const messages: MessageType[] = [
     timestamp: "2023-07-26 13:04:00",
     sender: "user9",
     group_sender_display_name: null,
-    seen: true,
+    seen: false,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message48",
@@ -451,6 +498,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message49",
@@ -460,6 +508,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message11",
+    media: undefined,
   },
   {
     message_id: "message50",
@@ -469,6 +518,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message11",
+    media: undefined,
   },
   {
     message_id: "message51",
@@ -478,6 +528,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message11",
+    media: undefined,
   },
   {
     message_id: "message52",
@@ -488,6 +539,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message53",
@@ -497,6 +549,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message54",
@@ -506,6 +559,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message55",
@@ -515,6 +569,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message52",
+    media: undefined,
   },
   {
     message_id: "message56",
@@ -524,6 +579,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message57",
@@ -533,6 +589,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message16",
+    media: undefined,
   },
   {
     message_id: "message58",
@@ -542,6 +599,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: "message57",
+    media: undefined,
   },
   {
     message_id: "message59",
@@ -551,6 +609,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message60",
@@ -560,6 +619,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message61",
@@ -569,6 +629,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message62",
@@ -578,6 +639,7 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message63",
@@ -587,113 +649,46 @@ export const messages: MessageType[] = [
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
-    message_id: "message",
-    content: "",
+    message_id: "message64",
+    content: "It has it perks. But i miss our little advantures.",
     timestamp: "2023-07-26 13:04:00",
-    sender: "user",
+    sender: "user5",
+    group_sender_display_name: null,
+    seen: true,
+    reply: "message31",
+    media: undefined,
+  },
+  {
+    message_id: "message65",
+    content: "our undercover mission were...memorable.☺️",
+    timestamp: "2023-07-26 13:04:00",
+    sender: "user1",
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
-    message_id: "message",
-    content: "",
+    message_id: "message66",
+    content: "Maybe we should plan a new one, just the two of us.😉",
     timestamp: "2023-07-26 13:04:00",
-    sender: "user",
+    sender: "user5",
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
+    media: undefined,
   },
   {
-    message_id: "message",
-    content: "",
+    message_id: "message67",
+    content: "I like where this is going starlight.",
     timestamp: "2023-07-26 13:04:00",
-    sender: "user",
+    sender: "user1",
     group_sender_display_name: null,
     seen: true,
     reply: undefined,
-  },
-  {
-    message_id: "message",
-    content: "",
-    timestamp: "2023-07-26 13:04:00",
-    sender: "user",
-    group_sender_display_name: null,
-    seen: true,
-    reply: undefined,
-  },
-  {
-    message_id: "message",
-    content: "",
-    timestamp: "2023-07-26 13:04:00",
-    sender: "user",
-    group_sender_display_name: null,
-    seen: true,
-    reply: undefined,
-  },
-  {
-    message_id: "message",
-    content: "",
-    timestamp: "2023-07-26 13:04:00",
-    sender: "user",
-    group_sender_display_name: null,
-    seen: true,
-    reply: undefined,
-  },
-  {
-    message_id: "message",
-    content: "",
-    timestamp: "2023-07-26 13:04:00",
-    sender: "user",
-    group_sender_display_name: null,
-    seen: true,
-    reply: undefined,
-  },
-  {
-    message_id: "message",
-    content: "",
-    timestamp: "2023-07-26 13:04:00",
-    sender: "user",
-    group_sender_display_name: null,
-    seen: true,
-    reply: undefined,
-  },
-  {
-    message_id: "message",
-    content: "",
-    timestamp: "2023-07-26 13:04:00",
-    sender: "user",
-    group_sender_display_name: null,
-    seen: true,
-    reply: undefined,
-  },
-  {
-    message_id: "message",
-    content: "",
-    timestamp: "2023-07-26 13:04:00",
-    sender: "user",
-    group_sender_display_name: null,
-    seen: true,
-    reply: undefined,
-  },
-  {
-    message_id: "message",
-    content: "",
-    timestamp: "2023-07-26 13:04:00",
-    sender: "user",
-    group_sender_display_name: null,
-    seen: true,
-    reply: undefined,
-  },
-  {
-    message_id: "message",
-    content: "",
-    timestamp: "2023-07-26 13:04:00",
-    sender: "user",
-    group_sender_display_name: null,
-    seen: true,
-    reply: undefined,
+    media: undefined,
   },
 ];

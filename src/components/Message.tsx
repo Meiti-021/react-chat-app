@@ -41,6 +41,7 @@ const Message = ({
   seen,
   message_id,
   reply,
+  media,
 }: MessageType) => {
   const { users, messages } = useSelector((store: RootState) => store.chat);
   const { fontSize, messageCorner } = useSelector(
@@ -192,6 +193,18 @@ const Message = ({
                 {messageFind(messages, reply)?.content}
               </Typography>
             </Box>
+            {media ? (
+              <img
+                src={media}
+                alt={media}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "contain",
+                  borderRadius: "8px",
+                }}
+              />
+            ) : undefined}
             <Typography sx={{ fontSize: `${fontSize}px ` }}>
               {content}
             </Typography>

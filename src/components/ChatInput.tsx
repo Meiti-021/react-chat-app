@@ -43,7 +43,7 @@ const ChatInput = ({
           top: -55,
           borderTop: "1px solid #cfd0d1",
           borderBottom: "1px solid #cfd0d1",
-          bgcolor: "white",
+          bgcolor: darkmode ? "black" : "white",
         }}
       >
         <ReplyIcon sx={{ color: "#cfd0d1", fontSize: "2rem" }} />
@@ -211,6 +211,7 @@ const ChatInput = ({
                       group_sender_display_name: null,
                       seen: false,
                       reply: reply,
+                      media: undefined,
                     },
                   })
                 );
