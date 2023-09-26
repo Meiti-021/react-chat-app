@@ -26,7 +26,13 @@ import CheckIcon from "@mui/icons-material/Check";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
-import { deleteMessage, editMessage } from "../services/chatSlice";
+import ReplyIcon from "@mui/icons-material/Reply";
+import {
+  deleteMessage,
+  editMessage,
+  replayMessage,
+} from "../services/chatSlice";
+import { enqueueSnackbar } from "notistack";
 
 const Message = ({
   content,
@@ -204,6 +210,18 @@ const Message = ({
         <MenuList sx={{ pr: 5 }}>
           <ListItem
             onClick={() => {
+              dispatch(replayMessage({ messageId: message_id }));
+              handleClose();
+            }}
+            sx={{ cursor: "pointer" }}
+          >
+            <ListItemIcon>
+              <ReplyIcon />
+            </ListItemIcon>
+            <ListItemText>Replay</ListItemText>
+          </ListItem>
+          <ListItem
+            onClick={() => {
               navigator.clipboard.writeText(content);
               handleClose();
             }}
@@ -214,20 +232,23 @@ const Message = ({
             </ListItemIcon>
             <ListItemText>Copy</ListItemText>
           </ListItem>
-          <ListItem
-            onClick={() => {
-              sender === "user1" ? handleModalClick() : handleClose();
-            }}
-            sx={{ cursor: "pointer" }}
-          >
-            <ListItemIcon>
-              <EditIcon />{" "}
-            </ListItemIcon>
-            <ListItemText>Edit</ListItemText>
-          </ListItem>
+          {sender === "user1" ? (
+            <ListItem
+              onClick={() => {
+                sender === "user1" ? handleModalClick() : handleClose();
+              }}
+              sx={{ cursor: "pointer" }}
+            >
+              <ListItemIcon>
+                <EditIcon />{" "}
+              </ListItemIcon>
+              <ListItemText>Edit</ListItemText>
+            </ListItem>
+          ) : undefined}
           <ListItem
             onClick={() => {
               dispatch(deleteMessage({ messageId: message_id }));
+              handleClose();
             }}
             sx={{ cursor: "pointer" }}
           >
@@ -273,8 +294,12 @@ const Message = ({
                   })
                 );
                 handleModalClose();
+                handleClose();
               } else {
-                alert("message cant be empty");
+                enqueueSnackbar({
+                  variant: "error",
+                  message: "Message can't be empty",
+                });
               }
             }}
           >

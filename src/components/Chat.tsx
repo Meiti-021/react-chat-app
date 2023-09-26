@@ -57,7 +57,7 @@ const Chat = () => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading]);
+  }, [loading, chats]);
   if (chatInfo === undefined) {
     return <ChatLoading />;
   }

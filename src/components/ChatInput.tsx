@@ -1,4 +1,4 @@
-import { Box, IconButton, Tooltip } from "@mui/material";
+import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import CollectionsIcon from "@mui/icons-material/Collections";
@@ -7,9 +7,11 @@ import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
 import { useDispatch, useSelector } from "react-redux";
-import { sendMessage } from "../services/chatSlice";
+import { cancelReplay, sendMessage } from "../services/chatSlice";
 import moment from "moment";
 import { RootState } from "../store";
+import ReplyIcon from "@mui/icons-material/Reply";
+import { messageFind, userFind } from "../utils/utils";
 const ChatInput = ({
   chat_id,
   replay,
@@ -21,8 +23,69 @@ const ChatInput = ({
   const [emojiOpen, setEmojiOpen] = useState(false);
   const dispatch = useDispatch();
   const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { users, messages } = useSelector((store: RootState) => store.chat);
   return (
-    <>
+    <div
+      style={{
+        position: "relative",
+      }}
+    >
+      <Box
+        sx={{
+          height: "3.5rem",
+          width: "100%",
+          display: replay !== undefined ? "flex" : "none",
+          alignItems: "center",
+          gap: 2,
+          padding: "1rem",
+          marginTop: "auto",
+          position: "absolute",
+          top: -55,
+          borderTop: "1px solid #cfd0d1",
+          borderBottom: "1px solid #cfd0d1",
+          bgcolor: "white",
+        }}
+      >
+        <ReplyIcon sx={{ color: "#cfd0d1", fontSize: "2rem" }} />
+        <Box
+          sx={{
+            overflow: "hidden",
+            borderLeft: `3px solid #cfd0d1`,
+            pl: 2,
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "0.8rem",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              fontWeight: "bold",
+            }}
+          >
+            {userFind(users, messageFind(messages, replay)?.sender)?.username}
+          </Typography>
+
+          <Typography
+            sx={{
+              fontSize: "0.75rem",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {messageFind(messages, replay)?.content}
+          </Typography>
+        </Box>
+        <IconButton
+          sx={{ ml: "auto" }}
+          onClick={() => {
+            dispatch(cancelReplay({ chatId: chat_id }));
+          }}
+        >
+          <CloseIcon sx={{ color: "#cfd0d1", fontSize: "2rem" }} />
+        </IconButton>
+      </Box>
       <Box
         component={"form"}
         sx={{
@@ -33,7 +96,6 @@ const ChatInput = ({
           justifyContent: "space-between",
           borderTop: darkmode ? "none" : "1px solid #EAEDF3",
           padding: "1rem",
-          marginTop: "auto",
           background: darkmode ? "black" : "white",
         }}
       >
@@ -148,9 +210,11 @@ const ChatInput = ({
                       sender: "user1",
                       group_sender_display_name: null,
                       seen: false,
+                      replay: replay,
                     },
                   })
                 );
+                dispatch(cancelReplay({ chatId: chat_id }));
               }}
             >
               <SendIcon />
@@ -158,7 +222,7 @@ const ChatInput = ({
           </Tooltip>
         </Box>
       </Box>
-    </>
+    </div>
   );
 };
 

@@ -10,12 +10,14 @@ const GroupChat = ({
   group_profile,
   description,
   chat_id,
+  replay,
 }: {
   participants: UserType[];
   group_name: string | null;
   group_profile: string | null;
   description: string | null;
   chat_id: string;
+  replay: undefined | string;
 }) => {
   return (
     <Box
@@ -33,7 +35,7 @@ const GroupChat = ({
         description={description}
       />
       <ChatBody chat_id={chat_id} />
-      <ChatInput chat_id={chat_id} />
+      <ChatInput chat_id={chat_id} replay={replay} />
     </Box>
   );
 };

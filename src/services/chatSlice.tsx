@@ -109,6 +109,18 @@ const chatSlice = createSlice({
     uploadProfile: (state, action: PayloadAction<{ img: string }>) => {
       state.users[0].profile_picture = action.payload.img;
     },
+    replayMessage: (state, action: PayloadAction<{ messageId: string }>) => {
+      const index = state.chats.findIndex((item) =>
+        item.messages.includes(action.payload.messageId)
+      );
+      state.chats[index].replay = action.payload.messageId;
+    },
+    cancelReplay: (state, action: PayloadAction<{ chatId: string }>) => {
+      const index = state.chats.findIndex((item) => {
+        return item.chat_id === action.payload.chatId;
+      });
+      state.chats[index].replay = undefined;
+    },
   },
 });
 
@@ -123,6 +135,8 @@ export const {
   editBio,
   seenMessage,
   uploadProfile,
+  replayMessage,
+  cancelReplay,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;
