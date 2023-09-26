@@ -7,17 +7,17 @@ import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
 import { useDispatch, useSelector } from "react-redux";
-import { cancelReplay, sendMessage } from "../services/chatSlice";
+import { cancelReply, sendMessage } from "../services/chatSlice";
 import moment from "moment";
 import { RootState } from "../store";
 import ReplyIcon from "@mui/icons-material/Reply";
 import { messageFind, userFind } from "../utils/utils";
 const ChatInput = ({
   chat_id,
-  replay,
+  reply,
 }: {
   chat_id: string;
-  replay: undefined | string;
+  reply: undefined | string;
 }) => {
   const [input, setInput] = useState("");
   const [emojiOpen, setEmojiOpen] = useState(false);
@@ -34,7 +34,7 @@ const ChatInput = ({
         sx={{
           height: "3.5rem",
           width: "100%",
-          display: replay !== undefined ? "flex" : "none",
+          display: reply !== undefined ? "flex" : "none",
           alignItems: "center",
           gap: 2,
           padding: "1rem",
@@ -63,7 +63,7 @@ const ChatInput = ({
               fontWeight: "bold",
             }}
           >
-            {userFind(users, messageFind(messages, replay)?.sender)?.username}
+            {userFind(users, messageFind(messages, reply)?.sender)?.username}
           </Typography>
 
           <Typography
@@ -74,13 +74,13 @@ const ChatInput = ({
               whiteSpace: "nowrap",
             }}
           >
-            {messageFind(messages, replay)?.content}
+            {messageFind(messages, reply)?.content}
           </Typography>
         </Box>
         <IconButton
           sx={{ ml: "auto" }}
           onClick={() => {
-            dispatch(cancelReplay({ chatId: chat_id }));
+            dispatch(cancelReply({ chatId: chat_id }));
           }}
         >
           <CloseIcon sx={{ color: "#cfd0d1", fontSize: "2rem" }} />
@@ -210,11 +210,11 @@ const ChatInput = ({
                       sender: "user1",
                       group_sender_display_name: null,
                       seen: false,
-                      replay: replay,
+                      reply: reply,
                     },
                   })
                 );
-                dispatch(cancelReplay({ chatId: chat_id }));
+                dispatch(cancelReply({ chatId: chat_id }));
               }}
             >
               <SendIcon />

@@ -6,7 +6,7 @@ export type ChatType = {
   group_profile: string | null;
   chat_id: string;
   description: string | null;
-  replay: undefined | string;
+  reply: undefined | string;
 };
 
 export const chats: ChatType[] = [
@@ -26,7 +26,7 @@ export const chats: ChatType[] = [
     group_name: null,
     group_profile: null,
     description: null,
-    replay: undefined,
+    reply: undefined,
   },
   {
     chat_id: "user3",
@@ -47,7 +47,7 @@ export const chats: ChatType[] = [
     group_name: null,
     group_profile: null,
     description: null,
-    replay: undefined,
+    reply: undefined,
   },
   {
     chat_id: "group_chat1",
@@ -77,7 +77,7 @@ export const chats: ChatType[] = [
     group_name: "The boys",
     group_profile: "/assets/users/group_chat1.webp",
     description: "Let justice be done though the heavens fall",
-    replay: undefined,
+    reply: undefined,
   },
   {
     chat_id: "group_chat2",
@@ -106,7 +106,7 @@ export const chats: ChatType[] = [
     group_name: "THE SEVEN",
     group_profile: "/assets/users/group_chat2.jpg",
     description: "We Are Vought. We Make Heroes Super",
-    replay: undefined,
+    reply: undefined,
   },
   {
     chat_id: "group_chat3",
@@ -124,7 +124,7 @@ export const chats: ChatType[] = [
     group_name: "freedom!",
     group_profile: "/assets/users/group_chat3.png",
     description: "We'll Cross That Bridge When We Burn It.",
-    replay: undefined,
+    reply: undefined,
   },
   {
     chat_id: "user6",
@@ -141,7 +141,7 @@ export const chats: ChatType[] = [
     group_name: null,
     group_profile: null,
     description: null,
-    replay: undefined,
+    reply: undefined,
   },
   {
     chat_id: "user7",
@@ -158,7 +158,7 @@ export const chats: ChatType[] = [
     group_name: null,
     group_profile: null,
     description: null,
-    replay: undefined,
+    reply: undefined,
   },
   {
     chat_id: "user9",
@@ -168,7 +168,7 @@ export const chats: ChatType[] = [
     group_name: null,
     group_profile: null,
     description: null,
-    replay: undefined,
+    reply: undefined,
   },
   {
     chat_id: "user8",
@@ -178,7 +178,7 @@ export const chats: ChatType[] = [
     group_name: null,
     group_profile: null,
     description: null,
-    replay: undefined,
+    reply: undefined,
   },
   {
     chat_id: "user4",
@@ -188,7 +188,7 @@ export const chats: ChatType[] = [
     group_name: null,
     group_profile: null,
     description: null,
-    replay: undefined,
+    reply: undefined,
   },
   {
     chat_id: "user5",
@@ -198,6 +198,6 @@ export const chats: ChatType[] = [
     group_name: null,
     group_profile: null,
     description: null,
-    replay: undefined,
+    reply: undefined,
   },
 ];

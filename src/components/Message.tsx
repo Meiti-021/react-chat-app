@@ -30,7 +30,7 @@ import ReplyIcon from "@mui/icons-material/Reply";
 import {
   deleteMessage,
   editMessage,
-  replayMessage,
+  replyMessage,
 } from "../services/chatSlice";
 import { enqueueSnackbar } from "notistack";
 
@@ -40,7 +40,7 @@ const Message = ({
   sender,
   seen,
   message_id,
-  replay,
+  reply,
 }: MessageType) => {
   const { users, messages } = useSelector((store: RootState) => store.chat);
   const { fontSize, messageCorner } = useSelector(
@@ -158,7 +158,7 @@ const Message = ({
           >
             <Box
               sx={{
-                display: replay ? "block" : "none",
+                display: reply ? "block" : "none",
                 overflow: "hidden",
                 mb: 0.5,
                 borderLeft: `3px solid ${
@@ -176,7 +176,7 @@ const Message = ({
                 }}
               >
                 {
-                  userFind(users, messageFind(messages, replay)?.sender)
+                  userFind(users, messageFind(messages, reply)?.sender)
                     ?.username
                 }
               </Typography>
@@ -189,7 +189,7 @@ const Message = ({
                   whiteSpace: "nowrap",
                 }}
               >
-                {messageFind(messages, replay)?.content}
+                {messageFind(messages, reply)?.content}
               </Typography>
             </Box>
             <Typography sx={{ fontSize: `${fontSize}px ` }}>
@@ -210,7 +210,7 @@ const Message = ({
         <MenuList sx={{ pr: 5 }}>
           <ListItem
             onClick={() => {
-              dispatch(replayMessage({ messageId: message_id }));
+              dispatch(replyMessage({ messageId: message_id }));
               handleClose();
             }}
             sx={{ cursor: "pointer" }}
@@ -218,7 +218,7 @@ const Message = ({
             <ListItemIcon>
               <ReplyIcon />
             </ListItemIcon>
-            <ListItemText>Replay</ListItemText>
+            <ListItemText>Reply</ListItemText>
           </ListItem>
           <ListItem
             onClick={() => {
