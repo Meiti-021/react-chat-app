@@ -21,6 +21,7 @@ import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import SettingsIcon from "@mui/icons-material/Settings";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import LogoutIcon from "@mui/icons-material/Logout";
+import RecommendIcon from "@mui/icons-material/Recommend";
 import {
   NavLink,
   Route,
@@ -49,6 +50,7 @@ import SettingCenter from "./SettingCenter";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { logOut, switchDarkmode } from "../services/settingSlice";
+import HireCenter from "./HireCenter";
 
 const drawerWidth = 270;
 
@@ -111,6 +113,12 @@ const menuItems = [
         type: NavLink,
         address: "contact-us",
       },
+      {
+        title: "Hire me",
+        icon: <RecommendIcon sx={{ color: "inherit" }} />,
+        type: NavLink,
+        address: "hire-me",
+      },
     ],
   },
   {
@@ -167,6 +175,7 @@ export default function AppContainer(props: Props) {
       location.pathname !== "/help" &&
       location.pathname !== "/channels" &&
       location.pathname !== "/bots" &&
+      location.pathname !== "/hire-me" &&
       filterType === ""
     ) {
       setFilterType("conversations");
@@ -510,6 +519,7 @@ export default function AppContainer(props: Props) {
           </Route>
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/contact-us" element={<ContactCenter />} />
+          <Route path="/hire-me" element={<HireCenter />} />
           <Route path="/channels" element={<Channels />} />
           <Route path="/bots" element={<Bots />} />
         </Routes>
