@@ -1,8 +1,8 @@
 # MyChatApp - Showcase Front-End Web Application
 
-Welcome to MyWebApp, a feature-rich front-end web application that demonstrates the power of modern web development technologies. Developed using React, Material UI, TypeScript, and more, MyWebApp offers a user-friendly and visually appealing experience, akin to popular messaging platforms.
+Welcome to MEITIGRAM, a feature-rich front-end web application that demonstrates the power of modern web development technologies. Developed using React, Material UI, TypeScript, and more, MEITIGRAM offers a user-friendly and visually appealing experience, akin to popular messaging platforms.
 
-![MyWebApp Demo](screenshots/demo.gif)
+![MEITIGRAM Demo](screenshots/demo.gif)
 
 ## Table of Contents
 
@@ -39,7 +39,7 @@ Welcome to MyWebApp, a feature-rich front-end web application that demonstrates 
 
 ### Multilingual Support
 
-- MyWebApp is multilingual, supporting English, Turkish, and Persian.
+- MEITIGRAM is multilingual, supporting English, Turkish, and Persian.
 - Language selection allows users to navigate comfortably.
 
 ### User Profile Management
@@ -54,12 +54,12 @@ Welcome to MyWebApp, a feature-rich front-end web application that demonstrates 
 
 ### Responsive Design
 
-- MyWebApp is designed to adapt gracefully to various devices.
+- MEITIGRAM is designed to adapt gracefully to various devices.
 - Enjoy a seamless experience on desktop, tablet, and mobile.
 
 ## Technologies Used
 
-MyWebApp harnesses cutting-edge technologies to deliver a high-performance and responsive web application, including:
+MEITIGRAM harnesses cutting-edge technologies to deliver a high-performance and responsive web application, including:
 
 - React
 - Material UI
@@ -76,13 +76,13 @@ MyWebApp harnesses cutting-edge technologies to deliver a high-performance and r
 
 ## Getting Started
 
-To explore MyWebApp, follow these simple steps:
+To explore MEITIGRAM, follow these simple steps:
 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/MyWebApp.git
-   cd MyWebApp
+   git clone https://github.com/yourusername/MEITIGRAM.git
+   cd MEITIGRAM
 
    ```
 
