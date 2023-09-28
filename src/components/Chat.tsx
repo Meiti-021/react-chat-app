@@ -21,6 +21,7 @@ import { seenMessage } from "../services/chatSlice";
 const Chat = () => {
   const { chatID } = useParams();
   const { chats, users } = useSelector((store: RootState) => store.chat);
+  const { language } = useSelector((store: RootState) => store.setting);
   const [chatInfo, setChatInfo] = useState<ChatInfo | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
@@ -99,7 +100,7 @@ const Chat = () => {
             borderRadius: "5px",
           }}
         >
-          NEW MESSAGES
+          {language.newMessages}
         </Box>
       </Box>
       {chatID}

@@ -15,7 +15,10 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Lottie from "lottie-react";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import ChatAnimation from "../assets/lock.json";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const SettingPrivacyPassword = ({ darkmode }: { darkmode: boolean }) => {
+  const { language } = useSelector((store: RootState) => store.setting);
   const [pass, setPass] = useState<string>("");
   const [form, setForm] = useState<string>("");
   const [Open, setOpen] = useState(false);
@@ -28,14 +31,14 @@ const SettingPrivacyPassword = ({ darkmode }: { darkmode: boolean }) => {
         <ListItemIcon>
           <LockOutlinedIcon />
         </ListItemIcon>
-        <ListItemText primary={"Passcode Lock"} />
+        <ListItemText primary={language.PrivacyAndPolicy.PasscodeLock} />
         <ListItemSecondaryAction>
           <Button
             onClick={() => {
               setOpen(true);
             }}
           >
-            {pass ? pass : "NOT SET"}
+            {pass ? pass : language.notSet}
           </Button>
         </ListItemSecondaryAction>
       </ListItem>
@@ -72,7 +75,9 @@ const SettingPrivacyPassword = ({ darkmode }: { darkmode: boolean }) => {
               >
                 <ArrowBackIcon />
               </IconButton>
-              <Typography fontSize={"1.1rem"}>Passcode Lock</Typography>
+              <Typography fontSize={"1.1rem"}>
+                {language.PrivacyAndPolicy.PasscodeLock}
+              </Typography>
             </Box>
           </Box>
           <Box
@@ -109,7 +114,7 @@ const SettingPrivacyPassword = ({ darkmode }: { darkmode: boolean }) => {
                 textTransform: "uppercase",
               }}
             >
-              Passcode Lock
+              {language.PrivacyAndPolicy.PasscodeLock}
             </Typography>
             <Typography
               sx={{
@@ -121,8 +126,7 @@ const SettingPrivacyPassword = ({ darkmode }: { darkmode: boolean }) => {
                 color: darkmode ? "lightgrey" : "#7a7f9a",
               }}
             >
-              when a passcode is set, a lock icon appears above your chatlist,
-              tap it to lock your meitigram app.
+              {language.PrivacyAndPolicy.pascodeFirstLine}
             </Typography>
             <TextField
               sx={{ height: "40px", mt: 2 }}
@@ -141,7 +145,7 @@ const SettingPrivacyPassword = ({ darkmode }: { darkmode: boolean }) => {
                 setPass(form);
               }}
             >
-              Enable Passcode
+              {language.PrivacyAndPolicy.EnablePasscode}
             </Button>
           </Box>
         </Box>

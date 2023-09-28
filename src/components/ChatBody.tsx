@@ -8,6 +8,7 @@ import { RootState } from "../store";
 import { chatFind, messageFind } from "../utils/utils";
 const ChatBody = ({ chat_id }: { chat_id: string }) => {
   const { chats, messages } = useSelector((store: RootState) => store.chat);
+  const { language } = useSelector((store: RootState) => store.setting);
   const [messagesArray, setMessagesArray] = useState<
     MessageType[] | [] | undefined
   >(undefined);
@@ -50,7 +51,7 @@ const ChatBody = ({ chat_id }: { chat_id: string }) => {
             mt: -5,
           }}
         >
-          LOADING
+          {language.loading}
         </Typography>
       </Box>
     );
@@ -74,7 +75,7 @@ const ChatBody = ({ chat_id }: { chat_id: string }) => {
             fontSize: "0.8rem",
           }}
         >
-          There's no messages yet!
+          {language.thersNoMessages}
         </Typography>
       </Box>
     );

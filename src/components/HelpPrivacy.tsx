@@ -17,7 +17,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useNavigate } from "react-router-dom";
 const HelpPrivacy = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const navigate = useNavigate();
   return (
     <>
@@ -40,7 +42,9 @@ const HelpPrivacy = () => {
         >
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>Privacy and Policy</Typography>
+        <Typography fontSize={"1.1rem"}>
+          {language.helpCenter.privacy.title}
+        </Typography>
       </Box>
       <Box p={2}>
         <List sx={{ p: 0 }}>
@@ -49,11 +53,8 @@ const HelpPrivacy = () => {
               <PhonelinkLockIcon />{" "}
             </ListItemIcon>
             <ListItemText
-              primary="Privacy Policy"
-              secondary="At [Your App Name], we are committed to protecting your privacy and
-          ensuring the security of your personal information. This Privacy
-          Policy outlines the types of data we collect, how we use and safeguard
-          that data, and your rights regarding your personal information."
+              primary={language.helpCenter.privacy.privacyPolicy.primary}
+              secondary={language.helpCenter.privacy.privacyPolicy.secondary}
             />
           </ListItem>
           <ListItem sx={{ px: 0 }}>
@@ -61,12 +62,12 @@ const HelpPrivacy = () => {
               <InfoOutlinedIcon />{" "}
             </ListItemIcon>
             <ListItemText
-              primary="Information Collection and Usage"
-              secondary="We collect the data you provide to us when using our chat app,
-          including but not limited to your name, profile picture, messages, and
-          contact information. This data is used solely for the purpose of
-          facilitating communication within the app and improving user
-          experience."
+              primary={
+                language.helpCenter.privacy.informationCollection.primary
+              }
+              secondary={
+                language.helpCenter.privacy.informationCollection.secondary
+              }
             />
           </ListItem>
           <ListItem sx={{ px: 0 }}>
@@ -75,10 +76,8 @@ const HelpPrivacy = () => {
               <SecurityOutlinedIcon />{" "}
             </ListItemIcon>
             <ListItemText
-              primary="Data Security"
-              secondary="We implement strict security measures to protect your personal data
-          from unauthorized access, disclosure, or alteration. However, please
-          be aware that no online transmission or storage method is 100% secure."
+              primary={language.helpCenter.privacy.DataSecurity.primary}
+              secondary={language.helpCenter.privacy.DataSecurity.secondary}
             />
           </ListItem>
           <ListItem sx={{ px: 0 }}>
@@ -87,10 +86,10 @@ const HelpPrivacy = () => {
               <PortableWifiOffOutlinedIcon />{" "}
             </ListItemIcon>
             <ListItemText
-              primary="Third-Party Services"
-              secondary="We may use third-party services to analyze app usage and gather
-          insights to enhance our services. These third parties may collect and
-          process data in accordance with their own privacy policies."
+              primary={language.helpCenter.privacy.thirdPartyServices.primary}
+              secondary={
+                language.helpCenter.privacy.thirdPartyServices.secondary
+              }
             />
           </ListItem>
           <ListItem sx={{ px: 0 }}>
@@ -99,10 +98,8 @@ const HelpPrivacy = () => {
               <ContactEmergencyOutlinedIcon />
             </ListItemIcon>
             <ListItemText
-              primary=" Your Choices"
-              secondary="You can update, correct, or delete your personal information within
-          the app settings. You also have the right to access, rectify, or erase
-          your data by contacting us."
+              primary={language.helpCenter.privacy.yourChoice.primary}
+              secondary={language.helpCenter.privacy.yourChoice.secondary}
             />
           </ListItem>
         </List>
@@ -111,8 +108,7 @@ const HelpPrivacy = () => {
         p={2}
         sx={{ bgcolor: darkmode ? "#1D2733" : "#008EE4", color: "white" }}
       >
-        By using our chat app, you agree to the terms outlined in this Privacy
-        Policy.
+        {language.helpCenter.privacy.bottomLine}
       </Box>
     </>
   );

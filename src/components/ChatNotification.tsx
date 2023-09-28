@@ -2,10 +2,13 @@ import { IconButton, Tooltip } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsOffIcon from "@mui/icons-material/NotificationsOff";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const ChatNotification = () => {
   const [isMute, setIsMute] = useState<boolean>(false);
+  const { language } = useSelector((store: RootState) => store.setting);
   return (
-    <Tooltip title={isMute ? "Mute off" : "Mute"}>
+    <Tooltip title={isMute ? language.muteOff : language.mute}>
       <IconButton
         onClick={() => {
           setIsMute(!isMute);

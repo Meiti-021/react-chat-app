@@ -13,6 +13,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import { UserType } from "../utils/users";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement;
@@ -23,6 +25,7 @@ const Transition = React.forwardRef(function Transition(
 });
 const PrivateChatCall = ({ user }: { user: UserType }) => {
   const [call, setCall] = React.useState<boolean>(false);
+  const { language } = useSelector((store: RootState) => store.setting);
   const handleCall = () => {
     setCall(!call);
   };
@@ -80,7 +83,7 @@ const PrivateChatCall = ({ user }: { user: UserType }) => {
               {user.username}
             </Typography>
             <Typography sx={{ color: "#7a7f9a", fontSize: "0.9375rem" }}>
-              Start Audio Call
+              {language.startAudioCall}
             </Typography>
           </Stack>
           <Stack direction={"row"} gap={2}>

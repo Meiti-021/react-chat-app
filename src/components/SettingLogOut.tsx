@@ -17,7 +17,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useNavigate } from "react-router-dom";
 const SettingLogOut = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const navigate = useNavigate();
   return (
     <div>
@@ -40,11 +42,11 @@ const SettingLogOut = () => {
         >
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>Log Out</Typography>
+        <Typography fontSize={"1.1rem"}>{language.logOut}</Typography>
       </Box>
       <Box sx={{ p: 3 }}>
         <Typography color={"#008EE4"} fontWeight={500} mb={2}>
-          Alternative options
+          {language.logoutPage.alternativeOptions}
         </Typography>
         <List sx={{ p: 0, cursor: "pointer" }}>
           <ListItem sx={{ p: 0, cursor: "pointer" }}>
@@ -52,9 +54,8 @@ const SettingLogOut = () => {
               <PersonAddIcon />
             </ListItemIcon>
             <ListItemText
-              primary="Add another account"
-              secondary="
-              connect other Meitigram account and easily swutch between them"
+              primary={language.logoutPage.addAnotherAccount.primary}
+              secondary={language.logoutPage.addAnotherAccount.secondary}
             />{" "}
           </ListItem>
           <ListItem sx={{ p: 0, cursor: "pointer" }}>
@@ -62,8 +63,8 @@ const SettingLogOut = () => {
               <KeyOutlinedIcon />
             </ListItemIcon>
             <ListItemText
-              primary="Set a Passcode"
-              secondary="Lock the app with a passcode so that others can't open it"
+              primary={language.logoutPage.changePhoneNumber.primary}
+              secondary={language.logoutPage.changePhoneNumber.secondary}
             />
           </ListItem>
           <ListItem sx={{ p: 0, cursor: "pointer" }}>
@@ -71,8 +72,8 @@ const SettingLogOut = () => {
               <DeleteOutlineOutlinedIcon />
             </ListItemIcon>
             <ListItemText
-              primary="Clear Cache"
-              secondary="Free up space on your device"
+              primary={language.logoutPage.setPasscode.primary}
+              secondary={language.logoutPage.setPasscode.secondary}
             />
           </ListItem>
           <ListItem sx={{ p: 0, cursor: "pointer" }}>
@@ -80,8 +81,8 @@ const SettingLogOut = () => {
               <LogoutOutlinedIcon />
             </ListItemIcon>
             <ListItemText
-              primary="Change Phone Number"
-              secondary="Move your account,chats and media to a new number"
+              primary={language.logoutPage.clearCache.primary}
+              secondary={language.logoutPage.clearCache.secondary}
             />
           </ListItem>
           <ListItem sx={{ p: 0, cursor: "pointer" }}>
@@ -89,8 +90,8 @@ const SettingLogOut = () => {
               <InfoOutlinedIcon />
             </ListItemIcon>
             <ListItemText
-              primary="Contact Support"
-              secondary="Tell us about any issue; logging out does't usually help"
+              primary={language.logoutPage.clearCache.primary}
+              secondary={language.logoutPage.clearCache.secondary}
             />
           </ListItem>
         </List>

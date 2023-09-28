@@ -64,7 +64,9 @@ function IconContainer(props: IconContainerProps) {
 }
 
 const HelpSuggestion = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   return (
     <Box component={"div"} sx={{ height: "100%" }}>
       <Box
@@ -87,7 +89,7 @@ const HelpSuggestion = () => {
             textAlign: "center",
           }}
         >
-          SEND FEEDBACK
+          {language.sendFeedBack}
         </Typography>
         <Box
           sx={{
@@ -106,7 +108,7 @@ const HelpSuggestion = () => {
               color: "#fff",
             }}
           >
-            Send us your feedback !
+            {language.helpCenter.suggestion.title}
           </Typography>
           <Typography
             sx={{
@@ -116,9 +118,9 @@ const HelpSuggestion = () => {
               mt: 1,
             }}
           >
-            Do You have a suggestion or found some bug?
+            {language.helpCenter.suggestion.subtitle.split("-")[0]}
             <br />
-            let us know in the field below.
+            {language.helpCenter.suggestion.subtitle.split("-")[1]}
           </Typography>
         </Box>
       </Box>
@@ -152,7 +154,7 @@ const HelpSuggestion = () => {
                 mb: 2,
               }}
             >
-              How was your Experience?
+              {language.helpCenter.suggestion.experience}
             </Typography>
             <StyledRating
               name="highlight-selected-only"
@@ -175,7 +177,7 @@ const HelpSuggestion = () => {
               outline: "none",
               padding: "5px",
             }}
-            placeholder="Describe your experience here"
+            placeholder={language.helpCenter.suggestion.textarea}
           ></textarea>
           <Box sx={{ px: 4, py: 2 }}>
             <FormControl>
@@ -184,16 +186,20 @@ const HelpSuggestion = () => {
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="row-radio-buttons-group"
               >
-                <FormControlLabel value="Bug" control={<Radio />} label="Bug" />
+                <FormControlLabel
+                  value="Bug"
+                  control={<Radio />}
+                  label={language.bug}
+                />
                 <FormControlLabel
                   value="Suggestion"
                   control={<Radio />}
-                  label="Suggestion"
+                  label={language.suggestion}
                 />
                 <FormControlLabel
                   value="others"
                   control={<Radio />}
-                  label="Others"
+                  label={language.others}
                 />
               </RadioGroup>
             </FormControl>
@@ -208,7 +214,7 @@ const HelpSuggestion = () => {
                 height: "45px",
               }}
             >
-              SEND FEEDBACK
+              {language.sendFeedBack}
             </Button>
           </Box>
         </Box>

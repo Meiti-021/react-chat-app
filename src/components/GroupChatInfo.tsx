@@ -23,7 +23,9 @@ const GroupChatInfo = ({
   group_profile: string | null;
   description: string | null;
 }) => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const info = (
     <Box
       component={"div"}
@@ -91,7 +93,7 @@ const GroupChatInfo = ({
             mt: -2,
           }}
         >
-          {participants.length} Members
+          {participants.length} {language.members}
         </Typography>
         <Typography
           sx={{
@@ -154,7 +156,7 @@ const GroupChatInfo = ({
               textTransform: "uppercase",
             }}
           >
-            {participants.length} memebers
+            {participants.length} {language.members}
           </Typography>
         </Stack>
       </Box>

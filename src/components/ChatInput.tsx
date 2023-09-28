@@ -22,7 +22,9 @@ const ChatInput = ({
   const [input, setInput] = useState("");
   const [emojiOpen, setEmojiOpen] = useState(false);
   const dispatch = useDispatch();
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const { users, messages } = useSelector((store: RootState) => store.chat);
   return (
     <div
@@ -101,7 +103,7 @@ const ChatInput = ({
       >
         <input
           type="text"
-          placeholder="Type Message Here ..."
+          placeholder={language.typeMessageHere}
           value={input}
           onChange={(e) => {
             setInput(e.target.value);
@@ -119,7 +121,7 @@ const ChatInput = ({
           component={"div"}
           sx={{ display: "flex", alignItems: "center", gap: "1rem" }}
         >
-          <Tooltip title="image" arrow>
+          <Tooltip title={language.image} arrow>
             <label
               htmlFor="input-image"
               style={{
@@ -138,7 +140,7 @@ const ChatInput = ({
               />
             </label>
           </Tooltip>
-          <Tooltip title="Attach file" arrow>
+          <Tooltip title={language.attachFile} arrow>
             <label
               htmlFor="input-file"
               style={{
@@ -160,7 +162,7 @@ const ChatInput = ({
             </label>
           </Tooltip>
 
-          <Tooltip title="Open emoji tab" arrow>
+          <Tooltip title={language.openEmojiTab} arrow>
             <IconButton
               onClick={() => {
                 setEmojiOpen(true);
@@ -194,7 +196,7 @@ const ChatInput = ({
               />
             ) : undefined}
           </div>
-          <Tooltip title="Send" arrow>
+          <Tooltip title={language.send} arrow>
             <IconButton
               color="primary"
               onClick={() => {

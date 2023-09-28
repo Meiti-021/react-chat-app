@@ -8,7 +8,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const HelpBuqReport = () => {
   const [option, setOption] = React.useState("");
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
 
   const handleChange = (event: SelectChangeEvent) => {
     setOption(event.target.value as string);
@@ -37,7 +39,7 @@ const HelpBuqReport = () => {
         <Typography
           sx={{ textAlign: "center", fontWeight: 500, fontSize: "1.2rem" }}
         >
-          Report a bug or request a feature
+          {language.helpCenter.bugReport.title}
         </Typography>
         <Stack
           direction={"row"}
@@ -49,42 +51,50 @@ const HelpBuqReport = () => {
           <Typography
             sx={{ fontWeight: 400, fontSize: "1.1rem", whiteSpace: "nowrap" }}
           >
-            I would like to
+            {language.helpCenter.bugReport.optionText}
           </Typography>
           <Box sx={{ width: "100%" }}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Select</InputLabel>
+              <InputLabel id="demo-simple-select-label">
+                {language.select}
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={option}
-                label="Select an Option"
+                label={language.helpCenter.bugReport.optionText}
                 onChange={handleChange}
               >
-                <MenuItem value={10}>Report A Bug</MenuItem>
-                <MenuItem value={20}>Request A Feature</MenuItem>
-                <MenuItem value={30}>Others</MenuItem>
+                <MenuItem value={10}>
+                  {language.helpCenter.bugReport.options.reportABug}
+                </MenuItem>
+                <MenuItem value={20}>
+                  {language.helpCenter.bugReport.options.requestAFeature}
+                </MenuItem>
+                <MenuItem value={30}>
+                  {language.helpCenter.bugReport.options.others}
+                </MenuItem>
               </Select>
             </FormControl>
           </Box>
         </Stack>
         <Stack mt={3} gap={1}>
           <Typography sx={{ fontSize: "1.1rem", fontWeight: 500 }}>
-            Title
+            {language.title}
           </Typography>
           <TextField
             id="outlined-basic"
-            label="Enter a title"
+            label={language.enterATitle}
             variant="outlined"
           />
         </Stack>
         <Stack mt={3} gap={1}>
           <Typography sx={{ fontSize: "1.1rem", fontWeight: 500 }}>
-            Description
+            {language.description}
           </Typography>
           <TextField
             id="outlined-basic"
-            label="Entre a description"
+            label={language.enterAdescription}
             variant="outlined"
           />
         </Stack>
@@ -98,7 +108,7 @@ const HelpBuqReport = () => {
             height: "50px",
           }}
         >
-          Submit
+          {language.submit}
         </Button>
       </Box>
     </Box>

@@ -14,11 +14,13 @@ import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlin
 import { useState } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import mail from "../assets/email.png";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const SettingPrivacyBackup = ({ darkmode }: { darkmode: boolean }) => {
   const [backup, setBackup] = useState<string>("");
   const [form, setForm] = useState<string>("");
   const [Open, setOpen] = useState(false);
-
+  const { language } = useSelector((store: RootState) => store.setting);
   const handleDrawerToggle = () => {
     setOpen(!Open);
   };
@@ -37,7 +39,7 @@ const SettingPrivacyBackup = ({ darkmode }: { darkmode: boolean }) => {
           >
             {backup
               ? `${backup.slice(0, 3)}****${backup.slice(-4, -1)}`
-              : "NOT SET"}
+              : language.notSet}
           </Button>
         </ListItemSecondaryAction>
       </ListItem>
@@ -74,7 +76,9 @@ const SettingPrivacyBackup = ({ darkmode }: { darkmode: boolean }) => {
               >
                 <ArrowBackIcon />
               </IconButton>
-              <Typography fontSize={"1.1rem"}>Backup Emial</Typography>
+              <Typography fontSize={"1.1rem"}>
+                {language.PrivacyAndPolicy.backupEmail}
+              </Typography>
             </Box>
           </Box>
           <Box
@@ -120,7 +124,7 @@ const SettingPrivacyBackup = ({ darkmode }: { darkmode: boolean }) => {
                 textTransform: "uppercase",
               }}
             >
-              Backup Email
+              {language.PrivacyAndPolicy.backupEmail}
             </Typography>
             <Typography
               sx={{
@@ -132,7 +136,7 @@ const SettingPrivacyBackup = ({ darkmode }: { darkmode: boolean }) => {
                 color: darkmode ? "lightgrey" : "#7a7f9a",
               }}
             >
-              Your safty net for account recovery and security notifications.
+              {language.PrivacyAndPolicy.backupFirstLine}
             </Typography>
             <TextField
               sx={{ height: "40px", mt: 2 }}
@@ -152,7 +156,9 @@ const SettingPrivacyBackup = ({ darkmode }: { darkmode: boolean }) => {
                 setBackup(form);
               }}
             >
-              {form ? "Change Backup" : "Set Backup"}
+              {form
+                ? language.PrivacyAndPolicy.changeBackup
+                : language.PrivacyAndPolicy.setBackup}
             </Button>
           </Box>
         </Box>

@@ -24,7 +24,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const ContactList = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
 
   const handleChange =
     (panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -90,8 +92,8 @@ const ContactList = () => {
                         }}
                       >
                         {item.last_activity === "online"
-                          ? "Online"
-                          : `Last seen ${item.last_activity}`}
+                          ? language.online
+                          : `${language.lastSeen} ${item.last_activity}`}
                       </Typography>
                     </Stack>
                   </ListItem>
@@ -116,7 +118,7 @@ const ContactList = () => {
                         to={`/${item.user_id}`}
                         style={{ textDecoration: "none" }}
                       >
-                        Start Messaging
+                        {language.startMessaging}
                       </Link>
                     </ListItemText>
                   </ListItem>

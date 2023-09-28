@@ -25,7 +25,9 @@ import SettingProfileChange from "./SettingProfileChange";
 
 const SettingMainMenu = () => {
   const { users } = useSelector((store: RootState) => store.chat);
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   return (
     <Grid
       item
@@ -34,10 +36,12 @@ const SettingMainMenu = () => {
       md={4}
       lg={3}
       sx={{
-        overflow: "hidden",
+        overflowX: "hidden",
         "&::-webkit-scrollbar": { display: "none" },
         borderRight: "1px solid #EAEDF3",
         position: "relative",
+        height: "100%",
+        overflowY: "scroll",
       }}
     >
       <Box
@@ -85,7 +89,7 @@ const SettingMainMenu = () => {
               {users[0].username + " " + users[0].userLastName}
             </Typography>
             <Typography color={"white"} fontSize={"0.8rem"}>
-              Online
+              {language.online}
             </Typography>
           </Box>
         </Box>
@@ -94,7 +98,7 @@ const SettingMainMenu = () => {
       <Box>
         <Box sx={{ p: 3 }}>
           <Typography color={"#008EE4"} fontWeight={500} mb={1}>
-            Account
+            {language.account}
           </Typography>
           <List sx={{ p: 0 }}>
             <ListItem sx={{ p: 0 }}>
@@ -110,7 +114,7 @@ const SettingMainMenu = () => {
               >
                 <ListItemText
                   primary={users[0].email}
-                  secondary="Tap to change email."
+                  secondary={language.tapToChangeEmail}
                   primaryTypographyProps={{
                     sx: {
                       textOverflow: "ellipsis",
@@ -133,7 +137,7 @@ const SettingMainMenu = () => {
               >
                 <ListItemText
                   primary={users[0].location}
-                  secondary="Location"
+                  secondary={language.location}
                 />
               </Link>
             </ListItem>
@@ -149,7 +153,10 @@ const SettingMainMenu = () => {
                 }}
               >
                 {" "}
-                <ListItemText primary={users[0].career} secondary="Career" />
+                <ListItemText
+                  primary={users[0].career}
+                  secondary={language.career}
+                />
               </Link>{" "}
             </ListItem>
             <ListItem sx={{ p: 0 }}>
@@ -164,7 +171,10 @@ const SettingMainMenu = () => {
                 }}
               >
                 {" "}
-                <ListItemText primary={users[0].biography} secondary="Bio" />
+                <ListItemText
+                  primary={users[0].biography}
+                  secondary={language.bio}
+                />
               </Link>{" "}
             </ListItem>
           </List>
@@ -174,7 +184,7 @@ const SettingMainMenu = () => {
       <Box>
         <Box sx={{ p: 3 }}>
           <Typography color={"#008EE4"} fontWeight={500} mb={1}>
-            Setting
+            {language.setting}
           </Typography>
           <List
             sx={{
@@ -205,7 +215,7 @@ const SettingMainMenu = () => {
                     my: 0,
                   }}
                 >
-                  Chat Setting
+                  {language.chatSetting.title}
                 </ListItemText>
               </Link>{" "}
             </ListItem>
@@ -232,7 +242,7 @@ const SettingMainMenu = () => {
                     my: 0,
                   }}
                 >
-                  Privacy and Security
+                  {language.PrivacyAndPolicy.title}
                 </ListItemText>
               </Link>{" "}
             </ListItem>
@@ -259,7 +269,7 @@ const SettingMainMenu = () => {
                     my: 0,
                   }}
                 >
-                  Notification and Sounds
+                  {language.NotificationAndSounds.title}
                 </ListItemText>
               </Link>{" "}
             </ListItem>
@@ -286,7 +296,7 @@ const SettingMainMenu = () => {
                     my: 0,
                   }}
                 >
-                  Data and Storage
+                  {language.DataAndStorage.title}
                 </ListItemText>
               </Link>{" "}
             </ListItem>
@@ -304,7 +314,9 @@ const SettingMainMenu = () => {
                 <ListItemIcon>
                   <PublicOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText sx={{ py: 1, my: 0 }}>Language</ListItemText>
+                <ListItemText sx={{ py: 1, my: 0 }}>
+                  {language.language}
+                </ListItemText>
               </Link>{" "}
             </ListItem>
           </List>
@@ -314,7 +326,7 @@ const SettingMainMenu = () => {
       <Box>
         <Box sx={{ p: 3 }}>
           <Typography color={"#008EE4"} fontWeight={500} mb={1}>
-            Others
+            {language.others}
           </Typography>
           <List
             sx={{
@@ -345,7 +357,7 @@ const SettingMainMenu = () => {
                     my: 0,
                   }}
                 >
-                  Invite Friends
+                  {language.InviteFriends}
                 </ListItemText>
               </Link>{" "}
             </ListItem>
@@ -364,7 +376,7 @@ const SettingMainMenu = () => {
                   <HelpOutlineOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText sx={{ py: 1, my: 0 }}>
-                  Meitigram Features
+                  {language.MeitigramFeatures}
                 </ListItemText>
               </Link>{" "}
             </ListItem>

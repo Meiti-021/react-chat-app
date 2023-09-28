@@ -24,7 +24,9 @@ import { logIn } from "../services/settingSlice";
 import { RootState } from "../store";
 const LoginCenter = () => {
   const dispatch = useDispatch();
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const [open, setOpen] = useState(false);
   const lottieRef = useRef<LottieRefCurrentProps>(null);
   const lottie2Ref = useRef<LottieRefCurrentProps>(null);
@@ -92,7 +94,7 @@ const LoginCenter = () => {
                 }
               }}
             >
-              START MESSAGING
+              {language.startMessaging}
             </Button>
           </div>
         </SwiperSlide>
@@ -127,10 +129,10 @@ const LoginCenter = () => {
                 textAlign={"center"}
                 color={darkmode ? "#fff" : undefined}
               >
-                Your Email Address
+                {language.firstLoginForm.title}
               </Typography>
               <Typography color={"#848484"} mt={1} textAlign={"center"} px={3}>
-                Please confirm your email address and enter your password.
+                {language.firstLoginForm.subtitle}
               </Typography>
               <Box
                 sx={{
@@ -169,7 +171,7 @@ const LoginCenter = () => {
                   } else {
                     enqueueSnackbar({
                       variant: "error",
-                      message: "Please fill the form.",
+                      message: language.fillTheFormErrorMessage,
                     });
                   }
                 }}
@@ -228,10 +230,10 @@ const LoginCenter = () => {
                 textAlign={"center"}
                 color={darkmode ? "#fff" : undefined}
               >
-                Check Your Email
+                {language.loginRegistery.title}
               </Typography>
               <Typography color={"#848484"} mt={1} textAlign={"center"} px={3}>
-                Please Enter the code we have sent to your email.
+                {language.loginRegistery.subtitle}
               </Typography>
               <TextField
                 label="code"
@@ -251,7 +253,7 @@ const LoginCenter = () => {
                   } else {
                     enqueueSnackbar({
                       variant: "error",
-                      message: "Please fill the form.",
+                      message: language.fillTheFormErrorMessage,
                     });
                   }
                 }}
@@ -286,10 +288,9 @@ const LoginCenter = () => {
               fontWeight: "bold",
             }}
           >
-            Data Persistence:
+            {language.loginWarning.dataPersistence.title}
           </Typography>{" "}
-          Please note that the information you enter on this page is for
-          demonstration purposes only and will not be saved or stored anywhere.
+          {language.loginWarning.dataPersistence.description}
           <Typography
             sx={{
               fontSize: "1rem",
@@ -298,20 +299,9 @@ const LoginCenter = () => {
               fontWeight: "bold",
             }}
           >
-            No Real Data:
+            {language.loginWarning.noRealData.title}
           </Typography>{" "}
-          Do not enter any real or sensitive information. This is a frontend
-          demo, and your inputs are only used for showcasing the design and
-          functionality.
-          <span
-            style={{
-              color: darkmode ? "white" : "black",
-              fontWeight: "bold",
-            }}
-          >
-            You can use any random data here!
-          </span>{" "}
-          you don't need to enter real world information.
+          {language.loginWarning.noRealData.description}
           <Typography
             sx={{
               fontSize: "1rem",
@@ -320,10 +310,9 @@ const LoginCenter = () => {
               fontWeight: "bold",
             }}
           >
-            Data Deletion:
+            {language.loginWarning.dataDeletion.title}
           </Typography>{" "}
-          If you reload this page or navigate away, all the data you've entered
-          will be lost. It won't be recoverable.
+          {language.loginWarning.dataDeletion.description}
           <Typography
             sx={{
               fontSize: "1rem",
@@ -332,10 +321,9 @@ const LoginCenter = () => {
               fontWeight: "bold",
             }}
           >
-            Privacy:
+            {language.loginWarning.privacy.title}
           </Typography>{" "}
-          We do not collect, store, or use any of the information you provide
-          here. Your privacy is important to us.
+          {language.loginWarning.privacy.description}
           <Typography
             sx={{
               fontSize: "1rem",
@@ -344,11 +332,9 @@ const LoginCenter = () => {
               fontWeight: "bold",
             }}
           >
-            Reset on Refresh:
+            {language.loginWarning.resetOnRefresh.title}
           </Typography>{" "}
-          The page is designed to reset all inputs to their default values when
-          you refresh it, so don't rely on it for storing any personal or
-          critical data.
+          {language.loginWarning.resetOnRefresh.description}
           <Typography
             sx={{
               fontSize: "1rem",
@@ -357,10 +343,9 @@ const LoginCenter = () => {
               fontWeight: "bold",
             }}
           >
-            For Testing Purposes:
+            {language.loginWarning.forTestingPurposes.title}
           </Typography>
-          Feel free to explore and interact with the login page, but remember
-          it's meant for testing and presentation purposes only. Not for Real
+          {language.loginWarning.forTestingPurposes.description}
           <Typography
             sx={{
               fontSize: "1rem",
@@ -369,15 +354,13 @@ const LoginCenter = () => {
               fontWeight: "bold",
             }}
           >
-            Authentication:
+            {language.loginWarning.authentication.title}
           </Typography>{" "}
-          This login page is not connected to a real authentication system. It's
-          purely a frontend demonstration and does not provide any real
-          security.
+          {language.loginWarning.authentication.description}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} autoFocus>
-            Continue
+            {language.continue}
           </Button>
         </DialogActions>
       </Dialog>

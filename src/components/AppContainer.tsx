@@ -12,16 +12,6 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import ChatIcon from "@mui/icons-material/Chat";
-import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
-import CampaignIcon from "@mui/icons-material/Campaign";
-import SmartToyIcon from "@mui/icons-material/SmartToy";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
-import SettingsIcon from "@mui/icons-material/Settings";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import LogoutIcon from "@mui/icons-material/Logout";
-import RecommendIcon from "@mui/icons-material/Recommend";
 import {
   NavLink,
   Route,
@@ -32,8 +22,6 @@ import {
 } from "react-router-dom";
 import { Avatar, Button, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import GroupsIcon from "@mui/icons-material/Groups";
-import GroupIcon from "@mui/icons-material/Group";
 import Conversations from "./Conversations";
 import Chat from "./Chat";
 import SelectChat from "./SelectChat";
@@ -54,98 +42,6 @@ import HireCenter from "./HireCenter";
 
 const drawerWidth = 270;
 
-const menuItems = [
-  {
-    title: "MENU",
-    items: [
-      {
-        title: "Conversations",
-        icon: <ChatIcon sx={{ color: "inherit" }} />,
-        type: Button,
-        address: "",
-      },
-
-      {
-        title: "Groups",
-        icon: <GroupsIcon sx={{ color: "inherit" }} />,
-        type: Button,
-        address: "",
-      },
-      {
-        title: "Privates",
-        icon: <GroupIcon sx={{ color: "inherit" }} />,
-        type: Button,
-        address: "",
-      },
-      {
-        title: "Contacts",
-        icon: <PermContactCalendarIcon sx={{ color: "inherit" }} />,
-        type: NavLink,
-        address: "contacts",
-      },
-
-      {
-        title: "Channels",
-        icon: <CampaignIcon sx={{ color: "inherit" }} />,
-        type: NavLink,
-        address: "channels",
-      },
-      {
-        title: "Bots",
-        icon: <SmartToyIcon sx={{ color: "inherit" }} />,
-        type: NavLink,
-        address: "bots",
-      },
-    ],
-  },
-  {
-    title: "SUPPORT",
-    items: [
-      {
-        title: "Need help?",
-        icon: <HelpOutlineIcon sx={{ color: "inherit" }} />,
-        type: NavLink,
-        address: "help",
-      },
-      {
-        title: "Contact us",
-        icon: <HeadsetMicIcon sx={{ color: "inherit" }} />,
-        type: NavLink,
-        address: "contact-us",
-      },
-      {
-        title: "Hire me",
-        icon: <RecommendIcon sx={{ color: "inherit" }} />,
-        type: NavLink,
-        address: "hire-me",
-      },
-    ],
-  },
-  {
-    title: "SETTING",
-    items: [
-      {
-        title: "Setting",
-        icon: <SettingsIcon sx={{ color: "inherit" }} />,
-        type: NavLink,
-        address: "setting",
-      },
-      {
-        title: "Dark mode",
-        icon: <Brightness4Icon sx={{ color: "inherit" }} />,
-        type: Button,
-        address: "darkmode",
-      },
-      {
-        title: "Log out",
-        icon: <LogoutIcon sx={{ color: "inherit" }} />,
-        type: Button,
-        address: "logout",
-      },
-    ],
-  },
-];
-
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -155,7 +51,9 @@ interface Props {
 }
 
 export default function AppContainer(props: Props) {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const { users } = useSelector((store: RootState) => store.chat);
   const location = useLocation();
   const { id } = useParams();
@@ -219,7 +117,7 @@ export default function AppContainer(props: Props) {
         </Box>
       </Toolbar>
       <Divider sx={{ bgcolor: "#7A848F" }} />
-      {menuItems.map((item, index) => {
+      {language.menuItems.map((item, index) => {
         return (
           <List
             sx={{
@@ -376,9 +274,10 @@ export default function AppContainer(props: Props) {
               fontWeight: "bold",
               letterSpacing: 3,
               mt: 0.2,
+              textTransform: "uppercase",
             }}
           >
-            MEITIGRAM
+            {language.meitigram}
           </Typography>
           <IconButton
             color="inherit"

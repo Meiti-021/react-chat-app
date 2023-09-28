@@ -5,6 +5,8 @@ import { Tabs, Tab, Typography, Box } from "@mui/material";
 
 import * as React from "react";
 import ChatMedia from "./ChatMedia";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -41,6 +43,7 @@ function a11yProps(index: number) {
 }
 
 const GroupInfoDetail = ({ participants }: { participants: UserType[] }) => {
+  const { language } = useSelector((store: RootState) => store.setting);
   const [value, setValue] = React.useState(0);
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -53,10 +56,10 @@ const GroupInfoDetail = ({ participants }: { participants: UserType[] }) => {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Members" {...a11yProps(0)} />
-          <Tab label="Admins" {...a11yProps(1)} />
-          <Tab label="Media" {...a11yProps(2)} />
-          <Tab label="Files" {...a11yProps(3)} />
+          <Tab label={language.members} {...a11yProps(0)} />
+          <Tab label={language.admins} {...a11yProps(1)} />
+          <Tab label={language.media} {...a11yProps(2)} />
+          <Tab label={language.files} {...a11yProps(3)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0} padding={true}>

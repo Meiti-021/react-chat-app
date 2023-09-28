@@ -14,7 +14,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useNavigate } from "react-router-dom";
 const SettingLanguage = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const navigate = useNavigate();
   return (
     <div>
@@ -37,14 +39,14 @@ const SettingLanguage = () => {
         >
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>Language</Typography>
+        <Typography fontSize={"1.1rem"}>{language.language}</Typography>
         <IconButton sx={{ ml: "auto", color: "white" }}>
           <CheckIcon />
         </IconButton>
       </Box>
       <FormControl sx={{ p: 2 }}>
         <FormLabel id="demo-radio-buttons-group-label" color="primary">
-          Language
+          {language.language}
         </FormLabel>
         <RadioGroup
           aria-labelledby="demo-radio-buttons-group-label"

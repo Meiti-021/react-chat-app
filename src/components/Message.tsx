@@ -44,7 +44,7 @@ const Message = ({
   media,
 }: MessageType) => {
   const { users, messages } = useSelector((store: RootState) => store.chat);
-  const { fontSize, messageCorner } = useSelector(
+  const { fontSize, messageCorner, language } = useSelector(
     (store: RootState) => store.setting
   );
   const dispatch = useDispatch();
@@ -243,7 +243,7 @@ const Message = ({
             <ListItemIcon>
               <ContentCopyIcon />
             </ListItemIcon>
-            <ListItemText>Copy</ListItemText>
+            <ListItemText>{language.copy}</ListItemText>
           </ListItem>
           {sender === "user1" ? (
             <ListItem
@@ -255,7 +255,7 @@ const Message = ({
               <ListItemIcon>
                 <EditIcon />{" "}
               </ListItemIcon>
-              <ListItemText>Edit</ListItemText>
+              <ListItemText>{language.edit}</ListItemText>
             </ListItem>
           ) : undefined}
           <ListItem
@@ -269,7 +269,7 @@ const Message = ({
               {" "}
               <DeleteIcon />
             </ListItemIcon>
-            <ListItemText>Delete</ListItemText>
+            <ListItemText>{language.delete}</ListItemText>
           </ListItem>
         </MenuList>
       </Menu>
@@ -278,7 +278,7 @@ const Message = ({
         onClose={handleModalClose}
         sx={{ minWidth: "450px" }}
       >
-        <DialogTitle>Edit Messages</DialogTitle>
+        <DialogTitle>{language.editMessages}</DialogTitle>
         <DialogContent>
           <DialogContentText>{content}</DialogContentText>
           <TextField
@@ -296,7 +296,7 @@ const Message = ({
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleModalClose}>Cancel</Button>
+          <Button onClick={handleModalClose}>{language.cancel}</Button>
           <Button
             onClick={() => {
               if (editedMessage) {
@@ -311,12 +311,12 @@ const Message = ({
               } else {
                 enqueueSnackbar({
                   variant: "error",
-                  message: "Message can't be empty",
+                  message: language.emptyMessageError,
                 });
               }
             }}
           >
-            Save Changes
+            {language.saveChanges}
           </Button>
         </DialogActions>
       </Dialog>

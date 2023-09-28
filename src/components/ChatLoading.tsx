@@ -2,7 +2,9 @@ import { Box, Skeleton, Stack, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const ChatLoading = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
 
   return (
     <>
@@ -76,9 +78,14 @@ const ChatLoading = () => {
         }}
       >
         <Typography
-          sx={{ fontSize: "4rem", fontWeight: "bold", color: "#EAEDF3" }}
+          sx={{
+            fontSize: "4rem",
+            fontWeight: "bold",
+            color: "#EAEDF3",
+            textTransform: "uppercase",
+          }}
         >
-          LOADING
+          {language.loading}
         </Typography>
       </Box>
     </>

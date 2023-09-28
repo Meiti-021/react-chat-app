@@ -7,7 +7,9 @@ import { RootState } from "../store";
 import { useNavigate } from "react-router-dom";
 
 const SettingPrivacy = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const navigate = useNavigate();
   return (
     <div>
@@ -30,7 +32,9 @@ const SettingPrivacy = () => {
         >
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>Privacy and Security</Typography>
+        <Typography fontSize={"1.1rem"}>
+          {language.PrivacyAndPolicy.title}
+        </Typography>
       </Box>
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
@@ -40,13 +44,12 @@ const SettingPrivacy = () => {
       <SettingSecurity />
       <Box p={2} sx={{ bgcolor: darkmode ? "#1D2733" : "#008EE4" }}>
         <Typography color={"white"} fontSize={"0.8rem"}>
-          Review the list of devices where you are logged into your meitigram
-          app.
+          {language.PrivacyAndPolicy.firstLine}
         </Typography>
       </Box>
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          Privacy
+          {language.privacy}
         </Typography>
       </Box>
       <SettingPrivacyList />

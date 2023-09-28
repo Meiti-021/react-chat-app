@@ -25,7 +25,9 @@ const GroupChatMobileHeader = ({
   description: string | null;
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -103,19 +105,20 @@ const GroupChatMobileHeader = ({
               sx={{ display: "flex", alignItems: "center", gap: "15px" }}
             >
               {" "}
-              <CallIcon sx={{ fontSize: "1.2rem" }} /> Call
+              <CallIcon sx={{ fontSize: "1.2rem" }} /> {language.call}
             </MenuItem>
             <MenuItem
               onClick={handleClose}
               sx={{ display: "flex", alignItems: "center", gap: "15px" }}
             >
-              <HistoryIcon sx={{ fontSize: "1.2rem" }} /> Clear History
+              <HistoryIcon sx={{ fontSize: "1.2rem" }} />{" "}
+              {language.clearHistory}
             </MenuItem>
             <MenuItem
               onClick={handleClose}
               sx={{ display: "flex", alignItems: "center", gap: "15px" }}
             >
-              <LogoutIcon sx={{ fontSize: "1.2rem" }} /> Leave Group
+              <LogoutIcon sx={{ fontSize: "1.2rem" }} /> {language.leaveGroup}
             </MenuItem>
           </Menu>
         </div>

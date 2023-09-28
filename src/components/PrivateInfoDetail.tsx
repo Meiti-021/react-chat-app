@@ -55,7 +55,9 @@ function a11yProps(index: number) {
 
 const PrivateInfoDetail = ({ user }: { user: UserType }) => {
   const [value, setValue] = React.useState(0);
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -67,9 +69,9 @@ const PrivateInfoDetail = ({ user }: { user: UserType }) => {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="About" {...a11yProps(0)} />
-          <Tab label="Media" {...a11yProps(2)} />
-          <Tab label="Files" {...a11yProps(3)} />
+          <Tab label={language.about} {...a11yProps(0)} />
+          <Tab label={language.media} {...a11yProps(2)} />
+          <Tab label={language.files} {...a11yProps(3)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0} padding={false}>
@@ -85,7 +87,11 @@ const PrivateInfoDetail = ({ user }: { user: UserType }) => {
                 <AlternateEmailIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary="Email" secondary={user.email} />
+            <ListItemText
+              primary={language.email}
+              secondary={user.email}
+              primaryTypographyProps={{ sx: { textTransform: "capitalize" } }}
+            />
           </ListItem>
           <ListItem>
             <ListItemAvatar>
@@ -93,7 +99,11 @@ const PrivateInfoDetail = ({ user }: { user: UserType }) => {
                 <WorkIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary="Career" secondary={user.career} />
+            <ListItemText
+              primary={language.career}
+              secondary={user.career}
+              primaryTypographyProps={{ sx: { textTransform: "capitalize" } }}
+            />
           </ListItem>
           <ListItem>
             <ListItemAvatar>
@@ -101,7 +111,11 @@ const PrivateInfoDetail = ({ user }: { user: UserType }) => {
                 <PersonPinCircleIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary="Location" secondary={user.location} />
+            <ListItemText
+              primary={language.location}
+              secondary={user.location}
+              primaryTypographyProps={{ sx: { textTransform: "capitalize" } }}
+            />
           </ListItem>
         </List>
       </CustomTabPanel>

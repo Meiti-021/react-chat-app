@@ -9,7 +9,9 @@ import { useNavigate } from "react-router-dom";
 const SettingEditName = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const { users } = useSelector((store: RootState) => store.chat);
   const [nameValue, setNameValue] = useState<string>(users[0].username);
   const [lastNameValue, setLastNameValue] = useState<string>(
@@ -36,7 +38,7 @@ const SettingEditName = () => {
         >
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>Edit Name</Typography>
+        <Typography fontSize={"1.1rem"}>{language.editName}</Typography>
         <IconButton
           sx={{ ml: "auto", color: "white" }}
           onClick={() => {
@@ -51,7 +53,7 @@ const SettingEditName = () => {
       <Stack direction={"column"} p={2} gap={1}>
         <TextField
           fullWidth
-          placeholder="Name"
+          placeholder={language.name}
           variant="standard"
           value={nameValue}
           onChange={(e) => {
@@ -61,7 +63,7 @@ const SettingEditName = () => {
         />
         <TextField
           fullWidth
-          placeholder="Last Name"
+          placeholder={language.lastName}
           variant="standard"
           value={lastNameValue}
           onChange={(e) => {

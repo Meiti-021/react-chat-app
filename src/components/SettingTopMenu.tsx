@@ -14,7 +14,9 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const SettingTopMenu = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -56,7 +58,7 @@ const SettingTopMenu = () => {
             <ListItemIcon>
               <EditIcon sx={{ fontSize: "1.2rem" }} />
             </ListItemIcon>
-            <ListItemText>Edit Name</ListItemText>
+            <ListItemText>{language.editName}</ListItemText>
           </Link>
         </MenuItem>
         <MenuItem>
@@ -71,7 +73,7 @@ const SettingTopMenu = () => {
             <ListItemIcon>
               <AddAPhotoIcon sx={{ fontSize: "1.2rem" }} />
             </ListItemIcon>
-            <ListItemText>Set Profile Photo </ListItemText>
+            <ListItemText>{language.setProfilePhoto} </ListItemText>
           </Link>
         </MenuItem>
         <MenuItem>
@@ -86,7 +88,7 @@ const SettingTopMenu = () => {
             <ListItemIcon>
               <LogoutIcon sx={{ fontSize: "1.2rem" }} />
             </ListItemIcon>
-            <ListItemText>Log Out </ListItemText>
+            <ListItemText>{language.logOut} </ListItemText>
           </Link>
         </MenuItem>
       </Menu>

@@ -7,7 +7,9 @@ import { useState } from "react";
 import { editLocation } from "../services/chatSlice";
 import { useNavigate } from "react-router-dom";
 const SettingLocation = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const dispatch = useDispatch();
   const { users } = useSelector((store: RootState) => store.chat);
   const [value, setValue] = useState<string>(users[0].location);
@@ -33,7 +35,7 @@ const SettingLocation = () => {
         >
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>Location</Typography>
+        <Typography fontSize={"1.1rem"}>{language.location}</Typography>
         <IconButton
           sx={{ ml: "auto", color: "white" }}
           onClick={() => {
@@ -46,7 +48,7 @@ const SettingLocation = () => {
       <Stack direction={"column"} p={2} gap={1}>
         <TextField
           fullWidth
-          placeholder="Location"
+          placeholder={language.location}
           variant="standard"
           value={value}
           onChange={(e) => {
@@ -54,7 +56,7 @@ const SettingLocation = () => {
           }}
         />
         <Typography fontSize={"0.9rem"}>
-          You can add a few lines about where you're living right now.
+          {language.settingLocationDescription}
         </Typography>
       </Stack>
     </div>

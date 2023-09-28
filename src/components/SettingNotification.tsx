@@ -17,7 +17,9 @@ import { RootState } from "../store";
 import { useNavigate } from "react-router-dom";
 
 const SettingNotification = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const navigate = useNavigate();
   return (
     <div style={{ height: "100%", overflowY: "scroll" }}>
@@ -41,7 +43,7 @@ const SettingNotification = () => {
           <ArrowBackIcon />
         </IconButton>
         <Typography fontSize={"1rem"}>
-          Notification and Sounds Settings
+          {language.NotificationAndSounds.title}
         </Typography>
         <IconButton sx={{ ml: "auto", color: "white" }}>
           <CheckIcon />
@@ -49,11 +51,11 @@ const SettingNotification = () => {
       </Box>
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          Show notification from
+          {language.NotificationAndSounds.showNotificationsFrom}
         </Typography>
         <List sx={{ p: 0, mt: 2 }}>
           <ListItem sx={{ p: 0 }}>
-            <ListItemText primary="All accounts" />
+            <ListItemText primary={language.NotificationAndSounds.AllAcounts} />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
@@ -62,29 +64,37 @@ const SettingNotification = () => {
       </Box>
       <Box p={2} sx={{ bgcolor: darkmode ? "#1D2733" : "#008EE4" }}>
         <Typography color={"white"} fontSize={"0.8rem"}>
-          Turn This off if you want to recieve notifications only from the
-          account you are currently using.
+          {language.NotificationAndSounds.firstTextLine}
         </Typography>
       </Box>
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          Notificaton for chats
+          {language.NotificationAndSounds.notificationForChats}
         </Typography>
         <List sx={{ p: 0, mt: 2 }}>
           <ListItem sx={{ p: 0 }}>
-            <ListItemText primary="Private Chats" secondary="Tap to Change" />
+            <ListItemText
+              primary={language.privates}
+              secondary={language.NotificationAndSounds.tapToChange}
+            />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem sx={{ p: 0 }}>
-            <ListItemText primary="Groups" secondary="Tap to Change" />
+            <ListItemText
+              primary={language.groups}
+              secondary={language.NotificationAndSounds.tapToChange}
+            />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem sx={{ p: 0 }}>
-            <ListItemText primary="Channels" secondary="Tap to Change" />
+            <ListItemText
+              primary={language.channels}
+              secondary={language.NotificationAndSounds.tapToChange}
+            />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
@@ -98,7 +108,9 @@ const SettingNotification = () => {
         </Typography>
         <List sx={{ p: 0, mt: 2 }}>
           <ListItem sx={{ p: 0 }}>
-            <ListItemText primary="Show Badge Icon" />
+            <ListItemText
+              primary={language.NotificationAndSounds.ShowBadgeIcon}
+            />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
@@ -106,7 +118,9 @@ const SettingNotification = () => {
         </List>
         <List sx={{ p: 0, mt: 2 }}>
           <ListItem sx={{ p: 0 }}>
-            <ListItemText primary="Include Muted Chats" />
+            <ListItemText
+              primary={language.NotificationAndSounds.IncludeMutedChats}
+            />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
@@ -114,7 +128,9 @@ const SettingNotification = () => {
         </List>
         <List sx={{ p: 0, mt: 2 }}>
           <ListItem sx={{ p: 0 }}>
-            <ListItemText primary="Count Unreaded Messages" />
+            <ListItemText
+              primary={language.NotificationAndSounds.CountUnreadedMessages}
+            />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
@@ -124,35 +140,41 @@ const SettingNotification = () => {
       <Divider />
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          Events
-        </Typography>
-        <List sx={{ p: 0, mt: 2 }}>
-          <ListItem sx={{ p: 0 }}>
-            <ListItemText primary="Contact joined to Meitigram" />
-            <ListItemSecondaryAction>
-              <Switch defaultChecked />
-            </ListItemSecondaryAction>
-          </ListItem>
-        </List>
-        <List sx={{ p: 0, mt: 2 }}>
-          <ListItem sx={{ p: 0 }}>
-            <ListItemText primary="Pinned Messages" />
-            <ListItemSecondaryAction>
-              <Switch defaultChecked />
-            </ListItemSecondaryAction>
-          </ListItem>
-        </List>
-      </Box>
-      <Divider />
-      <Box p={2}>
-        <Typography fontSize={"1rem"} color="primary">
-          Others
+          {language.NotificationAndSounds.events}
         </Typography>
         <List sx={{ p: 0, mt: 2 }}>
           <ListItem sx={{ p: 0 }}>
             <ListItemText
-              primary="Keep-Alive Service"
-              secondary="Relunch web when shut down.Enable for reliable notofication"
+              primary={language.NotificationAndSounds.ContactJoined}
+            />
+            <ListItemSecondaryAction>
+              <Switch defaultChecked />
+            </ListItemSecondaryAction>
+          </ListItem>
+        </List>
+        <List sx={{ p: 0, mt: 2 }}>
+          <ListItem sx={{ p: 0 }}>
+            <ListItemText
+              primary={language.NotificationAndSounds.PinnedMessages}
+            />
+            <ListItemSecondaryAction>
+              <Switch defaultChecked />
+            </ListItemSecondaryAction>
+          </ListItem>
+        </List>
+      </Box>
+      <Divider />
+      <Box p={2}>
+        <Typography fontSize={"1rem"} color="primary">
+          {language.others}
+        </Typography>
+        <List sx={{ p: 0, mt: 2 }}>
+          <ListItem sx={{ p: 0 }}>
+            <ListItemText
+              primary={language.NotificationAndSounds.keepAliveService.primary}
+              secondary={
+                language.NotificationAndSounds.keepAliveService.secondary
+              }
               secondaryTypographyProps={{ sx: { width: "80%" } }}
             />
             <ListItemSecondaryAction>
@@ -161,8 +183,12 @@ const SettingNotification = () => {
           </ListItem>
           <ListItem sx={{ p: 0 }}>
             <ListItemText
-              primary="Background Connection"
-              secondary="Keep a low inpact background connection to telegram for reliable notification."
+              primary={
+                language.NotificationAndSounds.backgroundConnection.primary
+              }
+              secondary={
+                language.NotificationAndSounds.backgroundConnection.secondary
+              }
               secondaryTypographyProps={{ sx: { width: "80%" } }}
             />
             <ListItemSecondaryAction>

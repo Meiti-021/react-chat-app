@@ -19,7 +19,9 @@ import CallIcon from "@mui/icons-material/Call";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const HireCenter = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   return (
     <Grid
       container
@@ -48,27 +50,26 @@ const HireCenter = () => {
         <Box component={"div"} sx={{ p: 0 }}>
           <Box p={2}>
             <Typography fontSize={"1.1rem"} color="primary">
-              About me
+              {language.aboutMe}
             </Typography>
           </Box>
           <Box px={2}>
             <Typography fontSize={"1rem"}>
-              Hey,I'm <strong>Mehdi Dehghani</strong>, a front-end developer and
-              the creator of this project. If you find this project intriguing
-              and wish to explore potential collaboration, please don't hesitate
-              to reach out to me using one of the contact methods listed below.
+              {language.hireMeCenter.aboutMeSubtitle.split("-")[0]}{" "}
+              <strong>
+                {language.hireMeCenter.aboutMeSubtitle.split("-")[1]}
+              </strong>
+              {language.hireMeCenter.aboutMeSubtitle.split("-")[3]}
             </Typography>
           </Box>
         </Box>
         <Box component={"div"} sx={{ p: 0, mt: 2 }}>
           <Box p={2}>
             <Typography fontSize={"1.1rem"} color="primary">
-              Contact me
+              {language.hireMeCenter.contactMeTitle}
             </Typography>
             <Typography fontSize={"1rem"} mt={2}>
-              Ready to discuss your web development project or have any
-              questions? Feel free to reach out! I'm eager to learn about your
-              vision and how I can help you bring it to life.
+              {language.hireMeCenter.contactMesubtitle}
             </Typography>
           </Box>
           <Box px={2}>
@@ -77,7 +78,10 @@ const HireCenter = () => {
                 <ListItemIcon>
                   <ShareLocationIcon />
                 </ListItemIcon>
-                <ListItemText primary="Iran/Tabriz" secondary="location" />
+                <ListItemText
+                  primary="Iran/Tabriz"
+                  secondary={language.location}
+                />
               </ListItem>
             </List>
             <List sx={{ p: 0 }}>
@@ -115,7 +119,10 @@ const HireCenter = () => {
                 <ListItemIcon>
                   <EmailIcon />
                 </ListItemIcon>
-                <ListItemText primary="dev.meiti@gmail.com" secondary="Email" />
+                <ListItemText
+                  primary="dev.meiti@gmail.com"
+                  secondary={language.email}
+                />
               </ListItem>
             </List>
             <List sx={{ p: 0 }}>
@@ -123,7 +130,10 @@ const HireCenter = () => {
                 <ListItemIcon>
                   <CallIcon />
                 </ListItemIcon>
-                <ListItemText primary="(+98)903-275-4223" secondary="Phone" />
+                <ListItemText
+                  primary="(+98)903-275-4223"
+                  secondary={language.phoneNumber}
+                />
               </ListItem>
             </List>
             <List sx={{ p: 0 }}>
@@ -132,8 +142,8 @@ const HireCenter = () => {
                   <SupportAgentIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary="Monday - Friday, 9:00 AM - 6:00 PM (EST)"
-                  secondary="Business Hours"
+                  primary={language.hireMeCenter.bussinessHours.primary}
+                  secondary={language.hireMeCenter.bussinessHours.secondary}
                 />
               </ListItem>
             </List>
@@ -141,34 +151,24 @@ const HireCenter = () => {
           <Box component={"div"} sx={{ p: 0, mt: 2 }}>
             <Box p={2}>
               <Typography fontSize={"1.1rem"} color="primary">
-                What I Can Offer
+                {language.hireMeCenter.whatCanIOfferTitle}
               </Typography>
             </Box>
             <Box px={2}>
               <Typography fontSize={"1rem"}>
-                Responsive and user-friendly website design and development.
-                Custom web solutions tailored to your unique needs. Proficiency
-                in HTML, CSS, JavaScript, and various web development
-                frameworks. A keen eye for detail and a commitment to delivering
-                high-quality work. Quick problem-solving skills to ensure smooth
-                project development. Adaptable and comfortable with both remote
-                and non-remote work arrangements.
+                {language.hireMeCenter.whatCanIOfferSubtitle}
               </Typography>
             </Box>
           </Box>
           <Box component={"div"} sx={{ p: 0, mt: 2 }}>
             <Box p={2}>
               <Typography fontSize={"1.1rem"} color="primary">
-                Remote or On-Site, I'm Flexible
+                {language.hireMeCenter.RemoteOrOnSiteTitle}
               </Typography>
             </Box>
             <Box px={2}>
               <Typography fontSize={"1rem"}>
-                Whether you need a web developer who can collaborate with your
-                team on-site or someone who can seamlessly integrate into your
-                remote workflow, I'm here to make your project a success.
-                Distance is never a barrier when it comes to delivering
-                top-notch web solutions.
+                {language.hireMeCenter.RemoteOrOnSiteSubtitle}
               </Typography>
             </Box>
           </Box>

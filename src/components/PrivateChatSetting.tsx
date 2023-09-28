@@ -4,7 +4,10 @@ import HistoryIcon from "@mui/icons-material/History";
 import CallIcon from "@mui/icons-material/Call";
 import BlockIcon from "@mui/icons-material/Block";
 import * as React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 const PrivateChatSetting = () => {
+  const { language } = useSelector((store: RootState) => store.setting);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -34,19 +37,19 @@ const PrivateChatSetting = () => {
           sx={{ display: "flex", alignItems: "center", gap: "15px" }}
         >
           {" "}
-          <CallIcon sx={{ fontSize: "1.2rem" }} /> Call
+          <CallIcon sx={{ fontSize: "1.2rem" }} /> r{language.call}
         </MenuItem>
         <MenuItem
           onClick={handleClose}
           sx={{ display: "flex", alignItems: "center", gap: "15px" }}
         >
-          <HistoryIcon sx={{ fontSize: "1.2rem" }} /> Clear History
+          <HistoryIcon sx={{ fontSize: "1.2rem" }} /> r{language.clearHistory}
         </MenuItem>
         <MenuItem
           onClick={handleClose}
           sx={{ display: "flex", alignItems: "center", gap: "15px" }}
         >
-          <BlockIcon sx={{ fontSize: "1.2rem" }} /> Block user
+          <BlockIcon sx={{ fontSize: "1.2rem" }} /> r{language.blockUser}
         </MenuItem>
       </Menu>
     </>

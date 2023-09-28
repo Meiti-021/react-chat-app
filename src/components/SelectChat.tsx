@@ -4,7 +4,9 @@ import ChatAnimation from "../assets/chat-animation.json";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const SelectChat = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   return (
     <Box
       component={"div"}
@@ -40,7 +42,7 @@ const SelectChat = () => {
           textTransform: "uppercase",
         }}
       >
-        Welcome to my chat app react project
+        {language.WelcomePage.title}
       </Typography>
       <Typography
         sx={{
@@ -52,7 +54,7 @@ const SelectChat = () => {
           color: "#7a7f9a",
         }}
       >
-        please select a chat or start a new conversations.
+        {language.WelcomePage.subtitle}
       </Typography>
     </Box>
   );

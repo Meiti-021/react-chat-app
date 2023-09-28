@@ -21,7 +21,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useNavigate } from "react-router-dom";
 const SettingData = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const [Open, setOpen] = useState(false);
   const [drawerContent, setDrawerContent] = useState(false);
   const navigate = useNavigate();
@@ -62,11 +64,13 @@ const SettingData = () => {
         >
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>Data and Storage</Typography>
+        <Typography fontSize={"1.1rem"}>
+          {language.DataAndStorage.title}
+        </Typography>
       </Box>
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          Disk and network usage
+          {language.DataAndStorage.diskAndNetworkUsage}
         </Typography>
 
         <List sx={{ px: 0, mt: 1 }}>
@@ -74,7 +78,7 @@ const SettingData = () => {
             <ListItemIcon>
               <DataUsageIcon />
             </ListItemIcon>
-            <ListItemText primary="Storage Usage" />
+            <ListItemText primary={language.DataAndStorage.StorageUsage} />
             <ListItemSecondaryAction>
               <Button
                 onClick={() => {
@@ -97,7 +101,7 @@ const SettingData = () => {
             <ListItemIcon>
               <BarChartIcon />
             </ListItemIcon>
-            <ListItemText primary="Data Usage" />
+            <ListItemText primary={language.DataAndStorage.DataUsage} />
             <ListItemSecondaryAction>
               <Button
                 onClick={() => {
@@ -118,23 +122,25 @@ const SettingData = () => {
       </Box>
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          Automatic media download
+          {language.DataAndStorage.AutomaticMediaDownload}
         </Typography>
         <List sx={{ p: 0, mt: 2 }}>
           <ListItem sx={{ px: 0 }}>
-            <ListItemText primary="When using Mobile data" />
+            <ListItemText primary={language.DataAndStorage.whenUsinMobile} />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem sx={{ px: 0 }}>
-            <ListItemText primary="when Connected to wi-fi" />
+            <ListItemText
+              primary={language.DataAndStorage.whenConnenctedTowifi}
+            />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem sx={{ px: 0 }}>
-            <ListItemText primary="when Roaming" />
+            <ListItemText primary={language.DataAndStorage.whenRoaming} />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
@@ -143,23 +149,23 @@ const SettingData = () => {
       </Box>
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          Save to GAllery
+          {language.DataAndStorage.saveToGallery}
         </Typography>
         <List sx={{ p: 0, mt: 2 }}>
           <ListItem sx={{ px: 0 }}>
-            <ListItemText primary="Private Chats" />
+            <ListItemText primary={language.privates} />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem sx={{ px: 0 }}>
-            <ListItemText primary="Groups" />
+            <ListItemText primary={language.groups} />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem sx={{ px: 0 }}>
-            <ListItemText primary="Channels" />
+            <ListItemText primary={language.channels} />
             <ListItemSecondaryAction>
               <Switch defaultChecked />
             </ListItemSecondaryAction>
@@ -197,7 +203,9 @@ const SettingData = () => {
               <ArrowBackIcon />
             </IconButton>
             <Typography fontSize={"1.1rem"}>
-              {drawerContent ? "Data Usage" : "Storage Usage"}
+              {drawerContent
+                ? language.DataAndStorage.DataUsage
+                : language.DataAndStorage.StorageUsage}
             </Typography>
           </Box>
           <Box
@@ -227,7 +235,7 @@ const SettingData = () => {
               MB
             </Typography>
             <Typography sx={{ fontSize: "0.9rem", textAlign: "center" }}>
-              Meitigram uses{" "}
+              {language.DataAndStorage.StorageUsageTopCaption.split("-")[0]}{" "}
               {(function () {
                 let total = 0;
                 Object.values(drawerContent ? dataUsage : storageUsage).forEach(
@@ -235,7 +243,7 @@ const SettingData = () => {
                 );
                 return total;
               })()}{" "}
-              MB of your device storage.
+              {language.DataAndStorage.StorageUsageTopCaption.split("-")[1]}
             </Typography>
           </Box>
 
@@ -308,12 +316,11 @@ const SettingData = () => {
                     });
               }}
             >
-              Clear Cache
+              {language.DataAndStorage.clearCache}
             </Button>
           </Box>
           <Typography p={2} fontSize={"0.9rem"} textAlign={"center"}>
-            All media will stay in Meitigram cloude and can be redownloaded
-            again
+            {language.DataAndStorage.StorageUsageBottomCaption}
           </Typography>
         </Box>
       </Drawer>

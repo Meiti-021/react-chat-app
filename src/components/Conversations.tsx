@@ -8,7 +8,9 @@ import { RootState } from "../store";
 const Conversations = ({ type }: { type: string }) => {
   const { pathname } = useLocation();
   const { chats } = useSelector((store: RootState) => store.chat);
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   return (
     <Grid
       container
@@ -53,11 +55,11 @@ const Conversations = ({ type }: { type: string }) => {
             }}
           >
             {type === "conversations"
-              ? "ALL CONVERSATIONS"
+              ? language.allConversation
               : type === "groups"
-              ? "ALL GROUPS"
+              ? language.all + " " + language.groups
               : type === "privates"
-              ? "ALL PRIVATE MESSAGES"
+              ? language.all + " " + language.privates
               : undefined}
           </Typography>
           <Box
@@ -72,11 +74,11 @@ const Conversations = ({ type }: { type: string }) => {
             }}
           >
             {type === "conversations"
-              ? " NEW MESSAGES"
+              ? language.newMessages
               : type === "groups"
-              ? "NEW GROUP"
+              ? language.newGroup
               : type === "privates"
-              ? "NEW PRIVATE MESSAGES"
+              ? language.newPrivateMessages
               : undefined}
           </Box>
         </Box>

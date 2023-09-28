@@ -7,7 +7,9 @@ import { useState } from "react";
 import { editEmail } from "../services/chatSlice";
 import { useNavigate } from "react-router-dom";
 const SettingEmail = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const dispatch = useDispatch();
   const { users } = useSelector((store: RootState) => store.chat);
   const [value, setValue] = useState<string>(users[0].email);
@@ -33,7 +35,7 @@ const SettingEmail = () => {
         >
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>Edit Email</Typography>
+        <Typography fontSize={"1.1rem"}>{language.editEmail}</Typography>
         <IconButton
           sx={{ ml: "auto", color: "white" }}
           onClick={() => {
@@ -46,7 +48,7 @@ const SettingEmail = () => {
       <Stack direction={"column"} p={2} gap={1}>
         <TextField
           fullWidth
-          placeholder="Emial"
+          placeholder={language.email}
           variant="standard"
           type="email"
           value={value}

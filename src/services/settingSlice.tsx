@@ -1,14 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { en } from "../utils/languages";
+import { languageType } from "../utils/languageType";
 const initialState: {
   darkmode: boolean;
   fontSize: number | number[];
   messageCorner: number | number[];
   isLogin: boolean;
+  language: languageType;
 } = {
   darkmode: false,
   fontSize: 16,
   messageCorner: 5,
   isLogin: localStorage.getItem("login") === "true" ? true : false,
+  language: en,
 };
 const settingSlice = createSlice({
   name: "setting",

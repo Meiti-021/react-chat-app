@@ -15,7 +15,9 @@ import CallIcon from "@mui/icons-material/Call";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const ContactCenter = () => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
 
   return (
     <Grid
@@ -45,21 +47,19 @@ const ContactCenter = () => {
         <Box component={"div"} sx={{ p: 0 }}>
           <Box p={2}>
             <Typography fontSize={"1.1rem"} color="primary">
-              Contact Info
+              {language.contactCenter.contactInfoTitle}
             </Typography>
           </Box>
           <Box px={2}>
             <Typography fontSize={"1rem"}>
-              We're here to help! If you have any questions, concerns, or
-              feedback about our chat app, please don't hesitate to reach out to
-              us. Our dedicated support team is available to assist you.
+              {language.contactCenter.contactInfoSubtitle}
             </Typography>
           </Box>
         </Box>
         <Box component={"div"} sx={{ p: 0, mt: 2 }}>
           <Box p={2}>
             <Typography fontSize={"1.1rem"} color="primary">
-              Customer Support
+              {language.contactCenter.technicalSupportTitle}
             </Typography>
           </Box>
           <Box px={2}>
@@ -88,8 +88,8 @@ const ContactCenter = () => {
                   <SupportAgentIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary="Monday - Friday, 9:00 AM - 6:00 PM (EST)"
-                  secondary="Business Hours"
+                  primary={language.hireMeCenter.bussinessHours.primary}
+                  secondary={language.hireMeCenter.bussinessHours.secondary}
                 />
               </ListItem>
             </List>
@@ -97,36 +97,33 @@ const ContactCenter = () => {
           <Box component={"div"} sx={{ p: 0, mt: 2 }}>
             <Box p={2}>
               <Typography fontSize={"1.1rem"} color="primary">
-                Feedback and Suggestions
+                {language.contactCenter.feedbackTitle}
               </Typography>
             </Box>
             <Box px={2}>
               <Typography fontSize={"1rem"}>
-                We value your input and are always looking for ways to improve
-                our app. If you have any suggestions or ideas, please feel free
-                to share them with us at{" "}
-                <a href="/" style={{ color: "blue" }}>
-                  feedback@chatapp.com
-                </a>
-                .
+                {language.contactCenter.feedbackSubtitle}
               </Typography>
             </Box>
           </Box>
           <Box component={"div"} sx={{ p: 0, mt: 2 }}>
             <Box p={2}>
               <Typography fontSize={"1.1rem"} color="primary">
-                Technical Support
+                {language.contactCenter.technicalSupportTitle}
               </Typography>
             </Box>
             <Box px={2}>
               <Typography fontSize={"1rem"}>
-                Encountering technical issues? Our technical support team is
-                here to help you get back on track. Reach out to us at
+                {language.contactCenter.technicalSupportSubtitle.split("-")[0]}
                 <a href="/" style={{ color: "blue" }}>
                   {" "}
-                  techsupport@chatapp.com
+                  {
+                    language.contactCenter.technicalSupportSubtitle.split(
+                      "-"
+                    )[1]
+                  }
                 </a>
-                , and we'll work to resolve any problems you're facing.
+                {language.contactCenter.technicalSupportSubtitle.split("-")[2]}
               </Typography>
             </Box>
           </Box>

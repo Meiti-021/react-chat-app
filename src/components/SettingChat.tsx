@@ -38,6 +38,8 @@ const messages: MessageType[] = [
     sender: "user2",
     group_sender_display_name: null,
     seen: false,
+    reply: undefined,
+    media: undefined,
   },
   {
     message_id: "message2",
@@ -46,12 +48,14 @@ const messages: MessageType[] = [
     sender: "user1",
     group_sender_display_name: null,
     seen: true,
+    reply: undefined,
+    media: undefined,
   },
 ];
 const SettingChat = () => {
   const dispatch = useDispatch();
   const { users } = useSelector((store: RootState) => store.chat);
-  const { darkmode, fontSize, messageCorner } = useSelector(
+  const { darkmode, fontSize, messageCorner, language } = useSelector(
     (store: RootState) => store.setting
   );
   const navigate = useNavigate();
@@ -78,7 +82,9 @@ const SettingChat = () => {
         >
           <ArrowBackIcon />
         </IconButton>
-        <Typography fontSize={"1.1rem"}>Chat Settings</Typography>
+        <Typography fontSize={"1.1rem"}>
+          {language.chatSetting.title}
+        </Typography>
         <IconButton
           sx={{ ml: "auto", color: "white" }}
           onClick={() => {
@@ -91,7 +97,7 @@ const SettingChat = () => {
       </Box>
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          Chat Settings
+          {language.chatSetting.chatSettings}
         </Typography>
         <Slider
           aria-label="Temperature"
@@ -108,7 +114,7 @@ const SettingChat = () => {
       </Box>
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          Messages Corners
+          {language.chatSetting.messagesCorners}
         </Typography>
         <Slider
           defaultValue={corner}
@@ -221,7 +227,7 @@ const SettingChat = () => {
       <Divider />
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          General Chat Setting
+          {language.chatSetting.generalChatSettings}
         </Typography>
         <List sx={{ p: 0, mt: 2 }}>
           <ListItem sx={{ p: 0 }}>
@@ -229,8 +235,8 @@ const SettingChat = () => {
               <BedtimeIcon />
             </ListItemIcon>
             <ListItemText
-              primary="Dark Mode"
-              secondary={darkmode ? "On" : "Off"}
+              primary={language.darkMode}
+              secondary={darkmode ? language.on : language.off}
             />
             <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
               <Switch
@@ -247,8 +253,8 @@ const SettingChat = () => {
               <PlayCircleOutlineIcon />
             </ListItemIcon>
             <ListItemText
-              primary="Animations"
-              secondary="REduce motion effects to save power"
+              primary={language.chatSetting.animations.primary}
+              secondary={language.chatSetting.animations.secondary}
             />
           </ListItem>
           <ListItem sx={{ p: 0 }}>
@@ -256,8 +262,8 @@ const SettingChat = () => {
               <SentimentSatisfiedAltIcon />
             </ListItemIcon>
             <ListItemText
-              primary="Stickers and Emoji"
-              secondary="Manage stickers, emoji and reactions"
+              primary={language.chatSetting.stikersandEmojies.primary}
+              secondary={language.chatSetting.stikersandEmojies.secondary}
             />
             <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
               <Switch defaultChecked />
@@ -268,13 +274,13 @@ const SettingChat = () => {
       <Divider />
       <Box p={2}>
         <Typography fontSize={"1rem"} color="primary">
-          Media and Sound
+          {language.chatSetting.mediaAndSounds}
         </Typography>
         <List sx={{ p: 0, mt: 2 }}>
           <ListItem sx={{ p: 0 }}>
             <ListItemText
-              primary="Tap to show next media"
-              secondary="Tap near the edge of the screen while viewing media to navigate"
+              primary={language.chatSetting.tapToShowNext.primary}
+              secondary={language.chatSetting.tapToShowNext.secondary}
               secondaryTypographyProps={{ sx: { width: "90%" } }}
             />
             <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
@@ -283,8 +289,8 @@ const SettingChat = () => {
           </ListItem>
           <ListItem sx={{ p: 0 }}>
             <ListItemText
-              primary="Raise to listen"
-              secondary="Switch sound to earpiece by rising the phone to your ear"
+              primary={language.chatSetting.raiseToListen.primary}
+              secondary={language.chatSetting.raiseToListen.secondary}
               secondaryTypographyProps={{ sx: { width: "90%" } }}
             />
             <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
@@ -293,8 +299,8 @@ const SettingChat = () => {
           </ListItem>
           <ListItem sx={{ p: 0 }}>
             <ListItemText
-              primary="Raise to speak"
-              secondary="reacord voice messages by rising the phone to your ear"
+              primary={language.chatSetting.raiseToSpeak.primary}
+              secondary={language.chatSetting.raiseToSpeak.secondary}
               secondaryTypographyProps={{ sx: { width: "90%" } }}
             />
             <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
@@ -303,8 +309,10 @@ const SettingChat = () => {
           </ListItem>
           <ListItem sx={{ p: 0 }}>
             <ListItemText
-              primary="Pause music while recording"
-              secondary="Pause music while reacording a video message"
+              primary={language.chatSetting.pauseMusicWhileRecording.primary}
+              secondary={
+                language.chatSetting.pauseMusicWhileRecording.secondary
+              }
               secondaryTypographyProps={{ sx: { width: "90%" } }}
             />
             <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
@@ -312,7 +320,9 @@ const SettingChat = () => {
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem sx={{ p: 0 }}>
-            <ListItemText primary="Microphoen for voice messages" />
+            <ListItemText
+              primary={language.chatSetting.microphoenForVoiceMessages}
+            />
             <ListItemSecondaryAction sx={{ p: 0, mr: -2 }}>
               <Switch defaultChecked />
             </ListItemSecondaryAction>

@@ -13,7 +13,9 @@ const MemberList = ({
   participants: UserType[];
   admins: boolean;
 }) => {
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   return (
     <Box
       sx={{
@@ -73,7 +75,7 @@ const MemberList = ({
                           color: "#7a7f9a",
                         }}
                       >
-                        Last seen recently
+                        {item.last_activity}
                       </Typography>
                     </Stack>
 
@@ -90,7 +92,7 @@ const MemberList = ({
                         marginLeft: "auto",
                       }}
                     >
-                      {admins ? "admin" : undefined}
+                      {admins ? language.admin : undefined}
                     </Typography>
                   </ListItem>
                 </Link>

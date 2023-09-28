@@ -8,7 +8,9 @@ import { editCareer } from "../services/chatSlice";
 import { useNavigate } from "react-router-dom";
 const SettingCareer = () => {
   const dispatch = useDispatch();
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const { users } = useSelector((store: RootState) => store.chat);
   const [value, setValue] = useState<string>(users[0].career);
   const navigate = useNavigate();
@@ -46,7 +48,7 @@ const SettingCareer = () => {
       <Stack direction={"column"} p={2} gap={1}>
         <TextField
           fullWidth
-          placeholder="Career"
+          placeholder={language.career}
           variant="standard"
           value={value}
           onChange={(e) => {
@@ -55,7 +57,7 @@ const SettingCareer = () => {
           inputProps={{ maxLength: 25 }}
         />
         <Typography fontSize={"0.9rem"}>
-          You can add a few lines about your carrer and what you are doing now.
+          {language.settingCareerDescription}
         </Typography>
       </Stack>
     </div>

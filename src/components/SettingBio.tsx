@@ -8,7 +8,9 @@ import { editBio } from "../services/chatSlice";
 import { useNavigate } from "react-router-dom";
 const SettingBio = () => {
   const dispatch = useDispatch();
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
   const navigate = useNavigate();
   const { users } = useSelector((store: RootState) => store.chat);
   const [value, setValue] = useState<string>(users[0].career);
@@ -46,7 +48,7 @@ const SettingBio = () => {
       <Stack direction={"column"} p={2} gap={1}>
         <TextField
           fullWidth
-          placeholder="Bio"
+          placeholder={language.bio}
           variant="standard"
           value={value}
           onChange={(e) => {
@@ -55,8 +57,7 @@ const SettingBio = () => {
           inputProps={{ maxLength: 60 }}
         />
         <Typography fontSize={"0.9rem"}>
-          You can add a few lines about yourself. Choose who can see your bio in
-          setting.
+          {language.settingBioDescription}
         </Typography>
       </Stack>
     </div>

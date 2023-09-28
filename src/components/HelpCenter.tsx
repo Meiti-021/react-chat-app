@@ -2,13 +2,14 @@ import Grid from "@mui/material/Grid";
 import { Box, Drawer, Typography, Button } from "@mui/material";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { helpDatacenter } from "../utils/helps";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const HelpCenter = () => {
   const { pathname } = useLocation();
   const [value, setValue] = useState<string>("");
-  const { darkmode } = useSelector((store: RootState) => store.setting);
+  const { darkmode, language } = useSelector(
+    (store: RootState) => store.setting
+  );
 
   return (
     <Grid
@@ -39,7 +40,7 @@ const HelpCenter = () => {
           <Typography
             sx={{ fontSize: "2rem", fontWeight: 600, textAlign: "center" }}
           >
-            Help Center
+            {language.helpCenter.title}
           </Typography>
           <Typography
             sx={{
@@ -48,7 +49,7 @@ const HelpCenter = () => {
               color: "#7a7f9a",
             }}
           >
-            Find answers to frequently asked questions.
+            {language.helpCenter.subtitle}
           </Typography>
           <Box
             component={"div"}
@@ -70,19 +71,19 @@ const HelpCenter = () => {
                 color: "white",
                 backgroundColor: "inherit",
               }}
-              placeholder="search ..."
+              placeholder={`${language.search}...`}
             />
             <Button
               variant="contained"
               fullWidth
               sx={{ height: "45px", bgcolor: "#008EE4" }}
             >
-              SEARCH
+              {language.search}
             </Button>
           </Box>
         </Box>
         <Grid container gap={0.5} justifyContent={"center"} px={2}>
-          {helpDatacenter.map((item) => {
+          {language.helpCenter.helpDatacenter.map((item) => {
             return (
               <Grid
                 item
@@ -128,7 +129,7 @@ const HelpCenter = () => {
             mt: 3,
           }}
         >
-          About
+          {language.about}
         </Typography>
         <Typography
           sx={{
@@ -140,10 +141,7 @@ const HelpCenter = () => {
             color: "#7a7f9a",
           }}
         >
-          Introducing MEITIGRAM – a demo that highlights the magic of front-end
-          development using React and Material UI. Dive into a smooth messaging
-          experience, where things look great and work seamlessly thanks to the
-          skills of our developer (Mahdi Dehgani).
+          {language.helpCenter.aboutDescription}
         </Typography>
       </Grid>
       <Grid

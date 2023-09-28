@@ -19,6 +19,7 @@ const SettingCenter = () => {
         height: "100%",
         position: "relative",
         "&::-webkit-scrollbar": { display: "none" },
+        overflow: "hidden",
       }}
     >
       <SettingMainMenu />
@@ -40,6 +41,7 @@ const SettingCenter = () => {
         open={pathname !== "/setting" ? true : false}
         sx={{
           display: { xs: "block", sm: "none" },
+          height: "100%",
           width: "100vw",
           "&::-webkit-scrollbar": { display: "none" },
         }}
