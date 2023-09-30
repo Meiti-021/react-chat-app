@@ -2,41 +2,44 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import { CircleFlag } from "react-circle-flags";
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
+import { switchLanguage } from "../services/settingSlice";
 type LanguageDataType = {
   code: string;
   label: string;
+  language: "fa" | "en" | "tr";
 };
-interface ComboBoxProps {
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
-}
 
 const languages: LanguageDataType[] = [
-  { code: "GB", label: "English" },
+  { code: "GB", label: "English", language: "en" },
   {
     code: "IR",
     label: "Persian",
+    language: "fa",
   },
-  { code: "TR", label: "Turkey" },
+  { code: "TR", label: "Turkey", language: "tr" },
 ];
 
-const ComboBox: React.FC<ComboBoxProps> = ({ value, setValue }) => {
+const ComboBox = () => {
+  const { langugaeType } = useSelector((store: RootState) => store.setting);
+  const dispatch = useDispatch();
   return (
     <FormControl sx={{ width: 180 }}>
       <InputLabel id="demo-simple-select-label">Language</InputLabel>
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        value={value}
+        value={langugaeType}
         label="Language"
         onChange={(event) => {
-          setValue(event.target.value);
+          dispatch(switchLanguage(event.target.value));
         }}
         size="small"
       >
         {languages.map((item) => {
           return (
-            <MenuItem value={item.label} key={item.code}>
+            <MenuItem value={item.language} key={item.code}>
               <Box
                 component="li"
                 sx={{
@@ -62,7 +65,6 @@ const ComboBox: React.FC<ComboBoxProps> = ({ value, setValue }) => {
 };
 
 const AppLargeScreenHeader = () => {
-  const [value, setValue] = React.useState<string>(languages[0].label);
   return (
     <>
       <Box
@@ -80,7 +82,7 @@ const AppLargeScreenHeader = () => {
           size="small"
           sx={{ width: "100%" }}
         />
-        <ComboBox value={value} setValue={setValue} />
+        <ComboBox />
       </Box>
     </>
   );

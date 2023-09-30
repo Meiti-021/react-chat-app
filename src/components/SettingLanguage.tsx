@@ -10,14 +10,16 @@ import {
 } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useNavigate } from "react-router-dom";
+import { switchLanguage } from "../services/settingSlice";
 const SettingLanguage = () => {
-  const { darkmode, language } = useSelector(
+  const { darkmode, language, langugaeType } = useSelector(
     (store: RootState) => store.setting
   );
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <div>
       <Box
@@ -54,19 +56,24 @@ const SettingLanguage = () => {
           name="radio-buttons-group"
         >
           <FormControlLabel
-            value="English"
+            checked={langugaeType === "en"}
+            value="en"
             control={<Radio />}
             label="English"
+            onChange={() => dispatch(switchLanguage("en"))}
           />
           <FormControlLabel
-            value="Persian"
-            control={<Radio />}
-            label="Persian"
-          />
-          <FormControlLabel
-            value="Turkish"
+            checked={langugaeType === "tr"}
+            value="tr"
             control={<Radio />}
             label="Turkish"
+            onChange={() => dispatch(switchLanguage("tr"))}
+          />
+          <FormControlLabel
+            value="fa"
+            control={<Radio />}
+            label="Persian(soon)"
+            disabled
           />
         </RadioGroup>
       </FormControl>

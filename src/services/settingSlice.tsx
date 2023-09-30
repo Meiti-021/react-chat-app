@@ -1,18 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { en, tr } from "../utils/languages";
+import { languages } from "../utils/languages";
 import { languageType } from "../utils/languageType";
+import { enqueueSnackbar } from "notistack";
 const initialState: {
   darkmode: boolean;
   fontSize: number | number[];
   messageCorner: number | number[];
   isLogin: boolean;
   language: languageType;
+  langugaeType: string;
 } = {
   darkmode: false,
   fontSize: 16,
   messageCorner: 5,
   isLogin: localStorage.getItem("login") === "true" ? true : false,
-  language: tr,
+  language: languages.en,
+  langugaeType: "en",
 };
 const settingSlice = createSlice({
   name: "setting",
@@ -42,6 +45,22 @@ const settingSlice = createSlice({
       localStorage.removeItem("login");
       console.log(state.isLogin);
     },
+    switchLanguage: (state, action: PayloadAction<string>) => {
+      if (action.payload === "en") {
+        state.language = languages.en;
+        state.langugaeType = "en";
+      } else if (action.payload === "tr") {
+        state.language = languages.tr;
+        state.langugaeType = "tr";
+      } else if (action.payload === "fa") {
+        enqueueSnackbar({
+          variant: "error",
+          message: "This fueature will be added soon!",
+        });
+      } else {
+        enqueueSnackbar({ variant: "error", message: "404! invalid language" });
+      }
+    },
   },
 });
 
@@ -51,6 +70,7 @@ export const {
   changeMessageCorner,
   logIn,
   logOut,
+  switchLanguage,
 } = settingSlice.actions;
 
 export default settingSlice.reducer;
