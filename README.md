@@ -2,7 +2,7 @@
 
 Welcome to MEITIGRAM, a feature-rich front-end web application that demonstrates the power of modern web development technologies. Developed using React, Material UI, TypeScript, and more, MEITIGRAM offers a user-friendly and visually appealing experience, akin to popular messaging platforms.
 
-![MEITIGRAM Demo](./src/preview.png)
+![MEITIGRAM Demo](./public/preview.png)
 
 ## Table of Contents
 
