@@ -1,4 +1,3 @@
-import * as React from "react";
 import TextField from "@mui/material/TextField";
 import { CircleFlag } from "react-circle-flags";
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
