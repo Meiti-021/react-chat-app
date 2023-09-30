@@ -159,6 +159,7 @@ export type languageType = {
   menuItems: {
     title: string;
     items: {
+      id: string;
       title: string;
       icon: React.ReactNode;
       type: typeof NavLink | typeof Button;

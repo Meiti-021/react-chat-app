@@ -79,7 +79,7 @@ export default function AppContainer(props: Props) {
       setFilterType("conversations");
     }
     setMobileOpen(false);
-  }, [location.pathname, filterType, id]);
+  }, [location.pathname, filterType, id, language]);
   const drawer = (
     <div style={{ height: "100%" }}>
       <Toolbar sx={{ bgcolor: darkmode ? "#212D3B" : "#008EE4" }}>
@@ -175,18 +175,18 @@ export default function AppContainer(props: Props) {
                           alignItems: "center",
                           textDecoration: "none",
                           color:
-                            filterType === element.title.toLocaleLowerCase() &&
+                            filterType === element.id.toLocaleLowerCase() &&
                             darkmode
                               ? "white"
-                              : filterType ===
-                                  element.title.toLocaleLowerCase() && !darkmode
+                              : filterType === element.id.toLocaleLowerCase() &&
+                                !darkmode
                               ? "white"
-                              : filterType !==
-                                  element.title.toLocaleLowerCase() && darkmode
+                              : filterType !== element.id.toLocaleLowerCase() &&
+                                darkmode
                               ? "white"
                               : "black",
                           backgroundColor:
-                            filterType === element.title.toLowerCase()
+                            filterType === element.id.toLowerCase()
                               ? "#008EE4"
                               : undefined,
                           width: "100%",
@@ -195,24 +195,22 @@ export default function AppContainer(props: Props) {
                         }
                   }
                   to={
-                    element.title === "Conversations"
-                      ? "/"
-                      : `/${element.address}`
+                    element.id === "Conversations" ? "/" : `/${element.address}`
                   }
                   onClick={
                     element.type === Button
                       ? () => {
-                          if (element.title === "Log out") {
+                          if (element.id === "Log out") {
                             setFilterType("");
                             navigate("/");
                             dispatch(logOut());
-                          } else if (element.title === "Dark mode") {
+                          } else if (element.id === "Dark mode") {
                             dispatch(switchDarkmode());
                             setFilterType("");
                             navigate("/");
                           } else {
                             navigate("/");
-                            setFilterType(element.title.toLowerCase());
+                            setFilterType(element.id.toLowerCase());
                           }
                         }
                       : () => {
