@@ -15,7 +15,7 @@ import { RootState } from "../store";
 import { useNavigate } from "react-router-dom";
 import { switchLanguage } from "../services/settingSlice";
 const SettingLanguage = () => {
-  const { darkmode, language, langugaeType } = useSelector(
+  const { darkmode, language, languageType } = useSelector(
     (store: RootState) => store.setting
   );
   const navigate = useNavigate();
@@ -56,14 +56,14 @@ const SettingLanguage = () => {
           name="radio-buttons-group"
         >
           <FormControlLabel
-            checked={langugaeType === "en"}
+            checked={languageType === "en"}
             value="en"
             control={<Radio />}
             label="English"
             onChange={() => dispatch(switchLanguage("en"))}
           />
           <FormControlLabel
-            checked={langugaeType === "tr"}
+            checked={languageType === "tr"}
             value="tr"
             control={<Radio />}
             label="Turkish"

@@ -21,7 +21,7 @@ const languages: LanguageDataType[] = [
 ];
 
 const ComboBox = () => {
-  const { langugaeType } = useSelector((store: RootState) => store.setting);
+  const { languageType } = useSelector((store: RootState) => store.setting);
   const dispatch = useDispatch();
   return (
     <FormControl sx={{ width: 180 }}>
@@ -29,7 +29,7 @@ const ComboBox = () => {
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        value={langugaeType}
+        value={languageType}
         label="Language"
         onChange={(event) => {
           dispatch(switchLanguage(event.target.value));

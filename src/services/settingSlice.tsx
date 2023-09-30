@@ -8,14 +8,14 @@ const initialState: {
   messageCorner: number | number[];
   isLogin: boolean;
   language: languageType;
-  langugaeType: string;
+  languageType: string;
 } = {
   darkmode: false,
   fontSize: 16,
   messageCorner: 5,
   isLogin: localStorage.getItem("login") === "true" ? true : false,
   language: languages.en,
-  langugaeType: "en",
+  languageType: "en",
 };
 const settingSlice = createSlice({
   name: "setting",
@@ -48,10 +48,10 @@ const settingSlice = createSlice({
     switchLanguage: (state, action: PayloadAction<string>) => {
       if (action.payload === "en") {
         state.language = languages.en;
-        state.langugaeType = "en";
+        state.languageType = "en";
       } else if (action.payload === "tr") {
         state.language = languages.tr;
-        state.langugaeType = "tr";
+        state.languageType = "tr";
       } else if (action.payload === "fa") {
         enqueueSnackbar({
           variant: "error",
