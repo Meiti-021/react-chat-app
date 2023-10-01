@@ -37,19 +37,19 @@ const PrivateChatSetting = () => {
           sx={{ display: "flex", alignItems: "center", gap: "15px" }}
         >
           {" "}
-          <CallIcon sx={{ fontSize: "1.2rem" }} /> r{language.call}
+          <CallIcon sx={{ fontSize: "1.2rem" }} /> {language.call}
         </MenuItem>
         <MenuItem
           onClick={handleClose}
           sx={{ display: "flex", alignItems: "center", gap: "15px" }}
         >
-          <HistoryIcon sx={{ fontSize: "1.2rem" }} /> r{language.clearHistory}
+          <HistoryIcon sx={{ fontSize: "1.2rem" }} /> {language.clearHistory}
         </MenuItem>
         <MenuItem
           onClick={handleClose}
           sx={{ display: "flex", alignItems: "center", gap: "15px" }}
         >
-          <BlockIcon sx={{ fontSize: "1.2rem" }} /> r{language.blockUser}
+          <BlockIcon sx={{ fontSize: "1.2rem" }} /> {language.blockUser}
         </MenuItem>
       </Menu>
     </>
