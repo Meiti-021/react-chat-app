@@ -8,15 +8,15 @@ import {
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import EditIcon from "@mui/icons-material/Edit";
-import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 const SettingTopMenu = () => {
   const { darkmode, language } = useSelector(
     (store: RootState) => store.setting
   );
+  const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -25,6 +25,9 @@ const SettingTopMenu = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  React.useEffect(() => {
+    handleClose();
+  }, [location.pathname]);
   return (
     <>
       <IconButton
@@ -59,21 +62,6 @@ const SettingTopMenu = () => {
               <EditIcon sx={{ fontSize: "1.2rem" }} />
             </ListItemIcon>
             <ListItemText>{language.editName}</ListItemText>
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link
-            to={"/"}
-            style={{
-              textDecoration: "none",
-              display: "flex",
-              color: darkmode ? "white" : "black",
-            }}
-          >
-            <ListItemIcon>
-              <AddAPhotoIcon sx={{ fontSize: "1.2rem" }} />
-            </ListItemIcon>
-            <ListItemText>{language.setProfilePhoto} </ListItemText>
           </Link>
         </MenuItem>
         <MenuItem>

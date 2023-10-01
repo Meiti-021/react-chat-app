@@ -67,13 +67,13 @@ export default function AppContainer(props: Props) {
   const navigate = useNavigate();
   React.useEffect(() => {
     if (
-      location.pathname !== "/setting" &&
-      location.pathname !== "/contact" &&
-      location.pathname !== "/contact-us" &&
-      location.pathname !== "/help" &&
-      location.pathname !== "/channels" &&
-      location.pathname !== "/bots" &&
-      location.pathname !== "/hire-me" &&
+      location.pathname.includes("/setting") === false &&
+      location.pathname.includes("/contacts") === false &&
+      location.pathname.includes("/contact-us") === false &&
+      location.pathname.includes("/help") === false &&
+      location.pathname.includes("/channels") === false &&
+      location.pathname.includes("/bots") === false &&
+      location.pathname.includes("/hire-me") === false &&
       filterType === ""
     ) {
       setFilterType("conversations");
@@ -201,13 +201,11 @@ export default function AppContainer(props: Props) {
                     element.type === Button
                       ? () => {
                           if (element.id === "Log out") {
-                            setFilterType("");
                             navigate("/");
+                            setFilterType("");
                             dispatch(logOut());
                           } else if (element.id === "Dark mode") {
                             dispatch(switchDarkmode());
-                            setFilterType("");
-                            navigate("/");
                           } else {
                             navigate("/");
                             setFilterType(element.id.toLowerCase());

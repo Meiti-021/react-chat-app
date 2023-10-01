@@ -116,7 +116,7 @@ const ContactList = () => {
                     <ListItemText>
                       <Link
                         to={`/${item.user_id}`}
-                        style={{ textDecoration: "none" }}
+                        style={{ textDecoration: "none", color: "blue" }}
                       >
                         {language.startMessaging}
                       </Link>
