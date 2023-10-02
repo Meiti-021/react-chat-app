@@ -1,8 +1,10 @@
 # Meitigram - Showcase Front-End Web Application
 
+![MEITIGRAM Demo](./public/preview.png)
+
 Welcome to MEITIGRAM, a feature-rich front-end web application that demonstrates the power of modern web development technologies. Developed using React, Material UI, TypeScript, and more, MEITIGRAM offers a user-friendly and visually appealing experience, akin to popular messaging platforms.
 
-![MEITIGRAM Demo](./public/preview.png)
+- To view the live demo of this website, [click here](`https://meitigram.netlify.app/`).
 
 ## Table of Contents
 
@@ -15,11 +17,6 @@ Welcome to MEITIGRAM, a feature-rich front-end web application that demonstrates
 - [License](#license)
 
 ## Features
-
-### User Authentication and Authorization
-
-- Secure user authentication and authorization system.
-- Protected routes ensure data privacy.
 
 ### Real-Time Messaging
 
@@ -81,7 +78,7 @@ To explore MEITIGRAM, follow these simple steps:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/MEITIGRAM.git
+   git clone https://github.com/Meiti-021/react-chat-app.git
    cd MEITIGRAM
 
    ```
@@ -116,3 +113,20 @@ To explore MEITIGRAM, follow these simple steps:
 ##Contributing
 
 Contributions are encouraged and appreciated. Please read our Contribution Guidelines for information on how to contribute effectively.
+
+## Contact Information
+
+- Developer: Mahdi Dehgani
+- Email: dev.meiti@gmail.com
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgments
+
+- Special thanks to the creators and contributors of React, Material-UI, Swiper.js, Notistack, Lottie animations,Redux toolkit, Vite and etc for their amazing tools and libraries that helped make this project possible.
+
+## Additional Notes
+
+Please note that this project is solely for demonstration and portfolio purposes. It does not include backend functionality or real payment processing.
