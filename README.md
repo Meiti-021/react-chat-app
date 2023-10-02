@@ -4,7 +4,7 @@
 
 Welcome to MEITIGRAM, a feature-rich front-end web application that demonstrates the power of modern web development technologies. Developed using React, Material UI, TypeScript, and more, MEITIGRAM offers a user-friendly and visually appealing experience, akin to popular messaging platforms.
 
-- To view the live demo of this website, [click here](`https://meitigram.netlify.app/`).
+- To view the live demo of this website, [click here](https://meitigram.netlify.app/).
 
 ## Table of Contents
 
